@@ -21,11 +21,14 @@ function App() {
           <Route exact path="/login">
             <Login />
           </Route>
-          <Route path="/signup">
-            <Signup />
+          <Route path="/badgedesigner">
+            <BadgeDesigner />
           </Route>
           <Route path="/office">
             <Office />
+          </Route>
+          <Route path="/signup">
+            <Signup />
           </Route>
         </Switch>
       </BrowserRouter>

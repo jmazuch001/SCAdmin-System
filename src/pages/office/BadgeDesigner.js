@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
+import styles from './badge-styles.module.css'
 
 
-function App() {
+function BadgeDesigner() {
     return (
       <div>
       <div className="card" draggable="true">
@@ -93,6 +94,9 @@ function App() {
         <p class="container draggable-2 select-fade" draggable="true">2</p>
       </div> */}
     </div>
+    
     )
     
   }
+
+export default BadgeDesigner;
