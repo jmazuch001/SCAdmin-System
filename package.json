@@ -15,6 +15,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "^3.4.4",
     "web-vitals": "^1.1.2",
+    "webfontloader": "^1.6.28",
     "webpack": "^4.42.0"
   },
   "scripts": {
