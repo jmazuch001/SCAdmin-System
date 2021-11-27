@@ -1,2 +1,24 @@
 /* navbar styles */
 
+.login-form {
+    max-width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.login-form span {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.login-form input {
+    padding: 8px 5px;
+    font-size: 1em;
+    color: #777;
+    width: 100%;
+}

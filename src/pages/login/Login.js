@@ -13,7 +13,7 @@ export default function Login() {
         console.log(email, password)
     }
     return (
-        <Form onSubmit={handleSubmit} className={styles['login-form']}>
+        <form onSubmit={handleSubmit} className={styles['login-form']}>
             <h2>Login</h2>
             <label>
                 <span>email:</span>
@@ -33,7 +33,7 @@ export default function Login() {
                 
             </label>
             <button className="btn">Login</button>
-        </Form>
+        </form>
     )
 }
 
