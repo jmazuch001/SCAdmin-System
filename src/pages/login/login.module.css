@@ -9,6 +9,7 @@
 .login-form label {
     display: block;
     margin-bottom: 6px;
+    font-size: 1.7em;
 }
 
 .login-form span {
@@ -18,7 +19,18 @@
 
 .login-form input {
     padding: 8px 5px;
-    font-size: 1em;
+    font-size: 1.0em;
     color: #777;
     width: 100%;
+    box-shadow: 1.2px 1.2px 8px 0.1px rgb(250, 159, 159);
+    /* rounded corners */
+    border-radius: 15px;
 }
+
+.login {
+    font-size: 2.5em;
+}
+/* .login-form:hover {
+    box-shadow: 1px 1px 3px 1px rgb(87, 185, 78);
+} */
+

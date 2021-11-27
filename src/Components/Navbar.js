@@ -7,11 +7,13 @@ export default function Navbar() {
     return (
         <div>
         <nav className={styles.navbar}>
-            
+        
             <ul>
-                <li className={styles.title}>Financial Reporting</li>   
-                <li><Link to="/login">Login</Link></li>
-                <li><Link to="/signup">Signup</Link></li>   
+                
+                <li className={styles.title}>HIGROUP, LLC.</li>   
+                <li><Link to="/login" className={styles['link-text']}>Login</Link></li>
+                <li><Link to="/signup" className={styles['link-text']}>Signup</Link></li>   
+                
             </ul>
             
         </nav>

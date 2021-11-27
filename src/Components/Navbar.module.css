@@ -5,11 +5,19 @@
     background: gray;
     padding: 20px 10px;
     box-sizing: border-box;
+    background-image: url("https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20(1%20of%201)-5.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    background-position: right bottom, top left;
+    background-repeat: repeat;
+    padding: 35px;
+    background-size: auto;
+    /* fixes screen resizing upon hover over login / signup */
+    /* additonal underline effect under navbar */
+    position: relative;
 }
 
 .navbar ul {
     display: flex;
-    margin: 0 auto; 
+    margin: auto; 
     max-width: 960px;
     align-items: center;
 }
@@ -18,14 +26,64 @@
     margin-right: auto;
     font-weight: bold;
     letter-spacing: 1px;
-    font-size: 1.2em;
+    font-size: 1.8em;
+    text-shadow: 0 0 3px #FF0000, 0 0 5px #9797c0;
+}
+
+.subtitle {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
 }
 
 .navbar button, .navbar a {
     margin-left: 16px;
 }
 
+
 .navbar a {
-    color: black;
+    color: rgb(15, 7, 7);
     text-decoration: none;
+}
+
+.link-text {
+    font-size: 1.4em;
+    font-weight: bold;
+    
+}
+
+.link-text:hover {  
+    display: inline;
+    position: sticky;
+    overflow: hidden;
+    font-size: 1.5em;
+    opacity: 0.7;
+      transition: 2.0s;
+      text-shadow: 0 0 3px #FF0000, 0 0 5px #2d2db4;
+}
+
+.link-text:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    width: 0;
+    bottom: -5px;
+    background: rgb(246, 50, 50);
+    height: 4px;
+    transition-duration: 1.3s;
+    transition-timing-function: ease-out;
+
+}
+
+.link-text:hover:after, 
+.link-text:focus:after,
+.link-text:active:after {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    transition-duration: 1.3s;
+    left: 0;
+    right: auto;
+    width: 100%;
 }
