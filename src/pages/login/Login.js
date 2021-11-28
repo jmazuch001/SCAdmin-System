@@ -13,6 +13,8 @@ export default function Login() {
         console.log(email, password)
     }
     return (
+        <div className={styles['login-body']}>
+            
         <form onSubmit={handleSubmit} className={styles['login-form']}>
             <h2 className={styles.login}>Login</h2>
             <label className={styles.label}>
@@ -32,6 +34,7 @@ export default function Login() {
             </label>
             <button className="btn button">Login</button>
         </form>
+        </div>
     )
 }
 

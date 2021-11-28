@@ -2,17 +2,21 @@
 
 .navbar {
     width: 100%;
-    background: gray;
     padding: 20px 10px;
     box-sizing: border-box;
-    background-image: url("https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20(1%20of%201)-5.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
-    background-position: right bottom, top left;
-    background-repeat: repeat;
-    padding: 35px;
-    background-size: auto;
+    /* background-image: url("https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20(1%20of%201)-5.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"); */
+    position: fixed; 
+    background-size: 100%;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
     /* fixes screen resizing upon hover over login / signup */
     /* additonal underline effect under navbar */
     position: relative;
+    background-color: rgb(173, 172, 172);
 }
 
 .navbar ul {
@@ -27,7 +31,10 @@
     font-weight: bold;
     letter-spacing: 1px;
     font-size: 1.8em;
-    text-shadow: 0 0 3px #FF0000, 0 0 5px #9797c0;
+    /* text-shadow: 0.1px 0.1px 3px #c44f4f; */
+    background: -webkit-linear-gradient(rgb(54, 50, 50) 33%, rgb(238, 61, 7) 93%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
@@ -60,7 +67,7 @@
     font-size: 1.5em;
     opacity: 0.7;
       transition: 2.0s;
-      text-shadow: 0 0 3px #FF0000, 0 0 5px #2d2db4;
+      text-shadow: 0 0 3px #FF0000, 0 0 5px #ec5a05;
 }
 
 .link-text:after {
