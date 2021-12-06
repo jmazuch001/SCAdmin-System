@@ -70,7 +70,7 @@
       text-shadow: 0 0 3px #FF0000, 0 0 5px #ec5a05;
 }
 
-.link-text:after {
+/* .link-text:after {
     content: "";
     position: absolute;
     z-index: 1;
@@ -93,4 +93,4 @@
     left: 0;
     right: auto;
     width: 100%;
-}
+} */
