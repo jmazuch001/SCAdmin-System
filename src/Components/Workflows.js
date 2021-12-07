@@ -2,7 +2,7 @@ import React from 'react'
 import { Offcanvas } from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 // styles
-import styles from './Navbar.module.css'
+import styles from './Workflows.module.css'
 
 export default function Workflows() {
     const [show, setShow] = useState(false);
@@ -34,3 +34,5 @@ export default function Workflows() {
         </div>
     ) 
 }
+
+export default Workflows;

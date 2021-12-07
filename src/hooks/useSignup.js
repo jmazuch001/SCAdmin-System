@@ -43,7 +43,7 @@ const signup = async (email, password, displayName) => {
 
 }
 
-export { error, isPending, signup}
+return { error, isPending, signup}
 
 }
 
