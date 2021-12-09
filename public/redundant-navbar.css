@@ -1,60 +1,20 @@
 /* navbar styles */
 
 .navbar {
-    /* background: rgb(3, 3, 3);
-    width: 100%; */
-    /* padding: 30px 10px; */
-    /* box-sizing: border-box; */
-    /* position: fixed;  */
-    background-size: 100%;
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    
     /* Preserve aspet ratio */
     min-width: 100%;
     min-height: 100%;
     position: relative;
-
-    /* fixes screen resizing upon hover over login / signup */
-    /* additonal underline effect under navbar */
-    
-    /* background-color: rgb(29, 42, 66); */
-    /* background: rgb(0,0,0);
-background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(38,48,70,1) 100%); */
-/* background: rgb(56,17,17);
-background: linear-gradient(90deg, rgba(56,17,17,1) 0%, rgba(0,0,0,1) 18%, rgba(88,38,38,1) 38%, rgba(9,12,17,1) 100%, rgba(15,20,28,1) 100%, rgba(38,48,70,1) 100%); */
-
-/* background: rgb(62,20,20);
-background: linear-gradient(90deg, rgba(62,20,20,1) 0%, rgba(0,0,0,1) 17%, rgba(0,0,0,1) 32%, rgba(54,15,15,1) 43%, rgba(0,0,0,1) 100%, rgba(9,12,17,1) 100%, rgba(15,20,28,1) 100%, rgba(38,48,70,1) 100%); */
-
-/* background: rgb(139,77,8);
-background: linear-gradient(90deg, rgba(139,77,8,1) 3%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 32%, rgba(125,63,16,1) 42%, rgba(0,0,0,1) 100%); */
-
-/* goldeneye */
-/* background: rgb(0,0,0);
-background: radial-gradient(circle, rgba(0,0,0,1) 0%, 
-rgba(251,133,3,1) 14%, 
-rgba(87,50,0,1) 15%,
-rgba(200,110,10,1) 17%,
- rgba(0,0,0,1) 30%,
-  rgba(54,15,15,1) 43%,
-   rgba(0,0,0,1) 55%,
-    rgba(46,13,13,1) 58%,
-     rgba(21,4,24,1) 70%,
-      rgba(20,0,0,1) 100%,
-       rgba(9,12,17,1) 100%,
-        rgba(15,20,28,1) 100%,
-         rgba(38,48,70,1) 100%); */
 
          background: linear-gradient(28deg, rgb(211, 90, 20) 8%, rgba(0,0,0,1) 10%, rgb(51, 51, 51) 32%, rgba(0,0,0,1) 42%, rgba(66,66,66,1) 56%, rgba(15,15,15,1) 77%, rgb(85, 38, 11) 92%);
          background-size:  400% 400%;
          animation: gradient 20s ease infinite;
          
          display: flex;
-         /* justify-content: center;
-         align-items: center; */
+
          width: 100%;
-         padding: 20px;
+         
 }
 
 
