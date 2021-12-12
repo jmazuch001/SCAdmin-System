@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import { projectAuth } from '../firebase/config'
+import {projectAuth} from '../firebase/config'
+
+
 
 
 export const useSignup = () => {
     // we want a null state when we first use this hook
     const [error, setError] = useState(null)
     const [isPending, setIsPending] = useState(false)
+   
 
 // create a function for whenever we want to sign a user up
 // want to wait until after the form has been filled out before invoking

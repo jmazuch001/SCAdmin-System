@@ -16,7 +16,7 @@ const QR_Code = ({ text }) => {
     return (
         <div>
             <img src={source}/>
-            This is some text;
+            
         </div>
     )
 }
