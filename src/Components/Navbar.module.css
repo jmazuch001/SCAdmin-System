@@ -8,7 +8,7 @@
     /* position: fixed;  */
     background-size: 100%;
     background-position: left center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-attachment: fixed;
     /* Preserve aspet ratio */
     min-width: 100%;
