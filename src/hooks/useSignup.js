@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {projectAuth} from '../firebase/config'
-
+import { useAuthContext } from './useAuthContext'
 
 
 
@@ -8,7 +8,7 @@ export const useSignup = () => {
     // we want a null state when we first use this hook
     const [error, setError] = useState(null)
     const [isPending, setIsPending] = useState(false)
-   
+    const { dispatch } = useAuthContext()
 
 // create a function for whenever we want to sign a user up
 // want to wait until after the form has been filled out before invoking
@@ -24,7 +24,7 @@ const signup = async (email, password, displayName) => {
     try {
         // signup user
     const res = await projectAuth.createUserWithEmailAndPassword(email, password)
-    console.log(res.user)
+   
 
     if (!res) {
         throw new Error('Could not complete signup')
@@ -32,7 +32,10 @@ const signup = async (email, password, displayName) => {
 
     // add display name to user
     // await res.user.updateProfile({displayName: displayName})
-    await res.user.updateProfile({displayName})
+    await res.user.updateProfile({ displayName })
+
+    // dispatch login action
+    dispatch({ type: 'LOGIN', payload: res.user })
 
     setIsPending(false)
     setError(null)
