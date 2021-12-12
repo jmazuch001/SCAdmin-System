@@ -11,14 +11,15 @@ import BadgeDesigner from './pages/office/BadgeDesigner'
 import Office from './pages/office/Office'
 import QR_Code from './Components/QR_Code'
 import AccessControl from './pages/office/AccessControl'
-
-
+import Dashboard from './Components/Sidebar'
+import Sidebar from './Components/Sidebar'
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
+        
         <Switch>
           <Route exact path="/">
             <Home />
@@ -31,6 +32,7 @@ function App() {
           </Route>
           <Route path="/office">
             <Office />
+            
           </Route>
           <Route path="/signup">
             <Signup />

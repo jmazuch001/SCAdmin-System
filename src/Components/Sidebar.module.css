@@ -1,0 +1,43 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+    
+}
+
+header {
+    padding: 0px;
+    background: blue;
+    height: 100%;
+
+}
+
+.sidebar {
+    width: 240px;
+    background: black;
+    position: absolute;
+    height: 90%;
+    padding: 0 30px;
+    transition: all 1s;
+}
+
+ul {
+    padding: 0;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+ul li a:hover, 
+ul li a:hover 
+{
+
+}
