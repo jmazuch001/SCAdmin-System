@@ -14,20 +14,9 @@ export default function Workflows() {
         
 
         <div>
-            <Navbar>
-                <Button>
-                    Launch Workflows
-                </Button>
-            </Navbar>
-        
-            <Offcanvas show={show} onHide={handleClose}>
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>
-                        Welcome to Workflows!
-                        <p>Please select a Workflow to begin.</p>
-                    </Offcanvas.Title>
-                </Offcanvas.Header>
-            </Offcanvas>
+            
+                
+            
             
             
         
