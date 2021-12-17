@@ -2,15 +2,18 @@ import styles from './login.module.css'
 
 import React, {useState, Component} from 'react';
 import { FloatingLabel, Form, Control, Button, Group } from 'react-bootstrap'
+import { useLogin } from '../../hooks/useLogin'
 import { Container } from '@material-ui/core'
 
 export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const { login, error, isPending } = useLogin()
+    
     const handleSubmit = (e) => {
         // prevent default action of page reload
         e.preventDefault()
-        console.log(email, password)
+        login(email, password)
     }
     return (
         <div className={styles['login-body']}>
@@ -32,7 +35,9 @@ export default function Login() {
                 />
                 
             </label>
-            <button className="btn button">Login</button>
+            {!isPending && <button className="btn button">Login</button>}
+            {isPending && <button className='btn' disabled>loading</button>}
+            {error && <p>error</p>}
         </form>
         </div>
     )

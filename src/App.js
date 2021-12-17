@@ -13,10 +13,16 @@ import QR_Code from './Components/QR_Code'
 import AccessControl from './pages/office/AccessControl'
 import Dashboard from './Components/Sidebar'
 import Sidebar from './Components/Sidebar'
+import { useAuthContext } from './hooks/useAuthContext'
 
 function App() {
+  const { authIsReady } = useAuthContext()
+  
   return (
     <div className="App">
+      {authIsReady && (
+
+      
       <BrowserRouter>
         <Navbar />
         
@@ -42,6 +48,7 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
+      )}
     </div>
   )
   
