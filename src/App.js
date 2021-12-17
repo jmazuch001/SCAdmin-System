@@ -1,7 +1,7 @@
 import React, {useState, Component} from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-import { BrowserRouter, Route, Switch} from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Navbar from './Components/Navbar';
 // pages and components for project
 import Home from './pages/home/Home'
@@ -16,7 +16,7 @@ import Sidebar from './Components/Sidebar'
 import { useAuthContext } from './hooks/useAuthContext'
 
 function App() {
-  const { authIsReady } = useAuthContext()
+  const { authIsReady, user } = useAuthContext()
   
   return (
     <div className="App">
@@ -28,24 +28,36 @@ function App() {
         
         <Switch>
           <Route exact path="/">
-            <Home />
+            {!user && <Redirect to='/login' />}
+            {user && <Home />}
           </Route>
+
           <Route exact path="/login">
-            <Login />
+            {user && <Redirect to="/" />}
+            {!user && <Login />}
           </Route>
+
           <Route path="/badgedesigner">
-            <BadgeDesigner />
+            {!user && <Redirect to='/login' />}
+            {user && <BadgeDesigner />}
           </Route>
+
           <Route path="/office">
-            <Office />
+            {!user && <Redirect to='/login' />}
+            {user && <Office />}
             
           </Route>
+
           <Route path="/signup">
-            <Signup />
+            {user && <Redirect to='/' />}
+            {!user && <Signup />}
           </Route>
+
           <Route path='/AccessControl'>
-            <AccessControl />
+            {!user && <Redirect to='/login' />}
+            {user && <AccessControl />}
           </Route>
+
         </Switch>
       </BrowserRouter>
       )}
