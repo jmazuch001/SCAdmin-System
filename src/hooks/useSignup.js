@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {projectAuth} from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 
@@ -6,6 +6,7 @@ import { useAuthContext } from './useAuthContext'
 
 export const useSignup = () => {
     // we want a null state when we first use this hook
+    const [isCancelled, setisCancelled] = useState(false) 
     const [error, setError] = useState(null)
     const [isPending, setIsPending] = useState(false)
     const { dispatch } = useAuthContext()
@@ -18,8 +19,11 @@ const signup = async (email, password, displayName) => {
     // there are specific properties that firebase allows us to use
     // displayName is one of those properties
 
-    setError(null)
-    setIsPending(true)
+    if (!isCancelled) {
+        setError(null)
+        setIsPending(true)
+    }
+    
 
     try {
         // signup user
@@ -42,12 +46,19 @@ const signup = async (email, password, displayName) => {
 
     }
     catch (err) {
-        console.log(err.message)
-        setError(err.message)
-        setIsPending(false)
+        if(!isCancelled) {
+            console.log(err.message)
+            setError(err.message)
+            setIsPending(false)
+        }
     }
 
 }
+
+useEffect(() => {
+    return () => setisCancelled(true)
+
+}, [])
 
 return { error, isPending, signup}
 
