@@ -1,6 +1,68 @@
-body {
+/* body {
     font-family: 'Genos', sans-serif;
     margin: 0px;
     font-size: 1.1em;
     padding: 0px;
+  } */
+
+  .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    max-width: 960px;
+    margin: 60px;
   }
+
+  .content {
+    padding-left: 30px;
+  }
+
+  .sidebar form {
+    padding: 20px;
+    background: green;
+    border-radius: 10px;
+  }
+
+  .sidebar input, .sidebar select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 4px;
+    color: #555;
+    font-size: 1em;
+  }
+
+  .sidebar label {
+    margin: 0 auto 20px;
+    display: block;
+    color: white;
+  }
+
+  .sidebar button {
+    color: white;
+    border: 2px solid gray;
+    padding: 6px 12px;
+    background-color: transparent;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+  }
+
+  .sidebar h3 {
+    color: green;
+    margin-bottom: 20px;
+  }
+
+  .sidebar aside {
+    margin-top: 40px;
+    color: gray;
+  }
+
+  .sidebar aside li {
+    margin: 10px;
+  }
+

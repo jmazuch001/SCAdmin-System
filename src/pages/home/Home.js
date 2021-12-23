@@ -5,9 +5,13 @@ import { Jumbotron, Button } from 'react-bootstrap'
 
 export default function Home() {
     return (
-        <div>
-            
-                <h1><p>Hello, and welcome to your User Home Page!</p></h1>
+        <div className={styles.container}>
+            <div className={styles.content}>
+                Transaction List
+            </div>
+            <div className={styles.sidebar}>
+                Transaction Form
+            </div> 
             
         </div>
     )
