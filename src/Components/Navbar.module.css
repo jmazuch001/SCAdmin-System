@@ -66,6 +66,10 @@ rgba(200,110,10,1) 17%,
     animation: linearGradient 10s ease infinite;
 }
 
+.sidebar {
+    position: relative;
+}
+
 
 @keyframes gradient {
   0% {

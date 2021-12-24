@@ -7,12 +7,13 @@ import StepSystem from '../home/StepSystem'
 import Container from '@mui/material/Container'
 import Sidebar from '../../Components/Sidebar';
 
+
 export default function Office() {
     return (
         
-        <div>
+        <div className={styles.sidebar}>
             <Container>
-                <Sidebar />
+                {/* <Sidebar /> */}
             </Container>
             {/* <TransactionForm />
             <StepSystem /> */}

@@ -15,21 +15,34 @@ import Button from 'react-bootstrap'
 import Checkbox from '@mui/material/Checkbox';
 import { withRouter } from 'react-router-dom';
 import AccessControl from '../pages/office/AccessControl';
+import { Paper } from '@mui/material';
 
-// const useStyles = makeStyles({
-//     drawer: {
-//         width: "150px", 
-//         boxSizing: 'border-box'
-//     }
-// });
+
+const drawerHeight = 300
+
+const useStyles = makeStyles({
+    Drawer: {
+        width: "150px", 
+        boxSizing: 'border-box', 
+        height: drawerHeight, 
+        position: 'absolute'
+    },
+    paper: {
+        position: 'absolute'
+    }, 
+    root: {
+        position: 'absolute'
+    }
+});
 
 function Sidebar(props) {
 const { history } = props;
-// const classes = useStyles();
+const classes = useStyles();
 const itemsList = [
     {
         text: 'Workflows',
-        icon: <WorkIcon />
+        icon: <WorkIcon />, 
+        onClick: () => history.push('/')
         
     }, 
     {
@@ -51,7 +64,7 @@ const itemsList = [
     }, 
     { 
         text: 'Reporting', 
-        icon:  <AssessmentIcon />
+        icon:  <AssessmentIcon />, 
     },
     { 
         text: 'Finances', 
@@ -65,15 +78,17 @@ const itemsList = [
 ];
 
     return (
-        <Drawer variant="permanent" className={styles.sidebar}>
-            <container className={styles['side-container']}>
+        <div>
+            <Drawer variant="permanent" className={classes.Drawer}>
+            <Container className={styles['side-container']}>
                 Powered by AntonWare
-            </container>
+            </Container>
+            <div>
             <List>
                 {itemsList.map((item, index) => {
                     const { text, icon, onClick } = item;
                     return (
-                        
+                           
                         <ListItem button key={text} onClick={onClick}>
                             {icon && <ListItemIcon>{icon}</ListItemIcon>}
                             <ListItemText primary={text}>
@@ -83,7 +98,10 @@ const itemsList = [
                     )
                 })}
             </List>
+            </div>
         </Drawer>
+        </div>
+        
     )
 }
 
