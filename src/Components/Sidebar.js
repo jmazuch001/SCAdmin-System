@@ -1,17 +1,90 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-// styles
+import React, {useState} from 'react'
+import {Drawer, ListItem, ListItemIcon, ListItemText, List} from '@material-ui/core';
 import styles from './Sidebar.module.css'
+import Container from '@mui/material/Container';
+import {makeStyles} from '@material-ui/core/styles'
+import WorkIcon from '@material-ui/icons/Work';
+import InsertChartIcon from '@material-ui/icons/InsertChart';
+import ListIcon from '@material-ui/icons/List';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import PortraitIcon from '@material-ui/icons/Portrait';
+import LockIcon from '@material-ui/icons/Lock';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import GraphicEqIcon from '@material-ui/icons/GraphicEq';
+import Button from 'react-bootstrap'
+import Checkbox from '@mui/material/Checkbox';
+import { withRouter } from 'react-router-dom';
+import AccessControl from '../pages/office/AccessControl';
 
-export default function Sidebar() {
+// const useStyles = makeStyles({
+//     drawer: {
+//         width: "150px", 
+//         boxSizing: 'border-box'
+//     }
+// });
+
+function Sidebar(props) {
+const { history } = props;
+// const classes = useStyles();
+const itemsList = [
+    {
+        text: 'Workflows',
+        icon: <WorkIcon />
+        
+    }, 
+    {
+        text: 'Inventory', 
+        icon: <ListIcon />
+    }, 
+    {
+        text: 'Analytics', 
+        icon: <InsertChartIcon />
+    }, 
+    {
+        text: 'Badging', 
+        icon: <PortraitIcon />
+    },
+    {
+        text: 'Access Controls', 
+        icon:  <LockIcon />, 
+        onClick: () => history.push('/AccessControl')
+    }, 
+    { 
+        text: 'Reporting', 
+        icon:  <AssessmentIcon />
+    },
+    { 
+        text: 'Finances', 
+        icon: <AccountBalanceIcon />
+
+    }, 
+    { 
+        text: 'QR Generator', 
+        icon: <GraphicEqIcon />
+    }
+];
+
     return (
-        <div className="sidebar navbar">
-            <ul>
-                <li>
-                    <a>Home</a>
-                    
-                </li>
-            </ul>
-        </div>
-    ) 
+        <Drawer variant="permanent" className={styles.sidebar}>
+            <container className={styles['side-container']}>
+                Powered by AntonWare
+            </container>
+            <List>
+                {itemsList.map((item, index) => {
+                    const { text, icon, onClick } = item;
+                    return (
+                        
+                        <ListItem button key={text} onClick={onClick}>
+                            {icon && <ListItemIcon>{icon}</ListItemIcon>}
+                            <ListItemText primary={text}>
+
+                            </ListItemText>
+                        </ListItem>
+                    )
+                })}
+            </List>
+        </Drawer>
+    )
 }
+
+export default withRouter(Sidebar);

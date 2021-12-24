@@ -1,28 +1,40 @@
-body {
+/* body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: white;
+    color: rgb(233, 225, 225);
     
-}
+} */
 
-header {
+/* header {
     padding: 0px;
     background: blue;
     height: 100%;
 
-}
+} */
 
 .sidebar {
     width: 240px;
     background: black;
     position: absolute;
-    height: 90%;
+    height: 50%;
     padding: 0 30px;
     transition: all 1s;
+    margin-top: 30px;
 }
 
-ul {
+.side-container {
+    background: linear-gradient(34deg, rgb(1, 27, 56) 8%, rgba(0,0,0,1) 10%, rgb(42, 42, 42) 32%, rgba(0,0,0,1) 42%, rgb(54, 54, 54) 56%, rgba(15,15,15,1) 77%, rgb(85, 38, 11) 92%);
+         background-size:  400% 400%;
+         animation: gradient 10s ease infinite;
+         
+         display: flex;
+         /* justify-content: center;
+         align-items: center; */
+         width: 100%;
+         padding: 30px;
+}
+/* ul {
     padding: 0;
 }
 
@@ -31,7 +43,7 @@ ul li {
 }
 
 ul li a {
-    color: white;
+    color: rgb(78, 28, 28);
     text-decoration: none;
     font-size: 15px;
 }
@@ -40,4 +52,5 @@ ul li a:hover,
 ul li a:hover 
 {
 
-}
+} */
+
