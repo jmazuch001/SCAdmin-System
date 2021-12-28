@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react';
+import React, {useState, Component, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
@@ -14,14 +14,32 @@ import AccessControl from './pages/office/AccessControl'
 import Dashboard from './Components/Sidebar'
 import Sidebar from './Components/Sidebar'
 import { useAuthContext } from './hooks/useAuthContext'
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 function App() {
   const { authIsReady, user } = useAuthContext()
-  
+  // const isActive = useMediaQuery("(max-width: 400px)");
+  // const testing = window.matchMedia("(max-width: 400px)")
+
+  useEffect(() => {
+    function handler() {
+      console.log("Window changed", testing.matches);
+    }
+
+    const testing = window.matchMedia('(max-width: 400px)');
+    testing.addEventListener("change", handler);
+
+    return () => {
+      testing.removeEventListener("change", handler)
+    };
+
+  }, []);
+
   return (
     <div className="App">
       {authIsReady && (
-
+        
       
       <BrowserRouter>
         <Navbar />
