@@ -5,17 +5,19 @@
     padding: 0px;
   } */
 
+  
 
 
-.orgBackground {
+.img-fluid {
   /* background-image: url('/images/horizon.png');  */
-  position: relative;
+  position: fixed;
     min-width: 100%;
     min-height: 100%;
     background-size: cover;
     background-position: center;
     /* background-color: black; */
 }
+
   .containers {
     /* display: grid;
     grid-template-columns: 2fr 1fr;
@@ -39,6 +41,17 @@
 
    
   }
+
+.header3 {
+  font-size: 56px;
+
+  text-shadow: 0 0 3px #424242, 0 0 2px #4b854b;
+    /* font-size: 62px; */
+    background: -webkit-linear-gradient(rgb(51, 51, 51) 33%, rgb(248, 59, 1) 93%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 
   figcaption {
     position: absolute;

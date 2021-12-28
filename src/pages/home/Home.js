@@ -27,7 +27,12 @@ export default function Home() {
             <figure className="position-relative">
             <Image src={bgImage} alt='horizon' className="img-fluid"/>
             <figcaption>
-                <GridLayout />
+                <h3 className={styles.header3}>
+                    Explore strange new planets 
+
+                    <p>with us in the 'verse!</p>
+                    
+                </h3>
             </figcaption>
             </figure>
             
@@ -58,6 +63,7 @@ export default function Home() {
            </div>
         </section>
         </>
+        
        
              
             

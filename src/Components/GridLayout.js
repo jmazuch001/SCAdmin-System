@@ -1,4 +1,4 @@
-import styles from '../Components/GridLayout.module.css'
+import styles from '../App.css'
 import React, { Component } from 'react'
 import { Jumbotron, Button } from 'react-bootstrap'
 import { Divider, Grid, Image, Segment, Item } from "semantic-ui-react";
