@@ -16,7 +16,7 @@
     background-position: center;
     /* background-color: black; */
 }
-  .container {
+  .containers {
     /* display: grid;
     grid-template-columns: 2fr 1fr;
     max-width: 960px;
@@ -38,6 +38,12 @@
   float: left; */
 
    
+  }
+
+  figcaption {
+    position: absolute;
+    bottom: 2rem;
+    margin: 0 2rem;
   }
 
   .tabNav {

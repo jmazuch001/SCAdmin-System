@@ -5,9 +5,11 @@ import TransactionForm from './TransactionForm'
 import StepSystem from './StepSystem'
 import Workflows from '../../Components/Workflows'
 import AdminWorkflows from '../office/AdminWorkflows'
-import { Divider, Grid, Image, Segment, Item } from "semantic-ui-react";
+import { Divider, Image, Segment, Item } from "semantic-ui-react";
 import { Tab } from "semantic-ui-react";
 import { Container } from 'semantic-ui-react'
+import bgImage from '../home/horizon.png'
+import GridLayout from '../../Components/GridLayout'
 
 const panes = [
     { menuItem: "Tab 1", render: () => <Tab.Pane>Step 1<StepSystem /></Tab.Pane> },
@@ -20,14 +22,24 @@ export default function Home() {
     return (
     
         <>
-        <Image src='https://images.pexels.com/photos/2538107/pexels-photo-2538107.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' />
+        <div>
+        <container>
+            <figure className="position-relative">
+            <Image src={bgImage} alt='horizon' className="img-fluid"/>
+            <figcaption>
+                <GridLayout />
+            </figcaption>
+            </figure>
+            
+        </container>
+        </div>
+        
+        
+        <ul>This is a list item</ul>
+        
         <section>
             <div className={styles.container}>
             <Tab panes={panes} defaultActiveIndex={0} className={styles.tabNav} />
-           
-           
-           
-            
            <div>
            <h1 className="orgSpan">What Our Organization Does:</h1>
            <p>
@@ -43,13 +55,8 @@ export default function Home() {
                are encouraged to bring unique solutions to the table.
            </p>
             </div>
-           
-                
-    
-    
-    
-  </div>
-  </section>
+           </div>
+        </section>
         </>
        
              

@@ -1,18 +1,14 @@
-import styles from './home.module.css'
+import styles from '../Components/GridLayout.module.css'
 import React, { Component } from 'react'
 import { Jumbotron, Button } from 'react-bootstrap'
-import TransactionForm from './TransactionForm'
-import StepSystem from './StepSystem'
-import Workflows from '../../Components/Workflows'
-import AdminWorkflows from '../office/AdminWorkflows'
 import { Divider, Grid, Image, Segment, Item } from "semantic-ui-react";
 import { Tab } from "semantic-ui-react";
 import { Container } from 'semantic-ui-react'
 
-export default function() {
+export default function GridLayout() {
     return (
         <>
-       <Image src='https://cdn.mos.cms.futurecdn.net/QptEvvA25MM4MgbqVuFf5i.jpg' />
+       {/* <Image src='https://cdn.mos.cms.futurecdn.net/QptEvvA25MM4MgbqVuFf5i.jpg' /> */}
  
     <Segment >
       <Grid columns={2} relaxed="very" >
