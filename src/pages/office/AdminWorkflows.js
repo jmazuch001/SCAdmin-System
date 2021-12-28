@@ -4,23 +4,6 @@ import {Link} from 'react-router-dom'
 import styles from './AdminWorkflows.module.css'
 // import Navbar from 'react-bootstrap';
 
-export default function AdminWorkflows() {
-
-    
-    return (
-        
-    
-        <div>
-           
-            
-           
-            
-            
-        </div>
-    ) 
-}
-
-import React from 'react'
 import { Icon, Step } from 'semantic-ui-react'
 import {Dropdown} from 'semantic-ui-react'
 import { Segment } from 'semantic-ui-react'
@@ -33,108 +16,109 @@ import { Progress } from 'semantic-ui-react'
 // for each user with status online / active, display in array for 
 // dropdown
 
-const activity = [
-  {
-    key: 'Mining & Trade', 
-    text: 'Mining & Trade',
-    value: 'Mining & Trade'
-  }, 
-  {
-    key: 'Mining Only', 
-    text: 'Mining Only',
-    value: 'Mining Only'
-  }, 
-  {
-    key: 'Trade Only', 
-    text: 'Trade Only',
-    value: 'Trade Only'
-  }, 
-  {
-    key: 'Salvage & Trade', 
-    text: 'Salvage & Trade',
-    value: 'Salvage & Trade'
-  }, 
-  {
-    key: 'Salvage Only', 
-    text: 'Salvage Only', 
-    value: 'Salvage Only' 
-  }, 
-]
-
-const minerals = [
-  {
-    key: 'Quantanium', 
-    text: 'Quantanium', 
-    value: 'Quantanium' 
-  }, 
-  {
-    key: 'Agrecium', 
-    text: 'Agrecium',
-    value: 'Agrecium'
-  }, 
-  {
-    key: 'Laranite', 
-    text: 'Laranite',
-    value: 'Laranite'
-  }, 
-  {
-    key: 'Bexalite', 
-    text: 'Bexalite',
-    value: 'Bexalite'
-  }, 
-  {
-    key: 'Inert', 
-    text: 'Inert', 
-    value: 'Inert', 
-  }, 
-]
-
-const friendOptions = [
-  {
-    key: 'Jenny Hess',
-    text: 'Jenny Hess',
-    value: 'pilot',
-    image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/jenny.jpg' },
-  }, 
-  {
-    key: 'Christian',
-    text: 'Christian',
-    value: 'Christian',
-    image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/christian.jpg' },
-  },
-  {
-    key: 'Matt',
-    text: 'Matt',
-    value: 'Matt',
-    image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/matt.jpg' },
-  },
-  {
-    key: 'Justen Kitsune',
-    text: 'Justen Kitsune',
-    value: 'Justen Kitsune',
-    image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/justen.jpg' },
-  }
-]
-
-const shippingRoutes = [
-  {
-    key: 'CRU-L1',
-    text: 'CRU-L1',
-    value: 'CRU-L1',
-    image: { avatar: true, src: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ffleetyards.net%2Fstations%2Fcru-l1-ambitious-dream-station%2F&psig=AOvVaw2FtkNi_OuQTqYVW0Dcxo-n&ust=1640720471178000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCICRrJnehPUCFQAAAAAdAAAAABAD' },
-  },
-  {
-    key: 'Hurston: Lorville',
-    text: 'Hurston: Lorville',
-    value: 'Hurston: Lorville',
-    image: { avatar: true, src: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.hasgaha.com%2Fbwg_gallery%2Fstar-citizen-alpha-3-4%2F&psig=AOvVaw0iGquipk5yQHr0t-wm8JIX&ust=1640720411239000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjGmIvehPUCFQAAAAAdAAAAABAJ' },
-  },
-]
-
-const StepExampleVertical = () => (
-
-  
-  <Step.Group vertical>
+export default function AdminWorkflows() {
+    const activity = [
+        {
+          key: 'Mining & Trade', 
+          text: 'Mining & Trade',
+          value: 'Mining & Trade'
+        }, 
+        {
+          key: 'Mining Only', 
+          text: 'Mining Only',
+          value: 'Mining Only'
+        }, 
+        {
+          key: 'Trade Only', 
+          text: 'Trade Only',
+          value: 'Trade Only'
+        }, 
+        {
+          key: 'Salvage & Trade', 
+          text: 'Salvage & Trade',
+          value: 'Salvage & Trade'
+        }, 
+        {
+          key: 'Salvage Only', 
+          text: 'Salvage Only', 
+          value: 'Salvage Only' 
+        }, 
+      ]
+      
+      const minerals = [
+        {
+          key: 'Quantanium', 
+          text: 'Quantanium', 
+          value: 'Quantanium' 
+        }, 
+        {
+          key: 'Agrecium', 
+          text: 'Agrecium',
+          value: 'Agrecium'
+        }, 
+        {
+          key: 'Laranite', 
+          text: 'Laranite',
+          value: 'Laranite'
+        }, 
+        {
+          key: 'Bexalite', 
+          text: 'Bexalite',
+          value: 'Bexalite'
+        }, 
+        {
+          key: 'Inert', 
+          text: 'Inert', 
+          value: 'Inert', 
+        }, 
+      ]
+      
+      const friendOptions = [
+        {
+          key: 'Jenny Hess',
+          text: 'Jenny Hess',
+          value: 'pilot',
+          image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/jenny.jpg' },
+        }, 
+        {
+          key: 'Christian',
+          text: 'Christian',
+          value: 'Christian',
+          image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/christian.jpg' },
+        },
+        {
+          key: 'Matt',
+          text: 'Matt',
+          value: 'Matt',
+          image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/matt.jpg' },
+        },
+        {
+          key: 'Justen Kitsune',
+          text: 'Justen Kitsune',
+          value: 'Justen Kitsune',
+          image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/justen.jpg' },
+        }
+      ]
+      
+      const shippingRoutes = [
+        {
+          key: 'CRU-L1',
+          text: 'CRU-L1',
+          value: 'CRU-L1',
+          image: { avatar: true, src: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ffleetyards.net%2Fstations%2Fcru-l1-ambitious-dream-station%2F&psig=AOvVaw2FtkNi_OuQTqYVW0Dcxo-n&ust=1640720471178000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCICRrJnehPUCFQAAAAAdAAAAABAD' },
+        },
+        {
+          key: 'Hurston: Lorville',
+          text: 'Hurston: Lorville',
+          value: 'Hurston: Lorville',
+          image: { avatar: true, src: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.hasgaha.com%2Fbwg_gallery%2Fstar-citizen-alpha-3-4%2F&psig=AOvVaw0iGquipk5yQHr0t-wm8JIX&ust=1640720411239000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjGmIvehPUCFQAAAAAdAAAAABAJ' },
+        },
+      ]
+    
+    return (
+        
+    
+        <Step.Group vertical>
     <Segment stacked>
     <Step active>
       <Icon name='suitcase' />
@@ -204,9 +188,15 @@ const StepExampleVertical = () => (
     {/* MODAL FOR ENTERING TRANSACTION AMOUNT */}
     
   </Step.Group>
-  
-  
-)
+    ) 
+}
 
 
-export default StepExampleVertical
+
+
+
+
+
+
+
+
