@@ -5,11 +5,53 @@
     padding: 0px;
   } */
 
+
+
+.orgBackground {
+  /* background-image: url('/images/horizon.png');  */
+  position: relative;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+    /* background-color: black; */
+}
   .container {
-    display: grid;
+    /* display: grid;
     grid-template-columns: 2fr 1fr;
     max-width: 960px;
     margin: 60px;
+    inline-size: auto; */
+
+    /* new point */
+    /* position: relative; 
+  bottom: 0; 
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1; 
+  width: 100%;;
+  opacity: 100%;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+  float: left; */
+
+   
+  }
+
+  .tabNav {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tabNav:hover {
+    opacity: 85%;
+  }
+
+  .gridLayout:hover {
+    opacity: 75%;
+
   }
 
   .content {
