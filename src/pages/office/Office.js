@@ -15,8 +15,8 @@ export default function Office() {
             <Container>
                 {/* <Sidebar /> */}
             </Container>
-            {/* <TransactionForm />
-            <StepSystem /> */}
+            <TransactionForm />
+            <StepSystem />
         </div>
     )
 }

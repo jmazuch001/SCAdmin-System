@@ -4,27 +4,27 @@ import {Link} from 'react-router-dom'
 // styles
 import styles from './Workflows.module.css'
 
-export default function Workflows() {
-    const [show, setShow] = useState(false);
+// export default function Workflows() {
+//     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+//     const handleClose = () => setShow(false);
+//     const handleShow = () => setShow(true);
     
-    return (
+//     return (
         
 
-        <div>
+//         <div>
             
                 
             
             
             
         
-        </div>
-    ) 
-}
+//         </div>
+//     ) 
+// }
 
-export default Workflows;
+
 
 
 // system will retrieve login status and add to pool of available users for participation

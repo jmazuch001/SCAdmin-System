@@ -16,10 +16,10 @@ export default function Navbar() {
     return (
         <div>
         <nav className={styles.navbar}>
-        
+        <ul className={styles.title}>Hellstrom Investment Group, LLC.</ul> 
             <ul>
                 
-                <li className={styles.title}>HIGROUP, LLC.</li>   
+                  
                 
                 {!user && (
                     <>
@@ -40,9 +40,7 @@ export default function Navbar() {
             </ul>
             
         </nav>
-        <div>
-            <Sidebar/>
-        </div>
+        
         </div>
         
     ) 

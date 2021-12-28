@@ -78,25 +78,25 @@ export default function AdminWorkflows() {
           key: 'Jenny Hess',
           text: 'Jenny Hess',
           value: 'pilot',
-          image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/jenny.jpg' },
+        //   image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/jenny.jpg' },
         }, 
         {
           key: 'Christian',
           text: 'Christian',
           value: 'Christian',
-          image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/christian.jpg' },
+        //   image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/christian.jpg' },
         },
         {
           key: 'Matt',
           text: 'Matt',
           value: 'Matt',
-          image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/matt.jpg' },
+        //   image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/matt.jpg' },
         },
         {
           key: 'Justen Kitsune',
           text: 'Justen Kitsune',
           value: 'Justen Kitsune',
-          image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/justen.jpg' },
+        //   image: { avatar: true, src: 'https://react.semantic-ui.com/images/avatar/small/justen.jpg' },
         }
       ]
       
@@ -105,13 +105,13 @@ export default function AdminWorkflows() {
           key: 'CRU-L1',
           text: 'CRU-L1',
           value: 'CRU-L1',
-          image: { avatar: true, src: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ffleetyards.net%2Fstations%2Fcru-l1-ambitious-dream-station%2F&psig=AOvVaw2FtkNi_OuQTqYVW0Dcxo-n&ust=1640720471178000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCICRrJnehPUCFQAAAAAdAAAAABAD' },
+        //   image: { avatar: true, src: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Ffleetyards.net%2Fstations%2Fcru-l1-ambitious-dream-station%2F&psig=AOvVaw2FtkNi_OuQTqYVW0Dcxo-n&ust=1640720471178000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCICRrJnehPUCFQAAAAAdAAAAABAD' },
         },
         {
           key: 'Hurston: Lorville',
           text: 'Hurston: Lorville',
           value: 'Hurston: Lorville',
-          image: { avatar: true, src: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.hasgaha.com%2Fbwg_gallery%2Fstar-citizen-alpha-3-4%2F&psig=AOvVaw0iGquipk5yQHr0t-wm8JIX&ust=1640720411239000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjGmIvehPUCFQAAAAAdAAAAABAJ' },
+        //   image: { avatar: true, src: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.hasgaha.com%2Fbwg_gallery%2Fstar-citizen-alpha-3-4%2F&psig=AOvVaw0iGquipk5yQHr0t-wm8JIX&ust=1640720411239000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjGmIvehPUCFQAAAAAdAAAAABAJ' },
         },
       ]
     
