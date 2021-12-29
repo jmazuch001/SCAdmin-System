@@ -1,0 +1,20 @@
+.tabNav {
+    background: linear-gradient(34deg, rgb(1, 27, 56) 8%, rgba(0,0,0,1) 10%, rgb(42, 42, 42) 32%, rgba(0,0,0,1) 42%, rgb(54, 54, 54) 56%, rgba(15,15,15,1) 77%, rgb(85, 38, 11) 92%);
+         background-size:  400% 400%;
+         animation: gradient 10s ease infinite;
+         
+         display: flex;
+         /* justify-content: center;
+         align-items: center; */
+         width: 100%;
+         padding: 30px;
+}
+
+.pline {
+    padding: 0px;
+    margin: 0.1;
+    border-style: solid;
+    box-shadow: 3px 4px 7px -1px rgba(230,98,30,0.42);
+    border: 10px solid;
+    border-radius: 2px;
+}

@@ -1,24 +1,62 @@
-/* body {
+.body {
     font-family: 'Genos', sans-serif;
     margin: 0px;
     font-size: 1.1em;
     padding: 0px;
-  } */
+    /* background-color: black; */
+    background-image: url('../home/dark_mosaic.png');
+    background-position: center; 
+    opacity: 100%;
+  color: white;
+  background-repeat: repeat;
+  /* use these below this line for unpatterned bg images */
+    /* position: fixed; */
+    /* min-width: auto; */
+    /* min-height: 100%; */
+    /* background-size: cover; */
+    
+  }
 
-  
+  .grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+   /* padding for the gab between content and top/above body image */
+    padding: 2px;
+    grid-gap: 2px;
+  }
 
+ 
+
+  .grid-item {
+    background-color: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    /* opacity: 50%; */
+    -webkit-box-shadow: 3px 4px 6px -1px rgba(0,0,0,0.42), 0px 0px 6px 4px rgba(230, 97, 30, 0.411); 
+    box-shadow: 3px 4px 6px -1px rgba(0,0,0,0.42), 0px 0px 6px 4px rgba(230, 97, 30, 0.322);
+    padding: 2px;
+    padding-top: 2px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .grid-item:hover {
+    opacity: 85%;
+    -webkit-box-shadow: 3px 4px 6px -1px rgba(0,0,0,0.42), 0px 0px 6px 4px rgba(9, 73, 133, 0.77); 
+    box-shadow: 3px 4px 6px -1px rgba(0,0,0,0.42), 0px 0px 6px 4px rgba(9, 73, 133, 0.77);
+    transition: 1s;
+  }
 
 .img-fluid {
   /* background-image: url('/images/horizon.png');  */
-  position: fixed;
+  /* position: fixed;
     min-width: 100%;
     min-height: 100%;
     background-size: cover;
-    background-position: center;
+    background-position: center; */
     /* background-color: black; */
 }
 
-  .containers {
+  .container {
     /* display: grid;
     grid-template-columns: 2fr 1fr;
     max-width: 960px;
@@ -26,18 +64,17 @@
     inline-size: auto; */
 
     /* new point */
-    /* position: relative; 
+    position: relative; 
   bottom: 0; 
-  background: rgb(0, 0, 0);
+
   background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1; 
-  width: 100%;;
+  width: 100%;
   opacity: 100%;
   color: white;
   font-size: 20px;
   padding: 20px;
   text-align: center;
-  float: left; */
+  float: left;
 
    
   }

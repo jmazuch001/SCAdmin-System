@@ -1,19 +1,22 @@
-import styles from '../App.css'
+import styles from '../Components/GridLayout.module.css'
 import React, { Component } from 'react'
 import { Jumbotron, Button } from 'react-bootstrap'
 import { Divider, Grid, Image, Segment, Item } from "semantic-ui-react";
 import { Tab } from "semantic-ui-react";
 import { Container } from 'semantic-ui-react'
 
+
+
+
 export default function GridLayout() {
     return (
-        <>
+        <div className={styles.gridOutline}>
        {/* <Image src='https://cdn.mos.cms.futurecdn.net/QptEvvA25MM4MgbqVuFf5i.jpg' /> */}
  
-    <Segment >
-      <Grid columns={2} relaxed="very" >
-        <Grid.Column >
-            <Item>
+    <Segment color='black' inverted>
+      <Grid columns={2} relaxed="very">
+        <Grid.Column  >
+            <Item >
             <h1>Exploration</h1>
           <p>
             <Image src="https://twinfinite.net/wp-content/uploads/2021/12/Star-Citizen.jpg" />
@@ -21,7 +24,7 @@ export default function GridLayout() {
             </Item>
           
         </Grid.Column>
-        <Grid.Column>
+        <Grid.Column className={styles.gridColumn}>
           <h1>Dogfighting</h1>
           <p>
             <Image src="https://cdn.mos.cms.futurecdn.net/QptEvvA25MM4MgbqVuFf5i.jpg" />
@@ -29,7 +32,7 @@ export default function GridLayout() {
         </Grid.Column>
       </Grid>
 
-      <Divider vertical className={styles.gridLayout}>And</Divider>
+      <Divider vertical className={styles.gridColumn}>And</Divider>
       <Grid columns={2} relaxed="very">
         <Grid.Column>
           <h1>Salvage</h1>
@@ -45,7 +48,7 @@ export default function GridLayout() {
         </Grid.Column>
       </Grid>
     </Segment>
-    </>
+    </div >
     )
 }
 
