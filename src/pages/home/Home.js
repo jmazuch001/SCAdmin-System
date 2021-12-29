@@ -5,7 +5,7 @@ import TransactionForm from './TransactionForm'
 import StepSystem from './StepSystem'
 import Workflows from '../../Components/Workflows'
 import AdminWorkflows from '../office/AdminWorkflows'
-import { Divider, Image, Segment, Item } from "semantic-ui-react";
+import { Divider, Image, Segment, Item, Grid, Rail } from "semantic-ui-react";
 import { Tab } from "semantic-ui-react";
 import { Container } from 'semantic-ui-react'
 import bgImage from '../home/horizon.png'
@@ -13,7 +13,7 @@ import GridLayout from '../../Components/GridLayout'
 
 const panes = [
     { menuItem: "Tab 1", render: () => <Tab.Pane>Step 1<StepSystem /></Tab.Pane> },
-    { menuItem: "Tab 2", render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+    { menuItem: "Tab 2", render: () => <Tab.Pane>Filler COntent</Tab.Pane> },
     { menuItem: "Tab 3", render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> }
   ];
 
@@ -21,30 +21,30 @@ const panes = [
 export default function Home() {
     return (
     
-        <>
-        <div>
-        <container>
-            <figure className="position-relative">
-            <Image src={bgImage} alt='horizon' className="img-fluid"/>
-            <figcaption>
-                <h3 className={styles.header3}>
-                    Explore strange new planets 
-
-                    <p>with us in the 'verse!</p>
-                    
-                </h3>
-            </figcaption>
-            </figure>
+        <div className={styles.body}>
+            {/* sizing is not absolute */}
+        
+        <Grid>
+            <Grid.Row>
+                <Grid.Column width="max-width">
             
-        </container>
-        </div>
+            
+            <Image src={bgImage} alt='horizon' className="img-fluid"/>
+            
         
+        </Grid.Column>
+            </Grid.Row>
+        </Grid>
         
-        <ul>This is a list item</ul>
-        
+        <Container>
+            <Tab panes={panes} defaultActiveIndex={0} className={styles.tabNav} />
+        </Container>
+        <Container>
+            <GridLayout />
+        </Container>
         <section>
             <div className={styles.container}>
-            <Tab panes={panes} defaultActiveIndex={0} className={styles.tabNav} />
+            
            <div>
            <h1 className="orgSpan">What Our Organization Does:</h1>
            <p>
@@ -62,8 +62,27 @@ export default function Home() {
             </div>
            </div>
         </section>
-        </>
+    <Grid celled>
+        <Grid.Row>
+        <Grid.Column width={3}>
+            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+        </Grid.Column>
+        <Grid.Column width={10}>
+            <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+        </Grid.Column>
+        <Grid.Column width={3}>
+            <Image src='https://react.semantic-ui.com/images/wireframe/image.png' />
+        </Grid.Column>
+        </Grid.Row>
+    </Grid>
+
+    <Container>
+            <item>
+            <Image src={bgImage} alt='horizon' className="img-fluid"/>
+            </item>
+        </Container>
         
+        </div>
        
              
             
