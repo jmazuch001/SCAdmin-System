@@ -1,14 +1,14 @@
 import styles from './home.module.css'
 import React, { Component } from 'react'
 import { Jumbotron, Button } from 'react-bootstrap'
-import TransactionForm from './TransactionForm'
+import TransactionForm from '../../Components/TransactionForm'
 import StepSystem from './StepSystem'
 import Workflows from '../../Components/Workflows'
 import AdminWorkflows from '../office/AdminWorkflows'
 import { Divider, Image, Segment, Item, Grid, Rail } from "semantic-ui-react";
 import { Tab } from "semantic-ui-react";
 import { Container } from 'semantic-ui-react'
-import bgImage from '../home/horizon.png'
+import bgImageTop from '../home/horizon.png'
 // import ImageRight from '../home/EyesOnThePrize'
 // import bgImage2 from '../home/horizon2'
 import GridLayout from '../../Components/GridLayout'
@@ -33,8 +33,7 @@ export default function Home() {
                 {/* <Grid.Column width="max-width"> */}
             
             
-            <Image src={bgImage} alt='horizon' className="img-fluid" width='max-width'/>
-            
+            <Image src={bgImageTop} alt='horizon' className="img-fluid" width='max-width'/>
         
         {/* </Grid.Column> */}
            

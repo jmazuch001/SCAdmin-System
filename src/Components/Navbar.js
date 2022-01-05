@@ -16,7 +16,7 @@ export default function Navbar() {
     return (
         <div>
         <nav className={styles.navbar}>
-        <ul className={styles.title}>Hellstrom Investment Group, LLC.</ul> 
+        <ul><Link to="/"  className={styles.title}>Hellstrom Investment Group, LLC.</Link></ul> 
             <ul>
                 
                   
@@ -34,6 +34,7 @@ export default function Navbar() {
                         <li>Hello, {user.displayName}</li>
                         <li><Link to="/AccessControl" className={styles['link-text']}>QR Code Generator</Link></li>
                         <li><Link to="/office" className={styles['link-text']}>Office</Link></li>
+                        <li><Link to="/" className={styles['link-text']}>Home</Link></li>
                         <li><button className="logout-btn" onClick={logout}>Logout</button></li>
                     </>
                 )}

@@ -63,12 +63,12 @@
 
 .img-fluid {
   /* background-image: url('/images/horizon.png');  */
-  /* position: fixed;
+  position: fixed;
     min-width: 100%;
     min-height: 100%;
     background-size: cover;
-    background-position: center; */
-    /* background-color: black; */
+    background-position: center; 
+    
 }
 
 

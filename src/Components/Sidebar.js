@@ -42,7 +42,7 @@ const itemsList = [
     {
         text: 'Workflows',
         icon: <WorkIcon />, 
-        onClick: () => history.push('/')
+        onClick: () => history.push('/Office')
         
     }, 
     {

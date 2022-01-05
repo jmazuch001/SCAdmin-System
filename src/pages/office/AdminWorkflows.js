@@ -10,6 +10,7 @@ import { Segment } from 'semantic-ui-react'
 import {Button, Popup} from 'semantic-ui-react'
 import { Form } from 'semantic-ui-react'
 import { Progress } from 'semantic-ui-react'
+import TransactionForm from '../../Components/TransactionForm'
 
 // user online object must be created
 // insert into const friend Options
@@ -133,6 +134,7 @@ export default function AdminWorkflows() {
         </Step.Description>
         <Step.Description>Select Additional Personnel
         <Dropdown placeholder='Select Additional Personnel' fluid multiple selection options={friendOptions} />
+        <Button>Confirm</Button>
           </Step.Description>
       </Step.Content>
     </Step>
@@ -150,6 +152,7 @@ export default function AdminWorkflows() {
     <Form.Field>
       <label>Enter Processing Duration (in hours)</label>
       <input />
+      <Button>Start Tracking</Button>
     </Form.Field>
   </Form>
       </Step.Content>
@@ -185,8 +188,9 @@ export default function AdminWorkflows() {
         {/* insert timer */}
       </Step.Content>
     </Step>
-    {/* MODAL FOR ENTERING TRANSACTION AMOUNT */}
     
+    {/* MODAL FOR ENTERING TRANSACTION AMOUNT */}
+   {/* SEE OFFICE PAGE  */}
   </Step.Group>
     ) 
 }
