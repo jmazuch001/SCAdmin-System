@@ -11,6 +11,8 @@ import BadgeDesigner from './pages/office/BadgeDesigner'
 import Office from './pages/office/Office'
 import QR_Code from './Components/QR_Code'
 import AccessControl from './pages/office/AccessControl'
+import Analytics from './pages/office/Analytics'
+import Reporting from './pages/office/Reporting'
 
 import Sidebar from './Components/Sidebar'
 import { useAuthContext } from './hooks/useAuthContext'
@@ -75,6 +77,14 @@ function App() {
           <Route path='/AccessControl'>
             {!user && <Redirect to='/login' />}
             {user && <AccessControl />}
+          </Route>
+          <Route path='/Analytics'>
+            {!user && <Redirect to='/login' />}
+            {user && <Analytics />}
+          </Route>
+          <Route path='/Reporting'>
+            {!user && <Redirect to='/login' />}
+            {user && <Reporting />}
           </Route>
 
         </Switch>

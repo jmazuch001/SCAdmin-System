@@ -1,0 +1,127 @@
+.body {
+    font-size: 14px;
+      font-family: 'Genos', sans-serif;
+      margin: 0px;
+      font-size: 1.1em;
+      padding: 0px;
+      /* background-color: black;
+      background-image: url('../home/dark_mosaic.png'); */
+      background-position: center; 
+      opacity: 100%;
+      overflow: auto;
+    background-repeat: repeat;
+    /* use these below this line for unpatterned bg images */
+      /* position: fixed; */
+      /* min-width: auto; */
+      /* min-height: 100%; */
+      /* background-size: cover; */
+      
+    }
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    max-width: 960px;
+    margin: 80px auto;
+    padding-left: 50px;
+}
+
+.content {
+    padding-right: 30px;
+    overflow: auto;
+}
+
+.sidebar {
+    padding-left: 30px;
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar form {
+    padding: 20px;
+    background: green;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.sidebar input, .sidebar select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 4px;
+    color: gray;
+    font-size: 1em;
+    overflow: auto;
+}
+
+.sidebar label {
+    margin: 0 auto 20px;
+    display: block;
+    color: white;
+    overflow: auto;
+}
+
+.sidebar button {
+    color: white;
+    border: 2px solid white;
+    padding: 6px 12px;
+    background-color: transparent;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    overflow: auto;
+}
+
+.sidebar h3 {
+    color: green;
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+.sidebar aside {
+    margin-top: 40px;
+    color: gray;
+    overflow: auto;
+}
+
+.sidebar aside li {
+    margin: 10px;
+    overflow: auto;
+}
+
+.img-fluid {
+    /* patterned backgrounds */
+    background-image: url('../home/dark_mosaic.png');
+    position: fixed;
+      min-width: 100%;
+      min-height: 100%;
+      background-position: center; 
+      opacity: 100%;
+    color: white;
+    background-repeat: repeat;
+    overflow: auto;
+    /* non-patterned backgrounds */
+    /* background-image: url('/images/horizon.png');  */
+    /* background-size: cover;  */
+  }
+
+  .diego {
+    background: rgb(0,0,0);
+    background: linear-gradient(25deg, rgba(0,0,0,0.26934523809523814) 0%, 
+    rgba(147,10,10,1) 0%, rgba(227,240,255,1) 24%, 
+    rgba(78,212,9,1) 49%, rgba(255,255,255,1) 76%, 
+    rgba(212,6,6,1) 97%);
+  }
+
+  .diego2 {
+    font-size: 54px;
+    font-family: 'Genos', sans-serif;
+    color: white;
+    
+  }

@@ -2,17 +2,27 @@
     display: grid;
     grid-template-columns: 2fr 1fr; 
     max-width: 960px;
-    margin: 60px auto;
+    margin: 80px auto;
+    padding-left: 50px;
 }
 
 .content {
     padding-right: 30px;
+    overflow: auto;
+}
+
+.sidebar {
+    padding-left: 30px;
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
 }
 
 .sidebar form {
     padding: 20px;
     background: green;
     border-radius: 10px;
+    overflow: auto;
 }
 
 .sidebar input, .sidebar select {
@@ -25,12 +35,14 @@
     border-radius: 4px;
     color: gray;
     font-size: 1em;
+    overflow: auto;
 }
 
 .sidebar label {
     margin: 0 auto 20px;
     display: block;
     color: white;
+    overflow: auto;
 }
 
 .sidebar button {
@@ -43,18 +55,22 @@
     cursor: pointer;
     display: block;
     width: 100%;
+    overflow: auto;
 }
 
 .sidebar h3 {
     color: green;
     margin-bottom: 20px;
+    overflow: auto;
 }
 
 .sidebar aside {
     margin-top: 40px;
     color: gray;
+    overflow: auto;
 }
 
 .sidebar aside li {
     margin: 10px;
+    overflow: auto;
 }

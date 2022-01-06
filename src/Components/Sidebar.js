@@ -51,7 +51,8 @@ const itemsList = [
     }, 
     {
         text: 'Analytics', 
-        icon: <InsertChartIcon />
+        icon: <InsertChartIcon />,
+        onClick: () => history.push('/Analytics')
     }, 
     {
         text: 'Badging', 
@@ -65,6 +66,7 @@ const itemsList = [
     { 
         text: 'Reporting', 
         icon:  <AssessmentIcon />, 
+        onClick: () => history.push('/Reporting')
     },
     { 
         text: 'Finances', 

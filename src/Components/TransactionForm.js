@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useFirestore } from '../hooks/useFirestore';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,16 +7,21 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import styles from '../../src/pages/office/office.module.css'
+import styles from '../Components/TransactionForm.css'
+import AdminWorkflows from '../pages/office/AdminWorkflows';
 
-export default function TransactionForm() {
+export default function TransactionForm( { uid } ) {
   const [name, setName] = useState('')
   const [amount, setAmount] = useState('')
+  const { addDocument, response } = useFirestore('reports')
 
+  // useFirestore reference is const addDocument
   const handleSubmit = (e) => {
     // want to prevent default action of page reload
     e.preventDefault()
-    console.log({
+  
+    addDocument({ 
+      uid,
       name, 
       amount
     })

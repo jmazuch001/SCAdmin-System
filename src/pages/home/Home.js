@@ -15,6 +15,7 @@ import GridLayout from '../../Components/GridLayout'
 import BottomNavbar from '../../Components/BottomNavbar'
 import Navbar from '../../Components/Navbar'
 
+
 // const panes = [
 //     { menuItem: "Tab 1", render: () => <Tab.Pane>Step 1<StepSystem /></Tab.Pane> },
 //     { menuItem: "Tab 2", render: () => <Tab.Pane>Filler COntent</Tab.Pane> },
@@ -165,6 +166,7 @@ export default function Home() {
         </Grid.Column>
         </Grid.Row>
     </Grid>
+    
 
     {/* <Container>
             <item>

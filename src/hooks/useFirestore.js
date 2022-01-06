@@ -1,5 +1,5 @@
 import { useReducer, useState, useEffect } from 'react'
-import { projectFirestore } from "../firebase/config"
+import { projectFirestore, timestamp } from "../firebase/config"
 
 let initialState = {
     document: null, 
@@ -37,18 +37,20 @@ export const useFirestore = (collection) => {
     }
 
     // add new documents with boilerplates
-    const addDocument = (doc) => {
+    // connects / references const handleSubmit in TransactionForm.js | (doc) --> (e)
+    const addDocument = async (doc) => {
         dispatch( { type: 'IS_PENDING'} )
 
         try {
-            const addedDocument = await ref.add(doc)
+            const createdAt = timestamp.fromDate(new Date())
+            const addedDocument = await ref.add({ ...doc, createdAt: createdAt})
             dispatchIfNotCancelled({ type: 'ADDED_DOC', payload: addedDocument })
         }
         catch (err) {
             dispatchIfNotCancelled( { type: 'ERROR', payload: err.message })
         }
     }
-
+    
     // delete doc
     const deleteDocument = (id) => {
 
