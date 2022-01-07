@@ -47,7 +47,8 @@ const itemsList = [
     }, 
     {
         text: 'Inventory', 
-        icon: <ListIcon />
+        icon: <ListIcon />,
+        onClick: () => history.push('/Inventory')
     }, 
     {
         text: 'Analytics', 
@@ -94,7 +95,7 @@ const itemsList = [
                         <ListItem button key={text} onClick={onClick}>
                             {icon && <ListItemIcon>{icon}</ListItemIcon>}
                             <ListItemText primary={text}>
-
+                                
                             </ListItemText>
                         </ListItem>
                     )

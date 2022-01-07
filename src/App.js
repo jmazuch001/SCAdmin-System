@@ -13,6 +13,7 @@ import QR_Code from './Components/QR_Code'
 import AccessControl from './pages/office/AccessControl'
 import Analytics from './pages/office/Analytics'
 import Reporting from './pages/office/Reporting'
+import Inventory from './pages/office/Inventory'
 
 import Sidebar from './Components/Sidebar'
 import { useAuthContext } from './hooks/useAuthContext'
@@ -85,6 +86,10 @@ function App() {
           <Route path='/Reporting'>
             {!user && <Redirect to='/login' />}
             {user && <Reporting />}
+          </Route>
+          <Route path='/Inventory'>
+            {!user && <Redirect to='/login' />}
+            {user && <Inventory />}
           </Route>
 
         </Switch>
