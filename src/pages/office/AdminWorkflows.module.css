@@ -1,0 +1,7 @@
+.workContainer {
+    overflow-y: 'auto';
+    margin: 15;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+}

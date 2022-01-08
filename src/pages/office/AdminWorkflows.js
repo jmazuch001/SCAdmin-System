@@ -11,6 +11,7 @@ import {Button, Popup} from 'semantic-ui-react'
 import { Form } from 'semantic-ui-react'
 import { Progress } from 'semantic-ui-react'
 import TransactionForm from '../../Components/TransactionForm'
+import { Container } from 'semantic-ui-react'
 
 // user online object must be created
 // insert into const friend Options
@@ -119,8 +120,8 @@ export default function AdminWorkflows() {
       ]
     
     return (
-        
-    
+        <div>
+    <Container className={styles.workContainer}>
         <Step.Group vertical>
     <Segment stacked>
     <Step active>
@@ -194,6 +195,8 @@ export default function AdminWorkflows() {
     {/* MODAL FOR ENTERING TRANSACTION AMOUNT */}
    {/* SEE OFFICE PAGE  */}
   </Step.Group>
+  </Container>
+  </div>
     ) 
 }
 

@@ -8,8 +8,10 @@ import Sidebar from '../../Components/Sidebar';
 import TransactionForm from '../../Components/TransactionForm'
 import BgImageAll from '../office/dark_mosaic.png'
 import {Image} from 'semantic-ui-react'
+import Analytics from './Analytics';
 
 export default function Office() {
+    
     return (
         <div className={styles['img-fluid']} >
             <div className={styles.container}>
@@ -26,6 +28,7 @@ export default function Office() {
         </div>
         <Container >
         <AdminWorkflows />
+        
         
         
         </Container>
