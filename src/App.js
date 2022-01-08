@@ -46,6 +46,7 @@ function App() {
         
       
       <BrowserRouter>
+      
         <Navbar />
         
         <Switch>

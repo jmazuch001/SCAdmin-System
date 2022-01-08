@@ -44,7 +44,7 @@
     width: 100%;
     box-shadow: 1.2px 1.2px 8px 0.1px rgb(250, 159, 159);
     /* rounded corners */
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .signup {

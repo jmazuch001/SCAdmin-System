@@ -110,17 +110,4 @@
     /* background-size: cover;  */
   }
 
-  .diego {
-    background: rgb(0,0,0);
-    background: linear-gradient(25deg, rgba(0,0,0,0.26934523809523814) 0%, 
-    rgba(147,10,10,1) 0%, rgba(227,240,255,1) 24%, 
-    rgba(78,212,9,1) 49%, rgba(255,255,255,1) 76%, 
-    rgba(212,6,6,1) 97%);
-  }
-
-  .diego2 {
-    font-size: 54px;
-    font-family: 'Genos', sans-serif;
-    color: white;
-    
-  }
+  

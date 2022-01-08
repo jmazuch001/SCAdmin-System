@@ -8,7 +8,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import {Container} from 'semantic-ui-react';
 import Sidebar from '../../Components/Sidebar';
 import TransactionForm from '../../Components/TransactionForm'
 import { Button, Checkbox, Icon, Table, Header, Image, Grid, Divider, Form, Segment, Item } from 'semantic-ui-react'
@@ -70,8 +70,8 @@ export default function Analytics() {
         </Grid.Column>
         <Grid.Column className={styles.gridColumn}>
           <h1>Review Charts</h1>
-          <Container>
-                <Button slider onClick={() => setAddWorkflow(!addWorkflow)}>Enable Workflow Mode</Button>
+          <Container fluid>
+                <Button onClick={() => setAddWorkflow(!addWorkflow)}>Enable Workflow Mode</Button>
                 {/* <AdminWorkflows /> */}
                 { addWorkflow && <AdminWorkflows />}
                 </Container>
