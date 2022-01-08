@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import {projectAuth} from '../firebase/config'
+import {projectAuth, projectStorage, projectFirestore} from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 
 
@@ -37,6 +37,14 @@ const signup = async (email, password, displayName) => {
     // add display name to user
     // await res.user.updateProfile({displayName: displayName})
     await res.user.updateProfile({ displayName })
+
+    // create user doc / enable ID creation for manual config
+    // use the doc method, will need to pass in reference to specific ID
+    await projectFirestore.collection('users').doc(res.user.uid).set({
+        // pass in opbj to represent the data - add props
+        online: true, 
+        displayName 
+    })
 
     // dispatch login action
     dispatch({ type: 'LOGIN', payload: res.user })

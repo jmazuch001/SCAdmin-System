@@ -23,7 +23,7 @@ export default function Office() {
                 {/* adapt for analytics */}
                 <Button onClick={() => setAddWorkflow(!addWorkflow)}>Enable Workflow Mode</Button>
                 {/* <AdminWorkflows /> */}
-                { addWorkflow && <AdminWorkflows />}
+                { addWorkflow && <AdminWorkflows /> }
             </Container>
 
                 

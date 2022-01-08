@@ -23,7 +23,7 @@ export default function Inventory() {
                 
             <div className={styles.sidebar}>
               {/* fetching user data within this div */}
-            <InventoryTable uid={user.uid}/>
+            {/* <InventoryTable uid={user.uid}/> */}
             
             </div>
             
