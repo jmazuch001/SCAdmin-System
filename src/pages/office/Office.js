@@ -28,11 +28,10 @@ export default function Office() {
 
                 
                 
-            <Container fluid className={styles.sidebar}>
-                <Button onClick={() => setAddWorkflow(!addWorkflow)}>Enable Workflow Mode</Button>
+            <div className={styles.sidebar}>
             <Sidebar />
             {/* <TransactionForm /> */}
-            </Container>
+            </div>
             
             </div>
             
