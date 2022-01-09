@@ -16,6 +16,8 @@ import Checkbox from '@mui/material/Checkbox';
 import { withRouter } from 'react-router-dom';
 import AccessControl from '../pages/office/AccessControl';
 import { Paper } from '@mui/material';
+import OnlineUsers from './OnlineUsers';
+import {Menu, Item} from 'semantic-ui-react'
 
 
 const drawerHeight = 300
@@ -103,6 +105,10 @@ const itemsList = [
                 })}
             </List>
             </div>
+            <Menu vertical>
+                <OnlineUsers />
+            </Menu>
+            
         </Drawer>
         </div>
         

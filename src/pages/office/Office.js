@@ -27,19 +27,9 @@ export default function Office() {
                 { addWorkflow && <AdminWorkflows /> }
                 
             </Container>
-
-                
-                
-            <div className={styles.sidebar}>
-                <container>
-                    <Sidebar />
-                    <li><OnlineUsers /></li>
-                </container>
-            
-            
-            {/* <TransactionForm /> */}
-            </div>
-            
+            <Container>
+                <Sidebar />
+                </Container>         
             </div>
             
         
