@@ -14,7 +14,7 @@ export default function TransactionForm( { uid } ) {
   const [name, setName] = useState('')
   const [amount, setAmount] = useState('')
   const { addDocument, response } = useFirestore('reports')
-
+  
   
   // function GenerateCaseID() {
   //   const activity = [
@@ -59,7 +59,8 @@ export default function TransactionForm( { uid } ) {
     addDocument({ 
       uid,
       name, 
-      amount
+      amount 
+      
     })
   }
 

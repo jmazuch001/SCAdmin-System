@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useCollection } from '../../hooks/useCollection'
-import { Icon, Step } from 'semantic-ui-react'
 import {Dropdown} from 'semantic-ui-react'
 import { Segment } from 'semantic-ui-react'
 import {Button, Popup} from 'semantic-ui-react'
@@ -10,6 +9,7 @@ import { Progress } from 'semantic-ui-react'
 import TransactionForm from '../../Components/TransactionForm'
 import { Container, Group} from 'semantic-ui-react'
 import Select from 'react-select'
+import { Step, Content, Icon, Title, Description, Tab, Pane } from 'semantic-ui-react'
 
 // styles
 import styles from './CreateProject.css'
@@ -106,6 +106,12 @@ export default function CreateProject() {
     // map through the documents and put into new array of users
     const { documents } = useCollection('users')
     const [users, setUsers] = useState([])
+
+    const panes = [
+      { menuItem: 'Tab 1', render: () => <Tab.Pane >Tab 3</Tab.Pane> },
+      { menuItem: 'Tab 2', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+      { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
+    ]
 
     // form fields
     const [name, setName] = useState('')

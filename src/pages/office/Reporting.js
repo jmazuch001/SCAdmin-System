@@ -24,18 +24,23 @@ export default function Reporting() {
     return (
         <div className={styles['img-fluid']} >
             <div className={styles.container}>
-            <div >
+            <div class='grid-item'>
                 <Sidebar />
                 
             <div className={styles.sidebar}>
               {/* fetching user data within this div */}
+            <grid>
             <TransactionForm uid={user.uid}/>
             
+            </grid>
+            
             </div>
             
             </div>
-                <AdminWorkflows />
+            
+                
             </div>
+            
             </div>
         
     )
