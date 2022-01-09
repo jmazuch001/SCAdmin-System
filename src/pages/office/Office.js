@@ -10,6 +10,7 @@ import {Image} from 'semantic-ui-react'
 import Analytics from './Analytics';
 import {Container} from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
+import OnlineUsers from '../../Components/OnlineUsers';
 
 export default function Office() {
     const [addWorkflow, setAddWorkflow] = useState(false);
@@ -24,12 +25,18 @@ export default function Office() {
                 <Button onClick={() => setAddWorkflow(!addWorkflow)}>Enable Workflow Mode</Button>
                 {/* <AdminWorkflows /> */}
                 { addWorkflow && <AdminWorkflows /> }
+                
             </Container>
 
                 
                 
             <div className={styles.sidebar}>
-            <Sidebar />
+                <container>
+                    <Sidebar />
+                    <li><OnlineUsers /></li>
+                </container>
+            
+            
             {/* <TransactionForm /> */}
             </div>
             

@@ -55,6 +55,7 @@ rgba(200,110,10,1) 17%,
          align-items: center; */
          width: 100%;
          padding: 30px;
+         color: coral;
 }
 
 
@@ -66,9 +67,9 @@ rgba(200,110,10,1) 17%,
     animation: linearGradient 10s ease infinite;
 }
 
-.sidebar {
+/* .sidebar {
     position: relative;
-}
+} */
 
 
 @keyframes gradient {

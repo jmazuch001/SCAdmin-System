@@ -14,6 +14,7 @@ import AccessControl from './pages/office/AccessControl'
 import Analytics from './pages/office/Analytics'
 import Reporting from './pages/office/Reporting'
 import Inventory from './pages/office/Inventory'
+import OnlineUsers from './Components/OnlineUsers';
 
 import Sidebar from './Components/Sidebar'
 import { useAuthContext } from './hooks/useAuthContext'
@@ -94,6 +95,7 @@ function App() {
           </Route>
 
         </Switch>
+        
       </BrowserRouter>
       )}
     </div>
