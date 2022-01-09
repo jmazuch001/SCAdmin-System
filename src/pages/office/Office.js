@@ -11,6 +11,8 @@ import Analytics from './Analytics';
 import {Container} from 'semantic-ui-react'
 import { Button } from 'semantic-ui-react'
 import OnlineUsers from '../../Components/OnlineUsers';
+import CreateProject from '../create/CreateProject';
+
 
 export default function Office() {
     const [addWorkflow, setAddWorkflow] = useState(false);
@@ -19,7 +21,9 @@ export default function Office() {
     return (
         <div className={styles['img-fluid']} >
             <div className={styles.container}>
-            
+            <div>
+                <CreateProject />
+            </div>
             <Container fluid>
                 {/* adapt for analytics */}
                 <Button onClick={() => setAddWorkflow(!addWorkflow)}>Enable Workflow Mode</Button>
@@ -27,9 +31,7 @@ export default function Office() {
                 { addWorkflow && <AdminWorkflows /> }
                 
             </Container>
-            <Container>
-                <Sidebar />
-                </Container>         
+                    
             </div>
             
         
