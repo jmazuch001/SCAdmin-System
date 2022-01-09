@@ -9,20 +9,32 @@ import BgImageAll from '../office/dark_mosaic.png'
 import {Image} from 'semantic-ui-react'
 import Analytics from './Analytics';
 import {Container} from 'semantic-ui-react'
-import { Button } from 'semantic-ui-react'
+import { Button, Tab } from 'semantic-ui-react'
 import OnlineUsers from '../../Components/OnlineUsers';
 import CreateProject from '../create/CreateProject';
+
 
 
 export default function Office() {
     const [addWorkflow, setAddWorkflow] = useState(false);
     const [hideSidebar, setHideSidebar] = useState(false);
 
+    const panes = [
+        { menuItem: 'Tab 1', render: () => <Tab.Pane><CreateProject /></Tab.Pane> },
+        { menuItem: 'Tab 2', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
+        { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
+      ]
+
     return (
         <div className={styles['img-fluid']} >
             <div className={styles.container}>
             <div>
-                <CreateProject />
+                {/* <Sidebar /> */}
+                <div>
+                <Tab panes={panes} />
+                
+                </div>
+                
             </div>
             
                     
