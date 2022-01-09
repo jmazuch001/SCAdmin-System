@@ -9,10 +9,11 @@ import { Progress } from 'semantic-ui-react'
 import TransactionForm from '../../Components/TransactionForm'
 import { Container, Group} from 'semantic-ui-react'
 import Select from 'react-select'
-import { Step, Content, Icon, Title, Description, Tab, Pane } from 'semantic-ui-react'
+import { Step, Content, Icon, Title, Description, Tab, Pane, Image } from 'semantic-ui-react'
 
 // styles
 import styles from './CreateProject.css'
+import FirstStage from './FirstStage'
 
 const activity = [
     {
@@ -107,11 +108,9 @@ export default function CreateProject() {
     const { documents } = useCollection('users')
     const [users, setUsers] = useState([])
 
-    const panes = [
-      { menuItem: 'Tab 1', render: () => <Tab.Pane >Tab 3</Tab.Pane> },
-      { menuItem: 'Tab 2', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
-      { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
-    ]
+    const [page, setPage] = useState(1);
+
+
 
     // form fields
     const [name, setName] = useState('')
@@ -119,7 +118,7 @@ export default function CreateProject() {
     const [dueDate, setDueDate] = useState('')
     const [category, setCategory] = useState('')
     const [assignedUsers, setAssignedUsers] = useState([])
-
+    const [formError, setFormError] = useState(null)
     useEffect(() => {
         if(documents) {
             const options = documents.map(user => {
@@ -131,7 +130,20 @@ export default function CreateProject() {
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(name, details, dueDate, category)
+        setFormError(null)
+
+        // perform checks
+        if(!category) {
+          setFormError('Please select a category')
+          return
+        }
+        if (assignedUsers.length < 1) {
+          setFormError('Please assign the project to at least one user')
+          return
+        }
+
+        console.log(name, details, dueDate, category.value, assignedUsers)
+
         
     }
 
@@ -168,11 +180,20 @@ export default function CreateProject() {
 
 
     return(
+      <div>
+        {/* step system */}
+        
+        
+        
         <div className="create-form">
             <div>
             <h2 className='page-title'>Create New Workflow</h2>
             </div>
-            <Container>
+            
+            
+            <Container >
+            <FirstStage />
+            <h1>{page === 1 && 'Stage One - Set Up Process Flow'}</h1>
             <Form onSubmit={handleSubmit}>
                 <label htmlFor="">
                     <span>Job Type:</span>
@@ -228,9 +249,18 @@ export default function CreateProject() {
                     />
                 </label>
                 <button className="btn">Add Project</button>
+                {formError && <p className='error'>{formError}</p>}
             </Form>
+            {page === 2 && 'Stage Two - Refinement Details'}
+            {page === 3 && 'Stage Three - Set Delivery Timeframe'}
+            {page === 4 && 'Stage Four - Bill of Sale'}
             </Container>
             
         </div>
+        </div>
     )
+}
+
+function StageOne () {
+
 }

@@ -25,7 +25,7 @@ export default function Office() {
         <div className={styles['img-fluid']} >
             <div className={styles.container}>
             <div>
-                <Sidebar />
+                {/* <Sidebar /> */}
                 <div className="tab-bg-props">
                 
                 <CreateProject />
