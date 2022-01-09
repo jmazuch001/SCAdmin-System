@@ -1,6 +1,6 @@
 import React from 'react'
-import { useState } from 'react'
-
+import { useState, useEffect } from 'react'
+import { useCollection } from '../../hooks/useCollection'
 import { Icon, Step } from 'semantic-ui-react'
 import {Dropdown} from 'semantic-ui-react'
 import { Segment } from 'semantic-ui-react'
@@ -9,23 +9,123 @@ import { Form } from 'semantic-ui-react'
 import { Progress } from 'semantic-ui-react'
 import TransactionForm from '../../Components/TransactionForm'
 import { Container, Group} from 'semantic-ui-react'
-
+import Select from 'react-select'
 
 // styles
 import styles from './CreateProject.css'
 
+const activity = [
+    {
+      value: 'mining & trade', 
+      label: 'Mining & Trade'
+    }, 
+    {
+      value: 'mining only',
+      label: 'Mining Only'
+    }, 
+    {
+      value: 'trade only',
+      label: 'Trade Only'
+    }, 
+    {
+      value: 'salvage & trade',
+      label: 'Salvage & Trade'
+    }, 
+    {
+      value: 'salvage only', 
+      label: 'Salvage Only' 
+    }, 
+  ]
+
+  
+
+  const minerals = [
+    {
+      key: 'Quantanium', 
+      text: 'Quantanium', 
+      value: 'Quantanium' 
+    }, 
+    {
+      key: 'Agrecium', 
+      text: 'Agrecium',
+      value: 'Agrecium'
+    }, 
+    {
+      key: 'Laranite', 
+      text: 'Laranite',
+      value: 'Laranite'
+    }, 
+    {
+      key: 'Bexalite', 
+      text: 'Bexalite',
+      value: 'Bexalite'
+    }, 
+    {
+        key: 'Taranite', 
+        text: 'Taranite',
+        value: 'Taranite'
+      },
+      {
+        key: 'Borase', 
+        text: 'Borase',
+        value: 'Borase'
+      },
+      {
+        key: 'Hephaestanite', 
+        text: 'Hephaestanite',
+        value: 'Hephaestanite'
+      },
+      {
+        key: 'Titanium', 
+        text: 'Titanium',
+        value: 'Titanium'
+      },
+      {
+        key: 'Diamond', 
+        text: 'Diamond',
+        value: 'Diamond'
+      },
+      {
+        key: 'Gold', 
+        text: 'Gold',
+        value: 'Gold'
+      },
+      {
+        key: 'Taranite', 
+        text: 'Taranite',
+        value: 'Taranite'
+      },
+    {
+      key: 'Inert', 
+      text: 'Inert', 
+      value: 'Inert', 
+    }, 
+  ]
 
 export default function CreateProject() {
+    // map through the documents and put into new array of users
+    const { documents } = useCollection('users')
+    const [users, setUsers] = useState([])
+
     // form fields
     const [name, setName] = useState('')
     const [details, setDetails] = useState('')
     const [dueDate, setDueDate] = useState('')
     const [category, setCategory] = useState('')
-    const [assignedUsers, setAssignedUsers] = useState('')
+    const [assignedUsers, setAssignedUsers] = useState([])
+
+    useEffect(() => {
+        if(documents) {
+            const options = documents.map(user => {
+                return { value: user, label: user.displayName}
+            })
+            setUsers(options)
+        }
+    }, [documents])
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(name, details, dueDate)
+        console.log(name, details, dueDate, category)
         
     }
 
@@ -57,102 +157,15 @@ export default function CreateProject() {
     // const [category, setCategory] = useState('')
     // const [assignedUsers, setAssignedUsers] = useState('')
 
-    const activity = [
-        {
-          key: 'Mining & Trade', 
-          text: 'Mining & Trade',
-          value: 'Mining & Trade'
-        }, 
-        {
-          key: 'Mining Only', 
-          text: 'Mining Only',
-          value: 'Mining Only'
-        }, 
-        {
-          key: 'Trade Only', 
-          text: 'Trade Only',
-          value: 'Trade Only'
-        }, 
-        {
-          key: 'Salvage & Trade', 
-          text: 'Salvage & Trade',
-          value: 'Salvage & Trade'
-        }, 
-        {
-          key: 'Salvage Only', 
-          text: 'Salvage Only', 
-          value: 'Salvage Only' 
-        }, 
-      ]
-
-      const minerals = [
-        {
-          key: 'Quantanium', 
-          text: 'Quantanium', 
-          value: 'Quantanium' 
-        }, 
-        {
-          key: 'Agrecium', 
-          text: 'Agrecium',
-          value: 'Agrecium'
-        }, 
-        {
-          key: 'Laranite', 
-          text: 'Laranite',
-          value: 'Laranite'
-        }, 
-        {
-          key: 'Bexalite', 
-          text: 'Bexalite',
-          value: 'Bexalite'
-        }, 
-        {
-            key: 'Taranite', 
-            text: 'Taranite',
-            value: 'Taranite'
-          },
-          {
-            key: 'Borase', 
-            text: 'Borase',
-            value: 'Borase'
-          },
-          {
-            key: 'Hephaestanite', 
-            text: 'Hephaestanite',
-            value: 'Hephaestanite'
-          },
-          {
-            key: 'Titanium', 
-            text: 'Titanium',
-            value: 'Titanium'
-          },
-          {
-            key: 'Diamond', 
-            text: 'Diamond',
-            value: 'Diamond'
-          },
-          {
-            key: 'Gold', 
-            text: 'Gold',
-            value: 'Gold'
-          },
-          {
-            key: 'Taranite', 
-            text: 'Taranite',
-            value: 'Taranite'
-          },
-        {
-          key: 'Inert', 
-          text: 'Inert', 
-          value: 'Inert', 
-        }, 
-      ]
+    
 
 
 
     return(
         <div className="create-form">
+            <div>
             <h2 className='page-title'>Create New Workflow</h2>
+            </div>
             <Container>
             <Form onSubmit={handleSubmit}>
                 <label htmlFor="">
@@ -185,19 +198,28 @@ export default function CreateProject() {
                 <label>
                     <span>Project Category</span>
                     {/* select single job type from dropdown here */}
-                    <Dropdown placeholder='Activity' fluid selection options={activity} 
-                    onChange={(e) => setCategory(e.target.value)}
-                    value={activity}/>
+                    <Select 
+                        onChange={(option) => setCategory(option)}
+                        options={activity}
+                    />
+                    {/* <Dropdown placeholder='Activity' fluid selection options={activity}/> */}
                 </label>
                 <label>
                     <span>Designate Product Owner:</span>
                     {/* <Dropdown placeholder='Activity' fluid selection options={activity} /> */}
                     {/* select single user with online status */}
+                    <Select 
+                        onChange={(option) => setAssignedUsers(option)}
+                    options={users}
+                    />
                 </label>
                 <label>
                     <span>Additional Personnel:</span>
-                    {/* <Dropdown placeholder='Select Additional Personnel' fluid multiple selection options={friendOptions} /> */}
-                    {/* select multiple users with online status */}
+                    <Select 
+                        onChange={(option) => setAssignedUsers(option)}
+                    options={users}
+                    isMulti
+                    />
                 </label>
                 <button className="btn">Add Project</button>
             </Form>

@@ -24,13 +24,7 @@ export default function Office() {
             <div>
                 <CreateProject />
             </div>
-            <Container fluid>
-                {/* adapt for analytics */}
-                <Button onClick={() => setAddWorkflow(!addWorkflow)}>Enable Workflow Mode</Button>
-                {/* <AdminWorkflows /> */}
-                { addWorkflow && <AdminWorkflows /> }
-                
-            </Container>
+            
                     
             </div>
             
@@ -48,3 +42,9 @@ export default function Office() {
         
     )
 }
+
+
+{/* <Container fluid>               
+    <Button onClick={() => setAddWorkflow(!addWorkflow)}>Enable Workflow Mode</Button>               
+    { addWorkflow && <AdminWorkflows /> }                
+</Container> */}

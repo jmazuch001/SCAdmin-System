@@ -1,10 +1,23 @@
 .container {
-    width: 30%;
+    width: 20%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 18px 0;
   box-sizing: border-box;
   color: coral;
   opacity: 75%;
-  background-color: rgb(83, 83, 82);
-  padding: 2p
+  background-color: rgb(42, 42, 42);
+  border: solid #C97438 1px; 
+	box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
+	-webkit-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
+	-moz-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
+    display: flex;
+}
+
+.page-title {
+    text-shadow: 3px 3px 3px rgba(201, 116, 56, 1);
+    font-size: 50px;
+}
+
+label {
+    font-size: 20px;
 }
