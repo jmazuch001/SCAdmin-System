@@ -190,9 +190,9 @@ export default function CreateProject() {
             <h2 className='page-title'>Create New Workflow</h2>
             </div>
             
-            
-            <Container >
             <FirstStage />
+            
+            <Container>
             <h1>{page === 1 && 'Stage One - Set Up Process Flow'}</h1>
             <Form onSubmit={handleSubmit}>
                 <label htmlFor="">
@@ -256,7 +256,9 @@ export default function CreateProject() {
             {page === 4 && 'Stage Four - Bill of Sale'}
             </Container>
             
+            
         </div>
+        
         </div>
     )
 }

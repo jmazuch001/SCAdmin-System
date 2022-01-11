@@ -14,17 +14,17 @@ import { Step, Content, Icon, Title, Description, Tab, Pane, Image } from 'seman
 
 export default function FirstStage() {
     return (
-      <Container  className={styles['stages-animation']}>
+      <Container className={styles['stages-animation']}>
     <Step.Group attached > 
     <Step>
-    <Icon name='truck' />
-        <Step.Content >
-          <Step.Title>Job Details</Step.Title>
-          <Step.Description>Select </Step.Description>
+    <Icon  />
+        <Step.Content>
+          <Step.Title><h1>Start Your Next Job</h1></Step.Title>
+          
         </Step.Content>
     </Step>
     </Step.Group>   
-    </Container>
+</Container>
     )
 }
 
