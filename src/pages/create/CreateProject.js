@@ -10,6 +10,8 @@ import TransactionForm from '../../Components/TransactionForm'
 import { Container, Group} from 'semantic-ui-react'
 import Select from 'react-select'
 import { Step, Content, Icon, Title, Description, Tab, Pane, Image } from 'semantic-ui-react'
+import { timestamp } from '../../firebase/config'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 // styles
 import styles from './CreateProject.css'
@@ -107,9 +109,9 @@ export default function CreateProject() {
     // map through the documents and put into new array of users
     const { documents } = useCollection('users')
     const [users, setUsers] = useState([])
-
     const [page, setPage] = useState(1);
-
+    // person who created project can save info about it in the db
+    const { user } = useAuthContext();
 
 
     // form fields
@@ -142,7 +144,34 @@ export default function CreateProject() {
           return
         }
 
-        console.log(name, details, dueDate, category.value, assignedUsers)
+        const createdBy = {
+          displayName: user.displayName, 
+          id: user.uid
+        }
+
+        // this is what we're saving to the db
+        // assigneduserslist is an array of objects where each object represents a user
+        // who the project is assigned to
+        const assignedUsersList = assignedUsers.map((u) => {
+          return {
+            displayName: u.value.displayName, 
+            id: u.value.id
+          }
+          
+        })
+
+        // this is the object we're saving to the database as a doc
+        const project = {
+          name, 
+          details,
+          category: category.value, 
+          dueDate: timestamp.fromDate(new Date(dueDate)), 
+          comments: [], 
+          createdBy, 
+          assignedUsersList
+        }
+
+        console.log(project)
 
         
     }
