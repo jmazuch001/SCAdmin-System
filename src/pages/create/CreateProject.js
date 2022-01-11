@@ -12,6 +12,8 @@ import Select from 'react-select'
 import { Step, Content, Icon, Title, Description, Tab, Pane, Image } from 'semantic-ui-react'
 import { timestamp } from '../../firebase/config'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { useFirestore } from '../../hooks/useFirestore'
+import { useHistory } from 'react-router-dom'
 
 // styles
 import styles from './CreateProject.css'
@@ -106,12 +108,14 @@ const activity = [
   ]
 
 export default function CreateProject() {
+  const history = useHistory()
     // map through the documents and put into new array of users
     const { documents } = useCollection('users')
     const [users, setUsers] = useState([])
     const [page, setPage] = useState(1);
     // person who created project can save info about it in the db
     const { user } = useAuthContext();
+    const { addDocument, response } = useFirestore('case lifecycles')
 
 
     // form fields
@@ -130,7 +134,7 @@ export default function CreateProject() {
         }
     }, [documents])
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         setFormError(null)
 
@@ -171,8 +175,11 @@ export default function CreateProject() {
           assignedUsersList
         }
 
-        console.log(project)
-
+        await addDocument(project)
+        if (!response.error) {
+          // redirects to home page once complete and without error
+          history.push('/')
+        }
         
     }
 
