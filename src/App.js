@@ -15,7 +15,7 @@ import Analytics from './pages/office/Analytics'
 import Reporting from './pages/office/Reporting'
 import Inventory from './pages/office/Inventory'
 import OnlineUsers from './Components/OnlineUsers';
-
+import ActiveData from './pages/data pages/ActiveData'
 import Sidebar from './Components/Sidebar'
 import { useAuthContext } from './hooks/useAuthContext'
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -98,10 +98,10 @@ function App() {
             {!user && <Redirect to='/login' />}
             {user && <CreateProject />}
           </Route>
-          {/* <Route path='/ActiveData'>
+          <Route path='/ActiveData'>
             {!user && <Redirect to='/login' />}
-            {user && <CreateProject />}
-          </Route> */}
+            {user && <ActiveData />}
+          </Route>
 
         </Switch>
         {user && <OnlineUsers />}
