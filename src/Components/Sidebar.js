@@ -41,6 +41,11 @@ function Sidebar(props) {
 const { history } = props;
 const classes = useStyles();
 const itemsList = [
+    // { 
+    //     text: 'QR Generator', 
+    //     icon: <GraphicEqIcon />
+    //     onClick: () => history.push('/Office'),
+    // },
     {
         text: 'Workflows',
         icon: <WorkIcon />, 

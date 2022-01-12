@@ -14,6 +14,8 @@ import Sidebar from '../../Components/Sidebar';
 import TransactionForm from '../../Components/TransactionForm'
 import AdminWorkflows from './AdminWorkflows'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { Grid, Image } from 'semantic-ui-react'
+import Dashboard from '../dashboard/Dashboard'
 
 
 
@@ -33,7 +35,15 @@ export default function Reporting() {
             <TransactionForm uid={user.uid}/>
             
             </grid>
-            
+            {/* <Container>
+            <Grid celled>
+                <Grid.Row>
+                    <Grid.Column >
+                        <Dashboard />
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+            </Container> */}
             </div>
             
             </div>

@@ -8,6 +8,7 @@ import TransactionForm from '../../Components/TransactionForm'
 import AdminWorkflows from './AdminWorkflows'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import InventoryTable from '../../Components/InventoryTable'
+import Dashboard from '../dashboard/Dashboard'
 
 
 
@@ -19,7 +20,8 @@ export default function Inventory() {
         <div className={styles['img-fluid']} >
             <div className={styles.container}>
             <div >
-                <Sidebar class='ui compact celled definition'/>
+                <Sidebar />
+                <Dashboard />
                 
             <div className={styles.sidebar}>
               {/* fetching user data within this div */}

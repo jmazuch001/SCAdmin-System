@@ -164,6 +164,8 @@ export default function CreateProject() {
           
         })
 
+        
+
         // this is the object we're saving to the database as a doc
         const project = {
           name, 

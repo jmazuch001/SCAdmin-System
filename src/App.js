@@ -20,6 +20,7 @@ import Sidebar from './Components/Sidebar'
 import { useAuthContext } from './hooks/useAuthContext'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import 'semantic-ui-css/semantic.min.css'
+import CreateProject from './pages/create/CreateProject';
 
 
 function App() {
@@ -93,6 +94,14 @@ function App() {
             {!user && <Redirect to='/login' />}
             {user && <Inventory />}
           </Route>
+          <Route path='/CreateProject'>
+            {!user && <Redirect to='/login' />}
+            {user && <CreateProject />}
+          </Route>
+          {/* <Route path='/ActiveData'>
+            {!user && <Redirect to='/login' />}
+            {user && <CreateProject />}
+          </Route> */}
 
         </Switch>
         {user && <OnlineUsers />}
