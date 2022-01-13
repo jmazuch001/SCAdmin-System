@@ -15,13 +15,13 @@ import Analytics from './pages/office/Analytics'
 import Reporting from './pages/office/Reporting'
 import Inventory from './pages/office/Inventory'
 import OnlineUsers from './Components/OnlineUsers';
-import ActiveData from './pages/data pages/ActiveData'
+import ActiveData from './pages/data pages/Project'
 import Sidebar from './Components/Sidebar'
 import { useAuthContext } from './hooks/useAuthContext'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import 'semantic-ui-css/semantic.min.css'
 import CreateProject from './pages/create/CreateProject';
-
+import Project from './pages/data pages/Project'
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -98,9 +98,9 @@ function App() {
             {!user && <Redirect to='/login' />}
             {user && <CreateProject />}
           </Route>
-          <Route path='/ActiveData'>
+          <Route path='/projects/:id'>
             {!user && <Redirect to='/login' />}
-            {user && <ActiveData />}
+            {user && <Project />}
           </Route>
 
         </Switch>

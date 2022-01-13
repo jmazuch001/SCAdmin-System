@@ -1,7 +1,7 @@
 import React from 'react'
 
 // data display page
-export default function ActiveData () {
+export default function Project () {
     return(
         <div>
             Active Project Data

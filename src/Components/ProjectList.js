@@ -9,7 +9,7 @@ export default function ProjectList({ projects }) {
         <div className='project-list'>
             {projects.length === 0 && <p>No projects as of yet!</p>}
             {projects.map(project => (
-                <Link to={`/ActiveData/${project.id}`} key={project.id}>
+                <Link to={`/projects/${project.id}`} key={project.id}>
                     <h4>{project.name}</h4>
                     {/* due date is a firestore timestamp at this point */}
                     <p>Due by {project.dueDate.toDate().toDateString()}</p>
@@ -21,6 +21,7 @@ export default function ProjectList({ projects }) {
 
                             <li key={user.displayName}>
                                 <span>{user.displayName}</span>
+                                
                             </li>
                         ))}
                     </ul>
