@@ -14,6 +14,7 @@ import Sidebar from '../../Components/Sidebar';
 import TransactionForm from '../../Components/TransactionForm'
 import AdminWorkflows from './AdminWorkflows'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { useCollection } from '../../hooks/useCollection'
 import { Grid, Image } from 'semantic-ui-react'
 import Dashboard from '../dashboard/Dashboard'
 

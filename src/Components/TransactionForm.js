@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useFirestore } from '../hooks/useFirestore';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -63,6 +63,14 @@ export default function TransactionForm( { uid } ) {
       
     })
   }
+
+  // clears transaction form upon submission
+  useEffect(() => {
+    if(response.success){
+      setName('')
+      setAmount('')
+    }
+  }, [response.success])
 
   return (
 <>
