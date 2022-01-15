@@ -11,6 +11,7 @@ export default function ProjectList({ projects }) {
             {projects.map(project => (
                 <Link to={`/projects/${project.id}`} key={project.id}>
                     <h4>{project.name}</h4>
+                    <h4>{project.details}</h4>
                     {/* due date is a firestore timestamp at this point */}
                     <p>Due by {project.dueDate.toDate().toDateString()}</p>
                     {/* we want to take that and convert and output in browser */}

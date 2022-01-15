@@ -6,7 +6,7 @@ import ProjectList from '../../Components/ProjectList'
 // getting realtime information about the db collections and list on page
 export default function Dashboard() {
     // retrieve specific collection
-    const { documents, error } = useCollection('case lifecycles')
+    const { documents, error } = useCollection('lifecycles')
 
     return (
         <div>

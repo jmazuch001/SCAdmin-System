@@ -115,7 +115,7 @@ export default function CreateProject() {
     const [page, setPage] = useState(1);
     // person who created project can save info about it in the db
     const { user } = useAuthContext();
-    const { addDocument, response } = useFirestore('case lifecycles')
+    const { addDocument, response } = useFirestore('lifecycles')
 
 
     // form fields
@@ -164,7 +164,7 @@ export default function CreateProject() {
           
         })
 
-        
+
 
         // this is the object we're saving to the database as a doc
         const project = {

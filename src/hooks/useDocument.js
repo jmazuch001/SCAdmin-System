@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { projectFirestore } from '../firebase/config'
 
 
-export const useDocument = () => {
+export const useDocument = (collection, id) => {
     const [document, setDocument] = useState(null)
     const [error, setError] = useState(null)
 
@@ -16,9 +16,17 @@ useEffect(() => {
     // every time we need realtime data, it fires a function 
     // snapshot arg represents the reference to the object above in 'reference'
     const unsubscribe = reference.onSnapshot((snapshot) => {
-    // any time the data changes, the snapshot object is used to get the realtime data
-        setDocument({ ...snapshot.data(), id: snapshot.id })
-        setError(null)
+        
+        if (snapshot.data()) {
+            // any time the data changes, the snapshot object is used to get the realtime data
+            setDocument({ ...snapshot.data(), id: snapshot.id })
+            setError(null)
+        }
+        else {
+            setError('Document does not exist.')
+        }
+    
+        
     }, (err) => {
         console.log(err.message)
         setError('failed to get document')
