@@ -10,6 +10,7 @@ import TransactionForm from '../../Components/TransactionForm'
 import { Container, Group} from 'semantic-ui-react'
 import Select from 'react-select'
 import { Step, Content, Icon, Title, Description, Tab, Pane, Image } from 'semantic-ui-react'
+// extra imports
 import { timestamp } from '../../firebase/config'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from '../../hooks/useFirestore'
@@ -112,11 +113,13 @@ export default function CreateProject() {
     // map through the documents and put into new array of users
     const { documents } = useCollection('users')
     const [users, setUsers] = useState([])
-    const [page, setPage] = useState(1);
+    
     // person who created project can save info about it in the db
     const { user } = useAuthContext();
     const { addDocument, response } = useFirestore('lifecycles')
 
+    // multi-page form setup
+    const [page, setPage] = useState(1);
 
     // form fields
     const [name, setName] = useState('')
@@ -164,8 +167,6 @@ export default function CreateProject() {
           
         })
 
-
-
         // this is the object we're saving to the database as a doc
         const project = {
           name, 
@@ -185,53 +186,23 @@ export default function CreateProject() {
         
     }
 
-    // const generateProductID = (uniqueID) => {
-    //     return Math.floor(Math.random() * uniqueID + activity.key)
-    // }
-
-    // function uniqueID() {
-    //     if (activity.key == 'Mining & Trade') {
-    //         return 'MT' + {}
-    //     }
-    //     else if (activity.key == 'Mining Only') {
-    //         return 'M' + {}
-    //     }
-    //     else if (activity.key == 'Trade Only') {
-    //         return 'T' + {}
-    //     }
-    //     else if (activity.key == 'Salvage & Trade') {
-    //         return 'ST' + {}
-    //     }
-    //     else if (activity.key == 'Salvage Only') {
-    //         return 'S' + {}
-    //     }
-    // }
-    
-    // const [jobType, setJobType] = useState('')
-    // const [details, setDetails] = useState('')
-    // const [dueDate, setDueDate] = useState('')
-    // const [category, setCategory] = useState('')
-    // const [assignedUsers, setAssignedUsers] = useState('')
-
-    
-
+function nextForm() {
+  setPage(page => page + 1);
+  
+}
 
 
     return(
+      
       <div>
+        <h1>{page === 1 && <StageOne />}</h1>
         {/* step system */}
-        
-        
-        
         <div className="create-form">
             <div>
             <h2 className='page-title'>Create New Workflow</h2>
             </div>
-            
-            <FirstStage />
-            
             <Container>
-            <h1>{page === 1 && 'Stage One - Set Up Process Flow'}</h1>
+            
             <Form onSubmit={handleSubmit}>
                 <label htmlFor="">
                     <span>Job Type:</span>
@@ -286,12 +257,11 @@ export default function CreateProject() {
                     isMulti
                     />
                 </label>
-                <button className="btn">Add Project</button>
-                {formError && <p className='error'>{formError}</p>}
+                <button onClick={'nextForm'}>Next</button>
             </Form>
-            {page === 2 && 'Stage Two - Refinement Details'}
-            {page === 3 && 'Stage Three - Set Delivery Timeframe'}
-            {page === 4 && 'Stage Four - Bill of Sale'}
+            {page === 2 && <StageTwo />}
+            {page === 3 && <StageThree />}
+            {page === 4 && <StageFour />}
             </Container>
             
             
@@ -302,5 +272,57 @@ export default function CreateProject() {
 }
 
 function StageOne () {
-
+  return (
+    <div>Stage One - Set Up Process Flow</div>
+  )
 }
+
+function StageTwo () {
+  return (
+    <div>Stage Two - Refinement Details</div>
+  )
+}
+
+function StageThree () {
+  return (
+    <div>Stage Three - Set Delivery Timeframe</div>
+  )
+}
+
+function StageFour () {
+  return (
+    <div>Stage Four - Bill of Sale</div>
+  )
+}
+
+{/* <button className="btn">Add Project</button>
+                {formError && <p className='error'>{formError}</p>} */}
+
+
+// const generateProductID = (uniqueID) => {
+    //     return Math.floor(Math.random() * uniqueID + activity.key)
+    // }
+
+    // function uniqueID() {
+    //     if (activity.key == 'Mining & Trade') {
+    //         return 'MT' + {}
+    //     }
+    //     else if (activity.key == 'Mining Only') {
+    //         return 'M' + {}
+    //     }
+    //     else if (activity.key == 'Trade Only') {
+    //         return 'T' + {}
+    //     }
+    //     else if (activity.key == 'Salvage & Trade') {
+    //         return 'ST' + {}
+    //     }
+    //     else if (activity.key == 'Salvage Only') {
+    //         return 'S' + {}
+    //     }
+    // }
+    
+    // const [jobType, setJobType] = useState('')
+    // const [details, setDetails] = useState('')
+    // const [dueDate, setDueDate] = useState('')
+    // const [category, setCategory] = useState('')
+    // const [assignedUsers, setAssignedUsers] = useState('')
