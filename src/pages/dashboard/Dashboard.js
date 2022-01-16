@@ -9,7 +9,8 @@ export default function Dashboard() {
     const { documents, error } = useCollection('lifecycles')
 
     return (
-        <div className='dashboard-details'>
+        
+        <div className='img-fluid'>
             <h2 className='page-title'>Dashboard</h2>
             {error && <p className='error'>{error}</p>}
             {/* output docs if you have any */}

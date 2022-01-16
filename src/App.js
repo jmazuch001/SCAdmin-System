@@ -22,6 +22,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import 'semantic-ui-css/semantic.min.css'
 import CreateProject from './pages/create/CreateProject';
 import Project from './pages/data pages/Project'
+import Dashboard from './pages/dashboard/Dashboard';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -90,9 +91,9 @@ function App() {
             {!user && <Redirect to='/login' />}
             {user && <Reporting />}
           </Route>
-          <Route path='/Inventory'>
+          <Route path='/Dashboard'>
             {!user && <Redirect to='/login' />}
-            {user && <Inventory />}
+            {user && <Dashboard />}
           </Route>
           <Route path='/CreateProject'>
             {!user && <Redirect to='/login' />}

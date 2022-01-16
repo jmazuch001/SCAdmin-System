@@ -54,9 +54,9 @@ const itemsList = [
         
     }, 
     {
-        text: 'Inventory', 
+        text: 'Dashboard', 
         icon: <ListIcon />,
-        onClick: () => history.push('/Inventory')
+        onClick: () => history.push('/Dashboard')
     }, 
     {
         text: 'Analytics', 

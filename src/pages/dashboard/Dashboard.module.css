@@ -10,4 +10,21 @@
       -webkit-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
       -moz-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
       display: flex;
+      
+  }
+
+  .img-fluid {
+    /* patterned backgrounds */
+    background-image: url('../home/dark_mosaic.png');
+    position: fixed;
+      min-width: 100%;
+      min-height: 100%;
+      background-position: center; 
+      opacity: 100%;
+    color: white;
+    background-repeat: repeat;
+    overflow: auto;
+    /* non-patterned backgrounds */
+    /* background-image: url('/images/horizon.png');  */
+    /* background-size: cover;  */
   }
