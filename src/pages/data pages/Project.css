@@ -1,0 +1,81 @@
+.project-details {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+    grid-gap: 60px;
+    text-align: left;
+    
+}
+
+.container-details {
+  padding: 12px 10px;
+  margin: 18px 0;
+  box-sizing: border-box;
+  color: rgb(15, 9, 7);
+  opacity: 75%;
+  background-color: rgb(42, 42, 42);
+  border: solid #C97438 1px; 
+	box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
+	-webkit-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
+	-moz-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
+    display: flex;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+    grid-gap: 60px;
+    text-align: left;
+}
+/* background image and general styling */
+.img-fluid {
+    /* patterned backgrounds */
+    background-image: url('../home/dark_mosaic.png');
+    position: fixed;
+      min-width: 100%;
+      min-height: 100%;
+      background-position: center; 
+      
+    background-repeat: repeat;
+    overflow: auto;
+    /* non-patterned backgrounds */
+    /* background-image: url('/images/horizon.png');  */
+    /* background-size: cover;  */
+  }
+
+/* project overview */
+.project-overview {
+    background-color: white;
+    padding: 30px;
+    border-radius: 3px;
+}
+
+.project-overview .due-date {
+    margin: 10px 0;
+    font-size: 0.8em;
+    color: var(--title-color);
+}
+
+.project-summary .details {
+    margin: 30px 0;
+    color: var(--text-color);
+    line-height: 1.8em;
+    font-size: 0.9em;
+}
+
+.project-overview h4 {
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+.project-overview .assigned-users {
+    display: flex;
+    margin-top: 20px;
+}
+
+.project-summary .assigned-users .avatar {
+    margin-right: 10px;
+    color: black;
+}
+
+.project-overview + .btn {
+    margin-top: 20px;
+}

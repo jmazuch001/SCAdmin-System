@@ -181,21 +181,15 @@ export default function CreateProject() {
         await addDocument(project)
         if (!response.error) {
           // redirects to home page once complete and without error
-          history.push('/')
+          history.push('/Inventory')
         }
         
     }
 
-function nextForm() {
-  setPage(page => page + 1);
-  
-}
-
-
     return(
       
       <div>
-        <h1>{page === 1 && <StageOne />}</h1>
+        {/* <h1>{page === 1 && <StageOne />}</h1> */}
         {/* step system */}
         <div className="create-form">
             <div>
@@ -257,11 +251,12 @@ function nextForm() {
                     isMulti
                     />
                 </label>
-                <button onClick={'nextForm'}>Next</button>
+                <button className="btn">Add Project</button>
+                {formError && <p className='error'>{formError}</p>}
             </Form>
-            {page === 2 && <StageTwo />}
+            {/* {page === 2 && <StageTwo />}
             {page === 3 && <StageThree />}
-            {page === 4 && <StageFour />}
+            {page === 4 && <StageFour />} */}
             </Container>
             
             
@@ -271,32 +266,30 @@ function nextForm() {
     )
 }
 
-function StageOne () {
-  return (
-    <div>Stage One - Set Up Process Flow</div>
-  )
-}
+// function StageOne () {
+//   return (
+//     <div>Stage One - Set Up Process Flow</div>
+//   )
+// }
 
-function StageTwo () {
-  return (
-    <div>Stage Two - Refinement Details</div>
-  )
-}
+// function StageTwo () {
+//   return (
+//     <div>Stage Two - Refinement Details</div>
+//   )
+// }
 
-function StageThree () {
-  return (
-    <div>Stage Three - Set Delivery Timeframe</div>
-  )
-}
+// function StageThree () {
+//   return (
+//     <div>Stage Three - Set Delivery Timeframe</div>
+//   )
+// }
 
-function StageFour () {
-  return (
-    <div>Stage Four - Bill of Sale</div>
-  )
-}
+// function StageFour () {
+//   return (
+//     <div>Stage Four - Bill of Sale</div>
+//   )
+// }
 
-{/* <button className="btn">Add Project</button>
-                {formError && <p className='error'>{formError}</p>} */}
 
 
 // const generateProductID = (uniqueID) => {

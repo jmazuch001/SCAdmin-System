@@ -12,15 +12,15 @@ import Dashboard from '../dashboard/Dashboard'
 
 
 
-
 export default function Inventory() {
     const { user } = useAuthContext()
 
     return (
         <div className={styles['img-fluid']} >
+            
             <div className={styles.container}>
             <div >
-                <Sidebar />
+                {/* <Sidebar /> */}
                 <Dashboard />
                 
             <div className={styles.sidebar}>

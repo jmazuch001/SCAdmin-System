@@ -6,7 +6,8 @@ import { useDocument } from '../../hooks/useDocument'
 import { Container } from 'semantic-ui-react'
 
 // styles
-import './Project.css'
+import styles from './Project.css'
+import ProjectOverview from './ProjectOverview'
 
 // data display page
 export default function Project () {
@@ -21,10 +22,14 @@ if (!document) {
 }
 
     return(
-        
-        <div className='project-details'>
-            <h1>{document.name}</h1>
+        <div className='img-fluid'>
+            <Container className='container-details'>
+            <div className='project-details'>
+            <ProjectOverview project={document} />
         </div>
+        </Container>
+        </div>
+        
         
     )
 }

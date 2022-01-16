@@ -1,0 +1,13 @@
+.dashboard-details {
+    padding: 12px 20px;
+    margin: 18px 0;
+    box-sizing: border-box;
+    color: rgb(15, 9, 7);
+    opacity: 75%;
+    background-color: rgb(42, 42, 42);
+    border: solid #C97438 1px; 
+      box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
+      -webkit-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
+      -moz-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
+      display: flex;
+  }
