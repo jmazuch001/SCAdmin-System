@@ -6,7 +6,7 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 // component library references
-import { Form, Button, Step, Icon, Dropdown } from 'semantic-ui-react'
+import { Form, Button, Step, Icon, Dropdown, Container } from 'semantic-ui-react'
 import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 
@@ -161,7 +161,7 @@ const handleSubmit = async (e) => {
     }
 
     await updateDocument(project.id, {
-        additionalDetails: {...project.additionalDetails, stageToAdd}
+        additionalDetails: [{...project.additionalDetails, stageToAdd}]
     })
     if (!response.error) {
         setNewStage('')
@@ -174,7 +174,7 @@ const handleSubmit = async (e) => {
                 Add Stage
             
                 </Form> */}
-
+                
                 <Form onSubmit={handleSubmit}>
                     <label>
                 <h4>Additional Stages</h4>
@@ -213,10 +213,31 @@ const handleSubmit = async (e) => {
                 </div>
                 </label>
                 <button>Add Stage</button>
+                
                 </Form>
                 
+                
             {/* <StageOne /> */}
+            <container>
+                <h4>Additional Details</h4>
+                <ul>
+                    {project.additionalDetails.length > 0 && project.additionalDetails.map(detail =>(
+                        <li key={detail.id}>
+                            <div className='detail-author'>
+                            <p>{detail.createdBy}</p>
+                            </div>
+                            <div className='detail-date'>
+                                <p>Date {detail.createdAt}</p>
+                            </div>
+                            <div className='detail-content'>
+                                <p>{detail.additionalDetails}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+                </container>
         </div>
+        
     )
 }
 
