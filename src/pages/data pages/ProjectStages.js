@@ -36,7 +36,7 @@ import FirstStage from '../create/FirstStage'
 // project details, context, and general CRUD ops
 
 
-export default function ProjectStages() {
+export default function ProjectStages({ project }) {
     const newMinerals = [
         {
           value: 'Quantanium', 
@@ -138,6 +138,7 @@ export default function ProjectStages() {
           }
         ]
 
+const { updateDocument, response } = useFirestore('lifecycles')
 const [newStage, setNewStage] = useState('');
 const [minerals, setNewMinerals] = useState('');
 const [quantity, setQuantity] = useState('');
@@ -158,7 +159,13 @@ const handleSubmit = async (e) => {
         createdAt: timestamp.fromDate(new Date()),
         id: Math.random()
     }
-    console.log(stageToAdd)
+
+    await updateDocument(project.id, {
+        additionalDetails: {...project.additionalDetails, stageToAdd}
+    })
+    if (!response.error) {
+        setNewStage('')
+    }
 }
 
     return (

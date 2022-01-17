@@ -27,7 +27,7 @@ if (!document) {
             <Container className='container-details'>
             <div className='project-details'>
             <ProjectOverview project={document} />
-            <ProjectStages />
+            <ProjectStages project={document}/>
         </div>
         </Container>
         </div>
