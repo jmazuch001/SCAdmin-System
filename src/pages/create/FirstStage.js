@@ -119,13 +119,6 @@ export default function FirstStage() {
       
   }
 
-
-
-
-
-
-
-
     return (
 
           <div className="create-form">

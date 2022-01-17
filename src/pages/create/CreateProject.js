@@ -56,7 +56,7 @@ const activity = [
     label: 'Contract Work Order'
   }]
   
-  const starSystem = [
+  const starSystems = [
     {
       value: 'Crusader', 
       label: 'Crusader'
@@ -153,6 +153,9 @@ export default function CreateProject() {
     // conditional rendering
     const [ job, setJob] = useState('');
 
+    // set Star System
+    const [ starSystem, setStarSystem] = useState('');
+
     // form fields
     const [name, setName] = useState('')
     const [details, setDetails] = useState('')
@@ -208,7 +211,9 @@ export default function CreateProject() {
           details,
           category: category.value, 
           dueDate: timestamp.fromDate(new Date(dueDate)), 
-          comments: [], 
+          // comments: [],
+          additionalDetails: [], 
+          // additionalFormData: [{}],
           createdBy, 
           assignedUsersList
         }
@@ -239,6 +244,11 @@ export default function CreateProject() {
             <Select 
                         onChange={(option) => setJob(option)}
                         options={jobGroup}
+                    />
+                    <span>Location:</span>
+                    <Select 
+                        onChange={(option) => setStarSystem(option)}
+                        options={starSystems}
                     />
                     </label>
                 <label htmlFor="">

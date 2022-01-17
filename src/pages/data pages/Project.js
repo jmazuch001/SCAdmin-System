@@ -8,6 +8,7 @@ import { Container } from 'semantic-ui-react'
 // styles
 import styles from './Project.css'
 import ProjectOverview from './ProjectOverview'
+import ProjectStages from './ProjectStages'
 
 // data display page
 export default function Project () {
@@ -26,6 +27,7 @@ if (!document) {
             <Container className='container-details'>
             <div className='project-details'>
             <ProjectOverview project={document} />
+            <ProjectStages />
         </div>
         </Container>
         </div>

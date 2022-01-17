@@ -6,6 +6,7 @@ import AdminWorkflows from '../office/AdminWorkflows'
 // library components
 import { Grid, Button } from 'semantic-ui-react'
 import FirstStage from '../create/FirstStage'
+import ProjectStages from './ProjectStages'
 
 export default function ProjectOverview( { project } ) {
 // states
@@ -37,14 +38,16 @@ export default function ProjectOverview( { project } ) {
                     <AdminWorkflows />
                 </Container>
                  */}
-                 <Grid>
-                 <Grid.Column verticalAlign='middle'>
-                        <Button content='Sign up' icon='signup' size='big'>Add Stage
-                        </Button>
-                    </Grid.Column>
-                    </Grid>
+                 
             
             </div>
+            {/* <Grid>
+                 <Grid.Column verticalAlign='middle'>
+                        <Button content='Sign up' icon='signup' size='big' ><ProjectStages />
+                        </Button>
+                    </Grid.Column>
+                    </Grid> */}
+                    {/* <ProjectStages /> */}
             
         </div>
     )
