@@ -30,7 +30,7 @@ export default function Analytics() {
                 <Sidebar />
 
                 <div>
-                {/* <Segment placeholder>
+                <Segment placeholder>
                     <Grid columns={2} relaxed='very' stackable>
                         <Grid.Column>
                             <Form>
@@ -57,7 +57,7 @@ export default function Analytics() {
                     </Grid>
 
                     <Divider vertical>Or</Divider>
-                </Segment> */}
+                </Segment>
 
                 <Segment color='black' inverted>
       <Grid columns={2} relaxed="very">

@@ -114,7 +114,7 @@ export default function FirstStage() {
       await addDocument(project)
       if (!response.error) {
         // redirects to home page once complete and without error
-        history.push('/')
+        history.push('/Dashboard')
       }
       
   }

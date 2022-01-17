@@ -43,7 +43,36 @@ const activity = [
     }, 
   ]
 
+  const jobGroup = [{
+    value: 'HIGROUP', 
+    label: 'HIGROUP'
+  }, 
+  {
+    value: 'Affiliate', 
+    label: 'Affiliate'
+  }, 
+  {
+    value: 'Contract Work Order', 
+    label: 'Contract Work Order'
+  }]
   
+  const starSystem = [
+    {
+      value: 'Crusader', 
+      label: 'Crusader'
+    },
+    {
+      value: 'Area 18', 
+      label: 'Area 18'
+    },
+    {
+      value: 'Microtech', 
+      label: 'Microtech'
+    },
+    {
+      value: 'Crusader', 
+      label: 'Crusader'
+    },]
 
   const minerals = [
     {
@@ -121,11 +150,15 @@ export default function CreateProject() {
     // multi-page form setup
     const [page, setPage] = useState(1);
 
+    // conditional rendering
+    const [ job, setJob] = useState('');
+
     // form fields
     const [name, setName] = useState('')
     const [details, setDetails] = useState('')
     const [dueDate, setDueDate] = useState('')
     const [category, setCategory] = useState('')
+
     const [assignedUsers, setAssignedUsers] = useState([])
     const [formError, setFormError] = useState(null)
     useEffect(() => {
@@ -169,6 +202,8 @@ export default function CreateProject() {
 
         // this is the object we're saving to the database as a doc
         const project = {
+          job,
+          starSystem,
           name, 
           details,
           category: category.value, 
@@ -178,10 +213,11 @@ export default function CreateProject() {
           assignedUsersList
         }
 
+        
         await addDocument(project)
         if (!response.error) {
           // redirects to home page once complete and without error
-          history.push('/Inventory')
+          history.push('/Dashboard')
         }
         
     }
@@ -198,32 +234,30 @@ export default function CreateProject() {
             <Container>
             
             <Form onSubmit={handleSubmit}>
+              <label htmlFor=''>
+            <span>Job Group:</span>
+            <Select 
+                        onChange={(option) => setJob(option)}
+                        options={jobGroup}
+                    />
+                    </label>
                 <label htmlFor="">
-                    <span>Job Type:</span>
-                    <input
-                    required
-                    type='text'
-                    onChange={(e) => setName(e.target.value)}
+                    <span>Job Description:</span>
+                    <input required type='text' onChange={(e) => setName(e.target.value)}
                     value={name} />
                     
                 </label>
                 <label htmlFor="">
                     <span>Project Details:</span>
-                    <input
-                    required
-                    type='text'
-                    onChange={(e) => setDetails(e.target.value)}
+                    <input required type='text' onChange={(e) => setDetails(e.target.value)}
                     value={details} />
                     
                 </label>
                 <label htmlFor="">
                     <span>Set Due Date:</span>
-                    <input
-                    required
-                    type='date'
-                    onChange={(e) => setDueDate(e.target.value)}
+                    <input required type='date' onChange={(e) => setDueDate(e.target.value)}
                     value={dueDate} />
-                    
+
                 </label>
                 <label>
                     <span>Project Category</span>
@@ -251,7 +285,7 @@ export default function CreateProject() {
                     isMulti
                     />
                 </label>
-                <button className="btn">Add Project</button>
+                <button className="btn">Stage Project</button>
                 {formError && <p className='error'>{formError}</p>}
             </Form>
             {/* {page === 2 && <StageTwo />}
