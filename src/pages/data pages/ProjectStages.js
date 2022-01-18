@@ -142,6 +142,7 @@ const { updateDocument, response } = useFirestore('lifecycles')
 const [newStage, setNewStage] = useState('');
 const [minerals, setNewMinerals] = useState('');
 const [quantity, setQuantity] = useState('');
+const [duration, setDuration] = useState('');
 const [ship, setShip] = useState('');
 const { user } = useAuthContext()
 
@@ -152,7 +153,7 @@ const handleSubmit = async (e) => {
 
     const stageToAdd = {
         displayName: user.displayName, 
-        content: newStage,
+        duration,
         quantity,
         ship,
         displayMinerals: minerals, 
@@ -164,7 +165,7 @@ const handleSubmit = async (e) => {
         additionalDetails: [{...project.additionalDetails, stageToAdd}]
     })
     if (!response.error) {
-        setNewStage('')
+        setNewStage('');
     }
 }
 
@@ -172,24 +173,18 @@ const handleSubmit = async (e) => {
         <div className='project-details'>
             {/* <Form required onClick={(e) => setNewStage(e.target.value)} value={newStage}>
                 Add Stage
-            
                 </Form> */}
-                
                 <Form onSubmit={handleSubmit}>
                     <label>
-                <h4>Additional Stages</h4>
-                
-                <div>
-                    {/* <StageOne /> */}
-                    {/* <FirstStage /> */}
-                    <Form required onChange={(e) => setNewStage(e.target.value)} value={newStage}>
-                    
+                        <h4>Additional Stages</h4>
+                    <div>
+                    <Form >
                     <label>
                     <span>Additional Minerals:</span>
-                    <Select 
-                        onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti
-                    />
-                </label>
+                        <Select 
+                            onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti
+                        />
+                    </label>
                 
                 <Form.Field>
                     <label>Quantity in SCU:</label>
@@ -204,7 +199,7 @@ const handleSubmit = async (e) => {
                     <Form>
                         <Form.Field>
                             <label>Enter Processing Duration (in hours)</label>
-                            <input />
+                            <input placeholder='Estimated Duration'  onChange={(e) => setDuration(e.target.value)} value={duration}/>
                             
                         </Form.Field>
                         </Form>
@@ -218,24 +213,29 @@ const handleSubmit = async (e) => {
                 
                 
             {/* <StageOne /> */}
-            <container>
+            <div className='project-details'>
+            
+                <div>
                 <h4>Additional Details</h4>
                 <ul>
-                    {project.additionalDetails.length > 0 && project.additionalDetails.map(detail =>(
-                        <li key={detail.id}>
-                            <div className='detail-author'>
-                            <p>{detail.createdBy}</p>
+                    {project.additionalDetails.length > 0 && project.additionalDetails.map(additionalDetails =>(
+                        <li key={additionalDetails.id}>
+                            <div>
+                            <p>{additionalDetails.displayName}</p>
                             </div>
-                            <div className='detail-date'>
-                                <p>Date {detail.createdAt}</p>
+                            <div>
+                                <p>Date {additionalDetails.createdAt}</p>
                             </div>
-                            <div className='detail-content'>
-                                <p>{detail.additionalDetails}</p>
+                            <div>
+                                <p>{additionalDetails.duration}</p>
                             </div>
                         </li>
                     ))}
                 </ul>
-                </container>
+                </div>
+            
+            </div>
+                
         </div>
         
     )

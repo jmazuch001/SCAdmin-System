@@ -192,6 +192,7 @@ export default function CreateProject() {
           id: user.uid
         }
 
+
         // this is what we're saving to the db
         // assigneduserslist is an array of objects where each object represents a user
         // who the project is assigned to
@@ -215,7 +216,8 @@ export default function CreateProject() {
           additionalDetails: [{}], 
           // additionalFormData: [{}],
           createdBy, 
-          assignedUsersList
+          assignedUsersList 
+          
         }
 
         
@@ -309,6 +311,7 @@ export default function CreateProject() {
         </div>
     )
 }
+
 
 // function StageOne () {
 //   return (

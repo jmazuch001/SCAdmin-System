@@ -25,15 +25,32 @@ export default function ProjectOverview( { project } ) {
                 <p className="details">
                     {project.details}
                 </p>
+
+                
+                {/* <h4>Project Created By:</h4>
+                <div className='assigned-users'>
+                {project.assignedUsersList.map(user => {
+                    return(
+                        <div key={user.displayName}> {user.displayName}</div>
+                    )
+                })}
+                </div> */}
+
+
                 <h4>Project is assigned to:</h4>
                 <div className='assigned-users'>
                 {project.assignedUsersList.map(user => {
                     return(
-                        <div key={user.id}></div>
+                        <div key={user.id}>
+                            <ul>
+                            {user.displayName}
+                            </ul>
+                        </div>
                     )
-                    })}
-            </div>
+                })}
+                </div>
             
+
                 {/* <Container>
                     <AdminWorkflows />
                 </Container>
