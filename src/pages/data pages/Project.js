@@ -22,6 +22,7 @@ if (!document) {
     return <div className='loadings'>Loading..</div>
 }
 
+console.log(document)
     return(
         <div className='img-fluid'>
             <Container className='container-details'>

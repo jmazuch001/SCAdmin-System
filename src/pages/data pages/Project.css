@@ -15,11 +15,11 @@
   opacity: 75%;
   background-color: rgb(42, 42, 42);
   border: solid #C97438 1px; 
-	box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
-	-webkit-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
-	-moz-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
-    display: flex;
-    display: grid;
+	box-shadow: 0 0 7px rgba(201, 116, 56, 1); 
+	-webkit-box-shadow: 0 0 7px rgba(201, 116, 56, 1); 
+	-moz-box-shadow: 0 0 7px rgba(201, 116, 56, 1); 
+    /* display: flex;
+    display: grid; */
     grid-template-columns: 3fr 2fr;
     align-items: start;
     grid-gap: 60px;
@@ -29,13 +29,13 @@
 .img-fluid {
     /* patterned backgrounds */
     background-image: url('../home/dark_mosaic.png');
-    position: fixed;
+    /* position: fixed; */
       min-width: 100%;
       min-height: 100%;
       background-position: center; 
       
     background-repeat: repeat;
-    overflow: auto;
+    /* overflow: auto; */
     /* non-patterned backgrounds */
     /* background-image: url('/images/horizon.png');  */
     /* background-size: cover;  */

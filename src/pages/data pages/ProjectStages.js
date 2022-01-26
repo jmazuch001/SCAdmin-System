@@ -253,17 +253,18 @@ const handleSubmit = async (e) => {
                 <div className='project-comments'>
                 <h4>Additional Details</h4>
                 <ul>
-                    {project.additionalDetails.length > 0 && project.additionalDetails.map(additionalDetails =>(
-                        <li key={additionalDetails.id}>
+                    {project.additionalDetails.length > 0 && project.additionalDetails.map(details =>(
+                        <li key={details.stageToAdd.id}>
                             <div className='detail-author'>
-                            <p>{additionalDetails.displayName}</p>
+                            <p>{details.stageToAdd.displayName}</p>
                             </div>
                             <div className='detail-date'>
-                                <li>Date {additionalDetails.createdAt}</li>
+                                <li>Date {details.stageToAdd.createdAt.seconds}</li>
                                 <Icon question circle outline />
                             </div>
                             <div className='detail-content'>
-                                <li>{additionalDetails.duration}</li>
+                                <li>{details.stageToAdd.duration}</li>
+                                <li>{details.stageToAdd.content}</li>
                             </div>
                         </li>
                     ))}
@@ -300,11 +301,11 @@ const handleSubmit = async (e) => {
 //     )
 // }
 
-function StageTwo() {
-    return (
-        <div>
+// function StageTwo() {
+//     return (
+//         <div>
 
-        </div>
+//         </div>
 
-    )
-}
+//     )
+// }

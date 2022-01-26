@@ -97,7 +97,7 @@
 .img-fluid {
     /* patterned backgrounds */
     background-image: url('../home/dark_mosaic.png');
-    position: fixed;
+    /* position: fixed; */
       min-width: 100%;
       min-height: 100%;
       background-position: center; 
