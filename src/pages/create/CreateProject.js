@@ -213,8 +213,7 @@ export default function CreateProject() {
           category: category.value, 
           dueDate: timestamp.fromDate(new Date(dueDate)), 
           // comments: [],
-          additionalDetails: [{}], 
-          // additionalFormData: [{}],
+          additionalDetails: [], 
           createdBy, 
           assignedUsersList 
           
