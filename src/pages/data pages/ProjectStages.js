@@ -6,7 +6,7 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 // component library references
-import { Form, Button, Step, Icon, Dropdown, Container } from 'semantic-ui-react'
+import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table } from 'semantic-ui-react'
 import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
@@ -252,7 +252,8 @@ const handleSubmit = async (e) => {
             
                 <div className='project-comments'>
                 <h4>Additional Details</h4>
-                <ul>
+                <ul onChange={(e) => setNewStage(e.target.value)}
+                    value={newStage}>
                     {project.additionalDetails.length > 0 && project.additionalDetails.map(details =>(
                         <li key={details.stageToAdd.id}>
                             <div className='detail-author'>
@@ -263,8 +264,16 @@ const handleSubmit = async (e) => {
                                 <Icon question circle outline />
                             </div>
                             <div className='detail-content'>
-                                <li>{details.stageToAdd.duration}</li>
-                                <li>{details.stageToAdd.content}</li>
+                                <Table celled>
+                                <Table.Header>
+                                  <Table.Row>
+                                    <Table.HeaderCell>Quantity: {details.stageToAdd.quantity}</Table.HeaderCell>
+                                    <Table.HeaderCell>Duration: {details.stageToAdd.duration} Hours</Table.HeaderCell>
+                                    <Table.HeaderCell>Stage ID: {details.stageToAdd.id}</Table.HeaderCell>
+                                    <Table.HeaderCell>Comments: {details.stageToAdd.content}</Table.HeaderCell>
+                                  </Table.Row>
+                                </Table.Header>
+                                </Table>
                             </div>
                         </li>
                     ))}
@@ -277,6 +286,15 @@ const handleSubmit = async (e) => {
         
     )
 }
+
+// displayName: user.displayName, 
+//         content: newStage,
+//         duration,
+//         quantity,
+//         ship,
+//         displayMinerals: minerals, 
+//         createdAt: timestamp.fromDate(new Date()),
+//         id: Math.random()
 
 // function StageOne() {
 //     return (
