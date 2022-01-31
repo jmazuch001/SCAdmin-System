@@ -172,12 +172,12 @@ const handleSubmit = async (e) => {
 }
 
     return (
-        <div className='project-details'>
+        <div>
             {/* <Form required onClick={(e) => setNewStage(e.target.value)} value={newStage}>
                 Add Stage
                 </Form> */}
                 {/* <Form onSubmit={handleSubmit}> */}
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} className='project-details'>
                     <label>
                         <h4>Additional Stages</h4>
                     <div>
@@ -209,61 +209,57 @@ const handleSubmit = async (e) => {
                         </Form>
 
                 </div>
-                </label>
                 <button>Add Stage</button>
-                
-                </Form>
-
+                </label>
                 <div className="project-details">
-      <h4>Project Comments</h4>
+                <div>
+                            {/* <ul>
+                    {project.additionalDetails.length > 0 && project.additionalDetails.map(detail => (
+                      <li key={detail.id}>
+                        <div className="detail-author">
+                          
+                          <p>{detail.displayName}</p>
+                        </div>
+                        <div className="detail-date">
+                          <p>date here</p>
+                        </div>
+                        <div className="detail-content">
+                          <p>{detail.content}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul> */}
+                </div>
+      
 
-      <ul>
-        {project.additionalDetails.length > 0 && project.additionalDetails.map(detail => (
-          <li key={detail.id}>
-            <div className="detail-author">
-              
-              <p>{detail.displayName}</p>
-            </div>
-            <div className="detail-date">
-              <p>date here</p>
-            </div>
-            <div className="detail-content">
-              <p>{detail.content}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-
-      <form className="add-comment" onSubmit={handleSubmit}>
-        <label>
-          <span>Add new comment:</span>
-          <textarea 
-            onChange={(e) => setNewStage(e.target.value)}
-            value={newStage}
-          ></textarea>
-        </label>
-        <button className="btn">Add Comment</button>
-      </form>
-    </div>
-                
-                
-            {/* <StageOne /> */}
-            <div className='project-added-details'>
-            
-                <div className='project-comments'>
-                <h4>Additional Details</h4>
+      
+                </div>
+                <form className="add-comment" onSubmit={handleSubmit}>
+                    <label>
+                      <span>Add new comment:</span>
+                      <textarea 
+                        onChange={(e) => setNewStage(e.target.value)}
+                        value={newStage}
+                      ></textarea>
+                    </label>
+                    <button className="btn">Add Comment</button>
+                  </form>
+                <container>
+                  <label>Additional Data On Record:
+                    <div>
+                <div>
                 <ul onChange={(e) => setNewStage(e.target.value)}
                     value={newStage}>
                     {project.additionalDetails.length > 0 && project.additionalDetails.map(details =>(
                         <li key={details.stageToAdd.id}>
-                            <div className='detail-author'>
+                            <div>
                             <p>{details.stageToAdd.displayName}</p>
                             </div>
-                            <div className='detail-date'>
+                            <div>
                                 <li>Date {details.stageToAdd.createdAt.seconds}</li>
                                 <Icon question circle outline />
                             </div>
-                            <div className='detail-content'>
+                            <div>
                                 <Table celled>
                                 <Table.Header>
                                   <Table.Row>
@@ -274,6 +270,7 @@ const handleSubmit = async (e) => {
                                   </Table.Row>
                                 </Table.Header>
                                 </Table>
+                                
                             </div>
                         </li>
                     ))}
@@ -281,6 +278,16 @@ const handleSubmit = async (e) => {
                 </div>
             
             </div>
+                  </label>
+                </container>
+                
+                </Form>
+
+                
+                
+                
+            {/* <StageOne /> */}
+            
                 
         </div>
         
