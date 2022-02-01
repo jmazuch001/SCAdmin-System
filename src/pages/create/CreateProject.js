@@ -237,7 +237,7 @@ export default function CreateProject() {
             <div>
             <h2 className='page-title'>Create New Workflow</h2>
             </div>
-            <Container>
+            <Container className='container-styles'>
             
             <Form onSubmit={handleSubmit}>
               <label htmlFor=''>

@@ -25,15 +25,12 @@ if (!document) {
 console.log(document)
     return(
         <div className='img-fluid'>
-            <Container className='container-details'>
-            <div className='project-details'>
+            
             <ProjectOverview project={document} />
             
-        </div>
-        <div>
+        
             <ProjectStages project={document}/>
-        </div>
-        </Container>
+        
         </div>
         
         

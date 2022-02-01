@@ -4,7 +4,8 @@
   align-items: start;
   grid-gap: 60px;
   text-align: left;
-  
+  color: rgba(201, 116, 56, 1)
+ 
 }
 
 .container-details {
@@ -43,14 +44,17 @@ box-shadow: 0 0 7px rgba(201, 116, 56, 1);
 
 /* project overview */
 .project-overview {
-  background-color: white;
+  background-color: rgb(61, 60, 60);
   padding: 30px;
   border-radius: 3px;
+  color: white;
+  text-align: left;
+  font-size: 1.3em;
 }
 
 .project-overview .due-date {
   margin: 10px 0;
-  font-size: 0.8em;
+  
   color: var(--title-color);
 }
 

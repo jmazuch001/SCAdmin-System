@@ -28,8 +28,8 @@ import TransactionReportList from '../office/TransactionReportList'
       label: 'Microtech'
     },
     {
-      value: 'Crusader', 
-      label: 'Crusader'
+      value: 'Hurston', 
+      label: 'Hurston'
     },]
 
   //////////////////////////////////////////////////////////////////////
@@ -164,7 +164,7 @@ const handleSubmit = async (e) => {
     }
 
     await updateDocument(project.id, {
-        additionalDetails: [{...project.additionalDetails, stageToAdd}]
+        additionalDetails: [...project.additionalDetails, stageToAdd]
     })
     if (!response.error) {
         setNewStage('');
@@ -190,7 +190,7 @@ const handleSubmit = async (e) => {
                     </label>
                 
                 <Form.Field>
-                    <label>Quantity in SCU:</label>
+                    <span>Quantity in SCU:</span>
                     <input placeholder='Quantity'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
                 </Form.Field>
                 <label>
@@ -206,14 +206,16 @@ const handleSubmit = async (e) => {
                             
                         </Form.Field>
                         </Form>
+                        
                         </Form>
-
+                        <button className='btn'>Add Stage</button>
                 </div>
-                <button>Add Stage</button>
+                
                 </label>
+                
                 <div className="project-details">
                 <div>
-                            {/* <ul>
+                            <ul>
                     {project.additionalDetails.length > 0 && project.additionalDetails.map(detail => (
                       <li key={detail.id}>
                         <div className="detail-author">
@@ -228,13 +230,14 @@ const handleSubmit = async (e) => {
                         </div>
                       </li>
                     ))}
-                  </ul> */}
+                  </ul>
+
                 </div>
       
 
       
                 </div>
-                <form className="add-comment" onSubmit={handleSubmit}>
+                {/* <form className="add-comment" onSubmit={handleSubmit}>
                     <label>
                       <span>Add new comment:</span>
                       <textarea 
@@ -279,7 +282,7 @@ const handleSubmit = async (e) => {
             
             </div>
                   </label>
-                </container>
+                </container> */}
                 
                 </Form>
 
