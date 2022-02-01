@@ -105,7 +105,7 @@ function App() {
           </Route>
 
         </Switch>
-        {user && <OnlineUsers />}
+        {/* {user && <OnlineUsers />} */}
       </BrowserRouter>
       )}
     </div>

@@ -1,5 +1,6 @@
 // this is a component
 import React from 'react'
+import styles from '../data pages/Project.css'
 import { useState, useEffect } from 'react'
 import { timestamp } from '../../firebase/config'
 import { useAuthContext } from '../../hooks/useAuthContext'
@@ -139,15 +140,58 @@ export default function ProjectStages({ project }) {
           }
         ]
 
+      const refinement = [
+        {
+          value: "Cormack Method", 
+          label: "Cormack Method"
+        }, 
+        {
+          value: "Dinyx Solvention", 
+          label: "Dinyx Solvention"
+        }, 
+        {
+          value: "Electrostarolysis", 
+          label: "Electrostarolysis"
+        }, 
+        {
+          value: "Ferron Exchange", 
+          label: "Ferron Exchange"
+        }, 
+        {
+          value: "Gaskin Process", 
+          label: "Gaskin Process"
+        }, 
+        {
+          value: "Kazen Winnowing", 
+          label: "Kazen Winnowing"
+        }, 
+        {
+          value: "Pyrometric Chromalysis", 
+          label: "Pyrometric Chromalysis"
+        }, 
+        {
+          value: "Thermonatic Deposition", 
+          label: "Thermonatic Deposition"
+        }, 
+        {
+          value: "XCR Reaction", 
+          label: "XCR Reaction"
+        }
+      ]
+
 const { updateDocument, response } = useFirestore('lifecycles')
 const [newStage, setNewStage] = useState('');
+const [refinementType, setRefinementType] = useState('');
 const [minerals, setNewMinerals] = useState('');
 const [quantity, setQuantity] = useState('');
 const [duration, setDuration] = useState('');
 const [ship, setShip] = useState('');
 const { user } = useAuthContext()
+const [process, setNextProcess] = useState(1);
 
-
+function nextProcess() {
+  setNextProcess(process => process + 1)
+}
 
 const handleSubmit = async (e) => {
     e.preventDefault()
@@ -159,8 +203,32 @@ const handleSubmit = async (e) => {
         quantity,
         ship,
         displayMinerals: minerals, 
-        createdAt: timestamp.fromDate(new Date()),
-        id: Math.random()
+        refinementType,
+        // createdAt: timestamp.fromDate(new Date()),
+        createdAt: TimeStamp(),
+        id: CreateID()
+    }
+
+
+
+    function CreateID () {
+       return "MT" + Math.floor(Math.random() * 1000); 
+    }
+
+    function TimeStamp() {
+      const date = new Date(2022, 11, 24, 10,)
+      return date
+    }
+
+    function TimeStamp2() {
+      const today = new Date()
+      let month = today.getDate()
+      let year = today.getMonth()
+      let date = today.getDate()
+      let time = today.getTime()
+      let current_date = `${year}, ${month}, ${date}` + ` at ${time}`
+
+     return current_date;
     }
 
     await updateDocument(project.id, {
@@ -177,6 +245,7 @@ const handleSubmit = async (e) => {
                 Add Stage
                 </Form> */}
                 {/* <Form onSubmit={handleSubmit}> */}
+                <Container className='container-details'>
                 <Form onSubmit={handleSubmit} className='project-details'>
                     <label>
                         <h4>Additional Stages</h4>
@@ -190,9 +259,15 @@ const handleSubmit = async (e) => {
                     </label>
                 
                 <Form.Field>
-                    <span>Quantity in SCU:</span>
+                    <span>Yield Quantity in cSCU:</span>
                     <input placeholder='Quantity'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
                 </Form.Field>
+                <label>
+                    <span>Refinement Method:</span>
+                    <Select 
+                        onChange={(e) => setRefinementType(e)} options={refinement} isMulti
+                    />
+                </label>
                 <label>
                     <span>Ship Class:</span>
                     <Select 
@@ -201,13 +276,23 @@ const handleSubmit = async (e) => {
                 </label>
                     <Form>
                         <Form.Field>
-                            <label>Enter Processing Duration (in hours)</label>
+                            <label className="project-details">Enter Processing Duration (in hours)</label>
                             <input placeholder='Estimated Duration'  onChange={(e) => setDuration(e.target.value)} value={duration}/>
                             
                         </Form.Field>
                         </Form>
                         
                         </Form>
+                        <form className="add-comment" onSubmit={handleSubmit}>
+                    <label>
+                      <span>Add new comment:</span>
+                      <textarea 
+                        onChange={(e) => setNewStage(e.target.value)}
+                        value={newStage}
+                      ></textarea>
+                    </label>
+                   
+                  </form>
                         <button className='btn'>Add Stage</button>
                 </div>
                 
@@ -226,7 +311,21 @@ const handleSubmit = async (e) => {
                           <p>date here</p>
                         </div>
                         <div className="detail-content">
-                          <p>{detail.content}</p>
+                          {/* <p>{detail.content}</p> */}
+                          <Table celled>
+                                <Table.Header>
+                                  <Table.Row>
+                                    <Table.HeaderCell>Yield Quantity: {detail.quantity} cSCU</Table.HeaderCell>
+                                    <Table.HeaderCell>Method: {detail.refinementMethod}</Table.HeaderCell>
+                                    <Table.HeaderCell>Duration: {detail.duration} Hours</Table.HeaderCell>
+                                    <Table.HeaderCell>Stage ID: {detail.id}</Table.HeaderCell>
+                                    <Table.HeaderCell>Comments: {detail.content}</Table.HeaderCell>
+                                    {/* <Table.HeaderCell>Ship: {detail.ship['']}</Table.HeaderCell>
+                                    <Table.HeaderCell>Minerals: {detail.displayMinerals[{}]}</Table.HeaderCell> */}
+                                    <Table.HeaderCell>Created At: {detail.createdAt.seconds}</Table.HeaderCell>
+                                  </Table.Row>
+                                </Table.Header>
+                                </Table>
                         </div>
                       </li>
                     ))}
@@ -237,55 +336,16 @@ const handleSubmit = async (e) => {
 
       
                 </div>
-                {/* <form className="add-comment" onSubmit={handleSubmit}>
-                    <label>
-                      <span>Add new comment:</span>
-                      <textarea 
-                        onChange={(e) => setNewStage(e.target.value)}
-                        value={newStage}
-                      ></textarea>
-                    </label>
-                    <button className="btn">Add Comment</button>
-                  </form>
-                <container>
-                  <label>Additional Data On Record:
-                    <div>
-                <div>
-                <ul onChange={(e) => setNewStage(e.target.value)}
-                    value={newStage}>
-                    {project.additionalDetails.length > 0 && project.additionalDetails.map(details =>(
-                        <li key={details.stageToAdd.id}>
-                            <div>
-                            <p>{details.stageToAdd.displayName}</p>
-                            </div>
-                            <div>
-                                <li>Date {details.stageToAdd.createdAt.seconds}</li>
-                                <Icon question circle outline />
-                            </div>
-                            <div>
-                                <Table celled>
-                                <Table.Header>
-                                  <Table.Row>
-                                    <Table.HeaderCell>Quantity: {details.stageToAdd.quantity}</Table.HeaderCell>
-                                    <Table.HeaderCell>Duration: {details.stageToAdd.duration} Hours</Table.HeaderCell>
-                                    <Table.HeaderCell>Stage ID: {details.stageToAdd.id}</Table.HeaderCell>
-                                    <Table.HeaderCell>Comments: {details.stageToAdd.content}</Table.HeaderCell>
-                                  </Table.Row>
-                                </Table.Header>
-                                </Table>
-                                
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-                </div>
-            
-            </div>
-                  </label>
-                </container> */}
+
+                
                 
                 </Form>
-
+                <div>
+              
+              
+            </div>
+                </Container>
+                                    
                 
                 
                 
@@ -297,43 +357,3 @@ const handleSubmit = async (e) => {
     )
 }
 
-// displayName: user.displayName, 
-//         content: newStage,
-//         duration,
-//         quantity,
-//         ship,
-//         displayMinerals: minerals, 
-//         createdAt: timestamp.fromDate(new Date()),
-//         id: Math.random()
-
-// function StageOne() {
-//     return (
-//         <div>
-//             {/* REFINEMENT */}
-//       <Step.Content>
-//         <Step.Title>Refinement</Step.Title>
-//         <Step.Description>Enter Refinement Manifest</Step.Description>
-//         <Dropdown placeholder='Select Minerals' 
-//         fluid multiple selection options={minerals} />
-//         <Button>Submit Manifest</Button>
-//         <Form>
-//     <Form.Field>
-//       <label>Enter Processing Duration (in hours)</label>
-//       <input />
-//       <Button>Start Tracking</Button>
-//     </Form.Field>
-//   </Form>
-//       </Step.Content>
-    
-//         </div>
-//     )
-// }
-
-// function StageTwo() {
-//     return (
-//         <div>
-
-//         </div>
-
-//     )
-// }
