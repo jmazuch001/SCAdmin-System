@@ -277,7 +277,7 @@ const handleSubmit = async (e) => {
                     <Form>
                         <Form.Field>
                             <label className="project-details">Enter Processing Duration (in hours)</label>
-                            <input placeholder='Estimated Duration'  onChange={(e) => setDuration(e.target.value)} value={duration}/>
+                            <input placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
                             
                         </Form.Field>
                         </Form>
@@ -356,4 +356,5 @@ const handleSubmit = async (e) => {
         
     )
 }
+
 

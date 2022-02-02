@@ -1,359 +1,193 @@
-// this is a component
 import React from 'react'
-import styles from '../data pages/Project.css'
+import styles from './CreateProject.css'
 import { useState, useEffect } from 'react'
+import { useCollection } from '../../hooks/useCollection'
+import {Dropdown} from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
+import {Button, Popup} from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
+import { Progress } from 'semantic-ui-react'
+import TransactionForm from '../../Components/TransactionForm'
+import { Container, Group} from 'semantic-ui-react'
+import Select from 'react-select'
+import { Step, Content, Icon, Title, Description, Tab, Pane, Image } from 'semantic-ui-react'
+import CreateProject from './CreateProject'
 import { timestamp } from '../../firebase/config'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from '../../hooks/useFirestore'
-import { useHistory } from 'react-router-dom' 
-// component library references
-import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table } from 'semantic-ui-react'
-import Select from 'react-select'
-import FirstStage from '../create/FirstStage'
-import TransactionReportList from '../office/TransactionReportList'
-
-// function component data /////////////////////////////////////////
+import { useHistory } from 'react-router-dom'
 
 
-  const starSystem = [
-    {
-      value: 'Crusader', 
-      label: 'Crusader'
-    },
-    {
-      value: 'Area 18', 
-      label: 'Area 18'
-    },
-    {
-      value: 'Microtech', 
-      label: 'Microtech'
-    },
-    {
-      value: 'Hurston', 
-      label: 'Hurston'
-    },]
+const activity = [
+  {
+    value: 'mining & trade', 
+    label: 'Mining & Trade'
+  }, 
+  {
+    value: 'mining only',
+    label: 'Mining Only'
+  }, 
+  {
+    value: 'trade only',
+    label: 'Trade Only'
+  }, 
+  {
+    value: 'salvage & trade',
+    label: 'Salvage & Trade'
+  }, 
+  {
+    value: 'salvage only', 
+    label: 'Salvage Only' 
+  }, 
+]
 
-  //////////////////////////////////////////////////////////////////////
+export default function FirstStage() {
+  const history = useHistory()
+  // map through the documents and put into new array of users
+  const { documents } = useCollection('users')
+  const [users, setUsers] = useState([])
+  
+  // person who created project can save info about it in the db
+  const { user } = useAuthContext();
+  const { addDocument, response } = useFirestore('lifecycles')
 
-// project details, context, and general CRUD ops
+  // multi-page form setup
+  const [page, setPage] = useState(1);
 
+  // form fields
+  const [name, setName] = useState('')
+  const [details, setDetails] = useState('')
+  const [dueDate, setDueDate] = useState('')
+  const [category, setCategory] = useState('')
+  const [assignedUsers, setAssignedUsers] = useState([])
+  const [formError, setFormError] = useState(null)
+  useEffect(() => {
+      if(documents) {
+          const options = documents.map(user => {
+              return { value: user, label: user.displayName}
+          })
+          setUsers(options)
+      }
+  }, [documents])
+  
+  const handleSubmit = async (e) => {
+      e.preventDefault()
+      setFormError(null)
 
-export default function ProjectStages({ project }) {
-    const newMinerals = [
-        {
-          value: 'Quantanium', 
-          label: 'Quantanium', 
-          
-        }, 
-        {
-          value: 'Agrecium', 
-          label: 'Agrecium',
-          
-        }, 
-        {
-          value: 'Laranite', 
-          label: 'Laranite',
-          
-        }, 
-        {
-          value: 'Bexalite', 
-          label: 'Bexalite',
+      // perform checks
+      if(!category) {
+        setFormError('Please select a category')
+        return
+      }
+      if (assignedUsers.length < 1) {
+        setFormError('Please assign the project to at least one user')
+        return
+      }
 
-        }, 
-        {
-            value: 'Taranite', 
-            label: 'Taranite',
-            
-          },
-          {
-            value: 'Borase', 
-            label: 'Borase',
-            
-          },
-          {
-            value: 'Hephaestanite', 
-            label: 'Hephaestanite',
-            
-          },
-          {
-            value: 'Titanium', 
-            label: 'Titanium',
-            
-          },
-          {
-            value: 'Diamond', 
-            label: 'Diamond',
-            
-          },
-          {
-            value: 'Gold', 
-            label: 'Gold',
-           
-          },
-          {
-            value: 'Taranite', 
-            label: 'Taranite',
-            
-          },
-        {
-          value: 'Inert', 
-          label: 'Inert', 
-          
-        }, 
-      ]
-
-      const shipClass = [
-        {
-          value: 'Carack', 
-          label: 'Carack', 
-          
-        }, 
-        {
-          value: 'A2 Hercules', 
-          label: 'A2 Hercules',
-          
-        }, 
-        {
-          value: 'C2 Hercules', 
-          label: 'C2 Hercules',
-          
-        }, 
-        {
-          value: 'M2 Hercules', 
-          label: 'M2 Hercules',
-
-        }, 
-        {
-            value: 'Caterpillar', 
-            label: 'Caterpillar',
-            
-          },
-          {
-            value: 'Cutlass Black', 
-            label: 'Cutlass Black',
-            
-          },
-          {
-            value: 'Constellation Andromeda', 
-            label: 'Constellation Andromeda',
-            
-          }
-        ]
-
-      const refinement = [
-        {
-          value: "Cormack Method", 
-          label: "Cormack Method"
-        }, 
-        {
-          value: "Dinyx Solvention", 
-          label: "Dinyx Solvention"
-        }, 
-        {
-          value: "Electrostarolysis", 
-          label: "Electrostarolysis"
-        }, 
-        {
-          value: "Ferron Exchange", 
-          label: "Ferron Exchange"
-        }, 
-        {
-          value: "Gaskin Process", 
-          label: "Gaskin Process"
-        }, 
-        {
-          value: "Kazen Winnowing", 
-          label: "Kazen Winnowing"
-        }, 
-        {
-          value: "Pyrometric Chromalysis", 
-          label: "Pyrometric Chromalysis"
-        }, 
-        {
-          value: "Thermonatic Deposition", 
-          label: "Thermonatic Deposition"
-        }, 
-        {
-          value: "XCR Reaction", 
-          label: "XCR Reaction"
-        }
-      ]
-
-const { updateDocument, response } = useFirestore('lifecycles')
-const [newStage, setNewStage] = useState('');
-const [refinementType, setRefinementType] = useState('');
-const [minerals, setNewMinerals] = useState('');
-const [quantity, setQuantity] = useState('');
-const [duration, setDuration] = useState('');
-const [ship, setShip] = useState('');
-const { user } = useAuthContext()
-const [process, setNextProcess] = useState(1);
-
-function nextProcess() {
-  setNextProcess(process => process + 1)
-}
-
-const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    const stageToAdd = {
+      const createdBy = {
         displayName: user.displayName, 
-        content: newStage,
-        duration,
-        quantity,
-        ship,
-        displayMinerals: minerals, 
-        refinementType,
-        // createdAt: timestamp.fromDate(new Date()),
-        createdAt: TimeStamp(),
-        id: CreateID()
-    }
+        id: user.uid
+      }
 
+      // this is what we're saving to the db
+      // assigneduserslist is an array of objects where each object represents a user
+      // who the project is assigned to
+      const assignedUsersList = assignedUsers.map((u) => {
+        return {
+          displayName: u.value.displayName, 
+          id: u.value.id
+        }
+        
+      })
 
+      // this is the object we're saving to the database as a doc
+      const project = {
+        name, 
+        details,
+        category: category.value, 
+        dueDate: timestamp.fromDate(new Date(dueDate)), 
+        comments: [], 
+        createdBy, 
+        assignedUsersList
+      }
 
-    function CreateID () {
-       return "MT" + Math.floor(Math.random() * 1000); 
-    }
-
-    function TimeStamp() {
-      const date = new Date(2022, 11, 24, 10,)
-      return date
-    }
-
-    function TimeStamp2() {
-      const today = new Date()
-      let month = today.getDate()
-      let year = today.getMonth()
-      let date = today.getDate()
-      let time = today.getTime()
-      let current_date = `${year}, ${month}, ${date}` + ` at ${time}`
-
-     return current_date;
-    }
-
-    await updateDocument(project.id, {
-        additionalDetails: [...project.additionalDetails, stageToAdd]
-    })
-    if (!response.error) {
-        setNewStage('');
-    }
-}
+      await addDocument(project)
+      if (!response.error) {
+        // redirects to home page once complete and without error
+        history.push('/Dashboard')
+      }
+      
+  }
 
     return (
-        <div>
-            {/* <Form required onClick={(e) => setNewStage(e.target.value)} value={newStage}>
-                Add Stage
-                </Form> */}
-                {/* <Form onSubmit={handleSubmit}> */}
-                <Container className='container-details'>
-                <Form onSubmit={handleSubmit} className='project-details'>
-                    <label>
-                        <h4>Additional Stages</h4>
-                    <div>
-                    <Form >
-                    <label>
-                    <span>Additional Minerals:</span>
-                        <Select 
-                            onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti
-                        />
-                    </label>
-                
-                <Form.Field>
-                    <span>Yield Quantity in cSCU:</span>
-                    <input placeholder='Quantity'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
-                </Form.Field>
-                <label>
-                    <span>Refinement Method:</span>
-                    <Select 
-                        onChange={(e) => setRefinementType(e)} options={refinement} isMulti
-                    />
-                </label>
-                <label>
-                    <span>Ship Class:</span>
-                    <Select 
-                        onChange={(e) => setShip(e)} options={shipClass} isMulti
-                    />
-                </label>
-                    <Form>
-                        <Form.Field>
-                            <label className="project-details">Enter Processing Duration (in hours)</label>
-                            <input placeholder='Estimated Duration'  onChange={(e) => setDuration(e.target.value)} value={duration}/>
-                            
-                        </Form.Field>
-                        </Form>
-                        
-                        </Form>
-                        <form className="add-comment" onSubmit={handleSubmit}>
-                    <label>
-                      <span>Add new comment:</span>
-                      <textarea 
-                        onChange={(e) => setNewStage(e.target.value)}
-                        value={newStage}
-                      ></textarea>
-                    </label>
-                   
-                  </form>
-                        <button className='btn'>Add Stage</button>
-                </div>
-                
-                </label>
-                
-                <div className="project-details">
-                <div>
-                            <ul>
-                    {project.additionalDetails.length > 0 && project.additionalDetails.map(detail => (
-                      <li key={detail.id}>
-                        <div className="detail-author">
-                          
-                          <p>{detail.displayName}</p>
-                        </div>
-                        <div className="detail-date">
-                          <p>date here</p>
-                        </div>
-                        <div className="detail-content">
-                          {/* <p>{detail.content}</p> */}
-                          <Table celled>
-                                <Table.Header>
-                                  <Table.Row>
-                                    <Table.HeaderCell>Yield Quantity: {detail.quantity} cSCU</Table.HeaderCell>
-                                    <Table.HeaderCell>Method: {detail.refinementMethod}</Table.HeaderCell>
-                                    <Table.HeaderCell>Duration: {detail.duration} Hours</Table.HeaderCell>
-                                    <Table.HeaderCell>Stage ID: {detail.id}</Table.HeaderCell>
-                                    <Table.HeaderCell>Comments: {detail.content}</Table.HeaderCell>
-                                    {/* <Table.HeaderCell>Ship: {detail.ship['']}</Table.HeaderCell>
-                                    <Table.HeaderCell>Minerals: {detail.displayMinerals[{}]}</Table.HeaderCell> */}
-                                    <Table.HeaderCell>Created At: {detail.createdAt.seconds}</Table.HeaderCell>
-                                  </Table.Row>
-                                </Table.Header>
-                                </Table>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
 
-                </div>
-      
-
-      
-                </div>
-
-                
-                
-                </Form>
-                <div>
-              
-              
+          <div className="create-form">
+            <div>
+            <h2 className='page-title'>Create New Workflow</h2>
             </div>
-                </Container>
-                                    
-                
-                
-                
-            {/* <StageOne /> */}
             
-                
+           
+            
+            
+            <Form onSubmit={handleSubmit}>
+                <label htmlFor="">
+                    <span>Job Type:</span>
+                    <input required type='text'onChange={(e) => setName(e.target.value)} value={name} />
+                    
+                </label>
+                <label htmlFor="">
+                    <span>Project Details:</span>
+                    <input
+                    required
+                    type='text'
+                    onChange={(e) => setDetails(e.target.value)}
+                    value={details} />
+                    
+                </label>
+                <label htmlFor="">
+                    <span>Set Due Date:</span>
+                    <input
+                    required
+                    type='date'
+                    onChange={(e) => setDueDate(e.target.value)}
+                    value={dueDate} />
+                    
+                </label>
+                <label>
+                    <span>Project Category</span>
+                    {/* select single job type from dropdown here */}
+                    <Select 
+                        onChange={(option) => setCategory(option)}
+                        options={activity}
+                    />
+                    {/* <Dropdown placeholder='Activity' fluid selection options={activity}/> */}
+                </label>
+                <label>
+                    <span>Designate Product Owner:</span>
+                    {/* <Dropdown placeholder='Activity' fluid selection options={activity} /> */}
+                    {/* select single user with online status */}
+                    <Select 
+                        onChange={(option) => setAssignedUsers(option)}
+                    options={users}
+                    />
+                </label>
+                <label>
+                    <span>Additional Personnel:</span>
+                    <Select 
+                        onChange={(option) => setAssignedUsers(option)}
+                    options={users}
+                    isMulti
+                    />
+                </label>
+                <button className="btn">Add Project</button>
+                {formError && <p className='error'>{formError}</p>}
+            </Form>
+            
+            
+            
         </div>
-        
+          
+
     )
 }
 
