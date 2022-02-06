@@ -341,7 +341,7 @@ const handleSubmit = async (e) => {
                 
                 </Form>
                 <div>
-              
+              <button >Next Phase</button>
               
             </div>
                 </Container>
@@ -357,4 +357,24 @@ const handleSubmit = async (e) => {
     )
 }
 
+// function deliveryPending() {
+//   const [duration, setDuration] = useState('');
+//   return (
+//     <div>
+//            <Form>
+//             <Form.Field>
+//                <label className="project-details">Enter Processing Duration (in hours)</label>
+//                 <input placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>         
+//               </Form.Field>
+//             </Form>
+//     </div>
+//   )
+// }
 
+// function deliveryConfirmation() {
+//   return (
+//     <div>
+
+//     </div>
+//   )
+// }
