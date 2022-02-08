@@ -23,6 +23,7 @@ import 'semantic-ui-css/semantic.min.css'
 import CreateProject from './pages/create/CreateProject';
 import Project from './pages/data pages/Project'
 import Dashboard from './pages/dashboard/Dashboard';
+import DeliveryConfirmation from './pages/create/DeliveryConfirmation'
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -103,6 +104,14 @@ function App() {
             {!user && <Redirect to='/login' />}
             {user && <Project />}
           </Route>
+          <Route path='/DeliveryConfirmation'>
+            {!user && <Redirect to='/login' />}
+            {user && <DeliveryConfirmation />}
+          </Route>
+          {/* <Route path='/ShippingDetails'>
+            {!user && <Redirect to='/login' />}
+            {user && <Project />}
+          </Route> */}
 
         </Switch>
         {/* {user && <OnlineUsers />} */}

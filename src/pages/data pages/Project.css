@@ -1,9 +1,8 @@
 .project-details {
   display: grid;
   grid-template-columns: 3fr 2fr;
-  align-items: start;
+  /* align-items: start; */
   grid-gap: 60px;
-  text-align: left;
   color: rgba(201, 116, 56, 1)
  
 }
@@ -26,6 +25,21 @@ box-shadow: 0 0 7px rgba(201, 116, 56, 1);
   grid-gap: 60px;
   text-align: left;
 }
+
+.details-table {
+  /* padding: 12px 10px; */
+  /* margin: 18px 0; */
+  /* grid-template-columns: 3fr 2fr; */
+  align-items: center;
+  /* grid-gap: 60px; */
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.details-table-color {
+  background-color: magenta;
+}
+
 /* background image and general styling */
 .img-fluid {
   /* patterned backgrounds */
@@ -46,10 +60,10 @@ box-shadow: 0 0 7px rgba(201, 116, 56, 1);
 .project-overview {
   background-color: rgb(61, 60, 60);
   padding: 30px;
-  border-radius: 3px;
+  /* border-radius: 3px;
   color: white;
   text-align: left;
-  font-size: 1.3em;
+  font-size: 1.3em; */
 }
 
 .project-overview .due-date {

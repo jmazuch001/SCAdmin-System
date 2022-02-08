@@ -40,6 +40,52 @@ const activity = [
   }, 
 ]
 
+const refineryLocations = [
+  {
+    value: 'ARC-L1 Wide Forest Station', 
+    label: 'ARC-L1 Wide Forest Station'
+  },
+  {
+    value: 'CRU-L1 Ambitious Dream Station', 
+    label: 'CRU-L1 Ambitious Dream Station'
+  },
+  {
+    value: 'HUR-L1 Green Glade Station', 
+    label: 'HUR-L1 Green Glade Station'
+  },
+  {
+    value: 'HUR-L2 Faithful Dream Station', 
+    label: 'HUR-L2 Faithful Dream Station'
+  },
+  {
+    value: 'MIC-L1 Shallow Frontier Station', 
+    label: 'MIC-L1 Shallow Frontier Station'
+  },
+]
+
+const tradingDestinations = [
+  {
+    value: 'Hurston - Lorville', 
+    label: 'Hurston - Lorville'
+  },
+  {
+    value: 'Cursader - Port Olisar', 
+    label: 'Cursader - Port Olisar'
+  },
+  {
+    value: 'Crusader - Orison', 
+    label: 'Crusader - Orison'
+  },
+  {
+    value: 'ArcCorp - Area 18', 
+    label: 'ArcCorp - Area 18'
+  },
+  {
+    value: 'Crusader - Grim Hex', 
+    label: 'Crusader - Grim Hex'
+  },
+]
+
 export default function FourthStage() {
   const history = useHistory()
   // map through the documents and put into new array of users

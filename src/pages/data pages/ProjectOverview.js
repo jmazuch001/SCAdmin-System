@@ -16,16 +16,38 @@ export default function ProjectOverview( { project } ) {
         <div className={styles['img-fluid']}>
             {/* <Sidebar /> */}
             
-            <div className="project-overview">
-                <h1 className="page-title">{project.name}</h1>
+            <div>
+                {/* <h1 className="page-title">{project.name}</h1>
                 <p>Job Group: {project.job.value}</p>
                 <p className="due-date">
                     Project Due By: {project.dueDate.toDate().toDateString()}
                 </p>
+                <p className="ship-selection">Carrier Ship: {project.carrierShip.value}</p>
+                <p className="ship-selection">Max Cargo Capacity: {project.carrierShip.capacity}</p>
                 <p className="details">
                     {project.details}
-                </p>
-
+                </p> */}
+                <Table celled>
+                    <Table.Header>
+                        <Table.Row  className='details-table'>
+                            <Table.HeaderCell>Job Group: {project.job.value}</Table.HeaderCell>
+                            <Table.HeaderCell>Project Due By: {project.dueDate.toDate().toDateString()}</Table.HeaderCell>
+                            <Table.HeaderCell>Carrier Ship: {project.carrierShip.value}</Table.HeaderCell>
+                            <Table.HeaderCell>Max Cargo Capacity: {project.carrierShip.capacity}</Table.HeaderCell>
+                            <Table.HeaderCell>{project.details}</Table.HeaderCell>
+                            <Table.HeaderCell><h4>Project is assigned to:</h4>
+                                {project.assignedUsersList.map(user => {
+                                    return(
+                                        <div key={user.id}>
+                                    <ul>
+                                        {user.displayName}
+                                    </ul>
+                                        </div>
+                                    )})}
+                            </Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+                </Table>
                 
                 {/* <h4>Project Created By:</h4>
                 <div className='assigned-users'>
@@ -37,8 +59,8 @@ export default function ProjectOverview( { project } ) {
                 </div> */}
 
 
-                <h4>Project is assigned to:</h4>
-                <div className='assigned-users'>
+                
+                {/* <div className='assigned-users'>
                 {project.assignedUsersList.map(user => {
                     return(
                         <div key={user.id}>
@@ -48,7 +70,7 @@ export default function ProjectOverview( { project } ) {
                         </div>
                     )
                 })}
-                </div>
+                </div> */}
             
 
                 {/* <Container>

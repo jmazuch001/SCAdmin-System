@@ -103,43 +103,7 @@ export default function ProjectStages({ project }) {
         }, 
       ]
 
-      const shipClass = [
-        {
-          value: 'Carack', 
-          label: 'Carack', 
-          
-        }, 
-        {
-          value: 'A2 Hercules', 
-          label: 'A2 Hercules',
-          
-        }, 
-        {
-          value: 'C2 Hercules', 
-          label: 'C2 Hercules',
-          
-        }, 
-        {
-          value: 'M2 Hercules', 
-          label: 'M2 Hercules',
-
-        }, 
-        {
-            value: 'Caterpillar', 
-            label: 'Caterpillar',
-            
-          },
-          {
-            value: 'Cutlass Black', 
-            label: 'Cutlass Black',
-            
-          },
-          {
-            value: 'Constellation Andromeda', 
-            label: 'Constellation Andromeda',
-            
-          }
-        ]
+      
 
       const refinement = [
         {
@@ -245,6 +209,9 @@ const handleSubmit = async (e) => {
 
     return (
         <div>
+
+          {/* form transition */}
+          
             {/* <Form required onClick={(e) => setNewStage(e.target.value)} value={newStage}>
                 Add Stage
                 </Form> */}
@@ -273,12 +240,12 @@ const handleSubmit = async (e) => {
                         onChange={(e) => setRefinementType(e)} options={refinement} isMulti
                     />
                 </label>
-                <label>
+                {/* <label>
                     <span>Ship Class:</span>
                     <Select 
                         onChange={(e) => setShip(e)} options={shipClass} isMulti={true}
                     />
-                </label>
+                </label> */}
                     <Form>
                         <Form.Field>
                             <label className="project-details">Enter Processing Duration (in hours)</label>
@@ -310,10 +277,10 @@ const handleSubmit = async (e) => {
                       <li key={detail.id}>
                         <div className="detail-author">
                           
-                          <p>{detail.displayName}</p>
+                          <p>Added By: {detail.displayName}</p>
                         </div>
                         <div className="detail-date">
-                      <p>Created: {detail.created}</p>
+                      <p>Created on {detail.createdAt.toDate().toDateString()}</p>
                         </div>
                         <div className="detail-content">
                           {/* <p>{detail.content}</p> */}
@@ -327,7 +294,7 @@ const handleSubmit = async (e) => {
                                     <Table.HeaderCell>Comments: {detail.content}</Table.HeaderCell>
                                     {/* <Table.HeaderCell>Ship: {detail.ship['']}</Table.HeaderCell> */}
                                     {/* <Table.HeaderCell>Minerals: {detail.displayMinerals[{}]}</Table.HeaderCell> */}
-                                    {/* <Table.HeaderCell>Created At: {detail.createdAt.seconds}</Table.HeaderCell> */}
+                                    <Table.HeaderCell>Created At: {detail.createdAt.toDate().toDateString()}</Table.HeaderCell>
                                   </Table.Row>
                                 </Table.Header>
                                 </Table>
@@ -346,7 +313,7 @@ const handleSubmit = async (e) => {
                 
                 </Form>
                 <div>
-              <button >Next Phase</button>
+              <Button>Next Step</Button>
               
             </div>
                 </Container>
@@ -358,8 +325,16 @@ const handleSubmit = async (e) => {
             
                 
         </div>
+
         
     )
+    // function deliveryConfirmation () {
+    //   return(
+    //     <div>
+
+    //     </div>
+    //   )
+    // }
 }
 
 // function deliveryPending() {

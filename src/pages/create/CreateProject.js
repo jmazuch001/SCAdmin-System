@@ -70,9 +70,67 @@ const activity = [
       label: 'Microtech'
     },
     {
-      value: 'Crusader', 
-      label: 'Crusader'
+      value: 'Hurston', 
+      label: 'Hurston'
     },]
+
+    const shipClasses = [
+      {
+        value: 'Carack', 
+        label: 'Carack', 
+        capacity: 45600
+      }, 
+      {
+        value: 'A2 Hercules', 
+        label: 'A2 Hercules',
+        capacity: 21600
+      }, 
+      {
+        value: 'C2 Hercules', 
+        label: 'C2 Hercules',
+        capacity: 69600
+      }, 
+      {
+        value: 'M2 Hercules', 
+        label: 'M2 Hercules',
+        capacity: 52200
+      }, 
+      {
+          value: 'Caterpillar', 
+          label: 'Caterpillar',
+          capacity: 56400
+        },
+        {
+          value: 'Cutlass Black', 
+          label: 'Cutlass Black',
+          capacity: 4600
+        },
+        {
+          value: 'Constellation Andromeda', 
+          label: 'Constellation Andromeda',
+          capacity: 9600
+        },
+        {
+          value: 'Constellation Phoenix', 
+          label: 'Constellation Phoenix',
+          capacity: 9600
+        },
+        {
+          value: 'Constellation Taurus', 
+          label: 'Constellation Taurus',
+          capacity: 17400
+        },
+        {
+          value: 'Constellation Aquila', 
+          label: 'Constellation Aquila',
+          capacity: 9600
+        },
+        {
+          value: 'Raft', 
+          label: 'Raft',
+          capacity: 9600
+        }
+      ]
 
   const minerals = [
     {
@@ -156,6 +214,9 @@ export default function CreateProject() {
     // set Star System
     const [ starSystem, setStarSystem] = useState('');
 
+    // set carrier ship [shipClasses]
+    const [ carrierShip, setCarrierShip ] = useState('');
+
     // form fields
     const [name, setName] = useState('')
     const [details, setDetails] = useState('')
@@ -164,6 +225,17 @@ export default function CreateProject() {
 
     const [assignedUsers, setAssignedUsers] = useState([])
     const [formError, setFormError] = useState(null)
+
+    function convertCapacityToInteger() {
+      shipClasses.map(function(objects) {
+        return {
+          value: objects.value, 
+          lablel: objects.value,
+          capacity: parseInt(objects.capacity)
+        }
+      })
+    }
+
     useEffect(() => {
         if(documents) {
             const options = documents.map(user => {
@@ -208,7 +280,8 @@ export default function CreateProject() {
         const project = {
           job,
           starSystem,
-          name, 
+          name,
+          carrierShip, 
           details,
           category: category.value, 
           dueDate: timestamp.fromDate(new Date(dueDate)), 
@@ -250,6 +323,11 @@ export default function CreateProject() {
                     <Select 
                         onChange={(option) => setStarSystem(option)}
                         options={starSystems}
+                    />
+                    <span>Designate Carrier Ship:</span>
+                    <Select 
+                        onChange={(option) => setCarrierShip(option)}
+                        options={shipClasses}
                     />
                     </label>
                 <label htmlFor="">
