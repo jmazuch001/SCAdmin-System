@@ -7,10 +7,11 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 // component library references
-import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table } from 'semantic-ui-react'
+import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table, Input } from 'semantic-ui-react'
 import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
+import AddRemoveFields from '../../Components/AddRemoveFields'
 
 // function component data /////////////////////////////////////////
 
@@ -143,7 +144,8 @@ export default function ProjectStages({ project }) {
       const refinement = [
         {
           value: "Cormack Method", 
-          label: "Cormack Method"
+          label: "Cormack Method", 
+          text: "Cormack Method"
         }, 
         {
           value: "Dinyx Solvention", 
@@ -189,6 +191,7 @@ const [ship, setShip] = useState('');
 const { user } = useAuthContext()
 const [process, setNextProcess] = useState(1);
 
+
 function nextProcess() {
   setNextProcess(process => process + 1)
 }
@@ -206,6 +209,7 @@ const handleSubmit = async (e) => {
         refinementType,
         // createdAt: timestamp.fromDate(new Date()),
         createdAt: TimeStamp(),
+        created: TimeStamp2(),
         id: CreateID()
     }
 
@@ -256,11 +260,12 @@ const handleSubmit = async (e) => {
                         <Select 
                             onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti
                         />
+                        {/* <AddRemoveFields />    */}
                     </label>
                 
                 <Form.Field>
-                    <span>Yield Quantity in cSCU:</span>
-                    <input placeholder='Quantity'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
+                    <span>Total Yield Quantity:</span>
+                    <input placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
                 </Form.Field>
                 <label>
                     <span>Refinement Method:</span>
@@ -271,7 +276,7 @@ const handleSubmit = async (e) => {
                 <label>
                     <span>Ship Class:</span>
                     <Select 
-                        onChange={(e) => setShip(e)} options={shipClass} isMulti
+                        onChange={(e) => setShip(e)} options={shipClass} isMulti={true}
                     />
                 </label>
                     <Form>
@@ -308,7 +313,7 @@ const handleSubmit = async (e) => {
                           <p>{detail.displayName}</p>
                         </div>
                         <div className="detail-date">
-                          <p>date here</p>
+                      <p>Created: {detail.created}</p>
                         </div>
                         <div className="detail-content">
                           {/* <p>{detail.content}</p> */}
@@ -316,13 +321,13 @@ const handleSubmit = async (e) => {
                                 <Table.Header>
                                   <Table.Row>
                                     <Table.HeaderCell>Yield Quantity: {detail.quantity} cSCU</Table.HeaderCell>
-                                    <Table.HeaderCell>Method: {detail.refinementMethod}</Table.HeaderCell>
+                                    {/* <Table.HeaderCell>Method: {detail.refinementMethod}</Table.HeaderCell> */}
                                     <Table.HeaderCell>Duration: {detail.duration} Hours</Table.HeaderCell>
                                     <Table.HeaderCell>Stage ID: {detail.id}</Table.HeaderCell>
                                     <Table.HeaderCell>Comments: {detail.content}</Table.HeaderCell>
-                                    {/* <Table.HeaderCell>Ship: {detail.ship['']}</Table.HeaderCell>
-                                    <Table.HeaderCell>Minerals: {detail.displayMinerals[{}]}</Table.HeaderCell> */}
-                                    <Table.HeaderCell>Created At: {detail.createdAt.seconds}</Table.HeaderCell>
+                                    {/* <Table.HeaderCell>Ship: {detail.ship['']}</Table.HeaderCell> */}
+                                    {/* <Table.HeaderCell>Minerals: {detail.displayMinerals[{}]}</Table.HeaderCell> */}
+                                    {/* <Table.HeaderCell>Created At: {detail.createdAt.seconds}</Table.HeaderCell> */}
                                   </Table.Row>
                                 </Table.Header>
                                 </Table>
