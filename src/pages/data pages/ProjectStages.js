@@ -103,7 +103,43 @@ export default function ProjectStages({ project }) {
         }, 
       ]
 
-      
+      const shipClass = [
+        {
+          value: 'Carack', 
+          label: 'Carack', 
+          
+        }, 
+        {
+          value: 'A2 Hercules', 
+          label: 'A2 Hercules',
+          
+        }, 
+        {
+          value: 'C2 Hercules', 
+          label: 'C2 Hercules',
+          
+        }, 
+        {
+          value: 'M2 Hercules', 
+          label: 'M2 Hercules',
+
+        }, 
+        {
+            value: 'Caterpillar', 
+            label: 'Caterpillar',
+            
+          },
+          {
+            value: 'Cutlass Black', 
+            label: 'Cutlass Black',
+            
+          },
+          {
+            value: 'Constellation Andromeda', 
+            label: 'Constellation Andromeda',
+            
+          }
+        ]
 
       const refinement = [
         {
@@ -240,12 +276,12 @@ const handleSubmit = async (e) => {
                         onChange={(e) => setRefinementType(e)} options={refinement} isMulti
                     />
                 </label>
-                {/* <label>
+                <label>
                     <span>Ship Class:</span>
                     <Select 
                         onChange={(e) => setShip(e)} options={shipClass} isMulti={true}
                     />
-                </label> */}
+                </label>
                     <Form>
                         <Form.Field>
                             <label className="project-details">Enter Processing Duration (in hours)</label>
