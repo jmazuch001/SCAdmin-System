@@ -1,44 +1,14 @@
-import React from 'react'
-import styles from '../create/Stages.module.css'
-import { useState, useEffect } from 'react'
-import { useCollection } from '../../hooks/useCollection'
-import {Dropdown} from 'semantic-ui-react'
-import { Segment } from 'semantic-ui-react'
-import {Button, Popup} from 'semantic-ui-react'
-import { Form } from 'semantic-ui-react'
-import { Progress } from 'semantic-ui-react'
-import TransactionForm from '../../Components/TransactionForm'
-import { Container, Group} from 'semantic-ui-react'
-import Select from 'react-select'
-import { Step, Content, Icon, Title, Description, Tab, Pane, Image } from 'semantic-ui-react'
-import CreateProject from './CreateProject'
-import { timestamp } from '../../firebase/config'
-import { useAuthContext } from '../../hooks/useAuthContext'
+import React, { useState, useEffect } from 'react'
 import { useFirestore } from '../../hooks/useFirestore'
-import { useHistory } from 'react-router-dom'
-
-const activity = [
-  {
-    value: 'mining & trade', 
-    label: 'Mining & Trade'
-  }, 
-  {
-    value: 'mining only',
-    label: 'Mining Only'
-  }, 
-  {
-    value: 'trade only',
-    label: 'Trade Only'
-  }, 
-  {
-    value: 'salvage & trade',
-    label: 'Salvage & Trade'
-  }, 
-  {
-    value: 'salvage only', 
-    label: 'Salvage Only' 
-  }, 
-]
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import styles from '../create/CreateProject.css'
+import { Container, Form } from 'semantic-ui-react'
 
 const refineryLocations = [
   {
@@ -86,160 +56,117 @@ const tradingDestinations = [
   },
 ]
 
-export default function FourthStage() {
-  const history = useHistory()
-  // map through the documents and put into new array of users
-  const { documents } = useCollection('users')
-  const [users, setUsers] = useState([])
-  
-  // person who created project can save info about it in the db
-  const { user } = useAuthContext();
-  const { addDocument, response } = useFirestore('lifecycles')
-
-  // multi-page form setup
-  const [page, setPage] = useState(1);
-
-  // form fields
+export default function TransactionForm( { uid } ) {
   const [name, setName] = useState('')
-  const [details, setDetails] = useState('')
-  const [dueDate, setDueDate] = useState('')
-  const [category, setCategory] = useState('')
-  const [assignedUsers, setAssignedUsers] = useState([])
-  const [formError, setFormError] = useState(null)
-  useEffect(() => {
-      if(documents) {
-          const options = documents.map(user => {
-              return { value: user, label: user.displayName}
-          })
-          setUsers(options)
-      }
-  }, [documents])
+  const [amount, setAmount] = useState('')
+  const { addDocument, response } = useFirestore('delivery info')
+  // const { user } = useAuthContext()
   
-  const handleSubmit = async (e) => {
-      e.preventDefault()
-      setFormError(null)
-
-      // perform checks
-      if(!category) {
-        setFormError('Please select a category')
-        return
-      }
-      if (assignedUsers.length < 1) {
-        setFormError('Please assign the project to at least one user')
-        return
-      }
-
-      const createdBy = {
-        displayName: user.displayName, 
-        id: user.uid
-      }
-
-      // this is what we're saving to the db
-      // assigneduserslist is an array of objects where each object represents a user
-      // who the project is assigned to
-      const assignedUsersList = assignedUsers.map((u) => {
-        return {
-          displayName: u.value.displayName, 
-          id: u.value.id
-        }
-        
-      })
-
-      // this is the object we're saving to the database as a doc
-      const project = {
-        name, 
-        details,
-        category: category.value, 
-        dueDate: timestamp.fromDate(new Date(dueDate)), 
-        comments: [], 
-        createdBy, 
-        assignedUsersList
-      }
-
-      await addDocument(project)
-      if (!response.error) {
-        // redirects to home page once complete and without error
-        history.push('/')
-      }
+  
+  // useFirestore reference is const addDocument
+  const handleSubmit = (e) => {
+    // want to prevent default action of page reload
+    e.preventDefault()
+  
+    addDocument({ 
+      uid,
+      name, 
+      amount 
       
+    })
   }
 
-    return (
-      <Container className={styles['stages-animation']}>
-    <Step.Group attached > 
-    <Step>
-    <Icon  />
-        <Step.Content>
-          <div className="create-form">
-            <div>
-            <h2 className='page-title'>Create New Workflow</h2>
-            </div>
-            
-           
-            
-            <Container>
-            <Form onSubmit={handleSubmit}>
-                <label htmlFor="">
-                    <span>Job Type:</span>
-                    <input required type='text'onChange={(e) => setName(e.target.value)} value={name} />
-                    
-                </label>
-                <label htmlFor="">
-                    <span>Project Details:</span>
-                    <input
-                    required
-                    type='text'
-                    onChange={(e) => setDetails(e.target.value)}
-                    value={details} />
-                    
-                </label>
-                <label htmlFor="">
-                    <span>Set Due Date:</span>
-                    <input
-                    required
-                    type='date'
-                    onChange={(e) => setDueDate(e.target.value)}
-                    value={dueDate} />
-                    
-                </label>
-                <label>
-                    <span>Project Category</span>
-                    {/* select single job type from dropdown here */}
-                    <Select 
-                        onChange={(option) => setCategory(option)}
-                        options={activity}
-                    />
-                    {/* <Dropdown placeholder='Activity' fluid selection options={activity}/> */}
-                </label>
-                <label>
-                    <span>Designate Product Owner:</span>
-                    {/* <Dropdown placeholder='Activity' fluid selection options={activity} /> */}
-                    {/* select single user with online status */}
-                    <Select 
-                        onChange={(option) => setAssignedUsers(option)}
-                    options={users}
-                    />
-                </label>
-                <label>
-                    <span>Additional Personnel:</span>
-                    <Select 
-                        onChange={(option) => setAssignedUsers(option)}
-                    options={users}
-                    isMulti
-                    />
-                </label>
-                <button className="btn">Add Project</button>
-                {formError && <p className='error'>{formError}</p>}
-            </Form>
-            </Container>
-            
-            
-        </div>
-          
-        </Step.Content>
-    </Step>
-    </Step.Group>   
+  // clears transaction form upon submission
+  useEffect(() => {
+    if(response.success){
+      setName('')
+      setAmount('')
+    }
+  }, [response.success])
+
+  return (
+<>
+<Container className="container-styles">
+    <h3>Delivery Details</h3>
+    <Form onSubmit={handleSubmit}>
+      <label>
+        <span>Transaction Name: </span>
+        <input 
+          type="text"
+          required
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+        >
+        </input>
+      </label>
+      <label>
+        <span>Amount (aUEC):</span>
+        <input 
+          type="number"
+          required
+          onChange={(e) => setAmount(e.target.value)}
+          value={amount}
+        >
+        </input>
+      </label>
+      <button>Add Transaction</button>
+    </Form>
 </Container>
-    )
+</>
+
+  )
 }
 
+
+
+
+
+
+
+
+
+// function createData(name, calories, fat, carbs, protein) {
+//   return { name, calories, fat, carbs, protein };
+// }
+
+// const rows = [
+//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+//   createData('Eclair', 262, 16.0, 24, 6.0),
+//   createData('Cupcake', 305, 3.7, 67, 4.3),
+//   createData('Gingerbread', 356, 16.0, 49, 3.9),
+// ];
+
+// export default function BasicTable() {
+//   return (
+//     <TableContainer component={Paper}>
+//       <Table sx={{ minWidth: 650 }} aria-label="simple table">
+//         <TableHead>
+//           <TableRow>
+//             <TableCell>Dessert (100g serving)</TableCell>
+//             <TableCell align="right">Calories</TableCell>
+//             <TableCell align="right">Fat&nbsp;(g)</TableCell>
+//             <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+//             <TableCell align="right">Protein&nbsp;(g)</TableCell>
+//           </TableRow>
+//         </TableHead>
+//         <TableBody>
+//           {rows.map((row) => (
+//             <TableRow
+//               key={row.name}
+//               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+//             >
+//               <TableCell component="th" scope="row">
+//                 {row.name}
+//               </TableCell>
+//               <TableCell align="right">{row.calories}</TableCell>
+//               <TableCell align="right">{row.fat}</TableCell>
+//               <TableCell align="right">{row.carbs}</TableCell>
+//               <TableCell align="right">{row.protein}</TableCell>
+//             </TableRow>
+//           ))}
+//         </TableBody>
+//       </Table>
+//     </TableContainer>
+//   );
+// }

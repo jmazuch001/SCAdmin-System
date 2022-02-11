@@ -6,6 +6,7 @@ import { timestamp } from '../../firebase/config'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
+import {Link} from 'react-router-dom'
 // component library references
 import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table, Input } from 'semantic-ui-react'
 import Select from 'react-select'
@@ -361,7 +362,7 @@ const handleSubmit = async (e) => {
                 
                 </Form>
                 <div>
-              <Button>Next Step</Button>
+              <Button><Link to="/DeliveryConfirmation" className={styles['link-text']}>Next Step</Link></Button>
               
             </div>
                 </Container>
