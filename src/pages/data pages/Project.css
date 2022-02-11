@@ -8,16 +8,19 @@
 }
 
 .container-details {
+border-radius: 25px;
 padding: 12px 10px;
 margin: 18px 0;
 box-sizing: border-box;
 color: rgb(15, 9, 7);
-opacity: 75%;
-background-color: rgb(42, 42, 42);
-border: solid #C97438 1px; 
-box-shadow: 0 0 7px rgba(201, 116, 56, 1); 
--webkit-box-shadow: 0 0 7px rgba(201, 116, 56, 1); 
--moz-box-shadow: 0 0 7px rgba(201, 116, 56, 1); 
+opacity: 80%;
+/* background-color: rgb(13, 16, 54); */
+background: rgb(1,1,1);
+background: linear-gradient(25deg, rgba(1,1,1,1) 24%, rgba(5,39,60,1) 60%, rgba(5,39,60,1) 70%, rgba(0,0,0,1) 100%);
+border: solid #ec660715 1px; 
+box-shadow: 0 0 7px rgba(252, 249, 247, 0.411); 
+-webkit-box-shadow: 0 0 30px rgba(252, 249, 247, 0.411); 
+-moz-box-shadow: 0 0 7px rgba(252, 249, 247, 0.411); 
   /* display: flex;
   display: grid; */
   grid-template-columns: 3fr 2fr;

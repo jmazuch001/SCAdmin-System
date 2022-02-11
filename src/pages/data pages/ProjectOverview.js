@@ -7,6 +7,7 @@ import AdminWorkflows from '../office/AdminWorkflows'
 import { Grid, Button } from 'semantic-ui-react'
 import FirstStage from '../create/FirstStage'
 import ProjectStages from './ProjectStages'
+import Reporting from '../office/Reporting'
 
 export default function ProjectOverview( { project } ) {
 // states
@@ -48,6 +49,7 @@ export default function ProjectOverview( { project } ) {
                         </Table.Row>
                     </Table.Header>
                 </Table>
+                
                 
                 {/* <h4>Project Created By:</h4>
                 <div className='assigned-users'>

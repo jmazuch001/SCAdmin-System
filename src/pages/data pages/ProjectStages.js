@@ -190,7 +190,18 @@ const [duration, setDuration] = useState('');
 const [ship, setShip] = useState('');
 const { user } = useAuthContext()
 const [process, setNextProcess] = useState(1);
+// disable add stage button once cargo capacity is exceeded or = to capacity
+// const [disable, setDisable] = React.useState(false);
 
+// function SetStageDisable() {
+//   if(stageToAdd.quantity === project.carrierShip.capacity || stageToAdd.quantity > project.carrierShip.capacity){
+//     return (
+//       <div>
+//         <p>No longer able to add another stage! Please create another project to track these details.</p>
+//       </div>
+//     )
+//   }
+// }
 
 function nextProcess() {
   setNextProcess(process => process + 1)
@@ -337,6 +348,7 @@ const handleSubmit = async (e) => {
                         </div>
                       </li>
                     ))}
+                    
                   </ul>
 
                 </div>

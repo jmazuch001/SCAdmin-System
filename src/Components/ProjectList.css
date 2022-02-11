@@ -7,15 +7,24 @@
   margin-right: 10px;
 }
 .project-list a {
-  background-color: rgba(46, 38, 38, 0.5);
+border-radius: 25px;
   padding: 16px;
-  border-radius: 6px;
-  border: solid #C97438 1px; 
-      box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
-      -webkit-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
-      -moz-box-shadow: 0 0 7px rgba(201, 116, 56, 1)  ; 
+  opacity: 85%;
+  background: rgb(1,1,1);
+  background: linear-gradient(25deg, rgba(1,1,1,1) 0%, rgba(34,34,34,1) 32%, rgba(34,34,34,1) 70%, rgba(0,0,0,1) 100%);
+border: solid #ec660715 1px; 
+box-shadow: 0 0 0px rgba(252, 249, 247, 0.411); 
+-webkit-box-shadow: 0 0 7px rgba(252, 249, 247, 0.411); 
+-moz-box-shadow: 0 0 7px rgba(252, 249, 247, 0.411);  
   color: rgb(239, 239, 241);
 
+}
+
+.project-list a:hover {
+  box-shadow: 0 0 0px rgba(252, 249, 247, 0.411); 
+-webkit-box-shadow: 0 0 17px rgba(192, 90, 23, 0.582); 
+-moz-box-shadow: 0 0 7px rgba(252, 249, 247, 0.411);  
+  color: rgb(239, 239, 241);
 }
 
 h2 {
@@ -25,7 +34,7 @@ h2 {
 }
 
 .project-list h4 {
-  font-size: 1.1em;
+  font-size: 1.4em;
   color: var(--heading-color);
   color: rgb(248, 240, 234);
  
@@ -33,7 +42,7 @@ h2 {
 }
 .project-list p {
   color: var(--text-color);
-  font-size: 1.45em;
+  font-size: 1.75em;
   color: rgba(201, 116, 56, 1);
 }
 .project-list .assigned-to {
