@@ -182,6 +182,52 @@ export default function ProjectStages({ project }) {
         }
       ]
 
+      const refineryLocations = [
+        {
+          value: 'ARC-L1 Wide Forest Station', 
+          label: 'ARC-L1 Wide Forest Station'
+        },
+        {
+          value: 'CRU-L1 Ambitious Dream Station', 
+          label: 'CRU-L1 Ambitious Dream Station'
+        },
+        {
+          value: 'HUR-L1 Green Glade Station', 
+          label: 'HUR-L1 Green Glade Station'
+        },
+        {
+          value: 'HUR-L2 Faithful Dream Station', 
+          label: 'HUR-L2 Faithful Dream Station'
+        },
+        {
+          value: 'MIC-L1 Shallow Frontier Station', 
+          label: 'MIC-L1 Shallow Frontier Station'
+        },
+      ]
+      
+      const tradingDestinations = [
+        {
+          value: 'Hurston - Lorville', 
+          label: 'Hurston - Lorville'
+        },
+        {
+          value: 'Cursader - Port Olisar', 
+          label: 'Cursader - Port Olisar'
+        },
+        {
+          value: 'Crusader - Orison', 
+          label: 'Crusader - Orison'
+        },
+        {
+          value: 'ArcCorp - Area 18', 
+          label: 'ArcCorp - Area 18'
+        },
+        {
+          value: 'Crusader - Grim Hex', 
+          label: 'Crusader - Grim Hex'
+        },
+      ]
+
 const { updateDocument, response } = useFirestore('lifecycles')
 const [newStage, setNewStage] = useState('');
 const [refinementType, setRefinementType] = useState('');
@@ -193,7 +239,8 @@ const { user } = useAuthContext()
 const [page, setPage] = useState(1);
 const [location, setLocation] = useState('');
 const [destination, setDestination] = useState('');
-
+const [saleValue, setSaleValue] = useState('')
+ 
 function NextPage() {
   setPage(page => page + 1)
 }
@@ -211,6 +258,35 @@ function NextPage() {
 //   }
 // }
 
+// function Trade() {
+//   return (
+//     <Form  className='project-details'>
+//     <div >
+//        <div className='progressbar'></div> 
+//        <div className='details-container'>
+//            <div>
+//              <label>
+//                 <span>Select Cargo Location</span>
+//                   <Select 
+//                     onChange={(e) => setLocation(e)} options={refineryLocations} 
+//                   />
+//               </label>
+//               <label>
+//                 <span>Select Cargo Destination</span>
+//                   <Select 
+//                     onChange={(e) => setDestination(e)} options={tradingDestinations} 
+//                   />
+//               </label>
+//               </div>
+//                <Button>Previous</Button>
+//                <Button>Next</Button>
+//                <p>This is a P-TAG</p>
+           
+//        </div>
+//     </div>
+//     </Form>
+//   )
+// }
 
 
 
@@ -229,7 +305,8 @@ const handleSubmit = async (e) => {
         id: CreateID(), 
         location, 
         destination, 
-        totalMinerals: totalMinerals()
+        totalMinerals: totalMinerals(), 
+        saleValue 
     }
 
     function totalMinerals() {
@@ -256,20 +333,12 @@ const handleSubmit = async (e) => {
     }
 }
 
-
-
-    return (
-        <div>
-
-          {/* form transition */}
-          
-            {/* <Form required onClick={(e) => setNewStage(e.target.value)} value={newStage}>
-                Add Stage
-                </Form> */}
-                {/* <Form onSubmit={handleSubmit}> */}
-                
+    return ( 
+        <div>            
                 <Container className='container-details'>
                 <div className='project-details'>Progress Bar</div>
+                {/* FIRST PAGE / STAGE OF M/T FORM */}
+                {page === 1 &&
                 <Form onSubmit={handleSubmit} className='project-details'>
                     <label>
                         <h4>Additional Stages</h4>
@@ -280,9 +349,7 @@ const handleSubmit = async (e) => {
                         <Select 
                             onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti
                         />
-                        {/* <AddRemoveFields />    */}
                     </label>
-                
                 <Form.Field>
                     <span>Total Yield Quantity:</span>
                     <input placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
@@ -293,12 +360,6 @@ const handleSubmit = async (e) => {
                         onChange={(e) => setRefinementType(e)} options={refinement} isMulti
                     />
                 </label>
-                {/* <label>
-                    <span>Ship Class:</span>
-                    <Select 
-                        onChange={(e) => setShip(e)} options={shipClass} isMulti={true}
-                    />
-                </label> */}
                     <Form>
                         <Form.Field>
                             <label className="project-details">Enter Processing Duration (in hours)</label>
@@ -365,12 +426,77 @@ const handleSubmit = async (e) => {
                 
                 
                 </Form>
+}
                 <div>
-              <Button><Link to="/DeliveryConfirmation" className={styles['link-text']}>Next Step</Link></Button>    
-              <Button onClick={NextPage}>Next Page</Button>         
-              {page === 1 && "Page One"}
-              {/* {page === 2 && <Trade />} */}
-              {page === 3 && "Delivery Complete"}
+                  
+              {/* <Button><Link to="/DeliveryConfirmation" className={styles['link-text']}>Next Step</Link></Button>     */}
+                   
+               
+              {/* {page === 2 && <TradeDetailsForm />} */}
+              {page === 2 && 
+              <Form  className='project-details'>
+              <div >
+                 <div className='progressbar'></div> 
+                 <div className='details-container'>
+                     <div>
+                       <label>
+                          <span>Select Cargo Location</span>
+                            <Select 
+                              onChange={(e) => setLocation(e)} options={refineryLocations} 
+                            />
+                        </label>
+                        <label>
+                          <span>Select Cargo Destination</span>
+                            <Select 
+                              onChange={(e) => setDestination(e)} options={tradingDestinations} 
+                            />
+                        </label>
+                        </div>
+
+                     
+                 </div>
+                 <ul>
+                    {project.additionalDetails.length > 0 && project.additionalDetails.map(nextPageDetails => (
+                      <li key={nextPageDetails.id}>
+                        <div className="detail-author">
+                          <p>Added By: {nextPageDetails.displayName}</p>
+                        </div>
+                        <div className="detail-date">
+                      <p>Created on {nextPageDetails.createdAt.toDate().toDateString()}</p>
+                        </div>
+                        <div className="detail-content">
+                          {/* <p>{detail.content}</p> */}
+                          <Table celled>
+                                <Table.Header>
+                                  <Table.Row>
+                                    <Table.HeaderCell>Location{nextPageDetails.location}</Table.HeaderCell>
+                                    <Table.HeaderCell>Destination{nextPageDetails.destination}</Table.HeaderCell>
+                                    <Table.HeaderCell>Created At: {nextPageDetails.createdAt.toDate().toDateString()}</Table.HeaderCell>
+                                  </Table.Row>
+                                </Table.Header>
+                                </Table>
+                        </div>
+                      </li>
+                    ))}
+                    
+                  </ul>
+              </div>
+              
+                  
+              </Form>
+              
+              
+              }
+              {page === 3 && 
+              <Form>
+                <Form.Field>
+                    <span className='project-details'>Total Sale Value: </span>
+                    <input placeholder='Sale Amount in aUEC'  onChange={(e) => setSaleValue(e.target.value)} value={saleValue}/>
+                </Form.Field>
+              </Form>
+              }
+              
+              <Button onClick={NextPage}>Next Page</Button>
 
             </div>
                 </Container>
@@ -388,20 +514,6 @@ const handleSubmit = async (e) => {
 
 }
 
-// function Trade() {
-//   return (
-//     <div className='form'>
-//        <div className='progressbar'></div> 
-//        <div className='form-container'>
-//            <div></div>
-           
-//                <Button>Previous</Button>
-//                <Button>Next</Button>
-//                <p>This is a P-TAG</p>
-           
-//        </div>
-//     </div>
-//   )
-// }
+
 
 
