@@ -191,6 +191,8 @@ const [duration, setDuration] = useState('');
 const [ship, setShip] = useState('');
 const { user } = useAuthContext()
 const [page, setPage] = useState(1);
+const [location, setLocation] = useState('');
+const [destination, setDestination] = useState('');
 
 function NextPage() {
   setPage(page => page + 1)
@@ -223,11 +225,17 @@ const handleSubmit = async (e) => {
         // ship,
         displayMinerals: minerals, 
         refinementType,
-        // createdAt: timestamp.fromDate(new Date()),
         createdAt: TimeStamp(),
-        id: CreateID()
+        id: CreateID(), 
+        location, 
+        destination, 
+        totalMinerals: totalMinerals()
     }
 
+    function totalMinerals() {
+      // this total should be the running total of all minerals being transported in each order / bill
+      return quantity
+    }
 
 
     function CreateID () {
