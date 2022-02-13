@@ -56,7 +56,7 @@ const tradingDestinations = [
   },
 ]
 
-export default function TransactionForm( { uid } ) {
+export default function DeliveryConfirmationStep( { uid } ) {
   const [name, setName] = useState('')
   const [amount, setAmount] = useState('')
   const { addDocument, response } = useFirestore('delivery info')
