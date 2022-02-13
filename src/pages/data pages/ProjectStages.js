@@ -13,7 +13,7 @@ import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
 import AddRemoveFields from '../../Components/AddRemoveFields'
-
+import TradeDetailsForm from '../../Components/TradeDetailsForm'
 // function component data /////////////////////////////////////////
 
 
@@ -190,7 +190,12 @@ const [quantity, setQuantity] = useState('');
 const [duration, setDuration] = useState('');
 const [ship, setShip] = useState('');
 const { user } = useAuthContext()
-const [process, setNextProcess] = useState(1);
+const [page, setPage] = useState(1);
+
+function NextPage() {
+  setPage(page => page + 1)
+}
+
 // disable add stage button once cargo capacity is exceeded or = to capacity
 // const [disable, setDisable] = React.useState(false);
 
@@ -204,9 +209,8 @@ const [process, setNextProcess] = useState(1);
 //   }
 // }
 
-function nextProcess() {
-  setNextProcess(process => process + 1)
-}
+
+
 
 const handleSubmit = async (e) => {
     e.preventDefault()
@@ -216,12 +220,11 @@ const handleSubmit = async (e) => {
         content: newStage,
         duration,
         quantity,
-        ship,
+        // ship,
         displayMinerals: minerals, 
         refinementType,
         // createdAt: timestamp.fromDate(new Date()),
         createdAt: TimeStamp(),
-        created: TimeStamp2(),
         id: CreateID()
     }
 
@@ -232,20 +235,10 @@ const handleSubmit = async (e) => {
     }
 
     function TimeStamp() {
-      const date = new Date(2022, 11, 24, 10,)
+      const date = new Date()
       return date
     }
 
-    function TimeStamp2() {
-      const today = new Date()
-      let month = today.getDate()
-      let year = today.getMonth()
-      let date = today.getDate()
-      let time = today.getTime()
-      let current_date = `${year}, ${month}, ${date}` + ` at ${time}`
-
-     return current_date;
-    }
 
     await updateDocument(project.id, {
         additionalDetails: [...project.additionalDetails, stageToAdd]
@@ -254,6 +247,8 @@ const handleSubmit = async (e) => {
         setNewStage('');
     }
 }
+
+
 
     return (
         <div>
@@ -264,7 +259,9 @@ const handleSubmit = async (e) => {
                 Add Stage
                 </Form> */}
                 {/* <Form onSubmit={handleSubmit}> */}
+                
                 <Container className='container-details'>
+                <div className='project-details'>Progress Bar</div>
                 <Form onSubmit={handleSubmit} className='project-details'>
                     <label>
                         <h4>Additional Stages</h4>
@@ -288,12 +285,12 @@ const handleSubmit = async (e) => {
                         onChange={(e) => setRefinementType(e)} options={refinement} isMulti
                     />
                 </label>
-                <label>
+                {/* <label>
                     <span>Ship Class:</span>
                     <Select 
                         onChange={(e) => setShip(e)} options={shipClass} isMulti={true}
                     />
-                </label>
+                </label> */}
                     <Form>
                         <Form.Field>
                             <label className="project-details">Enter Processing Duration (in hours)</label>
@@ -324,7 +321,6 @@ const handleSubmit = async (e) => {
                     {project.additionalDetails.length > 0 && project.additionalDetails.map(detail => (
                       <li key={detail.id}>
                         <div className="detail-author">
-                          
                           <p>Added By: {detail.displayName}</p>
                         </div>
                         <div className="detail-date">
@@ -362,8 +358,12 @@ const handleSubmit = async (e) => {
                 
                 </Form>
                 <div>
-              <Button><Link to="/DeliveryConfirmation" className={styles['link-text']}>Next Step</Link></Button>
-              
+              <Button><Link to="/DeliveryConfirmation" className={styles['link-text']}>Next Step</Link></Button>    
+              <Button onClick={NextPage}>Next Page</Button>         
+              {page === 1 && "Page One"}
+              {/* {page === 2 && <Trade />} */}
+              {page === 3 && "Delivery Complete"}
+
             </div>
                 </Container>
                                     
@@ -377,33 +377,23 @@ const handleSubmit = async (e) => {
 
         
     )
-    // function deliveryConfirmation () {
-    //   return(
-    //     <div>
 
-    //     </div>
-    //   )
-    // }
 }
 
-// function deliveryPending() {
-//   const [duration, setDuration] = useState('');
+// function Trade() {
 //   return (
-//     <div>
-//            <Form>
-//             <Form.Field>
-//                <label className="project-details">Enter Processing Duration (in hours)</label>
-//                 <input placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>         
-//               </Form.Field>
-//             </Form>
+//     <div className='form'>
+//        <div className='progressbar'></div> 
+//        <div className='form-container'>
+//            <div></div>
+           
+//                <Button>Previous</Button>
+//                <Button>Next</Button>
+//                <p>This is a P-TAG</p>
+           
+//        </div>
 //     </div>
 //   )
 // }
 
-// function deliveryConfirmation() {
-//   return (
-//     <div>
 
-//     </div>
-//   )
-// }

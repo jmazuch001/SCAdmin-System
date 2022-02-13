@@ -24,6 +24,7 @@ import CreateProject from './pages/create/CreateProject';
 import Project from './pages/data pages/Project'
 import Dashboard from './pages/dashboard/Dashboard';
 import DeliveryConfirmation from './pages/create/DeliveryConfirmation'
+import TestPage from './pages/office/TestPage'
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -107,6 +108,10 @@ function App() {
           <Route path='/DeliveryConfirmation'>
             {!user && <Redirect to='/login' />}
             {user && <DeliveryConfirmation />}
+          </Route>
+          <Route path='/TestPage'>
+            {!user && <Redirect to='/login' />}
+            {user && <TestPage />}
           </Route>
           {/* <Route path='/ShippingDetails'>
             {!user && <Redirect to='/login' />}

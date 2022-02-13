@@ -85,6 +85,11 @@ const itemsList = [
     { 
         text: 'QR Generator', 
         icon: <GraphicEqIcon />
+    },
+    { 
+        text: 'Test Page', 
+        icon: <GraphicEqIcon />,
+        onClick: () => history.push('/TestPage')
     }
 ];
 
