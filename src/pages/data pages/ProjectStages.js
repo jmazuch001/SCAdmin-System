@@ -236,7 +236,7 @@ const [quantity, setQuantity] = useState('');
 const [duration, setDuration] = useState('');
 const [ship, setShip] = useState('');
 const { user } = useAuthContext()
-const [page, setPage] = useState(1);
+const [page, setPage] = useState(0);
 const [location, setLocation] = useState('');
 const [destination, setDestination] = useState('');
 const [saleValue, setSaleValue] = useState('')
@@ -331,6 +331,8 @@ const handleSubmit = async (e) => {
     if (!response.error) {
         setNewStage('');
     }
+
+    
 }
 
     return ( 
@@ -338,7 +340,7 @@ const handleSubmit = async (e) => {
                 <Container className='container-details'>
                 <div className='project-details'>Progress Bar</div>
                 {/* FIRST PAGE / STAGE OF M/T FORM */}
-                {page === 1 &&
+                {page === 0 &&
                 <Form onSubmit={handleSubmit} className='project-details'>
                     <label>
                         <h4>Additional Stages</h4>
@@ -433,8 +435,8 @@ const handleSubmit = async (e) => {
                    
                
               {/* {page === 2 && <TradeDetailsForm />} */}
-              {page === 2 && 
-              <Form  className='project-details'>
+              {page === 1 && 
+              <Form  className='project-details' onSubmit={handleSubmit}>
               <div >
                  <div className='progressbar'></div> 
                  <div className='details-container'>
@@ -455,7 +457,21 @@ const handleSubmit = async (e) => {
 
                      
                  </div>
-                 <ul>
+                 
+              </div>
+              
+                  
+              </Form>
+              
+              
+              }
+              {page === 2 && 
+              <Form className="add-comment" onSubmit={handleSubmit}>
+                <Form.Field>
+                    <span className='project-details'>Total Sale Value: </span>
+                    <input placeholder='Sale Amount in aUEC'  onChange={(e) => setSaleValue(e.target.value)} value={saleValue}/>
+                </Form.Field>
+                <ul>
                     {project.additionalDetails.length > 0 && project.additionalDetails.map(nextPageDetails => (
                       <li key={nextPageDetails.id}>
                         <div className="detail-author">
@@ -480,20 +496,38 @@ const handleSubmit = async (e) => {
                     ))}
                     
                   </ul>
-              </div>
-              
-                  
               </Form>
-              
-              
               }
               {page === 3 && 
-              <Form>
-                <Form.Field>
-                    <span className='project-details'>Total Sale Value: </span>
-                    <input placeholder='Sale Amount in aUEC'  onChange={(e) => setSaleValue(e.target.value)} value={saleValue}/>
-                </Form.Field>
-              </Form>
+              <Form onSubmit={handleSubmit} className='project-details'>
+              <ul>
+              {project.additionalDetails.length > 0 && project.additionalDetails.map(nextPageDetails => (
+                <li key={nextPageDetails.id}>
+                  <div className="detail-author">
+                    <p>Added By: {nextPageDetails.displayName}</p>
+                  </div>
+                  <div className="detail-date">
+                <p>Created on {nextPageDetails.createdAt.toDate().toDateString()}</p>
+                  </div>
+                  <div className="detail-content">
+                    {/* <p>{detail.content}</p> */}
+                    <Table celled>
+                          <Table.Header>
+                            <Table.Row>
+                              <Table.HeaderCell>Location{nextPageDetails.location}</Table.HeaderCell>
+                              <Table.HeaderCell>Destination{nextPageDetails.destination}</Table.HeaderCell>
+                              <Table.HeaderCell>Sale Amount: {nextPageDetails.saleValue}</Table.HeaderCell>
+                              <Table.HeaderCell>Created At: {nextPageDetails.createdAt.toDate().toDateString()}</Table.HeaderCell>
+                            </Table.Row>
+                          </Table.Header>
+                          </Table>
+                  </div>
+                </li>
+              ))}
+              
+            </ul>
+            <button className='btn'>Final Details</button>
+            </Form>
               }
               
               <Button onClick={NextPage}>Next Page</Button>
