@@ -2,7 +2,7 @@
 import React from 'react'
 import styles from '../data pages/Project.css'
 import { useState, useEffect } from 'react'
-import { timestamp } from '../../firebase/config'
+import { projectFirestore, timestamp } from '../../firebase/config'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
@@ -14,6 +14,7 @@ import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
 import AddRemoveFields from '../../Components/AddRemoveFields'
 import TradeDetailsForm from '../../Components/TradeDetailsForm'
+import TestStage from '../../pages/data pages/TestStage'
 // function component data /////////////////////////////////////////
 
 
@@ -236,14 +237,24 @@ const [quantity, setQuantity] = useState('');
 const [duration, setDuration] = useState('');
 const [ship, setShip] = useState('');
 const { user } = useAuthContext()
-const [page, setPage] = useState(1);
+const [page, setPage] = useState(0);
 const [location, setLocation] = useState('');
 const [destination, setDestination] = useState('');
 const [saleValue, setSaleValue] = useState('')
  
 function NextPage() {
+  // if (page === 3) return;
   setPage(page => page + 1)
 }
+
+// function PrevPage() {
+//   setPage(page => page + 1)
+// }
+
+// if (page =! 0 || page < 1) {
+//   PrevPage()
+// }
+
 
 // disable add stage button once cargo capacity is exceeded or = to capacity
 // const [disable, setDisable] = React.useState(false);
@@ -258,38 +269,6 @@ function NextPage() {
 //   }
 // }
 
-// function Trade() {
-//   return (
-//     <Form  className='project-details'>
-//     <div >
-//        <div className='progressbar'></div> 
-//        <div className='details-container'>
-//            <div>
-//              <label>
-//                 <span>Select Cargo Location</span>
-//                   <Select 
-//                     onChange={(e) => setLocation(e)} options={refineryLocations} 
-//                   />
-//               </label>
-//               <label>
-//                 <span>Select Cargo Destination</span>
-//                   <Select 
-//                     onChange={(e) => setDestination(e)} options={tradingDestinations} 
-//                   />
-//               </label>
-//               </div>
-//                <Button>Previous</Button>
-//                <Button>Next</Button>
-//                <p>This is a P-TAG</p>
-           
-//        </div>
-//     </div>
-//     </Form>
-//   )
-// }
-
-
-
 const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -303,10 +282,10 @@ const handleSubmit = async (e) => {
         refinementType,
         createdAt: TimeStamp(),
         id: CreateID(), 
-        // location, 
-        // destination, 
+        location, 
+        destination, 
         totalMinerals: totalMinerals(), 
-        // saleValue 
+        saleValue 
     }
 
     function totalMinerals() {
@@ -326,65 +305,43 @@ const handleSubmit = async (e) => {
 
 
     await updateDocument(project.id, {
-        additionalDetails: [...project.additionalDetails, stageToAdd]
-    })
-    if (!response.error) {
-        setNewStage('');
-    }
-}
+        additionalDetails: [...project.additionalDetails, stageToAdd],
 
-// const handleStageTwoSubmit = async (e) => {
-//   e.preventDefault()
-
-//   const billOfSale = {
-//       location, 
-//       destination, 
-//       // totalMinerals: totalMinerals(), 
-//       saleValue
-//   }
-
-//   function totalMinerals() {
-//       // this total should be the running total of all minerals being transported in each order / bill
-//       return quantity
-//     }
-
-//     await updateDocument(project.id, {
-
-
-//         nextPageDetails: [{...project.stageTwoDetails, billOfSale}], 
-//         // finalDetails: [...project.finalDetails, stageToAdd]
-//     })
-//     if (!response.error) {
-//         setNewStage('');
-//     }
-
-// }
-
-
-const handleSubmit3 = async (e) => {
-  e.preventDefault()
-
-  const billOfSale = {
-      location, 
-      destination, 
-      // totalMinerals: totalMinerals(), 
-      saleValue
-  }
-
-  function totalMinerals() {
-      // this total should be the running total of all minerals being transported in each order / bill
-      return quantity
-    }
-
-    await updateDocument(project.id, {
-
-
-        nextPageDetails: [{...project.nextPageDetails, billOfSale}], 
+        // nextPageDetails: [...project.nextPageDetails, stageToAdd], 
         // finalDetails: [...project.finalDetails, stageToAdd]
     })
     if (!response.error) {
         setNewStage('');
     }
+
+    
+
+}
+
+const handleSubmit3 = async (f) => {
+    f.preventDefault()
+
+    const billOfSale = {
+        location, 
+        destination, 
+        // totalMinerals: totalMinerals(), 
+        saleValue
+    }
+
+    function totalMinerals() {
+        // this total should be the running total of all minerals being transported in each order / bill
+        return quantity
+      }
+  
+      await updateDocument(project.id, {
+        //   additionalDetails: [...project.additionalDetails, stageToAdd],
+  
+          nextPageDetails: [...project.nextPageDetails, stageToAdd], 
+          // finalDetails: [...project.finalDetails, stageToAdd]
+      })
+      if (!response.error) {
+          setNewStage('');
+      }
 
 }
 
@@ -396,12 +353,11 @@ const handleSubmit3 = async (e) => {
                   <progress max="3" value={page} />
                 </div>
                 {/* FIRST PAGE / STAGE OF M/T FORM */}
-                {page === 1 &&
+                {page === 0 &&
                 <Form onSubmit={handleSubmit} className='project-details'>
                     <label>
                         <h4>Additional Stages</h4>
                     <div>
-                    <div className='progressbar'></div>
                     <Form >
                     <label>
                     <span>Additional Minerals:</span>
@@ -477,23 +433,16 @@ const handleSubmit3 = async (e) => {
                   </ul>
 
                 </div>
-      
-
-      
                 </div>
-
-                
-                
                 </Form>
-}
-                <div>
-                  
+          }
+                <div>      
               {/* <Button><Link to="/DeliveryConfirmation" className={styles['link-text']}>Next Step</Link></Button>     */}
                    
                
               {/* {page === 2 && <TradeDetailsForm />} */}
-              {page === 2 && 
-              <Form onSubmit={handleSubmit3} className='project-details'>
+              {page === 1 && 
+              <Form onSubmit={handleSubmit} className='project-details' >
               <div >
                  <div className='progressbar'></div> 
                  <div className='details-container'>
@@ -522,17 +471,59 @@ const handleSubmit3 = async (e) => {
               
               
               }
-              {page === 3 && 
-              <Form onSubmit={handleSubmit}>
+              {page === 2 && 
+              
+              <Form className="add-comment" onSubmit={handleSubmit}>
+                <h2>Sales Details</h2>
+                
+                  
                 <Form.Field>
-                    <span className='project-details'>Total Sale Value: </span>
+                    <span className='project-details'>Enter Total Sale Value: </span>
                     <input placeholder='Sale Amount in aUEC'  onChange={(e) => setSaleValue(e.target.value)} value={saleValue}/>
                 </Form.Field>
                 <button className='btn'>Forward Amount</button>
               </Form>
-              }
+
               
-              <Button onClick={NextPage}>Next Page</Button>
+              }
+              {page === 3 && <TestStage />
+            //   <Form onSubmit={handleSubmit} className='project-details'>
+            //   <ul>
+            //   {project.additionalDetails.length > 0 && project.additionalDetails.map(detail => (
+            //     <li key={detail.id}>
+            //       <div className="detail-author">
+            //         <p>Added By: {detail.displayName}</p>
+            //       </div>
+            //       <div className="detail-date">
+            //     {/* <p>Created on {additionalDetails.createdAt.toDate().toDateString()}</p> */}
+            //       </div>
+            //       <div className="detail-content">
+            //         {/* <p>{detail.content}</p> */}
+            //         <Table celled>
+            //               <Table.Header>
+            //                 <Table.Row>
+            //                   <Table.HeaderCell>Location{detail.location}</Table.HeaderCell>
+            //                   <Table.HeaderCell>Destination{detail.destination}</Table.HeaderCell>
+            //                   <Table.HeaderCell>Sale Amount: {detail.saleValue}</Table.HeaderCell>
+            //                   <Table.HeaderCell>Created At: {detail.createdAt.toDate().toDateString()}</Table.HeaderCell>
+            //                   <Table.HeaderCell>Location{detail.location}</Table.HeaderCell>
+                              
+            //                 </Table.Row>
+            //               </Table.Header>
+            //               </Table>
+            //       </div>
+            //     </li>
+            //   ))}
+              
+            // </ul>
+            
+            // </Form>
+            
+              }
+              {/* <button onClick={NextPage} className='btn'>Next</button> */}
+              <Button onClick={NextPage} className='btn'>Next Page</Button>
+              <button className='btn'>Final Details</button>
+              
 
             </div>
                 </Container>
@@ -540,7 +531,7 @@ const handleSubmit3 = async (e) => {
                 
                 
                 
-            {/* <StageOne /> */}
+            
             
                 
         </div>
@@ -549,3 +540,33 @@ const handleSubmit3 = async (e) => {
     )
 
 }
+
+
+
+// OLD / SEMI-FUNCTIONAL BLOCK FOR handleSubmit3 async function
+<ul>
+                    {project.additionalDetails.length > 0 && project.additionalDetails.map(nextPageDetails => (
+                      <li key={nextPageDetails.id}>
+                        <div className="detail-author">
+                          <p>Added By: {nextPageDetails.displayName}</p>
+                        </div>
+                        <div className="detail-date">
+                      <p>Created on {nextPageDetails.createdAt.toDate().toDateString()}</p>
+                        </div>
+                        <div className="detail-content">
+                          {/* <p>{detail.content}</p> */}
+                          <Table celled>
+                                <Table.Header>
+                                  <Table.Row>
+                                    <Table.HeaderCell>Location{nextPageDetails.location}</Table.HeaderCell>
+                                    <Table.HeaderCell>Destination{nextPageDetails.destination}</Table.HeaderCell>
+                                    <Table.HeaderCell>Created At: {nextPageDetails.createdAt.toDate().toDateString()}</Table.HeaderCell>
+                                  </Table.Row>
+                                </Table.Header>
+                                </Table>
+                        </div>
+                      </li>
+                    ))}
+                    
+                  </ul>
+
