@@ -290,7 +290,7 @@ function NextPage() {
 
 
 
-const handleSubmit = async (e) => {
+const handleStageOneSubmit = async (e) => {
     e.preventDefault()
 
     const stageToAdd = {
@@ -333,41 +333,38 @@ const handleSubmit = async (e) => {
     }
 }
 
-// const handleStageTwoSubmit = async (e) => {
-//   e.preventDefault()
-
-//   const billOfSale = {
-//       location, 
-//       destination, 
-//       // totalMinerals: totalMinerals(), 
-//       saleValue
-//   }
-
-//   function totalMinerals() {
-//       // this total should be the running total of all minerals being transported in each order / bill
-//       return quantity
-//     }
-
-//     await updateDocument(project.id, {
 
 
-//         nextPageDetails: [{...project.stageTwoDetails, billOfSale}], 
-//         // finalDetails: [...project.finalDetails, stageToAdd]
-//     })
-//     if (!response.error) {
-//         setNewStage('');
-//     }
 
-// }
-
-
-const handleSubmit3 = async (e) => {
+const handleStageTwoSubmit = async (e) => {
   e.preventDefault()
 
-  const billOfSale = {
+  const tradeLogistics = {
       location, 
-      destination, 
-      // totalMinerals: totalMinerals(), 
+      destination,   
+  }
+
+  function totalMinerals() {
+      // this total should be the running total of all minerals being transported in each order / bill
+      return quantity
+    }
+
+    await updateDocument(project.id, {
+
+
+        stageTwoDetails: [{...project.stageTwoDetails, tradeLogistics}], 
+        // finalDetails: [...project.finalDetails, stageToAdd]
+    })
+    if (!response.error) {
+        setNewStage('');
+    }
+
+}
+
+const handleStageThreeSubmit = async (e) => {
+  e.preventDefault()
+
+  const billOfSale = { 
       saleValue
   }
 
@@ -379,7 +376,7 @@ const handleSubmit3 = async (e) => {
     await updateDocument(project.id, {
 
 
-        nextPageDetails: [{...project.nextPageDetails, billOfSale}], 
+        stageThreeDetails: [{...project.stageThreeDetails, billOfSale}], 
         // finalDetails: [...project.finalDetails, stageToAdd]
     })
     if (!response.error) {
@@ -397,7 +394,7 @@ const handleSubmit3 = async (e) => {
                 </div>
                 {/* FIRST PAGE / STAGE OF M/T FORM */}
                 {page === 1 &&
-                <Form onSubmit={handleSubmit} className='project-details'>
+                <Form onSubmit={handleStageOneSubmit} className='project-details'>
                     <label>
                         <h4>Additional Stages</h4>
                     <div>
@@ -428,7 +425,7 @@ const handleSubmit3 = async (e) => {
                         </Form>
                         
                         </Form>
-                        <form className="add-comment" onSubmit={handleSubmit}>
+                        <form className="add-comment" onSubmit={handleStageOneSubmit}>
                     <label>
                       <span>Add new comment:</span>
                       <textarea 
@@ -493,7 +490,7 @@ const handleSubmit3 = async (e) => {
                
               {/* {page === 2 && <TradeDetailsForm />} */}
               {page === 2 && 
-              <Form onSubmit={handleSubmit3} className='project-details'>
+              <Form onSubmit={handleStageTwoSubmit} className='project-details'>
               <div >
                  <div className='progressbar'></div> 
                  <div className='details-container'>
@@ -523,7 +520,7 @@ const handleSubmit3 = async (e) => {
               
               }
               {page === 3 && 
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={handleStageThreeSubmit}>
                 <Form.Field>
                     <span className='project-details'>Total Sale Value: </span>
                     <input placeholder='Sale Amount in aUEC'  onChange={(e) => setSaleValue(e.target.value)} value={saleValue}/>
