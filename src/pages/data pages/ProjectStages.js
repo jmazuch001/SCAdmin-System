@@ -368,10 +368,7 @@ const handleStageThreeSubmit = async (e) => {
       saleValue
   }
 
-  function totalMinerals() {
-      // this total should be the running total of all minerals being transported in each order / bill
-      return quantity
-    }
+  
 
     await updateDocument(project.id, {
 
@@ -385,12 +382,34 @@ const handleStageThreeSubmit = async (e) => {
 
 }
 
+// const handleStageFourSubmit = async (e) => {
+//   e.preventDefault()
+
+//   const finalDetails = {
+    
+//   }
+
+//   function totalMinerals() {
+//     // this total should be the running total of all minerals being transported in each order / bill
+//     return quantity
+//   }
+
+//   await updateDocument(project.id, {
+//     stageFourDetails: [{...project.stageFourDetails, finalDetails}]
+//   })
+
+//   if (!response.error) {
+//     setNewStage('no record');
+//   }
+
+// }
+
     return ( 
         <div>            
                 <Container className='container-details'>
                 <div className='project-details'>Progress Bar</div>
                 <div>
-                  <progress max="3" value={page} />
+                  <progress max="4" value={page} />
                 </div>
                 {/* FIRST PAGE / STAGE OF M/T FORM */}
                 {page === 1 &&
@@ -532,6 +551,9 @@ const handleStageThreeSubmit = async (e) => {
               <Button onClick={NextPage}>Next Page</Button>
 
             </div>
+
+              
+ 
                 </Container>
                                     
                 
