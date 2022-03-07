@@ -226,15 +226,15 @@ export default function CreateProject() {
     const [assignedUsers, setAssignedUsers] = useState([])
     const [formError, setFormError] = useState(null)
 
-    function convertCapacityToInteger() {
-      shipClasses.map(function(objects) {
-        return {
-          value: objects.value, 
-          lablel: objects.value,
-          capacity: parseInt(objects.capacity)
-        }
-      })
-    }
+    // function convertCapacityToInteger() {
+    //   shipClasses.map(function(objects) {
+    //     return {
+    //       value: objects.value, 
+    //       lablel: objects.value,
+    //       capacity: parseInt(objects.capacity)
+    //     }
+    //   })
+    // }
 
     useEffect(() => {
         if(documents) {

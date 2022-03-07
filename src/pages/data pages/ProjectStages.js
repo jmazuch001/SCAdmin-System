@@ -2,18 +2,19 @@
 import React from 'react'
 import styles from '../data pages/Project.css'
 import { useState, useEffect } from 'react'
-import { timestamp } from '../../firebase/config'
+import { projectFirestore, timestamp } from '../../firebase/config'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 import {Link} from 'react-router-dom'
 // component library references
-import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table, Input } from 'semantic-ui-react'
+import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider } from 'semantic-ui-react'
 import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
 import AddRemoveFields from '../../Components/AddRemoveFields'
 import TradeDetailsForm from '../../Components/TradeDetailsForm'
+import ProjectList from '../../Components/ProjectList'
 // function component data /////////////////////////////////////////
 
 
@@ -241,8 +242,47 @@ const [location, setLocation] = useState('');
 const [destination, setDestination] = useState('');
 const [saleValue, setSaleValue] = useState('')
  
+
+// setting up display of data
+// const [data, setData] = useState(null)
+// const [isPending, setIsPending] = useState(false)
+// const [error, setError] = useState(false)
+
+// useEffect(() => {
+//   setIsPending(true)
+
+//   projectFirestore.collection('lifecycles', project.id).get().then((snapshot) => {
+//     if (snapshot.empty) {
+//       setError('No data to display')
+//       setIsPending(false)
+//     } else {
+//       let results = []
+//       snapshot.docs.forEach(doc => {
+//         results.push({ id: doc.id, ...doc.data() })
+//       })
+//       setData(results)
+//       setIsPending(false)
+//     }
+//   }).catch(err => {
+//     setError(err.message)
+//     setIsPending(false)
+//   })
+// }, [])
+
+
+
 function NextPage() {
-  setPage(page => page + 1)
+  const page = 2;
+  if (page > 0) {
+    setPage(page => page + 1)
+  } else {
+    previousPage()
+  }
+  
+}
+
+function previousPage() {
+  setPage(page => page - 1)
 }
 
 // disable add stage button once cargo capacity is exceeded or = to capacity
@@ -290,6 +330,7 @@ function NextPage() {
 
 
 
+
 const handleStageOneSubmit = async (e) => {
     e.preventDefault()
 
@@ -298,6 +339,7 @@ const handleStageOneSubmit = async (e) => {
         content: newStage,
         duration,
         quantity,
+        // quantityRemaining: capacityCalculator(),
         // ship,
         displayMinerals: minerals, 
         refinementType,
@@ -308,6 +350,19 @@ const handleStageOneSubmit = async (e) => {
         totalMinerals: totalMinerals(), 
         // saleValue 
     }
+
+
+//   const shipCargoCapacity = project.carrierShip.capacity
+//   const cargoLoadQuantity = handleStageOneSubmit.stageToAdd.quantity
+
+//   function capacityCalculator () {
+//   const remainingCapacity = shipCargoCapacity - cargoLoadQuantity
+//   return (
+//     <div>
+//       <p>Quantity Remaining: {remainingCapacity}</p>
+//     </div>
+//   )
+// }
 
     function totalMinerals() {
       // this total should be the running total of all minerals being transported in each order / bill
@@ -386,7 +441,7 @@ const handleStageThreeSubmit = async (e) => {
 //   e.preventDefault()
 
 //   const finalDetails = {
-    
+//     reviewFinalDetails
 //   }
 
 //   function totalMinerals() {
@@ -406,14 +461,16 @@ const handleStageThreeSubmit = async (e) => {
 
     return ( 
         <div>            
-                <Container className='container-details'>
-                <div className='project-details'>Progress Bar</div>
+                <Container  className='forms'>
+                
+                
                 <div>
-                  <progress max="4" value={page} />
+                  <progress max="3" value={page} />
                 </div>
                 {/* FIRST PAGE / STAGE OF M/T FORM */}
                 {page === 1 &&
-                <Form onSubmit={handleStageOneSubmit} className='project-details'>
+                <Form  onSubmit={handleStageOneSubmit} className='project-details'>
+                  
                     <label>
                         <h4>Additional Stages</h4>
                     <div>
@@ -454,7 +511,7 @@ const handleStageThreeSubmit = async (e) => {
                     </label>
                    
                   </form>
-                        <button className='btn'>Add Stage</button>
+                        <Button color='teal'>Add Stage</Button>
                 </div>
                 
                 </label>
@@ -464,6 +521,7 @@ const handleStageThreeSubmit = async (e) => {
                             <ul>
                     {project.additionalDetails.length > 0 && project.additionalDetails.map(detail => (
                       <li key={detail.id}>
+                        
                         <div className="detail-author">
                           <p>Added By: {detail.displayName}</p>
                         </div>
@@ -472,6 +530,7 @@ const handleStageThreeSubmit = async (e) => {
                         </div>
                         <div className="detail-content">
                           {/* <p>{detail.content}</p> */}
+                          
                           <Table celled>
                                 <Table.Header>
                                   <Table.Row>
@@ -498,7 +557,9 @@ const handleStageThreeSubmit = async (e) => {
       
                 </div>
 
-                
+                <div>
+                <Button className='next-page-button' color='teal' onClick={NextPage}>Next Page</Button>
+                </div>
                 
                 </Form>
 }
@@ -509,7 +570,7 @@ const handleStageThreeSubmit = async (e) => {
                
               {/* {page === 2 && <TradeDetailsForm />} */}
               {page === 2 && 
-              <Form onSubmit={handleStageTwoSubmit} className='project-details'>
+              <Form onSubmit={handleStageTwoSubmit} >
               <div >
                  <div className='progressbar'></div> 
                  <div className='details-container'>
@@ -526,34 +587,55 @@ const handleStageThreeSubmit = async (e) => {
                               onChange={(e) => setDestination(e)} options={tradingDestinations} 
                             />
                         </label>
+                        <div className='project-details'>
+                        
+                        </div>
+                        
                         </div>
 
                      
                  </div>
+                 <Button color='blue' inverted className='project-button-styles' >Confirm Logistics</Button>
+                 <div>
+                 <Button color='teal' onClick={NextPage}>Next Page</Button>
+                 </div>
                  
               </div>
-              <button className='btn'>Next</button>
-                  
+              
+              
               </Form>
               
               
               }
               {page === 3 && 
-              <Form onSubmit={handleStageThreeSubmit}>
+              <Form  onSubmit={handleStageThreeSubmit} >
                 <Form.Field>
                     <span className='project-details'>Total Sale Value: </span>
-                    <input placeholder='Sale Amount in aUEC'  onChange={(e) => setSaleValue(e.target.value)} value={saleValue}/>
+                    <input className='' placeholder='Sale Amount in aUEC'  onChange={(e) => setSaleValue(e.target.value)} value={saleValue}/>
                 </Form.Field>
-                <button className='btn'>Forward Amount</button>
+                <Button color='teal' inverted className='btn'>Forward Amount</Button>
+                <Button color='red' inverted><Link to="/office" className={styles['link-text']}>Close Project</Link></Button>
               </Form>
-              }
               
-              <Button onClick={NextPage}>Next Page</Button>
+              }
+
+              {/* {page === 4 && 
+              <Form >
+                <Form.Field>
+                    {error && <p className='error'>{error}</p>}
+                    {isPending && <p className='loading'>Loading...</p>}
+                    {data && <ProjectList projects={data} />}
+                </Form.Field>
+                <button className='btn'>Confirm</button>
+              </Form>
+              } */}
+              
+              {/* <Button onClick={NextPage}>Next Page</Button> */}
 
             </div>
 
               
- 
+                
                 </Container>
                                     
                 

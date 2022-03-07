@@ -7,13 +7,19 @@ import ProjectList from '../../Components/ProjectList'
 export default function Dashboard() {
     // retrieve specific collection
     const { documents, error } = useCollection('lifecycles')
+    const { completedDocuments, returnedError } = useCollection('completed lifecycles')
 
     return (
         <div className='img-fluid'>
+            <h2>Projects In-Progress</h2>
             <h2 className='page-title'>Dashboard</h2>
             {error && <p className='error'>{error}</p>}
             {/* output docs if you have any */}
             {documents && <ProjectList projects={documents} />}
+            <h2>Completed Projects</h2>
+            {returnedError && <p className='error'>{returnedError}</p>}
+            {/* output docs if you have any */}
+            {completedDocuments && <ProjectList projects={completedDocuments} />}
         </div>
     )
 }
