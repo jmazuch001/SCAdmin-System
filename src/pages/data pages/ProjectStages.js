@@ -535,12 +535,20 @@ const handleStageThreeSubmit = async (e) => {
                                 <Table.Header>
                                   <Table.Row>
                                     <Table.HeaderCell>Yield Quantity: {detail.quantity} cSCU</Table.HeaderCell>
-                                    {/* <Table.HeaderCell>Method: {detail.refinementMethod}</Table.HeaderCell> */}
+                                    <Table.HeaderCell>Refinement Method: {detail.refinementType.map((refinementMethodUsed) => {
+                                      return (
+                                        <li>{refinementMethodUsed.value}</li>
+                                      )
+                                    })}</Table.HeaderCell>
                                     <Table.HeaderCell>Duration: {detail.duration} Hours</Table.HeaderCell>
                                     <Table.HeaderCell>Stage ID: {detail.id}</Table.HeaderCell>
                                     <Table.HeaderCell>Comments: {detail.content}</Table.HeaderCell>
-                                    {/* <Table.HeaderCell>Ship: {detail.ship['']}</Table.HeaderCell> */}
-                                    {/* <Table.HeaderCell>Minerals: {detail.displayMinerals[{}]}</Table.HeaderCell> */}
+                                    {/* <Table.HeaderCell>Ship: {detail.ship}</Table.HeaderCell> */}
+                                    <Table.HeaderCell>Minerals: {detail.displayMinerals.map((mineralList) => {
+                                      return(
+                                        <li>{mineralList.value}</li>
+                                      )
+                                    })}</Table.HeaderCell>
                                     <Table.HeaderCell>Created At: {detail.createdAt.toDate().toDateString()}</Table.HeaderCell>
                                   </Table.Row>
                                 </Table.Header>
