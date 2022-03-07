@@ -8,7 +8,7 @@ import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 import {Link} from 'react-router-dom'
 // component library references
-import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider } from 'semantic-ui-react'
+import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label } from 'semantic-ui-react'
 import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
@@ -534,24 +534,38 @@ const handleStageThreeSubmit = async (e) => {
                           <Table celled>
                                 <Table.Header>
                                   <Table.Row>
-                                    <Table.HeaderCell>Yield Quantity: {detail.quantity} cSCU</Table.HeaderCell>
-                                    <Table.HeaderCell>Refinement Method: {detail.refinementType.map((refinementMethodUsed) => {
+                                    <Table.HeaderCell>Yield Quantity</Table.HeaderCell>
+                                    <Table.HeaderCell>Refinement Method</Table.HeaderCell>
+                                    <Table.HeaderCell>Duration</Table.HeaderCell>
+                                    <Table.HeaderCell>Stage ID</Table.HeaderCell>
+                                    <Table.HeaderCell>Comments</Table.HeaderCell>
+                                    {/* <Table.HeaderCell>Ship: {detail.ship}</Table.HeaderCell> */}
+                                    <Table.HeaderCell>Minerals</Table.HeaderCell>
+                                    <Table.HeaderCell>Created At</Table.HeaderCell>
+                                  </Table.Row>
+                                </Table.Header>
+                                <Table.Body>
+                                <Table.Row>
+                                  <Table.Cell>{detail.quantity} cSCU</Table.Cell>
+                                  <Table.Cell>{detail.refinementType.map((refinementMethodUsed) => {
                                       return (
                                         <li>{refinementMethodUsed.value}</li>
                                       )
-                                    })}</Table.HeaderCell>
-                                    <Table.HeaderCell>Duration: {detail.duration} Hours</Table.HeaderCell>
-                                    <Table.HeaderCell>Stage ID: {detail.id}</Table.HeaderCell>
-                                    <Table.HeaderCell>Comments: {detail.content}</Table.HeaderCell>
-                                    {/* <Table.HeaderCell>Ship: {detail.ship}</Table.HeaderCell> */}
-                                    <Table.HeaderCell>Minerals: {detail.displayMinerals.map((mineralList) => {
+                                    })}
+                                    </Table.Cell>
+                                  <Table.Cell>{detail.duration} Hours</Table.Cell>
+                                  <Table.Cell>{detail.id}</Table.Cell>
+                                  <Table.Cell>{detail.content}</Table.Cell>
+                                  <Table.Cell>{detail.displayMinerals.map((mineralList) => {
                                       return(
                                         <li>{mineralList.value}</li>
                                       )
-                                    })}</Table.HeaderCell>
-                                    <Table.HeaderCell>Created At: {detail.createdAt.toDate().toDateString()}</Table.HeaderCell>
-                                  </Table.Row>
-                                </Table.Header>
+                                    })}
+                                    </Table.Cell>
+                                  <Table.Cell>{detail.createdAt.toDate().toDateString()}</Table.Cell>
+                                </Table.Row>
+
+                              </Table.Body>
                                 </Table>
                         </div>
                       </li>
