@@ -531,7 +531,7 @@ const handleStageThreeSubmit = async (e) => {
                         <div className="detail-content">
                           {/* <p>{detail.content}</p> */}
                           
-                          <Table celled>
+                          <Table celled className='details-table'>
                                 <Table.Header>
                                   <Table.Row>
                                     <Table.HeaderCell>Yield Quantity</Table.HeaderCell>
