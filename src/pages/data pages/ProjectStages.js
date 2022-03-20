@@ -15,6 +15,7 @@ import TransactionReportList from '../office/TransactionReportList'
 import AddRemoveFields from '../../Components/AddRemoveFields'
 import TradeDetailsForm from '../../Components/TradeDetailsForm'
 import ProjectList from '../../Components/ProjectList'
+import { PriceCheckSharp } from '@mui/icons-material'
 // function component data /////////////////////////////////////////
 
 
@@ -98,11 +99,27 @@ export default function ProjectStages({ project }) {
             label: 'Taranite',
             
           },
+          {
+            value: 'Quartz', 
+            label: 'Quartz', 
+            
+          },
+          {
+            value: 'Tungsten', 
+            label: 'Tungsten', 
+            
+          },
+          {
+            value: 'Beryl', 
+            label: 'Beryl', 
+            
+          },
         {
           value: 'Inert', 
           label: 'Inert', 
           
         }, 
+        
       ]
 
       const shipClass = [
@@ -270,6 +287,12 @@ const [saleValue, setSaleValue] = useState('')
 //   })
 // }, [])
 
+// const mineralQuantity = [];
+// const mineralRunningQuantity = quantity.map((total) => {
+//   <li key={total}>{total}</li>
+// })
+
+
 
 
 function NextPage() {
@@ -329,7 +352,16 @@ function previousPage() {
 //   )
 // }
 
-
+// const arrayTotal = quantity.reduce(function(item, index, array) {
+//   return (
+//     project.carrierShip.capacity - quantity
+//   )
+// });
+console.log(project)
+let remainingCapacity = project.carrierShip.capacity;
+for(const additionalDetails of project.additionalDetails) {
+  remainingCapacity = remainingCapacity - quantity;
+}
 
 
 const handleStageOneSubmit = async (e) => {
@@ -340,7 +372,8 @@ const handleStageOneSubmit = async (e) => {
         content: newStage,
         duration,
         quantity,
-        quantityRemaining: runningTotal,
+        
+        // quantityRemaining: runningTotal,
         // ship,
         displayMinerals: minerals, 
         refinementType,
@@ -352,16 +385,33 @@ const handleStageOneSubmit = async (e) => {
         // saleValue 
     }
 
-const runningTotal = function(amounts) {
-  let total = 0
-  let result = []
 
-  for (let i = 0; i < amounts.length; i++) {
-    total = project.carrierShip.capacity + amounts[i]
-    result.push(total)
-  }
-  return(result)
-}
+
+// const arrayTotal = Object.values(stageToAdd.quantity);
+// const arrayMath = arrayTotal.reduce((partialSum, a) => partialSum + a, 0)
+
+// let average = quantity.reduce((total, price, index) => {
+//   total += price;
+//   if (quantity.length-1 === index) {
+//     return total / PriceCheckSharp.length;
+//   } else {
+//     return total;
+//   }
+// }) 
+ 
+
+
+
+// const runningTotal = function(amounts) {
+//   let total = 0
+//   let result = []
+
+//   for (let i = 0; i < amounts.length; i++) {
+//     total = project.carrierShip.capacity + amounts[i]
+//     result.push(total)
+//   }
+//   return(result)
+// }
 
 
 //   const shipCargoCapacity = project.carrierShip.capacity
@@ -587,10 +637,11 @@ const handleStageThreeSubmit = async (e) => {
                       </li>
                     ))}
                     <Segment>Running Total: 
-                      {project.additionalDetails.length > 0 && project.additionalDetails.map(runningTotals => (
+                      {/* {project.additionalDetails.length > 0 && project.additionalDetails.map(runningTotals => (
                         <p>{project.carrierShip.capacity - runningTotals.quantity}</p>
-                        // <p>{project.carrierShip.capacity - runningTotals.runningTotal}</p>
-                      ))}
+                      ))} */}
+                      <p>{remainingCapacity}</p>
+                      
                       </Segment>
                   </ul>
 
