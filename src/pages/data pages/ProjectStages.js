@@ -8,7 +8,7 @@ import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 import {Link} from 'react-router-dom'
 // component library references
-import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label } from 'semantic-ui-react'
+import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
 import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
@@ -234,6 +234,7 @@ const [newStage, setNewStage] = useState('');
 const [refinementType, setRefinementType] = useState('');
 const [minerals, setNewMinerals] = useState('');
 const [quantity, setQuantity] = useState('');
+// const [concurrentQuantity, setConcurrentQuantity] = useState('');
 const [duration, setDuration] = useState('');
 const [ship, setShip] = useState('');
 const { user } = useAuthContext()
@@ -339,7 +340,7 @@ const handleStageOneSubmit = async (e) => {
         content: newStage,
         duration,
         quantity,
-        // quantityRemaining: capacityCalculator(),
+        quantityRemaining: runningTotal,
         // ship,
         displayMinerals: minerals, 
         refinementType,
@@ -347,9 +348,20 @@ const handleStageOneSubmit = async (e) => {
         id: CreateID(), 
         // location, 
         // destination, 
-        totalMinerals: totalMinerals(), 
+        // totalMinerals: totalMinerals(), 
         // saleValue 
     }
+
+const runningTotal = function(amounts) {
+  let total = 0
+  let result = []
+
+  for (let i = 0; i < amounts.length; i++) {
+    total = project.carrierShip.capacity + amounts[i]
+    result.push(total)
+  }
+  return(result)
+}
 
 
 //   const shipCargoCapacity = project.carrierShip.capacity
@@ -364,10 +376,12 @@ const handleStageOneSubmit = async (e) => {
 //   )
 // }
 
-    function totalMinerals() {
-      // this total should be the running total of all minerals being transported in each order / bill
-      return quantity
-    }
+
+
+    // function totalMinerals() {
+    //   // this total should be the running total of all minerals being transported in each order / bill
+    //   return quantity
+    // }
 
 
     function CreateID () {
@@ -567,10 +581,17 @@ const handleStageThreeSubmit = async (e) => {
 
                               </Table.Body>
                                 </Table>
+                                
                         </div>
+                        
                       </li>
                     ))}
-                    
+                    <Segment>Running Total: 
+                      {project.additionalDetails.length > 0 && project.additionalDetails.map(runningTotals => (
+                        <p>{project.carrierShip.capacity - runningTotals.quantity}</p>
+                        // <p>{project.carrierShip.capacity - runningTotals.runningTotal}</p>
+                      ))}
+                      </Segment>
                   </ul>
 
                 </div>
