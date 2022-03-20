@@ -8,7 +8,7 @@ import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 import {Link} from 'react-router-dom'
 // component library references
-import { Form, Button, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
+import { Form, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
 import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
@@ -259,7 +259,9 @@ const [page, setPage] = useState(1);
 const [location, setLocation] = useState('');
 const [destination, setDestination] = useState('');
 const [saleValue, setSaleValue] = useState('')
- 
+
+// modal
+const [open, setOpen] = React.useState(false)
 
 // setting up display of data
 // const [data, setData] = useState(null)
@@ -357,11 +359,54 @@ function previousPage() {
 //     project.carrierShip.capacity - quantity
 //   )
 // });
-console.log(project)
-let remainingCapacity = project.carrierShip.capacity;
-for(const additionalDetails of project.additionalDetails) {
-  remainingCapacity = remainingCapacity - quantity;
-}
+// console.log(project)
+
+  let remainingCapacity = project.carrierShip.capacity;
+  for(const additionalDetails of project.additionalDetails) {
+    remainingCapacity = remainingCapacity - additionalDetails.quantity;
+  }
+
+  function capacityOverflowWarning() {
+    if (remainingCapacity < 0) {
+      return (
+        <div>
+          <Modal
+          basic
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
+          size='small'
+          trigger={<Button>Basic Modal</Button>}
+        >
+          <Header icon>
+            <Icon name='archive' />
+            ! Capacity Overflow Warning ! 
+          </Header>
+          <Modal.Content>
+            <p>
+              Adding this stage with desired mineral quantity would create
+              a capacity overflow. Click 'okay' to continue to create a new project
+              to contain this data.
+            </p>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button basic color='red' inverted onClick={() => setOpen(false)}>
+              <Icon name='remove' /> Cancel
+            </Button>
+            <Button color='green' inverted onClick={() => setOpen(false)}>
+              <Icon name='checkmark' /> Okay
+            </Button>
+          </Modal.Actions>
+        </Modal>
+        </div>
+      )
+    }
+  }
+  
+
+
+
+
 
 
 const handleStageOneSubmit = async (e) => {
