@@ -324,86 +324,85 @@ function previousPage() {
 //   }
 // }
 
-// function Trade() {
-//   return (
-//     <Form  className='project-details'>
-//     <div >
-//        <div className='progressbar'></div> 
-//        <div className='details-container'>
-//            <div>
-//              <label>
-//                 <span>Select Cargo Location</span>
-//                   <Select 
-//                     onChange={(e) => setLocation(e)} options={refineryLocations} 
-//                   />
-//               </label>
-//               <label>
-//                 <span>Select Cargo Destination</span>
-//                   <Select 
-//                     onChange={(e) => setDestination(e)} options={tradingDestinations} 
-//                   />
-//               </label>
-//               </div>
-//                <Button>Previous</Button>
-//                <Button>Next</Button>
-//                <p>This is a P-TAG</p>
-           
-//        </div>
-//     </div>
-//     </Form>
-//   )
-// }
 
-// const arrayTotal = quantity.reduce(function(item, index, array) {
-//   return (
-//     project.carrierShip.capacity - quantity
-//   )
-// });
-// console.log(project)
 
   let remainingCapacity = project.carrierShip.capacity;
   for(const additionalDetails of project.additionalDetails) {
     remainingCapacity = remainingCapacity - additionalDetails.quantity;
   }
 
-  function capacityOverflowWarning() {
-    if (remainingCapacity < 0) {
-      return (
-        <div>
-          <Modal
-          basic
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
-          open={open}
-          size='small'
-          trigger={<Button>Basic Modal</Button>}
-        >
-          <Header icon>
-            <Icon name='archive' />
-            ! Capacity Overflow Warning ! 
-          </Header>
-          <Modal.Content>
-            <p>
-              Adding this stage with desired mineral quantity would create
-              a capacity overflow. Click 'okay' to continue to create a new project
-              to contain this data.
-            </p>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button basic color='red' inverted onClick={() => setOpen(false)}>
-              <Icon name='remove' /> Cancel
-            </Button>
-            <Button color='green' inverted onClick={() => setOpen(false)}>
-              <Icon name='checkmark' /> Okay
-            </Button>
-          </Modal.Actions>
-        </Modal>
-        </div>
-      )
-    }
-  }
+//   function capacityOverflowWarning() {
+//     if (remainingCapacity < 0) {
+//       return (
+//         <div>
+//           <Modal
+//           basic
+//           onClose={() => setOpen(false)}
+//           onOpen={() => setOpen(true)}
+//           open={open}
+//           size='small'
+//           trigger={<Button>Basic Modal</Button>}
+//         >
+//           <Header icon>
+//             <Icon name='archive' />
+//             ! Capacity Overflow Warning ! 
+//           </Header>
+//           <Modal.Content>
+//             <p>
+//               Adding this stage with desired mineral quantity would create
+//               a capacity overflow. Click 'okay' to continue to create a new project
+//               to contain this data.
+//             </p>
+//           </Modal.Content>
+//           <Modal.Actions>
+//             <Button basic color='red' inverted onClick={() => setOpen(false)}>
+//               <Icon name='remove' /> Cancel
+//             </Button>
+//             <Button color='green' inverted onClick={() => setOpen(false)}>
+//               <Icon name='checkmark' /> Okay
+//             </Button>
+//           </Modal.Actions>
+//         </Modal>
+//         </div>
+//       )
+//     }
+//   }
   
-
+// function lifecycleCompleteModal() {
+//   if (saleValue > 0) {
+//     return (
+//       <div>
+//         <Modal
+//         basic
+//         onClose={() => setOpen(false)}
+//         onOpen={() => setOpen(true)}
+//         open={open}
+//         size='small'
+//         trigger={<Button>Basic Modal</Button>}
+//       >
+//         <Header icon>
+//           <Icon name='archive' />
+//           ! Transaction Complete ! 
+//         </Header>
+//         <Modal.Content>
+//           <p>
+//             Congratulations! Your sale amount of `${saleValue}` has been recorded! Click 'okay'
+//             to return to project creator.
+//           </p>
+//         </Modal.Content>
+//         <Modal.Actions>
+//           <Button basic color='red' inverted onClick={() => setOpen(false)}>
+//             <Icon name='remove' /> Cancel
+//           </Button>
+//           <Button color='green' inverted onClick={() => setOpen(false)}>
+//             <Icon name='checkmark' /> Okay
+//           </Button>
+//         </Modal.Actions>
+//       </Modal>
+//       </div>
+//     )
+//   }
+// }
 
 
 
@@ -681,10 +680,7 @@ const handleStageThreeSubmit = async (e) => {
                         
                       </li>
                     ))}
-                    <Segment>Running Total: 
-                      {/* {project.additionalDetails.length > 0 && project.additionalDetails.map(runningTotals => (
-                        <p>{project.carrierShip.capacity - runningTotals.quantity}</p>
-                      ))} */}
+                    <Segment>Remaining Ship Cargo Capacity: 
                       <p>{remainingCapacity}</p>
                       
                       </Segment>
@@ -754,6 +750,7 @@ const handleStageThreeSubmit = async (e) => {
                 </Form.Field>
                 <Button color='teal' inverted className='btn'>Forward Amount</Button>
                 <Button color='red' inverted><Link to="/office" className={styles['link-text']}>Close Project</Link></Button>
+                
               </Form>
               
               }
