@@ -8,7 +8,7 @@ import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 import {Link} from 'react-router-dom'
 // component library references
-import { Form, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
+import { Form, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
 import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
@@ -16,6 +16,7 @@ import AddRemoveFields from '../../Components/AddRemoveFields'
 import TradeDetailsForm from '../../Components/TradeDetailsForm'
 import ProjectList from '../../Components/ProjectList'
 import { PriceCheckSharp } from '@mui/icons-material'
+
 // function component data /////////////////////////////////////////
 
 
@@ -259,6 +260,7 @@ const [page, setPage] = useState(1);
 const [location, setLocation] = useState('');
 const [destination, setDestination] = useState('');
 const [saleValue, setSaleValue] = useState('')
+const [dueDate, setDueDate] = useState('')
 
 // modal
 const [open, setOpen] = React.useState(false)
@@ -330,6 +332,20 @@ function previousPage() {
   for(const additionalDetails of project.additionalDetails) {
     remainingCapacity = remainingCapacity - additionalDetails.quantity;
   }
+
+// const totalUsers = assignedUsersList.length + user.displayName.length;
+
+
+  // sale split between players
+  // let returnSplitValue = project.saleValue;
+  // function calculateReturnSplit() {
+  //   for(const userSplit of project.stageThreeDetails) {
+  //     returnSplitValue = returnSplitValue / project.user.userSplit;
+  //   }
+    
+  // }
+
+
 
 //   function capacityOverflowWarning() {
 //     if (remainingCapacity < 0) {
@@ -416,7 +432,7 @@ const handleStageOneSubmit = async (e) => {
         content: newStage,
         duration,
         quantity,
-        
+        dueDate: timestamp.fromDate(new Date(dueDate)),
         // quantityRemaining: runningTotal,
         // ship,
         displayMinerals: minerals, 
@@ -431,51 +447,6 @@ const handleStageOneSubmit = async (e) => {
 
 
 
-// const arrayTotal = Object.values(stageToAdd.quantity);
-// const arrayMath = arrayTotal.reduce((partialSum, a) => partialSum + a, 0)
-
-// let average = quantity.reduce((total, price, index) => {
-//   total += price;
-//   if (quantity.length-1 === index) {
-//     return total / PriceCheckSharp.length;
-//   } else {
-//     return total;
-//   }
-// }) 
- 
-
-
-
-// const runningTotal = function(amounts) {
-//   let total = 0
-//   let result = []
-
-//   for (let i = 0; i < amounts.length; i++) {
-//     total = project.carrierShip.capacity + amounts[i]
-//     result.push(total)
-//   }
-//   return(result)
-// }
-
-
-//   const shipCargoCapacity = project.carrierShip.capacity
-//   const cargoLoadQuantity = handleStageOneSubmit.stageToAdd.quantity
-
-//   function capacityCalculator () {
-//   const remainingCapacity = shipCargoCapacity - cargoLoadQuantity
-//   return (
-//     <div>
-//       <p>Quantity Remaining: {remainingCapacity}</p>
-//     </div>
-//   )
-// }
-
-
-
-    // function totalMinerals() {
-    //   // this total should be the running total of all minerals being transported in each order / bill
-    //   return quantity
-    // }
 
 
     function CreateID () {
@@ -610,6 +581,12 @@ const handleStageThreeSubmit = async (e) => {
                         
                         </Form>
                         <form className="add-comment" onSubmit={handleStageOneSubmit}>
+                        <label htmlFor="">
+                    <span>Set Due Date:</span>
+                    <input required type='date' onChange={(e) => setDueDate(e.target.value)}
+                    value={dueDate} />
+
+                </label>
                     <label>
                       <span>Add new comment:</span>
                       <textarea 
@@ -650,6 +627,7 @@ const handleStageThreeSubmit = async (e) => {
                                     {/* <Table.HeaderCell>Ship: {detail.ship}</Table.HeaderCell> */}
                                     <Table.HeaderCell>Minerals</Table.HeaderCell>
                                     <Table.HeaderCell>Created At</Table.HeaderCell>
+                                    <Table.HeaderCell>Due</Table.HeaderCell>
                                   </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
@@ -671,6 +649,7 @@ const handleStageThreeSubmit = async (e) => {
                                     })}
                                     </Table.Cell>
                                   <Table.Cell>{detail.createdAt.toDate().toDateString()}</Table.Cell>
+                                  <Table.Cell>{detail.dueDate.toDate().toDateString()}</Table.Cell>
                                 </Table.Row>
 
                               </Table.Body>
@@ -681,7 +660,7 @@ const handleStageThreeSubmit = async (e) => {
                       </li>
                     ))}
                     <Segment>Remaining Ship Cargo Capacity: 
-                      <p>{remainingCapacity}</p>
+                      <p>{remainingCapacity} cSCU</p>
                       
                       </Segment>
                   </ul>
@@ -697,7 +676,7 @@ const handleStageThreeSubmit = async (e) => {
                 </div>
                 
                 </Form>
-}
+                }
                 <div>
                   
               {/* <Button><Link to="/DeliveryConfirmation" className={styles['link-text']}>Next Step</Link></Button>     */}
@@ -748,9 +727,11 @@ const handleStageThreeSubmit = async (e) => {
                     <span className='project-details'>Total Sale Value: </span>
                     <input className='' placeholder='Sale Amount in aUEC'  onChange={(e) => setSaleValue(e.target.value)} value={saleValue}/>
                 </Form.Field>
+                <label>Confirm Financial Details</label>
+                <p>Player split goes here</p>
                 <Button color='teal' inverted className='btn'>Forward Amount</Button>
                 <Button color='red' inverted><Link to="/office" className={styles['link-text']}>Close Project</Link></Button>
-                
+                <AddRemoveFields />
               </Form>
               
               }

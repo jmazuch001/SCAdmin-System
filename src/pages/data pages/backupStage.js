@@ -143,6 +143,20 @@ export default function ProjectStages({ project }) {
           }
         ]
 
+
+  const quantumDrives = [
+    {
+      value: 'Agni', 
+      label: 'Agni', 
+      size: 'S3', 
+      grade: '2', 
+      driveClass: 'Industrial', 
+      manufacturer: 'Juno Starwerk'
+
+  }
+]
+
+
       const refinement = [
         {
           value: "Cormack Method", 

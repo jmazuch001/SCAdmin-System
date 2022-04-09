@@ -2,6 +2,7 @@ import './ProjectList.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Avatar } from '@mui/material'
+import { Checkbox } from 'semantic-ui-react'
 
 
 export default function ProjectList({ projects }) {
@@ -9,7 +10,9 @@ export default function ProjectList({ projects }) {
         <div className='project-list'>
             {projects.length === 0 && <p>No projects as of yet!</p>}
             {projects.map(project => (
+                
                 <Link to={`/projects/${project.id}`} key={project.id}>
+                    
                     <h4>{project.name}</h4>
                     <h4>{project.details}</h4>
                     {/* due date is a firestore timestamp at this point */}
