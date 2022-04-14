@@ -299,6 +299,8 @@ const [open, setOpen] = React.useState(false)
 
 
 
+
+
 function NextPage() {
   const page = 2;
   if (page > 0) {
@@ -313,18 +315,8 @@ function previousPage() {
   setPage(page => page - 1)
 }
 
-// disable add stage button once cargo capacity is exceeded or = to capacity
-// const [disable, setDisable] = React.useState(false);
 
-// function SetStageDisable() {
-//   if(stageToAdd.quantity === project.carrierShip.capacity || stageToAdd.quantity > project.carrierShip.capacity){
-//     return (
-//       <div>
-//         <p>No longer able to add another stage! Please create another project to track these details.</p>
-//       </div>
-//     )
-//   }
-// }
+
 
 
 
@@ -333,96 +325,18 @@ function previousPage() {
     remainingCapacity = remainingCapacity - additionalDetails.quantity;
   }
 
-// const totalUsers = assignedUsersList.length + user.displayName.length;
-
-
-  // sale split between players
-  // let returnSplitValue = project.saleValue;
-  // function calculateReturnSplit() {
-  //   for(const userSplit of project.stageThreeDetails) {
-  //     returnSplitValue = returnSplitValue / project.user.userSplit;
-  //   }
-    
+  // let numOfUsers = project.assignedUsersList.length + project.createdBy.length;
+  // let totalSaleValue = project.stageThreeDetails.billOfSale.saleValue
+  // for(const stageThreeDetails of project.additionalDetails) {
+  //   let totalSplitPerPerson = totalSaleValue / numOfUsers;
   // }
 
-
-
-//   function capacityOverflowWarning() {
-//     if (remainingCapacity < 0) {
-//       return (
-//         <div>
-//           <Modal
-//           basic
-//           onClose={() => setOpen(false)}
-//           onOpen={() => setOpen(true)}
-//           open={open}
-//           size='small'
-//           trigger={<Button>Basic Modal</Button>}
-//         >
-//           <Header icon>
-//             <Icon name='archive' />
-//             ! Capacity Overflow Warning ! 
-//           </Header>
-//           <Modal.Content>
-//             <p>
-//               Adding this stage with desired mineral quantity would create
-//               a capacity overflow. Click 'okay' to continue to create a new project
-//               to contain this data.
-//             </p>
-//           </Modal.Content>
-//           <Modal.Actions>
-//             <Button basic color='red' inverted onClick={() => setOpen(false)}>
-//               <Icon name='remove' /> Cancel
-//             </Button>
-//             <Button color='green' inverted onClick={() => setOpen(false)}>
-//               <Icon name='checkmark' /> Okay
-//             </Button>
-//           </Modal.Actions>
-//         </Modal>
-//         </div>
-//       )
-//     }
-//   }
   
-// function lifecycleCompleteModal() {
-//   if (saleValue > 0) {
-//     return (
-//       <div>
-//         <Modal
-//         basic
-//         onClose={() => setOpen(false)}
-//         onOpen={() => setOpen(true)}
-//         open={open}
-//         size='small'
-//         trigger={<Button>Basic Modal</Button>}
-//       >
-//         <Header icon>
-//           <Icon name='archive' />
-//           ! Transaction Complete ! 
-//         </Header>
-//         <Modal.Content>
-//           <p>
-//             Congratulations! Your sale amount of `${saleValue}` has been recorded! Click 'okay'
-//             to return to project creator.
-//           </p>
-//         </Modal.Content>
-//         <Modal.Actions>
-//           <Button basic color='red' inverted onClick={() => setOpen(false)}>
-//             <Icon name='remove' /> Cancel
-//           </Button>
-//           <Button color='green' inverted onClick={() => setOpen(false)}>
-//             <Icon name='checkmark' /> Okay
-//           </Button>
-//         </Modal.Actions>
-//       </Modal>
-//       </div>
-//     )
-//   }
-// }
-
-
-
-
+  function ReturnSalesSplit() {
+    let numOfUsers = project.assignedUsers.length + project.createdBy.length;  
+    const splitTotal = saleValue / numOfUsers;
+    return splitTotal
+  }
 
 const handleStageOneSubmit = async (e) => {
     e.preventDefault()
@@ -499,10 +413,12 @@ const handleStageThreeSubmit = async (e) => {
   e.preventDefault()
 
   const billOfSale = { 
-      saleValue
+      saleValue, 
+      // returnTotalBreakdown: ReturnSalesSplit()
   }
 
   
+
 
     await updateDocument(project.id, {
 
@@ -516,27 +432,29 @@ const handleStageThreeSubmit = async (e) => {
 
 }
 
-// const handleStageFourSubmit = async (e) => {
+
+
+// const handleReturnSplitCalculation = async (e) => {
 //   e.preventDefault()
+  
+//   const finalSplit = {
 
-//   const finalDetails = {
-//     reviewFinalDetails
-//   }
-
-//   function totalMinerals() {
-//     // this total should be the running total of all minerals being transported in each order / bill
-//     return quantity
+//     returnSplit: ReturnSalesSplit()
 //   }
 
 //   await updateDocument(project.id, {
-//     stageFourDetails: [{...project.stageFourDetails, finalDetails}]
-//   })
 
-//   if (!response.error) {
-//     setNewStage('no record');
-//   }
+
+//     stageThreeDetails: [{...project.confirmStageEnd, finalSplit}], 
+//     // finalDetails: [...project.finalDetails, stageToAdd]
+// })
+
+// if (!response.error) {
+//     setNewStage('');
+// }
 
 // }
+
 
     return ( 
         <div>            
@@ -726,12 +644,16 @@ const handleStageThreeSubmit = async (e) => {
                 <Form.Field>
                     <span className='project-details'>Total Sale Value: </span>
                     <input className='' placeholder='Sale Amount in aUEC'  onChange={(e) => setSaleValue(e.target.value)} value={saleValue}/>
+                    <label>Confirm Financial Details</label>
+                {/* <Segment><p>{totalSplitPerPerson}</p></Segment> */}
+                {/* <Segment><p>{returnTotalBreakdown}</p></Segment> */}
+                <Segment><ul>{ReturnSalesSplit}</ul></Segment>
                 </Form.Field>
-                <label>Confirm Financial Details</label>
-                <p>Player split goes here</p>
+                
+                
                 <Button color='teal' inverted className='btn'>Forward Amount</Button>
                 <Button color='red' inverted><Link to="/office" className={styles['link-text']}>Close Project</Link></Button>
-                <AddRemoveFields />
+                {/* <AddRemoveFields /> */}
               </Form>
               
               }

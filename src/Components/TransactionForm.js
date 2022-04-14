@@ -16,41 +16,6 @@ export default function TransactionForm( { uid } ) {
   const { addDocument, response } = useFirestore('reports')
   
   
-  // function GenerateCaseID() {
-  //   const activity = [
-  //     {
-  //       key: 'Mining & Trade', 
-  //       text: 'Mining & Trade',
-  //       value: 'Mining & Trade'
-  //     }, 
-  //     {
-  //       key: 'Mining Only', 
-  //       text: 'Mining Only',
-  //       value: 'Mining Only'
-  //     }, 
-  //     {
-  //       key: 'Trade Only', 
-  //       text: 'Trade Only',
-  //       value: 'Trade Only'
-  //     }, 
-  //     {
-  //       key: 'Salvage & Trade', 
-  //       text: 'Salvage & Trade',
-  //       value: 'Salvage & Trade'
-  //     }, 
-  //     {
-  //       key: 'Salvage Only', 
-  //       text: 'Salvage Only', 
-  //       value: 'Salvage Only' 
-  //     }, 
-  //   ]
-  //   for (let count = 0; count < activity.length; count++) {
-  //     if(activity == {key: 'Mining & Trade'}) {
-  //       return 
-  //     }
-  //   }
-    
-  // }
   // useFirestore reference is const addDocument
   const handleSubmit = (e) => {
     // want to prevent default action of page reload

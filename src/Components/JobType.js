@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import QR_Code from '../../Components/QR_Code'
-import QRCode from 'qrcode'
-import BadgeDesigner from './BadgeDesigner'
-import { projectFirestore, timestamp } from '../../firebase/config'
-import { useAuthContext } from '../../hooks/useAuthContext'
-import { useFirestore } from '../../hooks/useFirestore'
+import { projectFirestore, timestamp } from '../firebase/config'
+import { useCollection } from '../hooks/useCollection'
+import { useAuthContext } from '../hooks/useAuthContext'
+import { useFirestore } from '../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 import {Link} from 'react-router-dom'
-import TransactionForm from '../../Components/TransactionForm';
-import Project from '../data pages/Project';
-import FirstStage from '../create/FirstStage'
-import MiningAndTradeDetailsForm from '../../Components/MiningAndTradeDetailsForm';
-import AddRemoveFields from '../../Components/AddRemoveFields';
+
+
+
 import Select from 'react-select'
 import { Form, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
 
@@ -21,10 +17,14 @@ import { Form, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container,
 
 
 export default function AccessControl({ project }) {
-  const { updateDocument, response } = useFirestore('employee-profiles')
+  const { addDocument, response } = useFirestore('employee-profiles')
+  const history = useHistory()
+  const { documents } = useCollection('users')
   const [formError, setFormError] = useState(null)
   const [job, setJob] = useState('');
   const { user } = useAuthContext()
+  const [users, setUsers] = useState([])
+  const [assignedUsers, setAssignedUsers] = useState([])
 const JobType = [
   {
     value: 'Salvage', 
@@ -41,7 +41,22 @@ const JobType = [
 
 ]    
 
+const assignedUsersList = assignedUsers.map((u) => {
+    return {
+      displayName: u.value.displayName, 
+      id: u.value.id
+    }
+    
+  })
 
+useEffect(() => {
+    if(documents) {
+        const options = documents.map(user => {
+            return { value: user, label: user.displayName}
+        })
+        setUsers(options)
+    }
+}, [documents])
 
 
 const handleFormSubmit = async (e) => {
@@ -62,12 +77,13 @@ const handleFormSubmit = async (e) => {
       return
     }
 
-    await updateDocument(project.id, {
+    await addDocument(project) 
+        if (!response.error) {
+            // redirects to home page once complete and without error
+            history.push('/Dashboard')
+          }
 
-
-        employeeSetup: [{...project.employeeSetup, formFields}], 
-        // finalDetails: [...project.finalDetails, stageToAdd]
-    })
+        
     if (!response.error) {
         setJob('');
     }

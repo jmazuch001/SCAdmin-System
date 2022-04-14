@@ -17,6 +17,7 @@ import Paper from '@mui/material/Paper';
 import TransactionForm from '../../Components/TransactionForm';
 import Project from '../data pages/Project';
 import FirstStage from '../create/FirstStage'
+import CreateProfile from '../create/CreateProfile';
 
 
 // styles
@@ -28,7 +29,7 @@ export default function AccessControl() {
 
     return (
         <div>
-            
+            <CreateProfile />
 
         </div>
         
