@@ -12,7 +12,7 @@ import ProjectStages from './ProjectStages'
 import CreateProfile from '../create/CreateProfile'
 
 // data display page
-export default function Project () {
+export default function UserProfiles () {
 const { id } = useParams()
 const { error, document } = useDocument('user-profiles', id)
 
@@ -26,7 +26,7 @@ if (!document) {
 console.log(document)
     return(
         <div className='img-fluid'>
-            <CreateProfile />
+            <CreateProfile project={document}/>
         </div>
         
         

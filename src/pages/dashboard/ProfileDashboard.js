@@ -9,7 +9,7 @@ import ProfileList from '../../Components/ProfileList'
 export default function Dashboard() {
     // retrieve specific collection
     const { profileDocuments, profileError } = useCollection('user-profiles')
-    const { completedDocuments, returnedError } = useCollection('completed lifecycles')
+
 
     return (
         <div className='img-fluid'>

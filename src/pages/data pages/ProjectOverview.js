@@ -3,6 +3,7 @@ import Sidebar from '../../Components/Sidebar'
 import styles from '../data pages/Project.css'
 import { Container, Table } from 'semantic-ui-react'
 import AdminWorkflows from '../office/AdminWorkflows'
+import { useFirestore } from '../../hooks/useFirestore'
 // library components
 import { Grid, Button } from 'semantic-ui-react'
 import FirstStage from '../create/FirstStage'
@@ -45,6 +46,7 @@ export default function ProjectOverview( { project } ) {
                                     </ul>
                                         </div>
                                     )})}
+                                    <button className='btn'>Mark As Complete</button>
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>

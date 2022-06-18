@@ -36,7 +36,8 @@ import { PriceCheckSharp } from '@mui/icons-material'
     {
       value: 'Hurston', 
       label: 'Hurston'
-    },]
+    }
+  ]
 
   //////////////////////////////////////////////////////////////////////
 

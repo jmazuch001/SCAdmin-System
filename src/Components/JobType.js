@@ -268,7 +268,7 @@ const handleFormSubmit = async (e) => {
     await addDocument(formFields) 
         if (!response.error) {
             // redirects to home page once complete and without error
-            history.push('/ProfileDashboard')
+            history.push('/')
           }
 
         
@@ -310,7 +310,7 @@ const handleFormSubmit = async (e) => {
                 </label>
                 {/* <label>
                 <span>Select Team: </span>
-                <Select onChange={(option) => setUsers(option)} options={users} isMulti/>
+                <Select onChange={(option) => setAssignedUsers(option)} options={users} isMulti/>
                 </label> */}
                 
                 

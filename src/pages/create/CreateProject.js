@@ -43,7 +43,8 @@ const activity = [
     }, 
   ]
 
-  const jobGroup = [{
+  const jobGroup = [
+  {
     value: 'HIGROUP', 
     label: 'HIGROUP'
   }, 
@@ -245,6 +246,9 @@ export default function CreateProject() {
         }
     }, [documents])
     
+
+
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         setFormError(null)
@@ -275,6 +279,9 @@ export default function CreateProject() {
           }
           
         })
+
+
+
 
         // this is the object we're saving to the database as a doc
         const project = {
