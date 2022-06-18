@@ -261,6 +261,7 @@ const [location, setLocation] = useState('');
 const [destination, setDestination] = useState('');
 const [saleValue, setSaleValue] = useState('')
 const [dueDate, setDueDate] = useState('')
+const [totalReturnSale, setTotalReturnSale] = useState('')
 
 // modal
 const [open, setOpen] = React.useState(false)
@@ -296,11 +297,6 @@ const [open, setOpen] = React.useState(false)
 //   <li key={total}>{total}</li>
 // })
 
-
-
-
-
-
 function NextPage() {
   const page = 2;
   if (page > 0) {
@@ -316,6 +312,11 @@ function previousPage() {
 }
 
 
+// let totalSaleValue = saleValue;
+// function calculateUserReturnValues() {
+//   return totalSaleValue / project.assignedUsersList.length;
+// }
+
 
 
 
@@ -325,6 +326,16 @@ function previousPage() {
     remainingCapacity = remainingCapacity - additionalDetails.quantity;
   }
 
+  function LowCapacityWarning() {
+    if (remainingCapacity < 1000) {
+      return (
+        <div>
+          <p>Warning! Ship Cargo Storage Capacity is dangerously low! Proceed to logistics step.</p>
+        </div>
+      )
+    }
+  }
+  
   // let numOfUsers = project.assignedUsersList.length + project.createdBy.length;
   // let totalSaleValue = project.stageThreeDetails.billOfSale.saleValue
   // for(const stageThreeDetails of project.additionalDetails) {
@@ -332,11 +343,11 @@ function previousPage() {
   // }
 
   
-  function ReturnSalesSplit() {
-    let numOfUsers = project.assignedUsers.length + project.createdBy.length;  
-    const splitTotal = saleValue / numOfUsers;
-    return splitTotal
-  }
+  // function ReturnSalesSplit() {
+  //   let numOfUsers = project.assignedUsers.length + project.createdBy.length;  
+  //   const splitTotal = saleValue / numOfUsers;
+  //   return splitTotal
+  // }
 
 const handleStageOneSubmit = async (e) => {
     e.preventDefault()
@@ -392,10 +403,7 @@ const handleStageTwoSubmit = async (e) => {
       destination,   
   }
 
-  function totalMinerals() {
-      // this total should be the running total of all minerals being transported in each order / bill
-      return quantity
-    }
+
 
     await updateDocument(project.id, {
 
@@ -409,15 +417,21 @@ const handleStageTwoSubmit = async (e) => {
 
 }
 
+// let calculateValues = function returnVals() {
+//   const salesTotal = saleValue;
+//   return salesTotal / project.assignedUsersList.length;
+// }
+
 const handleStageThreeSubmit = async (e) => {
   e.preventDefault()
 
   const billOfSale = { 
       saleValue, 
+      
       // returnTotalBreakdown: ReturnSalesSplit()
   }
 
-  
+
 
 
     await updateDocument(project.id, {
@@ -624,20 +638,13 @@ const handleStageThreeSubmit = async (e) => {
                         </div>
                         
                         </div>
-
-                     
                  </div>
                  <Button color='blue' inverted className='project-button-styles' >Confirm Logistics</Button>
                  <div>
                  <Button color='teal' onClick={NextPage}>Next Page</Button>
                  </div>
-                 
-              </div>
-              
-              
+              </div> 
               </Form>
-              
-              
               }
               {page === 3 && 
               <Form  onSubmit={handleStageThreeSubmit} >
@@ -645,14 +652,20 @@ const handleStageThreeSubmit = async (e) => {
                     <span className='project-details'>Total Sale Value: </span>
                     <input className='' placeholder='Sale Amount in aUEC'  onChange={(e) => setSaleValue(e.target.value)} value={saleValue}/>
                     <label>Confirm Financial Details</label>
+                    <Segment>{(saleValue / project.assignedUsersList.length)}</Segment>
                 {/* <Segment><p>{totalSplitPerPerson}</p></Segment> */}
                 {/* <Segment><p>{returnTotalBreakdown}</p></Segment> */}
-                <Segment><ul>{ReturnSalesSplit}</ul></Segment>
+                {/* <Segment><ul>{ReturnSalesSplit}</ul></Segment> */}
+                
                 </Form.Field>
                 
                 
                 <Button color='teal' inverted className='btn'>Forward Amount</Button>
+                
+                {/* <Segment>{calculateUserReturnValues}</Segment> */}
+                
                 <Button color='red' inverted><Link to="/office" className={styles['link-text']}>Close Project</Link></Button>
+                
                 {/* <AddRemoveFields /> */}
               </Form>
               

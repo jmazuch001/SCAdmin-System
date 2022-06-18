@@ -25,6 +25,7 @@ import Project from './pages/data pages/Project'
 import Dashboard from './pages/dashboard/Dashboard';
 import DeliveryConfirmation from './pages/create/DeliveryConfirmation'
 import TestPage from './pages/office/TestPage'
+import UserProfiles from './pages/data pages/UserProfiles'
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -84,6 +85,10 @@ function App() {
           <Route path='/AccessControl'>
             {!user && <Redirect to='/login' />}
             {user && <AccessControl />}
+          </Route>
+          <Route path='/UserProfiles'>
+            {!user && <Redirect to='/login' />}
+            {user && <UserProfiles />}
           </Route>
           <Route path='/Analytics'>
             {!user && <Redirect to='/login' />}

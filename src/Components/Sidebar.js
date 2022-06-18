@@ -53,6 +53,11 @@ const itemsList = [
         
         
     }, 
+    { 
+        text: 'User Profiles', 
+        icon: <GraphicEqIcon />,
+        onClick: () => history.push('/UserProfiles')
+    },
     {
         text: 'Dashboard', 
         icon: <ListIcon />,
