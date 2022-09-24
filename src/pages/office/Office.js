@@ -6,7 +6,7 @@ import StepSystem from '../home/StepSystem'
 import Sidebar from '../../Components/Sidebar';
 import TransactionForm from '../../Components/TransactionForm'
 import BgImageAll from '../office/dark_mosaic.png'
-import {Image} from 'semantic-ui-react'
+import { Grid, Rail, Segment, Image} from 'semantic-ui-react'
 import Analytics from './Analytics';
 import {Container} from 'semantic-ui-react'
 import { Button, Tab } from 'semantic-ui-react'
@@ -28,28 +28,29 @@ export default function Office() {
             <div>
                 <Sidebar />
                 <div className="tab-bg-props">
-                
-                <CreateProject />
-                
-                </div>
-                
-            </div>
-            
-                    
-            </div>
-            
-        
-        
-        {/* Add Meaningful Content HERE */}
+                <Grid centered columns={3}>
+                    <Grid.Column>
+                    <Container>
+                        <Segment>
+                        <h1>
+                            To start your workflow, you may click on the 'Workflow' option
+                            in the sidebar to the left
+                        </h1>
+                        <Rail position='left'>
+                        <Segment>Left Rail Content</Segment>
+                        </Rail>
+                        <Rail position='right'>
+                        <Segment>Right Rail Content</Segment>
+                        </Rail>
+                        </Segment>
+                    </Container>
+                    </Grid.Column>
+                </Grid>
+            </div>  
+        </div>              
+    </div>               
+</div>
 
-        
-        
-       
-        
-        </div>
-
-
-        
     )
 }
 

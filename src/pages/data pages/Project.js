@@ -30,7 +30,7 @@ console.log(document)
             
         
             <ProjectStages project={document}/>
-        
+            
         </div>
         
         

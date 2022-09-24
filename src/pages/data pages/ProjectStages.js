@@ -8,7 +8,7 @@ import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 import {Link} from 'react-router-dom'
 // component library references
-import { Form, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
+import { Form, Input, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
 import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
@@ -263,6 +263,7 @@ const [destination, setDestination] = useState('');
 const [saleValue, setSaleValue] = useState('')
 const [dueDate, setDueDate] = useState('')
 const [totalReturnSale, setTotalReturnSale] = useState('')
+const [formFieldDefault, setFormFieldDefault] = useState(0)
 
 // modal
 const [open, setOpen] = React.useState(false)
@@ -297,6 +298,9 @@ const [open, setOpen] = React.useState(false)
 // const mineralRunningQuantity = quantity.map((total) => {
 //   <li key={total}>{total}</li>
 // })
+
+// Default Form Field Values
+
 
 function NextPage() {
   const page = 2;
@@ -389,7 +393,11 @@ const handleStageOneSubmit = async (e) => {
         additionalDetails: [...project.additionalDetails, stageToAdd]
     })
     if (!response.error) {
-        setNewStage('');
+        setNewStage('') 
+        setNewMinerals('') 
+        setQuantity('')
+        setDuration('')
+
     }
 }
 
@@ -443,6 +451,7 @@ const handleStageThreeSubmit = async (e) => {
     })
     if (!response.error) {
         setNewStage('');
+        
     }
 
 }
@@ -481,7 +490,7 @@ const handleStageThreeSubmit = async (e) => {
                 </div>
                 {/* FIRST PAGE / STAGE OF M/T FORM */}
                 {page === 1 &&
-                <Form  onSubmit={handleStageOneSubmit} className='project-details'>
+                <Form  onSubmit={handleStageOneSubmit} className='project-details' key={formFieldDefault}>
                   
                     <label>
                         <h4>Additional Stages</h4>
@@ -496,7 +505,7 @@ const handleStageThreeSubmit = async (e) => {
                     </label>
                 <Form.Field>
                     <span>Total Yield Quantity:</span>
-                    <input placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
+                    <Form.Input placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
                 </Form.Field>
                 <label>
                     <span>Refinement Method:</span>
@@ -507,7 +516,7 @@ const handleStageThreeSubmit = async (e) => {
                     <Form>
                         <Form.Field>
                             <label className="project-details">Enter Processing Duration (in hours)</label>
-                            <input placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
+                            <Form.Input placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
                             
                         </Form.Field>
                         </Form>
@@ -516,7 +525,7 @@ const handleStageThreeSubmit = async (e) => {
                         <form className="add-comment" onSubmit={handleStageOneSubmit}>
                         <label htmlFor="">
                     <span>Set Due Date:</span>
-                    <input required type='date' onChange={(e) => setDueDate(e.target.value)}
+                    <Form.Input required type='date' onChange={(e) => setDueDate(e.target.value)}
                     value={dueDate} />
 
                 </label>

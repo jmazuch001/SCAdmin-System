@@ -18,6 +18,12 @@
       
     }
 
+    h1 {
+      color: black;
+      font-size: 14px;
+
+    }
+
 /* .container {
     display: grid;
     grid-template-columns: 2fr 1fr; 

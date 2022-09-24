@@ -234,7 +234,7 @@ export default function SideNav () {
     <Sidebar.Pusher>
       <Container basic>
         <Header as='h3'>Create New Workflow</Header>
-            <CreateProject />
+            
       </Container>
     </Sidebar.Pusher>
   </Sidebar.Pushable>
