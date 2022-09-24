@@ -21,6 +21,7 @@ import {Menu, Item} from 'semantic-ui-react'
 
 
 
+
 const drawerHeight = 300
 
 const useStyles = makeStyles({
@@ -51,8 +52,6 @@ const itemsList = [
         text: 'Workflows',
         icon: <WorkIcon />, 
         onClick: () => history.push('/Office'), 
-        
-        
     }, 
     { 
         text: 'User Profiles', 

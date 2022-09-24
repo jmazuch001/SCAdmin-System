@@ -26,6 +26,8 @@ import {
   Container
 } from 'semantic-ui-react'
 import OnlineUsers from '../../Components/OnlineUsers'
+import { withRouter } from 'react-router-dom';
+
 
 
 // const itemsList = [
@@ -170,7 +172,11 @@ import OnlineUsers from '../../Components/OnlineUsers'
 
 
 
-const SidebarExampleVisible = () => (
+export default function SideNav (props) {
+  const { history } = props;
+
+  return (
+
   <Sidebar.Pushable>
     <Sidebar
       as={Menu}
@@ -182,11 +188,12 @@ const SidebarExampleVisible = () => (
       width='thin'
     >
       <Menu.Item as='a'>
-        <Icon name='home' />
+      <Icon name='home' />
+        <a onClick={() => history.push('/Office')}></a>
         Home
       </Menu.Item>
       <Menu.Item as='a'>
-        <Icon name='gamepad' />
+        <Icon name='dashboard' />
         Dashboard
       </Menu.Item>
       <Menu.Item as='a'>
@@ -194,15 +201,15 @@ const SidebarExampleVisible = () => (
         Workflows
       </Menu.Item>
       <Menu.Item as='a'>
-        <Icon name='camera' />
+        <Icon name='money bill alternate outline' />
         Finances
       </Menu.Item>
       <Menu.Item as='a'>
-        <Icon name='camera' />
+        <Icon name='line graph' />
         Reporting
       </Menu.Item>
       <Menu.Item as='a'>
-        <Icon name='camera' />
+        <Icon name='address book outline' />
         User Profiles
       </Menu.Item>
       
@@ -219,8 +226,8 @@ const SidebarExampleVisible = () => (
     </Sidebar.Pusher>
   </Sidebar.Pushable>
 )
+  }
 
-export default SidebarExampleVisible
 
 
 
