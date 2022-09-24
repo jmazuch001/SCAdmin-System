@@ -13,9 +13,10 @@ import Select from 'react-select'
 import { Form, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
 
 
-export default function AccessControl({ project }) {
-  const { addDocument, response } = useFirestore('user-profiles')
+export default function AccessControl() {
   const history = useHistory()
+  const { addDocument, response } = useFirestore('user-profiles')
+
   const { documents } = useCollection('users')
   const [formError, setFormError] = useState(null)
   const [job, setJob] = useState('');
@@ -23,6 +24,10 @@ export default function AccessControl({ project }) {
   const { user } = useAuthContext()
   const [users, setUsers] = useState([])
   const [assignedUsers, setAssignedUsers] = useState([])
+
+  // const [data, setData] = useState(null)
+  // const [isPending, setIsPending] = useState(false)
+  // const [error, setError] = useSate(false)
 
 const JobType = [
   {
@@ -230,6 +235,8 @@ const createdBy = {
 //   })
 
 useEffect(() => {
+
+
     if(documents) {
         const options = documents.map(user => {
             return { value: user, label: user.displayName}

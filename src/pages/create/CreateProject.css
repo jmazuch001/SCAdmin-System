@@ -1,14 +1,14 @@
 .container-styles {
-  border-radius: 25px;
+  border-radius: 7px;
   width: 20%;
 padding: 12px 20px;
 margin: 18px 0;
 box-sizing: border-box;
-color: coral;
-opacity: 75%;
+color: rgb(15, 15, 15);
+opacity: 85%;
 background: rgb(1,1,1);
-background: linear-gradient(25deg, rgba(1,1,1,1) 0%, rgba(6,51,79,1) 54%, rgba(7,51,79,1) 58%, rgba(0,0,0,1) 100%);
-border: solid #ec660715 1px; 
+background: linear-gradient(25deg, rgb(249, 249, 249) 0%, rgb(133, 134, 135) 54%, rgb(123, 123, 123) 58%, rgb(253, 253, 253) 100%);
+border: solid #ffffff15 1px; 
 box-shadow: 0 0 0px rgba(252, 249, 247, 0.411); 
 -webkit-box-shadow: 0 0 30px rgba(252, 249, 247, 0.411); 
 -moz-box-shadow: 0 0 7px rgba(252, 249, 247, 0.411);  

@@ -9,6 +9,7 @@ import ProfileList from '../../Components/ProfileList'
 export default function Dashboard() {
     // retrieve specific collection
     const { profileDocuments, profileError } = useCollection('user-profiles')
+    const { documents, error } = useCollection('user-profiles')
 
 
     return (
@@ -16,7 +17,7 @@ export default function Dashboard() {
             <h2>Profiles</h2>
             {profileError && <p className='error'>{profileError}</p>}
             {/* output docs if you have any */}
-            {profileDocuments && <ProfileList projects={profileDocuments} />}
+            {profileDocuments && <ProfileList profiles={profileDocuments} />}
         </div>
     )
 }
