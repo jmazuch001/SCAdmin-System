@@ -114,10 +114,10 @@ function App() {
             {!user && <Redirect to='/login' />}
             {user && <DeliveryConfirmation />}
           </Route>
-          <Route path='/TestPage'>
+          {/* <Route path='/TestPage'>
             {!user && <Redirect to='/login' />}
             {user && <TestPage />}
-          </Route>
+          </Route> */}
           {/* <Route path='/ShippingDetails'>
             {!user && <Redirect to='/login' />}
             {user && <Project />}

@@ -1,133 +1,274 @@
-import React, {useState} from 'react'
-import {Drawer, ListItem, ListItemIcon, ListItemText, List} from '@material-ui/core';
-import styles from './Sidebar.module.css'
-import Container from '@mui/material/Container';
-import {makeStyles} from '@material-ui/core/styles'
-import WorkIcon from '@material-ui/icons/Work';
-import InsertChartIcon from '@material-ui/icons/InsertChart';
-import ListIcon from '@material-ui/icons/List';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
-import PortraitIcon from '@material-ui/icons/Portrait';
-import LockIcon from '@material-ui/icons/Lock';
-import AssessmentIcon from '@material-ui/icons/Assessment';
-import GraphicEqIcon from '@material-ui/icons/GraphicEq';
-import Button from 'react-bootstrap'
-import Checkbox from '@mui/material/Checkbox';
+import React, { useState, useEffect } from 'react'
+// import QR_Code from '../../Components/QR_Code'
+// import QRCode from 'qrcode'
+// import BadgeDesigner from './BadgeDesigner'
+// import { projectFirestore, timestamp } from '../../firebase/config'
+// import { useAuthContext } from '../../hooks/useAuthContext'
+// import { useFirestore } from '../../hooks/useFirestore'
+// import { useHistory } from 'react-router-dom' 
+// import {Link} from 'react-router-dom'
+// import TransactionForm from '../../Components/TransactionForm';
+// import Project from '../data pages/Project';
+// import FirstStage from '../create/FirstStage'
+// import MiningAndTradeDetailsForm from '../../Components/MiningAndTradeDetailsForm';
+// import AddRemoveFields from '../../Components/AddRemoveFields';
+// import Select from 'react-select'
+// import { Form, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
+import {
+  Checkbox,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  Menu,
+  Segment,
+  Sidebar,
+  Container
+} from 'semantic-ui-react'
+
 import { withRouter } from 'react-router-dom';
-import AccessControl from '../pages/office/AccessControl';
-import { Paper } from '@mui/material';
+
+import { NavLink } from 'react-router-dom';
+import CreateProject from '../pages/create/CreateProject';
 import OnlineUsers from './OnlineUsers';
-import {Menu, Item} from 'semantic-ui-react'
+
+
+// const itemsList = [
+//   // { 
+//   //     text: 'QR Generator', 
+//   //     icon: <GraphicEqIcon />
+//   //     onClick: () => history.push('/Office'),
+//   // },
+//   {
+//       text: 'Workflows',
+//       icon: <WorkIcon />, 
+//       onClick: () => history.push('/Office'), 
+      
+      
+//   }, 
+//   { 
+//       text: 'User Profiles', 
+//       icon: <GraphicEqIcon />,
+//       onClick: () => history.push('/UserProfiles')
+//   },
+//   {
+//       text: 'Dashboard', 
+//       icon: <ListIcon />,
+//       onClick: () => history.push('/Dashboard')
+//   }, 
+//   {
+//       text: 'Analytics', 
+//       icon: <InsertChartIcon />,
+//       onClick: () => history.push('/Analytics')
+//   }, 
+//   {
+//       text: 'Badging', 
+//       icon: <PortraitIcon />
+//   },
+//   {
+//       text: 'Access Controls', 
+//       icon:  <LockIcon />, 
+//       onClick: () => history.push('/AccessControl')
+//   }, 
+//   { 
+//       text: 'Reporting', 
+//       icon:  <AssessmentIcon />, 
+//       onClick: () => history.push('/Reporting')
+//   },
+//   { 
+//       text: 'Finances', 
+//       icon: <AccountBalanceIcon />
+
+//   }, 
+//   { 
+//       text: 'QR Generator', 
+//       icon: <GraphicEqIcon />
+//   },
+//   { 
+//       text: 'Test Page', 
+//       icon: <GraphicEqIcon />,
+//       onClick: () => history.push('/TestPage')
+//   }
+// ];
+// styles
+// import styles from 'src\pages\office\AccessControl.module.css'
+
+
+// export default function AccessControl({ project }) {
+//   const { updateDocument, response } = useFirestore('employee-profiles')
+//   const [formError, setFormError] = useState(null)
+//   const [job, setJob] = useState('');
+//   const { user } = useAuthContext()
+// const JobType = [
+//   {
+//     value: 'Salvage', 
+//     label: 'Salvage'
+//   }, 
+//   {
+//     value: 'Mining', 
+//     label: 'Mining'
+//   }, 
+//   {
+//     value: 'Trade', 
+//     label: 'Trade'
+//   }
+
+// ]    
 
 
 
 
-const drawerHeight = 300
+// const handleFormSubmit = async (e) => {
+//   e.preventDefault()
 
-const useStyles = makeStyles({
-    Drawer: {
-        width: "150px", 
-        boxSizing: 'border-box', 
-        height: drawerHeight, 
-        position: 'absolute'
-    },
-    paper: {
-        position: 'absolute'
-    }, 
-    root: {
-        position: 'absolute'
-    }
-});
+//   const formFields = {
+//       job, 
+//       id: CreateID(), 
+//   }
 
-function Sidebar(props) {
-const { history } = props;
-const classes = useStyles();
-const itemsList = [
-    // { 
-    //     text: 'QR Generator', 
-    //     icon: <GraphicEqIcon />
-    //     onClick: () => history.push('/Office'),
-    // },
-    {
-        text: 'Workflows',
-        icon: <WorkIcon />, 
-        onClick: () => history.push('/Office'), 
-    }, 
-    { 
-        text: 'User Profiles', 
-        icon: <GraphicEqIcon />,
-        onClick: () => history.push('/UserProfiles')
-    },
-    {
-        text: 'Dashboard', 
-        icon: <ListIcon />,
-        onClick: () => history.push('/Dashboard')
-    }, 
-    {
-        text: 'Analytics', 
-        icon: <InsertChartIcon />,
-        onClick: () => history.push('/Analytics')
-    }, 
-    {
-        text: 'Badging', 
-        icon: <PortraitIcon />
-    },
-    {
-        text: 'Access Controls', 
-        icon:  <LockIcon />, 
-        onClick: () => history.push('/AccessControl')
-    }, 
-    { 
-        text: 'Reporting', 
-        icon:  <AssessmentIcon />, 
-        onClick: () => history.push('/Reporting')
-    },
-    { 
-        text: 'Finances', 
-        icon: <AccountBalanceIcon />
+//     // perform checks
+//     if(!JobType) {
+//       setFormError('Please select a category')
+//       return
+//     }
+//     if (JobType.length < 1) {
+//       setFormError('Please assign the project to at least one user')
+//       return
+//     }
 
-    }, 
-    { 
-        text: 'QR Generator', 
-        icon: <GraphicEqIcon />
-    },
-    { 
-        text: 'Test Page', 
-        icon: <GraphicEqIcon />,
-        onClick: () => history.push('/TestPage')
-    }
-];
+//     await updateDocument(project.id, {
 
-    return (
-        <div>
-            <Drawer variant="permanent" className={classes.Drawer}>
-            <Container className={styles['side-container']}>
-                Powered by AntonWare
-            </Container>
-            <div>
-            <List>
-                {itemsList.map((item, index) => {
-                    const { text, icon, onClick } = item;
-                    return (
-                           
-                        <ListItem button key={text} onClick={onClick}>
-                            {icon && <ListItemIcon>{icon}</ListItemIcon>}
-                            <ListItemText primary={text}>
-                                
-                            </ListItemText>
-                        </ListItem>
-                    )
-                })}
-            </List>
-            </div>
-            <div>
-                <OnlineUsers />
-            </div>
-            
-        </Drawer>
-        </div>
+
+//         employeeSetup: [{...project.employeeSetup, formFields}], 
+//         // finalDetails: [...project.finalDetails, stageToAdd]
+//     })
+//     if (!response.error) {
+//         setJob('');
+//     }
+
+//     // supporting functions
+//     function CreateID () {
+//       return "MT" + Math.floor(Math.random() * 1000); 
+//    }
+
+
+
+// }
+
+//     return (
+//         <div>
+//             <Form onSubmit={handleFormSubmit}>
+//             <Container >
+//               <div>
+//                 <span>Job Type: </span>
+//                 <Select onChange={(e) => setJob(e)} options={JobType} />
+                  
+//               </div>
+//             </Container>
+//             <button className="btn">Stage Project</button>
+//             {formError && <p className='error'>{formError}</p>}
+//             </Form>
+//         </div>
         
-    )
-}
+//     )
+// }
 
-export default withRouter(Sidebar);
+
+
+export default function SideNav () {
+  
+
+  return (
+
+  <Sidebar.Pushable>
+    <Sidebar
+      as={Menu}
+      animation='overlay'
+      icon='labeled'
+      inverted
+      vertical
+      visible
+      width='thin'
+    >
+      <NavLink to='/'>
+        <Menu.Item as='a'>
+        <Icon name='home' />
+          Home
+        </Menu.Item>
+      </NavLink>
+      <NavLink to='/Dashboard'>
+        <Menu.Item as='a'>
+          <Icon name='dashboard' />
+          Dashboard
+        </Menu.Item>
+      </NavLink>
+      <NavLink to='/CreateProject'>
+        <Menu.Item as='a'>
+          <Icon name='book' />
+          Workflows
+        </Menu.Item>
+      </NavLink>
+      <NavLink to='/Finances'>
+        <Menu.Item as='a'>
+          <Icon name='money bill alternate outline' />
+          Finances
+        </Menu.Item>
+      </NavLink>
+      <NavLink to='/Reporting'>
+        <Menu.Item as='a'>
+          <Icon name='line graph' />
+          Reporting
+        </Menu.Item>
+      </NavLink>
+      <NavLink to='/UserProfiles'>
+        <Menu.Item as='a'>
+          <Icon name='address book outline' />
+          User Profiles
+        </Menu.Item>
+      </NavLink>
+      <Menu.Item>
+       <OnlineUsers /> 
+      </Menu.Item>
+    </Sidebar>
+
+    <Sidebar.Pusher>
+      <Container basic>
+        <Header as='h3'>Create New Workflow</Header>
+            <CreateProject />
+      </Container>
+    </Sidebar.Pusher>
+  </Sidebar.Pushable>
+)
+  }
+
+
+
+
+
+// const MovieList = () => {
+
+//   const [movies, setMovies] = useState ([
+//     {
+//       name: 'Harry Potter', 
+//       price: '$10', 
+//       id: 229944
+//     }, 
+//     {
+//       name: 'GoldenEye', 
+//       price: '$100', 
+//       id: 229911
+//     }
+//   ]);
+
+//   return (
+//     <div>
+//       {movies.map(movie => (
+//       <li>{movie.name}</li>
+//     ))}
+//     </div>
+    
+
+//   )
+// }
+
+// export default MovieList;

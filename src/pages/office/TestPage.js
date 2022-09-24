@@ -173,71 +173,71 @@ import { NavLink } from 'react-router-dom';
 
 
 
-export default function SideNav (props) {
-  const { history } = props;
+// export default function SideNav (props) {
+//   const { history } = props;
 
-  return (
+//   return (
 
-  <Sidebar.Pushable>
-    <Sidebar
-      as={Menu}
-      animation='overlay'
-      icon='labeled'
-      inverted
-      vertical
-      visible
-      width='thin'
-    >
-      <NavLink to='/'>
-        <Menu.Item as='a'>
-        <Icon name='home' />
-          Home
-        </Menu.Item>
-      </NavLink>
-      <NavLink to='/Dashboard'>
-        <Menu.Item as='a'>
-          <Icon name='dashboard' />
-          Dashboard
-        </Menu.Item>
-      </NavLink>
-      <NavLink to='/Workflows'>
-        <Menu.Item as='a'>
-          <Icon name='book' />
-          Workflows
-        </Menu.Item>
-      </NavLink>
-      <NavLink to='/Finances'>
-        <Menu.Item as='a'>
-          <Icon name='money bill alternate outline' />
-          Finances
-        </Menu.Item>
-      </NavLink>
-      <NavLink to='/Reporting'>
-        <Menu.Item as='a'>
-          <Icon name='line graph' />
-          Reporting
-        </Menu.Item>
-      </NavLink>
-      <NavLink to='/UserProfiles'>
-        <Menu.Item as='a'>
-          <Icon name='address book outline' />
-          User Profiles
-        </Menu.Item>
-      </NavLink>
-      <Menu.Item>
-        <OnlineUsers />
-      </Menu.Item>
-    </Sidebar>
+//   <Sidebar.Pushable>
+//     <Sidebar
+//       as={Menu}
+//       animation='overlay'
+//       icon='labeled'
+//       inverted
+//       vertical
+//       visible
+//       width='thin'
+//     >
+//       <NavLink to='/'>
+//         <Menu.Item as='a'>
+//         <Icon name='home' />
+//           Home
+//         </Menu.Item>
+//       </NavLink>
+//       <NavLink to='/Dashboard'>
+//         <Menu.Item as='a'>
+//           <Icon name='dashboard' />
+//           Dashboard
+//         </Menu.Item>
+//       </NavLink>
+//       <NavLink to='/Workflows'>
+//         <Menu.Item as='a'>
+//           <Icon name='book' />
+//           Workflows
+//         </Menu.Item>
+//       </NavLink>
+//       <NavLink to='/Finances'>
+//         <Menu.Item as='a'>
+//           <Icon name='money bill alternate outline' />
+//           Finances
+//         </Menu.Item>
+//       </NavLink>
+//       <NavLink to='/Reporting'>
+//         <Menu.Item as='a'>
+//           <Icon name='line graph' />
+//           Reporting
+//         </Menu.Item>
+//       </NavLink>
+//       <NavLink to='/UserProfiles'>
+//         <Menu.Item as='a'>
+//           <Icon name='address book outline' />
+//           User Profiles
+//         </Menu.Item>
+//       </NavLink>
+//       <Menu.Item>
+//         <OnlineUsers />
+//       </Menu.Item>
+//     </Sidebar>
   
-    <Sidebar.Pusher>
-      <Container basic>
-        <Header as='h3'>Create New Workflow</Header>
-        <CreateProject />
-      </Container>
-    </Sidebar.Pusher>
-  </Sidebar.Pushable>
-)
-  }
+//     <Sidebar.Pusher>
+//       <Container basic>
+//         <Header as='h3'>Create New Workflow</Header>
+//         <CreateProject />
+//       </Container>
+//     </Sidebar.Pusher>
+//   </Sidebar.Pushable>
+// )
+//   }
 
 
 
