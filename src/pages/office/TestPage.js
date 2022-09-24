@@ -27,7 +27,8 @@ import {
 } from 'semantic-ui-react'
 import OnlineUsers from '../../Components/OnlineUsers'
 import { withRouter } from 'react-router-dom';
-
+import CreateProject from '../create/CreateProject';
+import { NavLink } from 'react-router-dom';
 
 
 // const itemsList = [
@@ -187,32 +188,42 @@ export default function SideNav (props) {
       visible
       width='thin'
     >
-      <Menu.Item as='a'>
-      <Icon name='home' />
-        <a onClick={() => history.push('/Office')}></a>
-        Home
-      </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon name='dashboard' />
-        Dashboard
-      </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon name='book' />
-        Workflows
-      </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon name='money bill alternate outline' />
-        Finances
-      </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon name='line graph' />
-        Reporting
-      </Menu.Item>
-      <Menu.Item as='a'>
-        <Icon name='address book outline' />
-        User Profiles
-      </Menu.Item>
-      
+      <NavLink to='/'>
+        <Menu.Item as='a'>
+        <Icon name='home' />
+          Home
+        </Menu.Item>
+      </NavLink>
+      <NavLink to='/Dashboard'>
+        <Menu.Item as='a'>
+          <Icon name='dashboard' />
+          Dashboard
+        </Menu.Item>
+      </NavLink>
+      <NavLink to='/Workflows'>
+        <Menu.Item as='a'>
+          <Icon name='book' />
+          Workflows
+        </Menu.Item>
+      </NavLink>
+      <NavLink to='/Finances'>
+        <Menu.Item as='a'>
+          <Icon name='money bill alternate outline' />
+          Finances
+        </Menu.Item>
+      </NavLink>
+      <NavLink to='/Reporting'>
+        <Menu.Item as='a'>
+          <Icon name='line graph' />
+          Reporting
+        </Menu.Item>
+      </NavLink>
+      <NavLink to='/UserProfiles'>
+        <Menu.Item as='a'>
+          <Icon name='address book outline' />
+          User Profiles
+        </Menu.Item>
+      </NavLink>
       <Menu.Item>
         <OnlineUsers />
       </Menu.Item>
@@ -220,8 +231,8 @@ export default function SideNav (props) {
   
     <Sidebar.Pusher>
       <Container basic>
-        <Header as='h3'>Application Content</Header>
-        <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+        <Header as='h3'>Create New Workflow</Header>
+        <CreateProject />
       </Container>
     </Sidebar.Pusher>
   </Sidebar.Pushable>
