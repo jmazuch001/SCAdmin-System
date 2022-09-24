@@ -20,6 +20,7 @@ import OnlineUsers from './OnlineUsers';
 import {Menu, Item} from 'semantic-ui-react'
 
 
+
 const drawerHeight = 300
 
 const useStyles = makeStyles({
@@ -120,9 +121,9 @@ const itemsList = [
                 })}
             </List>
             </div>
-            <Menu vertical>
+            <div>
                 <OnlineUsers />
-            </Menu>
+            </div>
             
         </Drawer>
         </div>

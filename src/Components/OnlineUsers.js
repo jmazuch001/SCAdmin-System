@@ -12,7 +12,7 @@ export default function OnlineUsers() {
     const { error, documents } = useCollection('users');
     return (
         <div className={styles['users-list']}>
-            <h2>Currently Online</h2>
+            <p>Currently Online</p>
             {/* access users through collection */}
             {error && <div className='error'>{error}</div>}
             {documents && documents.map(user => (

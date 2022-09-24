@@ -6,7 +6,9 @@ import ProjectList from '../../Components/ProjectList'
 import UserProfiles from '../../pages/data pages/UserProfiles'
 import ProfileList from '../../Components/ProfileList'
 // getting realtime information about the db collections and list on page
-export default function Dashboard() {
+
+
+export default function profileDashboard() {
     // retrieve specific collection
     const { profileDocuments, profileError } = useCollection('user-profiles')
     const { documents, error } = useCollection('user-profiles')

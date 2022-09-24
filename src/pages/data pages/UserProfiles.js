@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useDocument } from '../../hooks/useDocument'
+import AccessControl from '../create/CreateProfile'
 
 // key imports
 import { Container } from 'semantic-ui-react'
@@ -26,7 +27,7 @@ if (!document) {
 console.log(document)
     return(
         <div className='img-fluid'>
-            <CreateProfile project={document}/>
+            <AccessControl profile={document}/>
         </div>
         
         
