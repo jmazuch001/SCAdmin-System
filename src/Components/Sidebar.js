@@ -174,20 +174,23 @@ export default function SideNav () {
           <ul>
             <li>
               <NavLink exact to="/">
-                <span>Dashboard</span>
+                <span>Home</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/create">
+              <NavLink to="/CreateProject">
                 <span>New Project</span>
               </NavLink>
             </li>
             <li>
-            <NavLink to='/'>
-        
-          Home
-        
-      </NavLink>
+              <NavLink to='/Dashboard'>
+                <span>Dashboard</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/Reporting'>
+                <span>Reporting</span>
+              </NavLink>
             </li>
           </ul>
         </nav>
