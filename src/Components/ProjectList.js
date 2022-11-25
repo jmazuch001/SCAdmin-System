@@ -8,7 +8,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 
 
 export default function ProjectList({ projects }) {
-const { deleteDocument } = useFirestore('projects')
+const { deleteDocument } = useFirestore('lifecycles')
 const { user } = useAuthContext()
 
 const handleClick = (e) => {

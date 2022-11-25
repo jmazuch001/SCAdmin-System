@@ -15,7 +15,7 @@ import TransactionForm from '../../Components/TransactionForm'
 import AdminWorkflows from './AdminWorkflows'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useCollection } from '../../hooks/useCollection'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, Table, Header, GridRow, Cell } from 'semantic-ui-react'
 import Dashboard from '../dashboard/Dashboard'
 import TransactionReportList from './TransactionReportList'
 
@@ -25,10 +25,12 @@ export default function Reporting() {
     const { user } = useAuthContext()
     const { documents, error} = useCollection('reports')
     return (
+        
         <div className={styles['img-fluid']} >
+            <Sidebar />
             <div className={styles.container}>
             <div class='grid-item'>
-                <Sidebar />
+                
                 
             <div className={styles.sidebar}>
               {/* fetching user data within this div */}

@@ -36,7 +36,7 @@
     overflow: auto;
 }
 
-.sidebar {
+/* .sidebar {
     padding-left: 30px;
     overflow: auto;
     display: flex;
@@ -98,7 +98,7 @@
 .sidebar aside li {
     margin: 10px;
     overflow: auto;
-}
+} */
 
 .img-fluid {
     /* patterned backgrounds */

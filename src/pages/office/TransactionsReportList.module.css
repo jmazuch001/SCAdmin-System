@@ -1,24 +1,62 @@
-.body {
-    font-size: 14px;
-      font-family: 'Genos', sans-serif;
-      margin: 0px;
-      font-size: 1.1em;
-      padding: 0px;
-      /* background-color: black;
-      background-image: url('../home/dark_mosaic.png'); */
+/* transactions */
+.transactions li {
+    margin: 30px auto;
+    border: 1px solid #f2f2f2;
+    box-shadow: 3px 3px 5px rgba(50,50,50,0.1);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid #1f9751;
+  }
+  .transactions .name {
+    color: #777;
+    font-size: 1.4em;
+  }
+  .transactions .amount {
+    margin-left: auto;
+    margin-right: 40px;
+    color: #777;
+    font-weight: bold;
+    font-size: 1.6em;
+  }
+  .transactions button {
+    position: absolute;
+    top: 0;
+    right:0;
+    background: #ddd;
+    color: #777;
+    border: none;
+    padding: 12px 8px;
+    text-align: center;
+    line-height: 0;
+    font-size: 0.9em;
+    cursor: pointer;
+  }
+
+  .img-fluid {
+    /* patterned backgrounds */
+    background-image: url('../home/dark_mosaic.png');
+    
+      min-width: 100%;
+      min-height: 100%;
       background-position: center; 
       opacity: 100%;
-      overflow: auto;
+    color: white;
     background-repeat: repeat;
-    /* use these below this line for unpatterned bg images */
-      /* position: fixed; */
-      /* min-width: auto; */
-      /* min-height: 100%; */
-      /* background-size: cover; */
-      
-    }
+    overflow: auto;
+    /* non-patterned backgrounds */
+    /* background-image: url('/images/horizon.png');  */
+    /* background-size: cover;  */
+  }
 
-/* .container {
+  .content {
+    padding-right: 30px;
+    overflow: auto;
+}
+
+.container {
     display: grid;
     grid-template-columns: 2fr 1fr; 
     max-width: 960px;
@@ -93,35 +131,4 @@
 .sidebar aside li {
     margin: 10px;
     overflow: auto;
-} */
-
-.img-fluid {
-    /* patterned backgrounds */
-    background-image: url('../home/dark_mosaic.png');
-    /* position: fixed; */
-      min-width: 100%;
-      min-height: 100%;
-      background-position: center; 
-      opacity: 100%;
-    color: white;
-    background-repeat: repeat;
-    overflow: auto;
-    /* non-patterned backgrounds */
-    /* background-image: url('/images/horizon.png');  */
-    /* background-size: cover;  */
-  }
-
-  /* .diego {
-    background: rgb(0,0,0);
-    background: linear-gradient(25deg, rgba(0,0,0,0.26934523809523814) 0%, 
-    rgba(147,10,10,1) 0%, rgba(227,240,255,1) 24%, 
-    rgba(78,212,9,1) 49%, rgba(255,255,255,1) 76%, 
-    rgba(212,6,6,1) 97%);
-  }
-
-  .diego2 {
-    font-size: 54px;
-    font-family: 'Genos', sans-serif;
-    color: white;
-    
-  } */
+}

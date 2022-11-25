@@ -183,7 +183,6 @@ export default function SideNav () {
   <Sidebar.Pushable>
     <Sidebar
       as={Menu}
-      animation='overlay'
       icon='labeled'
       inverted
       vertical
@@ -234,7 +233,7 @@ export default function SideNav () {
     <Sidebar.Pusher>
       <Container basic>
         <Header as='h3'>Create New Workflow</Header>
-            
+            asdfasdfasdf
       </Container>
     </Sidebar.Pusher>
   </Sidebar.Pushable>
