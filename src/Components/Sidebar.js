@@ -196,9 +196,6 @@ export default function SideNav () {
         </nav>
       </div>
     </div>
-
-  
-  
 )
   }
 
@@ -282,30 +279,3 @@ export default function SideNav () {
   </div> */}
 
 
-// const MovieList = () => {
-
-//   const [movies, setMovies] = useState ([
-//     {
-//       name: 'Harry Potter', 
-//       price: '$10', 
-//       id: 229944
-//     }, 
-//     {
-//       name: 'GoldenEye', 
-//       price: '$100', 
-//       id: 229911
-//     }
-//   ]);
-
-//   return (
-//     <div>
-//       {movies.map(movie => (
-//       <li>{movie.name}</li>
-//     ))}
-//     </div>
-    
-
-//   )
-// }
-
-// export default MovieList;
