@@ -39,7 +39,7 @@ export default function SideNav () {
         </nav>
       </div>
     </div>
-)
-  }
+  )
+}
 
 

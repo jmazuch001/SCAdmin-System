@@ -281,16 +281,10 @@ const handleFormSubmit = async (e) => {
       return "MT" + Math.floor(Math.random() * 1000); 
    }
 
-
-
 }
-
-
-    return (
-        <div>
-            
-            <Container>
-              
+  return (
+    <div>
+      <Container>s
               <Form onSubmit={handleFormSubmit}>
                 <label>
                 <span>Job Type: </span>
@@ -312,16 +306,11 @@ const handleFormSubmit = async (e) => {
                 <span>Select Team: </span>
                 <Select onChange={(option) => setAssignedUsers(option)} options={users} isMulti/>
                 </label> */}
-                
-                
-              
-            
             <button className="btn">Stage Project</button>
             {formError && <p className='error'>{formError}</p>}
             </Form>
-            </Container>
+      </Container>
         </div>
-        
     )
 }
 

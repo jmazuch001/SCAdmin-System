@@ -12,6 +12,7 @@ import bgImageTop from '../home/horizon.png'
 // import ImageRight from '../home/EyesOnThePrize'
 // import bgImage2 from '../home/horizon2'
 import GridLayout from '../../Components/GridLayout'
+import BottomNavbar from '../../Components/BottomNavbar'
 import Navbar from '../../Components/Navbar'
 
 
@@ -41,14 +42,14 @@ export default function Home() {
         
         <Container>
             
-            
+            <BottomNavbar />
         </Container>
         
         <Container>
             {/* <GridLayout /> */}
             <nav>
                 <header>
-                    
+                    <BottomNavbar />
                 </header>
             </nav>
             
