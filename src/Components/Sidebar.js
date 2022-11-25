@@ -1,19 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// import QR_Code from '../../Components/QR_Code'
-// import QRCode from 'qrcode'
-// import BadgeDesigner from './BadgeDesigner'
-// import { projectFirestore, timestamp } from '../../firebase/config'
-// import { useAuthContext } from '../../hooks/useAuthContext'
-// import { useFirestore } from '../../hooks/useFirestore'
-// import { useHistory } from 'react-router-dom' 
-// import {Link} from 'react-router-dom'
-// import TransactionForm from '../../Components/TransactionForm';
-// import Project from '../data pages/Project';
-// import FirstStage from '../create/FirstStage'
-// import MiningAndTradeDetailsForm from '../../Components/MiningAndTradeDetailsForm';
-// import AddRemoveFields from '../../Components/AddRemoveFields';
-// import Select from 'react-select'
-// import { Form, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
 import {
   Checkbox,
   Grid,
@@ -31,8 +16,7 @@ import { withRouter } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import CreateProject from '../pages/create/CreateProject';
 import OnlineUsers from './OnlineUsers';
-
-
+import styles from './Sidebar.module.css'
 // const itemsList = [
 //   // { 
 //   //     text: 'QR Generator', 
@@ -179,8 +163,47 @@ export default function SideNav () {
   
 
   return (
+    
+    <div className={styles.sidebar}>
+      <div className={styles['sidebar-content']}>
+        <div className={styles.user}>
+          {/* avatar & username here later */}
+          <p>Hey user</p>  
+        </div>  
+        <nav className={styles.links}>
+          <ul>
+            <li>
+              <NavLink exact to="/">
+                <span>Dashboard</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/create">
+                <span>New Project</span>
+              </NavLink>
+            </li>
+            <li>
+            <NavLink to='/'>
+        
+          Home
+        
+      </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
-  <Sidebar.Pushable>
+  
+  
+)
+  }
+
+
+{/* <div>
+
+
+  <Sidebar.Pushable className='sidebar-content'>
     <Sidebar
       as={Menu}
       icon='labeled'
@@ -237,11 +260,23 @@ export default function SideNav () {
       </Container>
     </Sidebar.Pusher>
   </Sidebar.Pushable>
-)
-  }
-
-
-
+  <div className='sidebar'>
+    <div className='sidebar-content'>
+      <div className='user'>
+        Hello
+      </div>
+      <nav className='tabs'>
+        <ul>
+          <li>
+          <NavLink to='/UserProfiles'>
+            <span>User Profiles</span>
+          </NavLink>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  </div> */}
 
 
 // const MovieList = () => {

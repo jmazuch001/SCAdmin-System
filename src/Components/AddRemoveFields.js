@@ -8,7 +8,6 @@ import {Button} from 'semantic-ui-react'
 import { useState, useEffect } from 'react'
 
 // styles
-import styles from './BottomNavbar.module.css'
 
 export default function AddRemoveFields() {
     const [formInput, setFormInput] = useState([

@@ -13,7 +13,6 @@ import QR_Code from './Components/QR_Code'
 import AccessControl from './pages/office/AccessControl'
 import Analytics from './pages/office/Analytics'
 import Reporting from './pages/office/Reporting'
-import Inventory from './pages/office/Inventory'
 import OnlineUsers from './Components/OnlineUsers';
 import ActiveData from './pages/data pages/Project'
 import Sidebar from './Components/Sidebar'
@@ -24,7 +23,7 @@ import CreateProject from './pages/create/CreateProject';
 import Project from './pages/data pages/Project'
 import Dashboard from './pages/dashboard/Dashboard';
 import DeliveryConfirmation from './pages/create/DeliveryConfirmation'
-import TestPage from './pages/office/TestPage'
+
 import UserProfiles from './pages/data pages/UserProfiles'
 
 function App() {

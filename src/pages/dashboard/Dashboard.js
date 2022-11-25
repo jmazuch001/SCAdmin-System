@@ -4,7 +4,7 @@ import { useCollection } from '../../hooks/useCollection'
 import { Grid, Container, Segment, Divider, Table } from 'semantic-ui-react'
 import ProjectList from '../../Components/ProjectList'
 import UserProfiles from '../../pages/data pages/UserProfiles'
-import ProfileList from '../../Components/ProfileList'
+
 // getting realtime information about the db collections and list on page
 export default function Dashboard() {
     // retrieve specific collection
@@ -19,10 +19,6 @@ export default function Dashboard() {
             {error && <p className='error'>{error}</p>}
             {/* output docs if you have any */}
             {documents && <ProjectList  projects={documents} />}
-            <h2>Profiles</h2>
-            {profileError && <p className='error'>{profileError}</p>}
-            {/* output docs if you have any */}
-            {profileDocuments && <ProfileList profiles={profileDocuments} />}
         </div>
     )
 }
