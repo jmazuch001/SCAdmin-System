@@ -35,7 +35,9 @@ export default function Home() {
             
             
             <Image src={bgImageTop} alt='horizon' className="img-fluid" width='max-width'/>
-        
+        <div>
+        <GridLayout />
+        </div>
         {/* </Grid.Column> */}
            
         {/* </Grid> */}

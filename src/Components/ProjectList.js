@@ -5,6 +5,7 @@ import { Avatar } from '@mui/material'
 import { Checkbox } from 'semantic-ui-react'
 import { useFirestore } from '../hooks/useFirestore'
 import { useAuthContext } from '../hooks/useAuthContext'
+import GridLayout from './GridLayout'
 
 
 export default function ProjectList({ projects }) {
@@ -50,6 +51,7 @@ const handleClick = (e) => {
                         
                     </div>
                 </Link>
+                
             ))}
         </div>
     )
