@@ -53,13 +53,20 @@ export default function Home() {
                 
         </div>
         <section>
-            
-        </section>
         <h1>
             Inventory Controls
         </h1>
-        <hr className={styles['line-glow']}>
-        </hr>
+        <p>
+            Techniques in data entry via an administrative portal aids in organization stability, 
+            ascertaining a status at a glance, and pinpoints where and what gaps need to be filled.
+        </p>
+        <p>
+            Through a live-database, members can contribute to a recordable inventory. 
+        </p>
+        </section>
+        
+        <hr className={styles['line-glow']} />
+
         <section>
         <div className={styles['grid-container']}>
                     <div className={styles["grid-item"]}>
@@ -91,8 +98,29 @@ export default function Home() {
            </h3>
            <p>
                Never stifled by over-regulation, all members
-               are encouraged to bring unique solutions to the table.
+               are encouraged to bring unique solutions to the table. Members of the Board of Commissioners
+               are tenured at the minimum of two years of service to the organization alongside our highest 
+               ranking members having more than seven years of community experience. 
            </p>
+           <h3>
+                What about quality of members?
+           </h3>
+           <p>
+                We value quality over quantity. An equal chance for all to contribute allows us to 
+                screen a wide range of prospective members at the minimum age level of 21 and give 
+                feedback when and where needed. Improvement programs are essential to maintaining 
+                a high standard not only for conduct, but also proficiency in knowing policies, procedures, 
+                and the right place or moment to execute. 
+           </p>
+           <h3>
+                What makes our training approach so effective?
+            </h3>
+           <p>
+                It is firmly believed, tried, and tested, that a 
+                chain is only as strong as its weakest link. With the training programs offered, there is 
+                no shortage of opportunity for growth. A lack of applied tough motivation is not guaranteed. 
+           </p>
+           
             </div>
            </div>
         </section>
