@@ -16,14 +16,11 @@ const handleClick = (e) => {
     deleteDocument(projects.id)
 
 }
-
     return (
         <div className='project-list'>
             {projects.length === 0 && <p>No projects as of yet!</p>}
-            {projects.map(project => (
-                
+            {projects.map(project => (     
                 <Link to={`/projects/${project.id}`} key={project.id}>
-                    
                     <h4>{project.name}</h4>
                     <h4>{project.details}</h4>
                     {/* due date is a firestore timestamp at this point */}
@@ -34,24 +31,17 @@ const handleClick = (e) => {
                     {/* map through assigned users list props on each project */}
                     <ul>
                         {project.assignedUsersList.map(user => (
-
                             <li key={user.displayName}>
-                                <span>{user.displayName}</span>
-                                
-                            </li>
-                            
+                                <span>{user.displayName}</span>                                
+                            </li>   
                         ))}
-                        
-                        
                     </ul>
                     <div>
                         {user.uid === project.createdBy.id && (
                             <button  onClick={handleClick}>Mark As Complete</button>
                         )}
-                        
                     </div>
                 </Link>
-                
             ))}
         </div>
     )

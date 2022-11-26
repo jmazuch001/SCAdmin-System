@@ -47,6 +47,7 @@ export default function Home() {
         
         <Container>
             {/* <GridLayout /> */}
+
             
             <div className={styles['grid-container']}>
                 

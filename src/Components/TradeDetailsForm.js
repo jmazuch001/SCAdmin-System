@@ -60,8 +60,6 @@ const tradingDestinations = [
     label: 'Crusader - Grim Hex'
   },
 ]
-
-
   return (
     <Form  className='project-details'>
     <div >
@@ -84,7 +82,6 @@ const tradingDestinations = [
                <Button>Previous</Button>
                <Button>Next</Button>
                <p>This is a P-TAG</p>
-           
        </div>
     </div>
     </Form>

@@ -26,8 +26,13 @@ export default function Office() {
         <div className={styles['img-fluid']} >
             <div className={styles.container}>
             <div>
+                
                 <Sidebar />
-                <div className="tab-bg-props">
+                
+                
+                
+                
+                {/* <div className="tab-bg-props">
                 <Grid centered columns={3}>
                     <Grid.Column>
                     <Container>
@@ -46,7 +51,7 @@ export default function Office() {
                     </Container>
                     </Grid.Column>
                 </Grid>
-            </div>  
+            </div>   */}
         </div>              
     </div>               
 </div>

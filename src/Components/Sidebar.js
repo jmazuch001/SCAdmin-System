@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import CreateProject from '../pages/create/CreateProject';
 import OnlineUsers from './OnlineUsers';
 import styles from './Sidebar.module.css'
+import Container from '@mui/material/Container'
 
 export default function SideNav () {
   return (

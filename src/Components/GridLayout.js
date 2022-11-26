@@ -27,6 +27,12 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function GridLayout() {
     return (
         <div >
+          <section>
+            <h1>
+              Organization Specialties
+            </h1>
+          </section>
+          
           <hr/>
        <Box sx={{ width: '100%' }}>
       <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>

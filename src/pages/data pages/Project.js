@@ -1,10 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useDocument } from '../../hooks/useDocument'
-
-// key imports
-import { Container } from 'semantic-ui-react'
-
 // styles
 import styles from './Project.css'
 import ProjectOverview from './ProjectOverview'
