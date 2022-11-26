@@ -7,13 +7,15 @@ import Workflows from '../../Components/Workflows'
 import AdminWorkflows from '../office/AdminWorkflows'
 import { Divider, Image, Segment, Item, Grid, Rail } from "semantic-ui-react";
 import { Tab } from "semantic-ui-react";
-import { Container } from 'semantic-ui-react'
+// import { Container } from 'semantic-ui-react'
+import Container from '@mui/material/Container'
+import Box from '@mui/material/Box'
 import bgImageTop from '../home/horizon.png'
 // import ImageRight from '../home/EyesOnThePrize'
 // import bgImage2 from '../home/horizon2'
 import GridLayout from '../../Components/GridLayout'
-import BottomNavbar from '../../Components/BottomNavbar'
-import Navbar from '../../Components/Navbar'
+
+
 
 
 // const panes = [
@@ -25,7 +27,6 @@ import Navbar from '../../Components/Navbar'
 
 export default function Home() {
     return (
-    
         <div className={styles.body}>
             {/* sizing is not absolute */}
         
@@ -35,42 +36,20 @@ export default function Home() {
             
             
             <Image src={bgImageTop} alt='horizon' className="img-fluid" width='max-width'/>
-        <div>
-        <GridLayout />
-        </div>
+        <Container>
+            <GridLayout />
+        </Container>
         {/* </Grid.Column> */}
            
         {/* </Grid> */}
         
-        <Container>
-            
-            <BottomNavbar />
-        </Container>
+
         
         <Container>
             {/* <GridLayout /> */}
-            <nav>
-                <header>
-                    <BottomNavbar />
-                </header>
-            </nav>
             
             <div className={styles['grid-container']}>
-                <div className={styles["grid-item"]}>
-                    <Image src="https://twinfinite.net/wp-content/uploads/2021/12/Star-Citizen.jpg" />
-                    <div className={styles['text-overlay-top-left']}>
-                        Mining
-                    </div>
-                </div>
-                <div className={styles['grid-container']}>
-                    <div className={styles["grid-item"]}>
-
-                        <Image src="https://twinfinite.net/wp-content/uploads/2021/12/Star-Citizen.jpg" />
-                    <div className={styles['text-overlay']}>
-                        Salvage
-                    </div>
-                </div>
-            </div>
+                
         </div>
         <section>
             
@@ -89,30 +68,8 @@ export default function Home() {
                 </div>
                 </div>
                 </section>
-    {/* <Tab panes={panes} defaultActiveIndex={0} className={styles.tabNav} /> */}
-
-            
-            {/* <div className={styles['grid-container']}>
-                <div className={styles["grid-item"]}>
-                    <h1>
-                        Training
-                    </h1>
-                    <Image src="https://twinfinite.net/wp-content/uploads/2021/12/Star-Citizen.jpg" />
-                    </div>
-                <div className={styles["grid-item"]}>
-                    <h1>
-                        Trade
-                    </h1>
-                    <Image src="https://twinfinite.net/wp-content/uploads/2021/12/Star-Citizen.jpg" />
-                    </div>
-            </div> */}
         </Container>
-        <section>
-        <h1>
-            <Navbar />
-        </h1>
-        </section>
-        
+
         <hr>
         </hr>
         <section>
@@ -187,3 +144,20 @@ export default function Home() {
     )
 }
 
+
+
+{/* <div className={styles["grid-item"]}>
+                    <Image src="https://twinfinite.net/wp-content/uploads/2021/12/Star-Citizen.jpg" />
+                    <div className={styles['text-overlay-top-left']}>
+                        Mining
+                    </div>
+                </div>
+                <div className={styles['grid-container']}>
+                    <div className={styles["grid-item"]}>
+
+                        <Image src="https://twinfinite.net/wp-content/uploads/2021/12/Star-Citizen.jpg" />
+                    <div className={styles['text-overlay']}>
+                        Salvage
+                    </div>
+                </div>
+            </div> */}
