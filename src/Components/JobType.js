@@ -9,7 +9,8 @@ import {Link} from 'react-router-dom'
 
 
 import Select from 'react-select'
-import { Form, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
+import { Form, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
+import Container from '@mui/material/Container'
 
 
 // styles
