@@ -83,14 +83,15 @@
     position: relative; 
   bottom: 0; 
 
-  background: rgba(189, 189, 189, 0.253);
+  background: rgba(0, 0, 0, 0.897);
   width: 100%;
   opacity: 80%;
   color: white;
   font-size: 20px;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   float: left;
+
   }
 
 .header3 {

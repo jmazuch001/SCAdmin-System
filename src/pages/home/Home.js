@@ -58,7 +58,7 @@ export default function Home() {
         </h1>
         <p>
             Techniques in data entry via an administrative portal aids in organization stability, 
-            ascertaining a status at a glance, and pinpoints where and what gaps need to be filled.
+            ascertaining a status at a glance, and pinpoint where and what gaps need to be filled.
         </p>
         <p>
             Through a live-database, members can contribute to a recordable inventory. 
@@ -78,10 +78,7 @@ export default function Home() {
                 </section>
         </Container>
 
-        <hr>
-        </hr>
         <section>
-
 
             <div className={styles.container}>
             
@@ -123,9 +120,10 @@ export default function Home() {
            
             </div>
            </div>
+
         </section>
         {/* BOTTOM SECTION GRID */}
-    <Grid celled>
+    {/* <Grid celled>
         <Grid.Row>
         <Grid.Column width={3}>
             <h2>
@@ -153,7 +151,7 @@ export default function Home() {
             <Image src='https://images.pexels.com/photos/7054384/pexels-photo-7054384.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260' />
         </Grid.Column>
         </Grid.Row>
-    </Grid>
+    </Grid> */}
     
 
     {/* <Container>
