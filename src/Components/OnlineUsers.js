@@ -13,6 +13,7 @@ export default function OnlineUsers() {
     const { error, documents } = useCollection('users');
     return (
         <div className={styles['users-list']}>
+            <li>
             <p>Currently Online</p>
             {/* access users through collection */}
             {error && <div className='error'>{error}</div>}
@@ -21,7 +22,9 @@ export default function OnlineUsers() {
                     {user.online && <AdjustIcon className='circle'></AdjustIcon>}
                     <span>{user.displayName}</span>
                 </div>
+                
             ))}
+            </li>
         </div>
 
     );

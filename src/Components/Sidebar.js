@@ -37,6 +37,7 @@ export default function SideNav () {
               </NavLink>
             </li>
           </ul>
+          
         </nav>
       </div>
     </div>
