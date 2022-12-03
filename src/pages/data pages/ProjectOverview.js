@@ -51,47 +51,7 @@ export default function ProjectOverview( { project } ) {
                         </Table.Row>
                     </Table.Header>
                 </Table>
-                
-                
-                {/* <h4>Project Created By:</h4>
-                <div className='assigned-users'>
-                {project.assignedUsersList.map(user => {
-                    return(
-                        <div key={user.displayName}> {user.displayName}</div>
-                    )
-                })}
-                </div> */}
-
-
-                
-                {/* <div className='assigned-users'>
-                {project.assignedUsersList.map(user => {
-                    return(
-                        <div key={user.id}>
-                            <ul>
-                            {user.displayName}
-                            </ul>
-                        </div>
-                    )
-                })}
-                </div> */}
-            
-
-                {/* <Container>
-                    <AdminWorkflows />
-                </Container>
-                 */}
-                 
-            
-            </div>
-            {/* <Grid>
-                 <Grid.Column verticalAlign='middle'>
-                        <Button content='Sign up' icon='signup' size='big' ><ProjectStages />
-                        </Button>
-                    </Grid.Column>
-                    </Grid> */}
-                    {/* <ProjectStages /> */}
-            
+            </div> 
         </div>
     )
 }
