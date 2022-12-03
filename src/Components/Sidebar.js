@@ -5,14 +5,16 @@ import CreateProject from '../pages/create/CreateProject';
 import OnlineUsers from './OnlineUsers';
 import styles from './Sidebar.module.css'
 import Container from '@mui/material/Container'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 export default function SideNav () {
+  const { user } = useAuthContext()
   return (
     <div className={styles.sidebar}>
       <div className={styles['sidebar-content']}>
         <div className={styles.user}>
           {/* avatar & username here later */}
-          <p>Hey user</p>  
+          <p>Hey {user.displayName}</p>  
         </div>  
         <nav className={styles.links}>
           <ul>
