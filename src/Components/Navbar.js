@@ -7,6 +7,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 
 // styles
 import styles from './Navbar.module.css'
+import { AppBar, Drawer, Toolbar, Typography } from '@mui/material'
 
 export default function Navbar() {
     const { logout, isPending } = useLogout()
@@ -44,7 +45,21 @@ export default function Navbar() {
             </ul>
             
         </nav>
-        
+        <div>
+            <AppBar position="fixed">
+                <Toolbar>
+                    <Typography>
+                        Advanced material UI Styling is here
+                    </Typography>
+                </Toolbar>   
+            </AppBar>
+            <Drawer>
+
+            </Drawer>
+            <main>
+
+            </main>
+        </div>
         </div>
         
     ) 
