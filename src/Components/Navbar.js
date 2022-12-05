@@ -18,12 +18,12 @@ export default function Navbar() {
 
     return (
         <div>
-        <nav className={styles.navbar}>
-        <ul><Link to="/"  className={styles.title}>Hellstrom Investment Group, LLC.</Link></ul> 
+        <AppBar className={styles.navbar} position="fixed" sx={{zIndex: 9999}}>
+            <Toolbar>
+                <Typography>
+                <Link to="/"  className={styles.title}>Hellstrom Investment Group, LLC.</Link>
+                </Typography>
             <ul>
-                
-                  
-                
                 {!user && (
                     <>
                         <li><Link to="/login" className={styles['link-text']}>Login</Link></li>
@@ -45,8 +45,17 @@ export default function Navbar() {
                     </>
                 )}
             </ul>
-            
-        </nav>
+            </Toolbar>
+        </AppBar>
+        {/* <div>
+            <AppBar className={styles.title}>
+                <Toolbar>
+                    <Typography>
+                        <h1>Hellstrom Investment Group, LLC.</h1>
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+        </div> */}
         {/* <div>
             <AppBar position="fixed">
                 <Toolbar>
@@ -77,3 +86,49 @@ export default function Navbar() {
     ) 
 }
 
+{/* <div>
+        <nav className={styles.navbar}>
+        <ul><Link to="/"  className={styles.title}>Hellstrom Investment Group, LLC.</Link></ul> 
+            <ul>
+                
+                  
+                
+                {!user && (
+                    <>
+                        <li><Link to="/login" className={styles['link-text']}>Login</Link></li>
+                        <li><Link to="/signup" className={styles['link-text']}>Signup</Link></li>   
+                        
+                    </>
+                )}
+
+                {user && (
+                    <>
+                        <li>Hello, {user.displayName}</li>
+                        <li><Link to="/AccessControl" className={styles['link-text']}>QR Code Generator</Link></li>
+                        <li><Link to="/office" className={styles['link-text']}>Office</Link></li>
+                        <li><Link to="/" className={styles['link-text']}>Home</Link></li>
+                        <li>
+                            {!isPending && <button className="logout-btn" onClick={logout}>Logout</button>}
+                            {isPending && <button className="logout-btn" disabled>Logging out...</button>}
+                        </li>
+                    </>
+                )}
+            </ul>
+            
+        </nav>
+        <div>
+            <AppBar position="fixed">
+                <Toolbar>
+                    <Typography>
+                        Advanced material UI Styling is here
+                    </Typography>
+                </Toolbar>   
+            </AppBar>
+            <Drawer>
+
+            </Drawer>
+            <main>
+
+            </main>
+        </div>
+        </div> */}

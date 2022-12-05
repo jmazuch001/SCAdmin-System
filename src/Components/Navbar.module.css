@@ -6,14 +6,14 @@
     /* padding: 30px 10px; */
     /* box-sizing: border-box; */
     /* position: fixed;  */
-    background-size: 100%;
+    /* background-size: 100%;
     background-position: left center;
     background-repeat: repeat;
-    background-attachment: fixed;
+    background-attachment: fixed; */
     /* Preserve aspet ratio */
-    min-width: 100%;
+    /* min-width: 100%;
     min-height: 100%;
-    position: relative;
+    position: relative; */
 
     /* fixes screen resizing upon hover over login / signup */
     /* additonal underline effect under navbar */

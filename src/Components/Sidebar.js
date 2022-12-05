@@ -49,7 +49,7 @@ export default function SideNav () {
       open={true}
       >
         <Typography variant="h6" noWrap>
-          Hey {user.displayName}
+          <p>Hey {user.displayName}</p>
         </Typography>
         <List>
           {[
