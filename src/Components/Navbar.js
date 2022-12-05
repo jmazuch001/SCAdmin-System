@@ -8,6 +8,8 @@ import { useAuthContext } from '../hooks/useAuthContext'
 // styles
 import styles from './Navbar.module.css'
 import { AppBar, Drawer, Toolbar, Typography } from '@mui/material'
+import { List, ListItem } from 'semantic-ui-react'
+import Home from '../pages/home/Home'
 
 export default function Navbar() {
     const { logout, isPending } = useLogout()
@@ -33,7 +35,7 @@ export default function Navbar() {
                 {user && (
                     <>
                         <li>Hello, {user.displayName}</li>
-                        <li><Link to="/AccessControl" className={styles['link-text']}>QR Code Generator</Link></li>
+                        {/* <li><Link to="/AccessControl" className={styles['link-text']}>QR Code Generator</Link></li> */}
                         <li><Link to="/office" className={styles['link-text']}>Office</Link></li>
                         <li><Link to="/" className={styles['link-text']}>Home</Link></li>
                         <li>
@@ -45,21 +47,31 @@ export default function Navbar() {
             </ul>
             
         </nav>
-        <div>
+        {/* <div>
             <AppBar position="fixed">
                 <Toolbar>
-                    <Typography>
-                        Advanced material UI Styling is here
+                    <Typography variant="h6" noWrap>
+                        Advanced Material UI Styling is here
                     </Typography>
+                    
                 </Toolbar>   
             </AppBar>
-            <Drawer>
-
+            <Drawer
+                variant='temporary'
+                open={true}
+            >
+                <List>
+                    {[{ text: "Home", route: "/"}, { text: "Contact Card Grid"}].map((nav, items) => (
+                        <ListItem key={nav.text}><Link to={nav.route}>{nav.text}</Link></ListItem>
+                    ))}
+                </List>
             </Drawer>
             <main>
-
+                <Routes>
+                    <Route path={"/"} element={<Home />}/>
+                </Routes>
             </main>
-        </div>
+        </div> */}
         </div>
         
     ) 
