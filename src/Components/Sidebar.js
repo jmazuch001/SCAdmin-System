@@ -6,12 +6,21 @@ import OnlineUsers from './OnlineUsers';
 import styles from './Sidebar.module.css'
 import Container from '@mui/material/Container'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { AppBar, Drawer, Typography, List, ListItem } from '@mui/material';
+import { AppBar, Drawer, Typography, List, ListItem, Toolbar } from '@mui/material';
+import { useTheme, useStyles } from "@mui/material/styles"
+import { Theme } from '@mui/material/styles'
 
 
 
 // Drawer Styling
-const drawerWidth = 250;
+const drawerWidth = 150;
+
+// const useStyles = makeStyles({
+//   container: {
+//     display: 'flex'
+//   }
+// })
+
 
 const basicStyles = {
   drawer: {
@@ -21,14 +30,27 @@ const basicStyles = {
     }
   }, 
   drawerPaper: {
-    width: drawerWidth, 
-    backgroundColor: "rgba(120, 120, 120, 0.5)"
-    // backgroundColor: "rgba(230, 120, 70, 0.4)"
+    width: {
+      xs: drawerWidth, 
+      sm: 225
+    }, 
+    backgroundColor: "rgba(120, 120, 120, 0.5)",
+    // backgroundColor: "rgba(230, 120, 70, 0.4)" 
+    margin: 0, 
+    marginTop: 2,
+    pt: 15, 
+    height: "100%", 
+    overflow: "auto"
+  }, 
+  content: {
+    marginLeft: drawerWidth,
+    padding: 3 
   }
 }
 
 export default function SideNav () {
   const { user } = useAuthContext()
+  const theme = useTheme();
   return (
     // <div className={styles.sidebar}>
     //   <div className={styles['sidebar-content']}>
@@ -64,17 +86,21 @@ export default function SideNav () {
     // </div>
     <div>
       <Drawer 
-      variant="temporary"
+      variant="permanent"
       open={true}
       sx={basicStyles.drawer}
       PaperProps={{
         sx: basicStyles.drawerPaper, 
-        elevation: 9
+        elevation: 9, 
       }}
       >
-        <Typography variant="h6" noWrap>
+
+        <div>
+        <Typography variant="h6" noWrap color="white">
           <p>Hey {user.displayName}</p>
         </Typography>
+        </div>
+
         <List>
           {[
             { text: "Home", route:"/"}, 

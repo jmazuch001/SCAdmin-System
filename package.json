@@ -24,6 +24,7 @@
     "react-select": "^5.2.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.4",
+    "styled-components": "^5.3.6",
     "web-vitals": "^1.1.2",
     "webfontloader": "^1.6.28",
     "webpack": "^4.42.0"
