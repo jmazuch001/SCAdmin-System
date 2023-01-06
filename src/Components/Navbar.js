@@ -28,10 +28,8 @@ export default function Navbar() {
                     <>
                         <li><Link to="/login" className={styles['link-text']}>Login</Link></li>
                         <li><Link to="/signup" className={styles['link-text']}>Signup</Link></li>   
-                        
                     </>
                 )}
-
                 {user && (
                     <>
                         <li>Hello, {user.displayName}</li>
