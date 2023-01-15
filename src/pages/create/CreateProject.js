@@ -15,6 +15,7 @@ import { timestamp } from '../../firebase/config'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom'
+import { Toolbar } from '@mui/material'
 
 // styles
 import styles from './CreateProject.css'
@@ -317,6 +318,7 @@ export default function CreateProject() {
             <div>
             <h2 className='page-title'>Create New Workflow</h2>
             </div>
+            
             <Container className='container-styles'>
             
             <Form onSubmit={handleSubmit}>
@@ -384,6 +386,7 @@ export default function CreateProject() {
                 <button className="btn">Stage Project</button>
                 {formError && <p className='error'>{formError}</p>}
             </Form>
+            
             {/* {page === 2 && <StageTwo />}
             {page === 3 && <StageThree />}
             {page === 4 && <StageFour />} */}

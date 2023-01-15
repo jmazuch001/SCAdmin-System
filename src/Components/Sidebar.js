@@ -46,73 +46,74 @@ const basicStyles = {
     marginLeft: drawerWidth,
     padding: 3 
   }
+  
 }
 
 export default function SideNav () {
   const { user } = useAuthContext()
   const theme = useTheme();
   return (
-    // <div className={styles.sidebar}>
-    //   <div className={styles['sidebar-content']}>
-    //     <div className={styles.user}>
-    //       <p>Hey {user.displayName}</p>  
-    //     </div>  
-    //     <nav className={styles.links}>
-    //       <ul>
-    //         <li>
-    //           <NavLink exact to="/">
-    //             <span>Home</span>
-    //           </NavLink>
-    //         </li>
-    //         <li>
-    //           <NavLink to="/CreateProject">
-    //             <span>New Project</span>
-    //           </NavLink>
-    //         </li>
-    //         <li>
-    //           <NavLink to='/Dashboard'>
-    //             <span>Dashboard</span>
-    //           </NavLink>
-    //         </li>
-    //         <li>
-    //           <NavLink to='/Reporting'>
-    //             <span>Reporting</span>
-    //           </NavLink>
-    //         </li>
-    //       </ul>
+    <div className={styles.sidebar}>
+      <div className={styles['sidebar-content']}>
+        <div className={styles.user}>
+          <p>Hey {user.displayName}</p>  
+        </div>  
+        <nav className={styles.links}>
+          <ul>
+            <li>
+              <NavLink exact to="/">
+                <span>Home</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/CreateProject">
+                <span>New Project</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/Dashboard'>
+                <span>Dashboard</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/Reporting'>
+                <span>Reporting</span>
+              </NavLink>
+            </li>
+          </ul>
           
-    //     </nav>
-    //   </div>
-    // </div>
-    <div>
-      <Drawer 
-      variant="permanent"
-      open={true}
-      sx={basicStyles.drawer}
-      PaperProps={{
-        sx: basicStyles.drawerPaper, 
-        elevation: 9, 
-      }}
-      >
-
-        <div>
-        <Typography variant="h6" noWrap color="white">
-          <p>Hey {user.displayName}</p>
-        </Typography>
-        </div>
-
-        <List>
-          {[
-            { text: "Home", route:"/"}, 
-            { text: "Create Project", route:"/CreateProject"}, 
-            { text: "Dashboard", route:"/Dashboard"}, 
-            { text: "Reporting", route:"/Reporting"}
-          ].map((sidenav, list) => (
-            <ListItem key={sidenav.text}><Link to={sidenav.route}>{sidenav.text}</Link></ListItem>
-          ))}
-        </List>
-      </Drawer>
+        </nav>
+      </div>
     </div>
+    // <div>
+    //   <Drawer 
+    //   variant="permanent"
+    //   open={true}
+    //   sx={basicStyles.drawer}
+    //   PaperProps={{
+    //     sx: basicStyles.drawerPaper, 
+    //     elevation: 9, 
+    //   }}
+    //   >
+
+    //     <div>
+    //     <Typography variant="h6" noWrap color="white">
+    //       <p>Hey {user.displayName}</p>
+    //     </Typography>
+    //     </div>
+
+    //     <List>
+    //       {[
+    //         { text: "Home", route:"/"}, 
+    //         { text: "Create Project", route:"/CreateProject"}, 
+    //         { text: "Dashboard", route:"/Dashboard"}, 
+    //         { text: "Reporting", route:"/Reporting"}
+    //       ].map((sidenav, list) => (
+    //         <ListItem key={sidenav.text}><Link to={sidenav.route}>{sidenav.text}</Link></ListItem>
+    //       ))}
+    //     </List>
+    //   </Drawer>
+    // </div>
   )
 }
 
