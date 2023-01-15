@@ -5,7 +5,8 @@ import { useDocument } from '../../hooks/useDocument'
 import styles from './Project.css'
 import ProjectOverview from './ProjectOverview'
 import ProjectStages from './ProjectStages'
-
+import { Toolbar } from '@mui/material'
+import { Container } from '@mui/material'
 // data display page
 export default function Project () {
 const { id } = useParams()
@@ -22,7 +23,11 @@ console.log(document)
     return(
         <div className='img-fluid'>
             
-            <ProjectOverview project={document} />
+            <Container>
+                <ProjectOverview project={document} />
+            </Container>
+            
+            
             
         
             <ProjectStages project={document}/>

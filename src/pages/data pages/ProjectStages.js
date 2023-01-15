@@ -16,6 +16,7 @@ import AddRemoveFields from '../../Components/AddRemoveFields'
 import TradeDetailsForm from '../../Components/TradeDetailsForm'
 import ProjectList from '../../Components/ProjectList'
 import { PriceCheckSharp } from '@mui/icons-material'
+// import ProjectOverview from './ProjectOverview'
 
 // function component data /////////////////////////////////////////
 
@@ -481,7 +482,8 @@ const handleStageThreeSubmit = async (e) => {
 
 
     return ( 
-        <div>            
+        <div>        
+          
                 <Container  className='forms'>
                 
                 

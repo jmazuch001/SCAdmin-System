@@ -5,15 +5,17 @@ import { Avatar } from '@mui/material'
 import { Checkbox } from 'semantic-ui-react'
 import { useFirestore } from '../hooks/useFirestore'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useHistory } from 'react-router-dom'
 import GridLayout from './GridLayout'
 
 
 export default function ProjectList({ projects }) {
 const { deleteDocument } = useFirestore('lifecycles')
 const { user } = useAuthContext()
-
+const history = useHistory()
 const handleClick = (e) => {
     deleteDocument(projects.id)
+    history.push('/')
 
 }
     return (
@@ -27,7 +29,7 @@ const handleClick = (e) => {
                     <p>By {project.createdBy.displayName}</p>
                     <p>Due by {project.dueDate.toDate().toDateString()}</p>
                     {/* we want to take that and convert and output in browser */}
-                    <div className='assigned-to'></div>
+                    <div className='assigned-to'>
                     {/* map through assigned users list props on each project */}
                     <ul>
                         {project.assignedUsersList.map(user => (
@@ -36,9 +38,10 @@ const handleClick = (e) => {
                             </li>   
                         ))}
                     </ul>
+                    </div>
                     <div>
                         {user.uid === project.createdBy.id && (
-                            <button  onClick={handleClick}>Mark As Complete</button>
+                            <button className='btn' onClick={handleClick}>Mark As Complete</button>
                         )}
                     </div>
                 </Link>

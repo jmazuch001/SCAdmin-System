@@ -46,7 +46,7 @@ export default function ProjectOverview( { project } ) {
                                     </ul>
                                         </div>
                                     )})}
-                                    <button className='btn'>Mark As Complete</button>
+                                    {/* <button className='btn'>Mark As Complete</button> */}
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
