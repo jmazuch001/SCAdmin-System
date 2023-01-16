@@ -1,7 +1,7 @@
 import React from 'react'
 import Sidebar from '../../Components/Sidebar'
 import styles from '../data pages/Project.css'
-import { Container, Table } from 'semantic-ui-react'
+
 import AdminWorkflows from '../office/AdminWorkflows'
 import { useFirestore } from '../../hooks/useFirestore'
 // library components
@@ -11,6 +11,14 @@ import ProjectStages from './ProjectStages'
 import Reporting from '../office/Reporting'
 import { Toolbar } from '@mui/material'
 
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 export default function ProjectOverview( { project } ) {
 // states
 // const [stages, setStages] = useState('');
@@ -36,16 +44,28 @@ export default function ProjectOverview( { project } ) {
                     {project.details}
                 </p> */}
                 
-                <Table celled >
-                    <Table.Header className='details-table'>
-                        <Table.Row>
-                            <Table.HeaderCell>Job Group: {project.job.value}</Table.HeaderCell>
-                            <Table.HeaderCell>Project Due By: {project.dueDate.toDate().toDateString()}</Table.HeaderCell>
-                            <Table.HeaderCell>Carrier Ship: {project.carrierShip.value}</Table.HeaderCell>
-                            <Table.HeaderCell>Max Cargo Capacity: {project.carrierShip.capacity}</Table.HeaderCell>
-                            <Table.HeaderCell>{project.details}</Table.HeaderCell>
-                            <Table.HeaderCell><h4>Project is assigned to:</h4>
-                                {project.assignedUsersList.map(user => {
+                <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">Job Group</TableCell>
+            <TableCell align="center">Project Due By</TableCell>
+            <TableCell align="center">Carrier Ship</TableCell>
+            <TableCell align="center">Max Cargo Capacity</TableCell>
+            <TableCell align="center">Project Name</TableCell>
+            <TableCell align="center">Project Assignees</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          
+
+
+              <TableCell align="center">{project.job.value}</TableCell>
+              <TableCell align="center">{project.dueDate.toDate().toDateString()}</TableCell>
+              <TableCell align="center">{project.carrierShip.value}</TableCell>
+              <TableCell align="center">{project.carrierShip.capacity}</TableCell>
+              <TableCell align="center">{project.details}</TableCell>
+              <TableCell align="center">{project.assignedUsersList.map(user => {
                                     return(
                                         <div key={user.id}>
                                     <ul>
@@ -53,12 +73,15 @@ export default function ProjectOverview( { project } ) {
                                     </ul>
                                         </div>
                                     )})}
-                                    {/* <button className='btn'>Mark As Complete</button> */}
-                            </Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
-                </Table>
+                                    
+              </TableCell>
+            
+
+        </TableBody>
+      </Table>
+    </TableContainer>
             </div> 
+            
         </div>
     )
 }
