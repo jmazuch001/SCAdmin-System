@@ -16,6 +16,7 @@ import AddRemoveFields from '../../Components/AddRemoveFields'
 import TradeDetailsForm from '../../Components/TradeDetailsForm'
 import ProjectList from '../../Components/ProjectList'
 import { PriceCheckSharp } from '@mui/icons-material'
+import ProjectOverview from './ProjectOverview'
 // import ProjectOverview from './ProjectOverview'
 
 // function component data /////////////////////////////////////////
@@ -398,7 +399,11 @@ const handleStageOneSubmit = async (e) => {
         setNewMinerals('') 
         setQuantity('')
         setDuration('')
-
+    } else {
+      setNewStage('') 
+        setNewMinerals('') 
+        setQuantity('')
+        setDuration('')
     }
 }
 
@@ -486,7 +491,7 @@ const handleStageThreeSubmit = async (e) => {
           
                 <Container  className='forms'>
                 
-                
+               
                 <div>
                   <progress max="3" value={page} />
                 </div>

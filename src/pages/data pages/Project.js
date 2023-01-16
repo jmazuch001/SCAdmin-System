@@ -23,9 +23,9 @@ console.log(document)
     return(
         <div className='img-fluid'>
             
-            <Container>
-                <ProjectOverview project={document} />
-            </Container>
+            
+            <ProjectOverview className="details-table" project={document} />
+                
             
             
             

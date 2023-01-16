@@ -9,6 +9,7 @@ import { Grid, Button } from 'semantic-ui-react'
 import FirstStage from '../create/FirstStage'
 import ProjectStages from './ProjectStages'
 import Reporting from '../office/Reporting'
+import { Toolbar } from '@mui/material'
 
 export default function ProjectOverview( { project } ) {
 // states
@@ -18,7 +19,8 @@ export default function ProjectOverview( { project } ) {
         <div className={styles['img-fluid']}>
             {/* <Sidebar /> */}
             
-            <div>
+            <div className='project-overview'>
+            <Toolbar/>
                 {/* <h1 className="page-title">{project.name}</h1>
                 <p>Job Group: {project.job.value}</p>
                 <p className="due-date">
@@ -29,9 +31,9 @@ export default function ProjectOverview( { project } ) {
                 <p className="details">
                     {project.details}
                 </p> */}
-                <Table celled>
+                <Table celled >
                     <Table.Header>
-                        <Table.Row  className='details-table'>
+                        <Table.Row  >
                             <Table.HeaderCell>Job Group: {project.job.value}</Table.HeaderCell>
                             <Table.HeaderCell>Project Due By: {project.dueDate.toDate().toDateString()}</Table.HeaderCell>
                             <Table.HeaderCell>Carrier Ship: {project.carrierShip.value}</Table.HeaderCell>

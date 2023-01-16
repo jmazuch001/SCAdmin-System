@@ -53,12 +53,13 @@ box-shadow: 0 0 0px rgba(252, 249, 247, 0.411);
 
 .details-table {
   /* padding: 4px; */
-  /* margin: 18px 0; */
+  /* margin-top: 180px; */
   /* grid-template-columns: 3fr 2fr; */
   align-items: center;
   /* grid-gap: 60px; */
   text-align: center;
   /* font-size: 1.0em; */
+  position: initial;
 }
 
 .details-table-color {
@@ -83,8 +84,10 @@ box-shadow: 0 0 0px rgba(252, 249, 247, 0.411);
 
 /* project overview */
 .project-overview {
-  background-color: rgb(61, 60, 60);
-  padding: 30px;
+  /* background-color: rgb(61, 60, 60);
+  padding: 30px; */
+  margin: 100px;
+  position: initial;
   /* border-radius: 3px;
   color: white;
   text-align: left;
