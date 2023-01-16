@@ -23,15 +23,11 @@ console.log(document)
     return(
         <div className='img-fluid'>
             
-            
+            <Container className='container-details'>
             <ProjectOverview project={document} />
-                
-            
-            
-            
-        
+
             <ProjectStages project={document}/>
-            
+            </Container>
         </div>
         
         

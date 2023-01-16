@@ -8,7 +8,7 @@ import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 import {Link} from 'react-router-dom'
 // component library references
-import { Form, Input, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Table, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
+import { Form, Input, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
 import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
@@ -17,6 +17,15 @@ import TradeDetailsForm from '../../Components/TradeDetailsForm'
 import ProjectList from '../../Components/ProjectList'
 import { PriceCheckSharp } from '@mui/icons-material'
 import ProjectOverview from './ProjectOverview'
+
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 // import ProjectOverview from './ProjectOverview'
 
 // function component data /////////////////////////////////////////
@@ -489,7 +498,7 @@ const handleStageThreeSubmit = async (e) => {
     return ( 
         <div>        
           
-                <Container  className='forms'>
+                
                 
                
                 <div>
@@ -497,7 +506,7 @@ const handleStageThreeSubmit = async (e) => {
                 </div>
                 {/* FIRST PAGE / STAGE OF M/T FORM */}
                 {page === 1 &&
-                <Form  onSubmit={handleStageOneSubmit} className='project-details' key={formFieldDefault}>
+                <Form  onSubmit={handleStageOneSubmit} key={formFieldDefault}>
                   
                     <label>
                         <h4>Additional Stages</h4>
@@ -522,7 +531,9 @@ const handleStageThreeSubmit = async (e) => {
                 </label>
                     <Form>
                         <Form.Field>
-                            <label className="project-details">Enter Processing Duration (in hours)</label>
+                            
+                              <span>Enter Processing Duration (in hours)</span>
+                            
                             <Form.Input placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
                             
                         </Form.Field>
@@ -565,44 +576,46 @@ const handleStageThreeSubmit = async (e) => {
                         <div className="detail-content">
                           {/* <p>{detail.content}</p> */}
                           
-                          <Table celled className='details-table'>
-                                <Table.Header>
-                                  <Table.Row>
-                                    <Table.HeaderCell>Yield Quantity</Table.HeaderCell>
-                                    <Table.HeaderCell>Refinement Method</Table.HeaderCell>
-                                    <Table.HeaderCell>Duration</Table.HeaderCell>
-                                    <Table.HeaderCell>Stage ID</Table.HeaderCell>
-                                    <Table.HeaderCell>Comments</Table.HeaderCell>
+                          <TableContainer celled className='details-table'>
+                            <Table>
+                                <TableHead>
+                                  <TableRow>
+                                    <TableCell>Yield Quantity</TableCell>
+                                    <TableCell>Refinement Method</TableCell>
+                                    <TableCell>Duration</TableCell>
+                                    <TableCell>Stage ID</TableCell>
+                                    <TableCell>Comments</TableCell>
                                     {/* <Table.HeaderCell>Ship: {detail.ship}</Table.HeaderCell> */}
-                                    <Table.HeaderCell>Minerals</Table.HeaderCell>
-                                    <Table.HeaderCell>Created At</Table.HeaderCell>
-                                    <Table.HeaderCell>Due</Table.HeaderCell>
-                                  </Table.Row>
-                                </Table.Header>
-                                <Table.Body>
-                                <Table.Row>
-                                  <Table.Cell>{detail.quantity} cSCU</Table.Cell>
-                                  <Table.Cell>{detail.refinementType.map((refinementMethodUsed) => {
+                                    <TableCell>Minerals</TableCell>
+                                    <TableCell>Created At</TableCell>
+                                    <TableCell>Due</TableCell>
+                                  </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                <TableRow>
+                                  <TableCell>{detail.quantity} cSCU</TableCell>
+                                  <TableCell>{detail.refinementType.map((refinementMethodUsed) => {
                                       return (
                                         <li>{refinementMethodUsed.value}</li>
                                       )
                                     })}
-                                    </Table.Cell>
-                                  <Table.Cell>{detail.duration} Hours</Table.Cell>
-                                  <Table.Cell>{detail.id}</Table.Cell>
-                                  <Table.Cell>{detail.content}</Table.Cell>
-                                  <Table.Cell>{detail.displayMinerals.map((mineralList) => {
+                                    </TableCell>
+                                  <TableCell>{detail.duration} Hours</TableCell>
+                                  <TableCell>{detail.id}</TableCell>
+                                  <TableCell>{detail.content}</TableCell>
+                                  <TableCell>{detail.displayMinerals.map((mineralList) => {
                                       return(
                                         <li>{mineralList.value}</li>
                                       )
                                     })}
-                                    </Table.Cell>
-                                  <Table.Cell>{detail.createdAt.toDate().toDateString()}</Table.Cell>
-                                  <Table.Cell>{detail.dueDate.toDate().toDateString()}</Table.Cell>
-                                </Table.Row>
+                                    </TableCell>
+                                  <TableCell>{detail.createdAt.toDate().toDateString()}</TableCell>
+                                  <TableCell>{detail.dueDate.toDate().toDateString()}</TableCell>
+                                </TableRow>
 
-                              </Table.Body>
-                                </Table>
+                              </TableBody>
+                              </Table>
+                                </TableContainer>
                                 
                         </div>
                         
@@ -705,7 +718,7 @@ const handleStageThreeSubmit = async (e) => {
 
               
                 
-                </Container>
+               
                                     
                 
                 

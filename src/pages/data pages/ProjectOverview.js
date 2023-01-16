@@ -5,13 +5,10 @@ import styles from '../data pages/Project.css'
 import AdminWorkflows from '../office/AdminWorkflows'
 import { useFirestore } from '../../hooks/useFirestore'
 // library components
-import { Grid, Button } from 'semantic-ui-react'
 import FirstStage from '../create/FirstStage'
 import ProjectStages from './ProjectStages'
 import Reporting from '../office/Reporting'
 import { Toolbar } from '@mui/material'
-
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -50,7 +47,7 @@ export default function ProjectOverview( { project } ) {
                     <TableCell align="center">{project.assignedUsersList.map(user => {
                                     return(
                                         <div key={user.id}>
-                                    <ul>{user.displayName}</ul>
+                                            <ul>{user.displayName}</ul>
                                         </div>
                                     )})}          
                     </TableCell>
