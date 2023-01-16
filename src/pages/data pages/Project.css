@@ -3,7 +3,9 @@
   grid-template-columns: 3fr 2fr;
   /* align-items: start; */
   grid-gap: 60px;
-  color: rgba(201, 116, 56, 1)
+  color: rgb(252, 0, 0);
+  font-weight: bold;
+  font-size: 1.3em;
 }
 
 .project-overview-span {
@@ -28,11 +30,11 @@
   padding: 12px 10px;
   margin: 18px 0;
   box-sizing: border-box;
-  color: coral;
-  opacity: 80%;
+  color: rgb(0, 0, 0);
+  opacity: 100%;
   /* background-color: rgb(13, 16, 54); */
-  background: rgb(1, 1, 1);
-  background: linear-gradient(25deg, rgba(1, 1, 1, 1) 24%, rgba(5, 39, 60, 1) 60%, rgba(5, 39, 60, 1) 70%, rgba(0, 0, 0, 1) 100%);
+  background: rgb(190, 190, 190);
+  /* background: linear-gradient(25deg, rgba(1, 1, 1, 1) 24%, rgba(5, 39, 60, 1) 60%, rgba(5, 39, 60, 1) 70%, rgba(0, 0, 0, 1) 100%); */
   border: solid #ec660715 1px;
   box-shadow: 0 0 7px rgba(252, 249, 247, 0.411);
   -webkit-box-shadow: 0 0 30px rgba(252, 249, 247, 0.411);
@@ -178,12 +180,13 @@
 }
 
 .detail-date {
-  color: coral;
-  font-size: 0.9em;
+  color: rgb(0, 0, 0);
+  font-size: 1.0em;
   margin: 4px 0 10px;
+  font-weight: bold;
 }
 
-.detail-content {
+.detail-timestamp {
   color: red;
-  font-size: 0.9em;
+  font-size: 1.9em;
 }

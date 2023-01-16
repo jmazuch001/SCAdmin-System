@@ -279,6 +279,8 @@ const [formFieldDefault, setFormFieldDefault] = useState(0)
 // modal
 const [open, setOpen] = React.useState(false)
 
+
+
 // setting up display of data
 // const [data, setData] = useState(null)
 // const [isPending, setIsPending] = useState(false)
@@ -506,23 +508,25 @@ const handleStageThreeSubmit = async (e) => {
                 </div>
                 {/* FIRST PAGE / STAGE OF M/T FORM */}
                 {page === 1 &&
+
                 <Form  onSubmit={handleStageOneSubmit} key={formFieldDefault}>
                   
                     <label>
                         <h4>Additional Stages</h4>
                     <div>
                     <div className='progressbar'></div>
-                    <Form >
+                  <Form >
                     <label>
                     <span>Additional Minerals:</span>
+                    </label>
                         <Select 
                             onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti
                         />
-                    </label>
-                <Form.Field>
+                    
+                    <Form.Field>
                     <span>Total Yield Quantity:</span>
                     <Form.Input placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
-                </Form.Field>
+                  </Form.Field>
                 <label>
                     <span>Refinement Method:</span>
                     <Select 
@@ -531,7 +535,7 @@ const handleStageThreeSubmit = async (e) => {
                 </label>
                     <Form>
                         <Form.Field>
-                            
+
                               <span>Enter Processing Duration (in hours)</span>
                             
                             <Form.Input placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
@@ -571,12 +575,12 @@ const handleStageThreeSubmit = async (e) => {
                           <p>Added By: {detail.displayName}</p>
                         </div>
                         <div className="detail-date">
-                      <p>Created on {detail.createdAt.toDate().toDateString()}</p>
+                      <p>Created on: {detail.createdAt.toDate().toDateString()}</p>
                         </div>
-                        <div className="detail-content">
+                        <div >
                           {/* <p>{detail.content}</p> */}
                           
-                          <TableContainer celled className='details-table'>
+                          <TableContainer celled className='details-table' >
                             <Table>
                                 <TableHead>
                                   <TableRow>
@@ -620,7 +624,9 @@ const handleStageThreeSubmit = async (e) => {
                         </div>
                         
                       </li>
+                      
                     ))}
+                    
                     <Segment>Remaining Ship Cargo Capacity: 
                       <p>{remainingCapacity} cSCU</p>
                       
@@ -638,6 +644,7 @@ const handleStageThreeSubmit = async (e) => {
                 </div>
                 
                 </Form>
+  
                 }
                 <div>
                   
@@ -732,3 +739,4 @@ const handleStageThreeSubmit = async (e) => {
     )
 
 }
+
