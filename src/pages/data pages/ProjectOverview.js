@@ -16,11 +16,15 @@ export default function ProjectOverview( { project } ) {
 // const [stages, setStages] = useState('');
 
     return (
-        <div className={styles['img-fluid']}>
+        <div >
             {/* <Sidebar /> */}
             
             <div className='project-overview'>
-            <Toolbar/>
+            
+                <div className='project-overview-span'>
+                    <p >Project Details Overview</p>
+                </div>
+            
                 {/* <h1 className="page-title">{project.name}</h1>
                 <p>Job Group: {project.job.value}</p>
                 <p className="due-date">
@@ -31,9 +35,10 @@ export default function ProjectOverview( { project } ) {
                 <p className="details">
                     {project.details}
                 </p> */}
+                
                 <Table celled >
-                    <Table.Header>
-                        <Table.Row  >
+                    <Table.Header className='details-table'>
+                        <Table.Row>
                             <Table.HeaderCell>Job Group: {project.job.value}</Table.HeaderCell>
                             <Table.HeaderCell>Project Due By: {project.dueDate.toDate().toDateString()}</Table.HeaderCell>
                             <Table.HeaderCell>Carrier Ship: {project.carrierShip.value}</Table.HeaderCell>

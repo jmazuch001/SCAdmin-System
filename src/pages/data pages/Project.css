@@ -7,6 +7,14 @@
  
 }
 
+.project-overview-span {
+  color: white;
+  font-size: 2.2em;
+  font-weight: bold;
+  text-align: center;
+  /* border: 3px solid green; */
+}
+
 .project-button-styles {
   padding: 15px 32px;
 
@@ -17,7 +25,7 @@ border-radius: 25px;
 padding: 12px 10px;
 margin: 18px 0;
 box-sizing: border-box;
-color: rgb(15, 9, 7);
+color: coral;
 opacity: 80%;
 /* background-color: rgb(13, 16, 54); */
 background: rgb(1,1,1);
@@ -71,11 +79,13 @@ box-shadow: 0 0 0px rgba(252, 249, 247, 0.411);
   /* patterned backgrounds */
   background-image: url('../home/dark_mosaic.png');
   /* position: fixed; */
-    min-width: 100%;
-    min-height: 100%;
-    background-position: center; 
-    
-  background-repeat: repeat;
+    /* min-width: 100%;
+    min-height: 100%; */
+
+    /* background-position: center; 
+    background-size: cover;
+  background-repeat: repeat; */
+
   /* overflow: auto; */
   /* non-patterned backgrounds */
   /* background-image: url('/images/horizon.png');  */
@@ -87,11 +97,13 @@ box-shadow: 0 0 0px rgba(252, 249, 247, 0.411);
   /* background-color: rgb(61, 60, 60);
   padding: 30px; */
   margin: 100px;
-  position: initial;
+  /* position: initial; */
+  padding: 20px;
   /* border-radius: 3px;
   color: white;
   text-align: left;
   font-size: 1.3em; */
+  /* grid-template-columns: 3fr 2fr; */
 }
 
 .project-overview .due-date {

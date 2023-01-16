@@ -24,7 +24,7 @@ console.log(document)
         <div className='img-fluid'>
             
             
-            <ProjectOverview className="details-table" project={document} />
+            <ProjectOverview project={document} />
                 
             
             
