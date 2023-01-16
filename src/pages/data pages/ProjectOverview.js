@@ -24,64 +24,40 @@ export default function ProjectOverview( { project } ) {
 // const [stages, setStages] = useState('');
 
     return (
-        <div >
-            {/* <Sidebar /> */}
-            
+        <div>
             <div className='project-overview'>
-            
                 <div className='project-overview-span'>
                     <p >Project Details Overview</p>
-                </div>
-            
-                {/* <h1 className="page-title">{project.name}</h1>
-                <p>Job Group: {project.job.value}</p>
-                <p className="due-date">
-                    Project Due By: {project.dueDate.toDate().toDateString()}
-                </p>
-                <p className="ship-selection">Carrier Ship: {project.carrierShip.value}</p>
-                <p className="ship-selection">Max Cargo Capacity: {project.carrierShip.capacity}</p>
-                <p className="details">
-                    {project.details}
-                </p> */}
-                
-                <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">Job Group</TableCell>
-            <TableCell align="center">Project Due By</TableCell>
-            <TableCell align="center">Carrier Ship</TableCell>
-            <TableCell align="center">Max Cargo Capacity</TableCell>
-            <TableCell align="center">Project Name</TableCell>
-            <TableCell align="center">Project Assignees</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          
-
-
-              <TableCell align="center">{project.job.value}</TableCell>
-              <TableCell align="center">{project.dueDate.toDate().toDateString()}</TableCell>
-              <TableCell align="center">{project.carrierShip.value}</TableCell>
-              <TableCell align="center">{project.carrierShip.capacity}</TableCell>
-              <TableCell align="center">{project.details}</TableCell>
-              <TableCell align="center">{project.assignedUsersList.map(user => {
+                </div>  
+        <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell align="center">Job Group</TableCell>
+                        <TableCell align="center">Project Due By</TableCell>
+                        <TableCell align="center">Carrier Ship</TableCell>
+                        <TableCell align="center">Max Cargo Capacity</TableCell>
+                        <TableCell align="center">Project Name</TableCell>
+                        <TableCell align="center">Project Assignees</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    <TableCell align="center">{project.job.value}</TableCell>
+                    <TableCell align="center">{project.dueDate.toDate().toDateString()}</TableCell>
+                    <TableCell align="center">{project.carrierShip.value}</TableCell>
+                    <TableCell align="center">{project.carrierShip.capacity}</TableCell>
+                    <TableCell align="center">{project.details}</TableCell>
+                    <TableCell align="center">{project.assignedUsersList.map(user => {
                                     return(
                                         <div key={user.id}>
-                                    <ul>
-                                        {user.displayName}
-                                    </ul>
+                                    <ul>{user.displayName}</ul>
                                         </div>
-                                    )})}
-                                    
-              </TableCell>
-            
-
-        </TableBody>
-      </Table>
-    </TableContainer>
+                                    )})}          
+                    </TableCell>
+                </TableBody>
+            </Table>
+        </TableContainer>
             </div> 
-            
         </div>
     )
 }
