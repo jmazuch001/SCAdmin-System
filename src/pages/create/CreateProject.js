@@ -206,7 +206,7 @@ export default function CreateProject() {
     // person who created project can save info about it in the db
     const { user } = useAuthContext();
     const { addDocument, response } = useFirestore('lifecycles')
-
+    
     // multi-page form setup
     const [page, setPage] = useState(1);
 

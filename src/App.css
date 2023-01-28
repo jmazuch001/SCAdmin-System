@@ -6,14 +6,14 @@ body {
   color: black;
 }
 
-ul, li, p, h1, h2, h3, h4 {
+/* ul, li, p, h1, h2, h3, h4 {
   margin: 5px;
   padding: 5px;
 }
 
 ul {
   list-style-type: none;
-}
+} */
 
 .btn {
   background: rgb(255, 255, 255);

@@ -246,6 +246,11 @@ const [saleValue, setSaleValue] = useState('')
 const handleSubmit = async (e) => {
     e.preventDefault()
 
+  const logisticsDetails = {
+      location, 
+      destination,   
+  }
+
     const stageToAdd = {
         displayName: user.displayName, 
         content: newStage,
@@ -286,8 +291,6 @@ const handleSubmit = async (e) => {
         setNewStage('');
     }
 
-    
-
 }
 
     return ( 
@@ -295,9 +298,9 @@ const handleSubmit = async (e) => {
                 <Container className='container-details'>
                 <div className='project-details'>Progress Bar</div>
                 <div>
-                //   <Form onSubmit={handleSubmit} className='project-details'>
-            //   <ul>
-            //   {project.logisticsDetails.length > 0 && project.logisticsDetails.map(detail => (
+                   <Form onSubmit={handleSubmit} className='project-details'>
+               <ul>
+               {project.logisticsDetails.length > 0 && project.logisticsDetails.map(detail => (
                 <li key={detail.id}>
                   <div className="detail-author">
                     <p>Added By: {detail.displayName}</p>

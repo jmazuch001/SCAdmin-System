@@ -17,6 +17,7 @@ import TradeDetailsForm from '../../Components/TradeDetailsForm'
 import ProjectList from '../../Components/ProjectList'
 import { PriceCheckSharp } from '@mui/icons-material'
 import ProjectOverview from './ProjectOverview'
+import TestStage from './TestStage'
 
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
@@ -343,17 +344,20 @@ function previousPage() {
   let remainingCapacity = project.carrierShip.capacity;
   for(const additionalDetails of project.additionalDetails) {
     remainingCapacity = remainingCapacity - additionalDetails.quantity;
+    
   }
 
   function LowCapacityWarning() {
-    if (remainingCapacity < 1000) {
+    
+    if (remainingCapacity < 5000) {
       return (
         <div>
           <p>Warning! Ship Cargo Storage Capacity is dangerously low! Proceed to logistics step.</p>
         </div>
       )
-    }
+    } 
   }
+  
   
   // let numOfUsers = project.assignedUsersList.length + project.createdBy.length;
   // let totalSaleValue = project.stageThreeDetails.billOfSale.saleValue
@@ -429,19 +433,13 @@ const handleStageTwoSubmit = async (e) => {
       location, 
       destination,   
   }
-
-
-
     await updateDocument(project.id, {
-
-
         stageTwoDetails: [{...project.stageTwoDetails, tradeLogistics}], 
         // finalDetails: [...project.finalDetails, stageToAdd]
     })
     if (!response.error) {
         setNewStage('');
     }
-
 }
 
 // let calculateValues = function returnVals() {
@@ -457,21 +455,13 @@ const handleStageThreeSubmit = async (e) => {
       
       // returnTotalBreakdown: ReturnSalesSplit()
   }
-
-
-
-
     await updateDocument(project.id, {
-
-
         stageThreeDetails: [{...project.stageThreeDetails, billOfSale}], 
         // finalDetails: [...project.finalDetails, stageToAdd]
     })
     if (!response.error) {
         setNewStage('');
-        
     }
-
 }
 
 
@@ -506,7 +496,7 @@ const handleStageThreeSubmit = async (e) => {
                 </div>
                 {/* FIRST PAGE / STAGE OF M/T FORM */}
                 {page === 1 &&
-
+                
                 <Form  onSubmit={handleStageOneSubmit} key={formFieldDefault}>
                   
                     <label>
@@ -518,18 +508,20 @@ const handleStageThreeSubmit = async (e) => {
                     <span>Additional Minerals:</span>
                     </label>
                         <Select 
-                            onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti
-                        />
-                    
-                    {/* <Form.Field>
-                    <span>Total Yield Quantity:</span>
-                    <Form.Input placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
-                  </Form.Field> */}
-                  <Box>
-                    <div>
+                            className="selectMenu" onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti
+                    />
+                  <Box component="form"
+                    sx={{
+                      '& .MuiTextField-root': { m: 1, width: '25ch' },
+                      }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                    <div >
                       <TextField label="Quantity Mined" placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
                       <TextField label="Processing Duration" placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
                       <TextField label="Scheduled Completion Date" required type='date' onChange={(e) => setDueDate(e.target.value)} value={dueDate}/>
+                      
                     </div>
                   </Box>
                 <label>
@@ -539,7 +531,8 @@ const handleStageThreeSubmit = async (e) => {
                     />
                     
                 </label>
-                    {/* <Form>
+
+                    <Form>
                         <Form.Field>
 
                               <span>Enter Processing Duration (in hours)</span>
@@ -547,14 +540,14 @@ const handleStageThreeSubmit = async (e) => {
                             <Form.Input placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
                             
                         </Form.Field>
-                        </Form> */}
+                        </Form>
                         
                         </Form>
                         <form className="add-comment" onSubmit={handleStageOneSubmit}>
                         <label htmlFor="">
-                    {/* <span>Set Due Date:</span>
+                    <span>Set Due Date:</span>
                     <Form.Input required type='date' onChange={(e) => setDueDate(e.target.value)}
-                    value={dueDate} /> */}
+                    value={dueDate} />
 
                       </label>
                     <label>
@@ -635,14 +628,12 @@ const handleStageThreeSubmit = async (e) => {
                     
                     <Segment>Remaining Ship Cargo Capacity: 
                       <p>{remainingCapacity} cSCU</p>
-                      
+                      <p>{LowCapacityWarning}</p>
                       </Segment>
                   </ul>
 
                 </div>
-      
-
-      
+                
                 </div>
 
                 <div>

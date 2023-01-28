@@ -27,7 +27,7 @@ export default function ProjectOverview( { project } ) {
                     <p >Project Details Overview</p>
                 </div>  
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <Table sx={{ minWidth: 950 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell align="center">Job Group</TableCell>

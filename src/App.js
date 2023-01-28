@@ -25,6 +25,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import DeliveryConfirmation from './pages/create/DeliveryConfirmation'
 
 import UserProfiles from './pages/data pages/UserProfiles'
+import NavbarPrimary from './Components/NavbarPrimary';
 
 function App() {
   const { authIsReady, user } = useAuthContext()
@@ -52,8 +53,9 @@ function App() {
       
       <BrowserRouter>
       
-        <Navbar />
+        {/* <Navbar /> */}
         
+        <NavbarPrimary />
         <Switch>
           <Route exact path="/">
             {!user && <Redirect to='/login' />}

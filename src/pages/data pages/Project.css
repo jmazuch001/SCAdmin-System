@@ -21,6 +21,10 @@
   /* border: 3px solid green; */
 }
 
+.formItems {
+  width: 50%;
+}
+
 .project-button-styles {
   padding: 15px 32px;
 
