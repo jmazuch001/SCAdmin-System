@@ -8,6 +8,11 @@
   font-size: 1.3em;
 }
 
+.progress-bar-div {
+  
+  width: 50%;
+}
+
 .project-overview-span {
   color: white;
   font-size: 2.2em;
@@ -26,7 +31,7 @@
 }
 
 .container-details {
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 12px 10px;
   margin: 18px 0;
   box-sizing: border-box;
@@ -36,8 +41,8 @@
   background: rgb(190, 190, 190);
   /* background: linear-gradient(25deg, rgba(1, 1, 1, 1) 24%, rgba(5, 39, 60, 1) 60%, rgba(5, 39, 60, 1) 70%, rgba(0, 0, 0, 1) 100%); */
   border: solid #ec660715 1px;
-  box-shadow: 0 0 7px rgba(252, 249, 247, 0.411);
-  -webkit-box-shadow: 0 0 30px rgba(252, 249, 247, 0.411);
+  box-shadow: 0 0 7px rgba(95, 95, 95, 0.411);
+  -webkit-box-shadow: 0 0 20px rgba(95, 95, 95, 0.411);
   -moz-box-shadow: 0 0 7px rgba(252, 249, 247, 0.411);
   /* display: flex;
   display: grid; */
@@ -58,8 +63,8 @@
   background: rgb(1, 1, 1);
   background: linear-gradient(25deg, rgba(1, 1, 1, 1) 0%, rgba(6, 51, 79, 1) 54%, rgba(7, 51, 79, 1) 58%, rgba(0, 0, 0, 1) 100%);
   border: solid #ec660715 1px;
-  box-shadow: 0 0 0px rgba(252, 249, 247, 0.411);
-  -webkit-box-shadow: 0 0 30px rgba(252, 249, 247, 0.411);
+  box-shadow: 0 0 0px rgba(95, 95, 95, 0.411);
+  -webkit-box-shadow: 0 0 30px rgba(95, 95, 95, 0.411);
   -moz-box-shadow: 0 0 7px rgba(252, 249, 247, 0.411);
   display: flex;
 }

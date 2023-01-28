@@ -18,7 +18,7 @@ import ProjectList from '../../Components/ProjectList'
 import { PriceCheckSharp } from '@mui/icons-material'
 import ProjectOverview from './ProjectOverview'
 
-
+import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -26,6 +26,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { TextField, Toolbar } from '@mui/material'
 // import ProjectOverview from './ProjectOverview'
 
 // function component data /////////////////////////////////////////
@@ -498,12 +499,9 @@ const handleStageThreeSubmit = async (e) => {
 
 
     return ( 
+        
         <div>        
-          
-                
-                
-               
-                <div>
+                <div className='progress-bar-div'>
                   <progress max="3" value={page} />
                 </div>
                 {/* FIRST PAGE / STAGE OF M/T FORM */}
@@ -523,17 +521,25 @@ const handleStageThreeSubmit = async (e) => {
                             onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti
                         />
                     
-                    <Form.Field>
+                    {/* <Form.Field>
                     <span>Total Yield Quantity:</span>
                     <Form.Input placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
-                  </Form.Field>
+                  </Form.Field> */}
+                  <Box>
+                    <div>
+                      <TextField label="Quantity Mined" placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
+                      <TextField label="Processing Duration" placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
+                      <TextField label="Scheduled Completion Date" required type='date' onChange={(e) => setDueDate(e.target.value)} value={dueDate}/>
+                    </div>
+                  </Box>
                 <label>
-                    <span>Refinement Method:</span>
+                <span>Refinement Method:</span>
                     <Select 
-                        onChange={(e) => setRefinementType(e)} options={refinement} isMulti
+                       label="refinement method" onChange={(e) => setRefinementType(e)} options={refinement} isMulti
                     />
+                    
                 </label>
-                    <Form>
+                    {/* <Form>
                         <Form.Field>
 
                               <span>Enter Processing Duration (in hours)</span>
@@ -541,16 +547,16 @@ const handleStageThreeSubmit = async (e) => {
                             <Form.Input placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
                             
                         </Form.Field>
-                        </Form>
+                        </Form> */}
                         
                         </Form>
                         <form className="add-comment" onSubmit={handleStageOneSubmit}>
                         <label htmlFor="">
-                    <span>Set Due Date:</span>
+                    {/* <span>Set Due Date:</span>
                     <Form.Input required type='date' onChange={(e) => setDueDate(e.target.value)}
-                    value={dueDate} />
+                    value={dueDate} /> */}
 
-                </label>
+                      </label>
                     <label>
                       <span>Add new comment:</span>
                       <textarea 
@@ -577,7 +583,7 @@ const handleStageThreeSubmit = async (e) => {
                         <div className="detail-date">
                       <p>Created on: {detail.createdAt.toDate().toDateString()}</p>
                         </div>
-                        <div >
+                        <div className='project-summary'>
                           {/* <p>{detail.content}</p> */}
                           
                           <TableContainer celled className='details-table' >
