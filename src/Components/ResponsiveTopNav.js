@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import HIGROUPLogo from './HIGROUPLogo'
 import ResNavBurger from './ResNavBurger'
-import ResNavMenuLinks from './ResNavMenuLinks'
 import { Typography } from '@mui/material'
 import { useAuthContext } from '../hooks/useAuthContext'
 // responsive Top Navbar >> Responsive Hamburger Menu

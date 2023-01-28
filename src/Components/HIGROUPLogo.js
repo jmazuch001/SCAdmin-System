@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components'
+import { Image } from "@mui/icons-material";
 
 const Logo = styled.img`
     display: block;
