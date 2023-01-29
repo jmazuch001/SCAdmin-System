@@ -6,6 +6,7 @@ import ResponsiveTopNav from './ResponsiveTopNav'
 import {Link} from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
+import ComplexTitle from './ComplexTitle'
 
 export default function NavbarPrimary() {
   const { logout, isPending } = useLogout()
@@ -16,7 +17,7 @@ export default function NavbarPrimary() {
           <LiveAppBar>
               <Toolbar>
               <Typography>
-                <Link to="/"  >Hellstrom Investment Group, LLC.</Link>
+                <Link to="/"><ComplexTitle /></Link>
                 </Typography>
                 
                   {/* <ResNavBurger/> */}

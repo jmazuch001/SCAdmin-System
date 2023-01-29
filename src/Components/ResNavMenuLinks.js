@@ -35,15 +35,6 @@ const MenuUl = styled.ul`
       /* transition: 2.3s; */
     }
 
-    /* .link-text:hover {  
-        display: inline;
-        position: sticky;
-        overflow: hidden;
-        font-size: 1.5em;
-        opacity: 0.7;
-          transition: 2.0s;
-          text-shadow: 0 0 3px #FF0000, 0 0 5px #ec5a05;
-    } */
 
     @media (max-width: 768px) {
         flex-flow: column nowrap;
@@ -98,8 +89,6 @@ const MenuUl = styled.ul`
             border-radius: 17.5px;
             width: 90%;
             opacity: 55%;
-            /* transform: translateY(7px); */
-            /* background: linear-gradient(25deg, rgba(0,0,0,1) 19%, rgba(92,0,0,1) 22%, rgba(0,0,0,1) 26%); */
         }
         @keyframes gradient {
   0% {
@@ -112,13 +101,7 @@ const MenuUl = styled.ul`
     background-position: 0%;
   }
 }
-        /* li:hover:after {
-            text-shadow: 2px 1px 4px rgba(255,255,255,0.3);
-            font-size: 25px;
-            transition-delay: 1s;
-            transition-timing-function: ease-out;
-            color: #FF4520;
-        } */
+
     }
 `
 
