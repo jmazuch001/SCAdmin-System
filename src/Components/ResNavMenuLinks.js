@@ -129,6 +129,7 @@ const ResNavMenuLinks = ({ open }) => {
                             {!isPending && <button onClick={logout}>Logout</button>}
                             {isPending && <button  disabled>Logging out...</button>}
                         </li>
+                        
                     </>
                 )}
 

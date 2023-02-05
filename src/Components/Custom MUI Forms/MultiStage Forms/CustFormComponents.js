@@ -14,7 +14,7 @@ import Box from '@mui/material/Box';
 import TextField from "@mui/material/TextField";
 import Button from '@mui/material/Button';
 
-export const FormStageContainer = styled(Container)`
+export const FormContainer = styled(Container)`
 padding-top: 1rem;
 margin: auto;
 width: 50%;
@@ -30,7 +30,7 @@ background-color: orange;
 
 padding: 1rem;
 /* width: 50%; */
-margin: 2rem 6rem 6rem 6rem;
+margin: 2rem 8rem 8rem 8rem;
 display: flex;
 transition-property: all;
 background: lightgray;
@@ -59,3 +59,4 @@ h1 {
 }
 
 `
+

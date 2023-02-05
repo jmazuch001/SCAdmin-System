@@ -55,9 +55,11 @@ export default function SideNav () {
   return (
     <div className={styles.sidebar}>
       <div className={styles['sidebar-content']}>
-        <div className={styles.user}>
-          <p>Hey {user.displayName}</p>  
-        </div>  
+      <div>
+        <Typography variant="h6" noWrap color="white">
+          <p>Hey {user.displayName}</p>
+        </Typography>
+        </div>
         <nav className={styles.links}>
           <ul>
             <li>

@@ -20,6 +20,9 @@ import { Toolbar } from '@mui/material'
 // styles
 import styles from './CreateProject.css'
 import FirstStage from './FirstStage'
+import { FormBox, FormContainer } from '../../Components/Custom MUI Forms/MultiStage Forms/CustFormComponents'
+import CustTextField from '../../Components/Custom MUI Forms/MultiStage Forms/CustTextField'
+import { CornerButton } from '../../Components/Custom MUI Forms/MultiStage Forms/CustButton'
 
 const activity = [
     {
@@ -313,13 +316,15 @@ export default function CreateProject() {
         {/* <h1>{page === 1 && <StageOne />}</h1> */}
         {/* step system */}
         <div className="create-form">
-            <div>
+            <section>
+              <div>
             <h2 className='page-title'>Create New Workflow</h2>
             </div>
+            </section>
             
-            <Container className='container-styles'>
+            <FormBox >
             
-            <Form onSubmit={handleSubmit}>
+            <FormContainer onSubmit={handleSubmit}>
               <label htmlFor=''>
             <span>Job Group:</span>
             <Select 
@@ -339,19 +344,19 @@ export default function CreateProject() {
                     </label>
                 <label htmlFor="">
                     <span>Job Description:</span>
-                    <input required type='text' onChange={(e) => setName(e.target.value)}
+                    <CustTextField required type='text' onChange={(e) => setName(e.target.value)}
                     value={name} />
                     
                 </label>
                 <label htmlFor="">
                     <span>Project Details:</span>
-                    <input required type='text' onChange={(e) => setDetails(e.target.value)}
+                    <CustTextField required type='text' onChange={(e) => setDetails(e.target.value)}
                     value={details} />
                     
                 </label>
                 <label htmlFor="">
                     <span>Set Due Date:</span>
-                    <input required type='date' onChange={(e) => setDueDate(e.target.value)}
+                    <CustTextField required type='date' onChange={(e) => setDueDate(e.target.value)}
                     value={dueDate} />
 
                 </label>
@@ -381,14 +386,14 @@ export default function CreateProject() {
                     isMulti
                     />
                 </label>
-                <button className="btn">Stage Project</button>
+                <CornerButton className="btn">Stage Project</CornerButton>
                 {formError && <p className='error'>{formError}</p>}
-            </Form>
+            </FormContainer>
             
             {/* {page === 2 && <StageTwo />}
             {page === 3 && <StageThree />}
             {page === 4 && <StageFour />} */}
-            </Container>
+            </FormBox>
             
             
             

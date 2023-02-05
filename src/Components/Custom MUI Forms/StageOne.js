@@ -15,7 +15,7 @@ import TextField from "@mui/material/TextField";
 import TextInput from './MultiStage Forms/CustTextField';
 import Button from '@mui/material/Button';
 import { FormBox } from './MultiStage Forms/CustFormComponents';
-import { FormStageContainer } from './MultiStage Forms/CustFormComponents';
+import { FormContainer } from './MultiStage Forms/CustFormComponents';
 
 import { CornerButton } from './MultiStage Forms/CustButton';
 
@@ -24,7 +24,7 @@ export default function StageOne() {
   return (
     // Do not forget to add onSubmit={} in <FormBox>
     <FormBox >
-        <FormStageContainer>
+        <FormContainer>
             <h1>
                 Step 1
             </h1>
@@ -41,7 +41,7 @@ export default function StageOne() {
             <div>
                 <CornerButton variant="contained">Next Stage</CornerButton>
             </div>
-        </FormStageContainer>
+        </FormContainer>
         
     </FormBox>
   )

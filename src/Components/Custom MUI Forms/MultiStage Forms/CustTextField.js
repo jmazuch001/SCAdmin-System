@@ -22,7 +22,9 @@ export default function CustTextField() {
 }
 
 const TextInput = styled(TextField)`
-background: lightgray;
+background: white;
 border-radius: 5px;
-margin-top: 1rem;
+/* margin-top: 1rem; */
+padding: 12px 12px;
+
 `

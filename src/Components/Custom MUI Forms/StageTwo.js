@@ -2,7 +2,7 @@ import React from 'react'
 import TextInput from './MultiStage Forms/CustTextField';
 import Button from '@mui/material/Button';
 import { FormBox } from './MultiStage Forms/CustFormComponents';
-import { FormStageContainer } from './MultiStage Forms/CustFormComponents';
+import { FormContainer } from './MultiStage Forms/CustFormComponents';
 
 import { CornerButton } from './MultiStage Forms/CustButton';
 
@@ -10,7 +10,7 @@ import { CornerButton } from './MultiStage Forms/CustButton';
 export default function StageTwo() {
   return (
     <FormBox >
-        <FormStageContainer>
+        <FormContainer>
             <h1>
                 Step 2
             </h1>
@@ -24,7 +24,7 @@ export default function StageTwo() {
             <div>
                 <CornerButton variant="contained">Next Stage</CornerButton>
             </div>
-        </FormStageContainer>
+        </FormContainer>
         
     </FormBox>
   )
