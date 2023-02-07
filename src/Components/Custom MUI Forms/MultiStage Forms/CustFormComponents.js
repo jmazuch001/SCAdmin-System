@@ -27,7 +27,6 @@ background-color: lightgray; */
 
 export const FormBox = styled(Box)`
 background-color: orange;
-
 padding: 1rem;
 /* width: 50%; */
 margin: 2rem 8rem 8rem 8rem;
@@ -37,6 +36,8 @@ background: lightgray;
 border-radius: 15px;
 background: linear-gradient(25deg, rgba(128,128,128,1) 0%, rgba(56,56,56,1) 49%, rgba(113,113,113,1) 84%);
 color: coral;
+box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.71);
+box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.71);
 @media (max-width: 768px) {
   /* display: none; hides the component once it hits this viewport size */
   display: flex;
@@ -50,8 +51,8 @@ color: coral;
   border-end-start-radius: 80px 80px;
   /* opacity: 90%; */
   -webkit-box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.71);
--moz-box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.71);
-box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.71);
+  -moz-box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.71);
+  box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.71);
 }
 
 h1 {

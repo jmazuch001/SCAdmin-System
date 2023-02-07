@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react'
 import { useCollection } from '../../hooks/useCollection'
 import {Dropdown} from 'semantic-ui-react'
 import { Segment } from 'semantic-ui-react'
-import {Button, Popup} from 'semantic-ui-react'
+// import {Button, Popup} from 'semantic-ui-react'
 import { Form } from 'semantic-ui-react'
 import { Progress } from 'semantic-ui-react'
 import TransactionForm from '../../Components/TransactionForm'
 import { Container, Group} from 'semantic-ui-react'
 import Select from 'react-select'
 import { Step, Content, Icon, Title, Description, Tab, Pane, Image } from 'semantic-ui-react'
+import Button from '@mui/material/Button';
 // extra imports
 import { timestamp } from '../../firebase/config'
 import { useAuthContext } from '../../hooks/useAuthContext'
@@ -225,7 +226,7 @@ export default function CreateProject() {
     // form fields
     const [name, setName] = useState('')
     const [details, setDetails] = useState('')
-    const [dueDate, setDueDate] = useState('')
+    // const [dueDate, setDueDate] = useState('')
     const [category, setCategory] = useState('')
 
     const [assignedUsers, setAssignedUsers] = useState([])
@@ -272,7 +273,7 @@ export default function CreateProject() {
           id: user.uid
         }
 
-
+        // console.log(handleSubmit + "This is the Console Log of handleSubmit");
         // this is what we're saving to the db
         // assigneduserslist is an array of objects where each object represents a user
         // who the project is assigned to
@@ -293,7 +294,7 @@ export default function CreateProject() {
           carrierShip, 
           details,
           category: category.value, 
-          dueDate: timestamp.fromDate(new Date(dueDate)), 
+          // dueDate: timestamp.fromDate(new Date(dueDate)), 
           // comments: [],
           additionalDetails: [], 
           createdBy, 
@@ -301,30 +302,35 @@ export default function CreateProject() {
           
         }
 
+        console.log(JSON.stringify(project, null, 3));
         
-        await addDocument(project)
+
+        const data = await addDocument(project)
         if (!response.error) {
           // redirects to home page once complete and without error
           history.push('/Dashboard')
         }
-        
+        console.log(data + "This is a log of project");
+
     }
+
 
     return(
       
       <div>
         {/* <h1>{page === 1 && <StageOne />}</h1> */}
         {/* step system */}
-        <div className="create-form">
+        <div >
             <section>
               <div>
             <h2 className='page-title'>Create New Workflow</h2>
             </div>
             </section>
             
-            <FormBox >
+            <FormBox  >
             
-            <FormContainer onSubmit={handleSubmit}>
+            <FormContainer>
+              
               <label htmlFor=''>
             <span>Job Group:</span>
             <Select 
@@ -344,22 +350,22 @@ export default function CreateProject() {
                     </label>
                 <label htmlFor="">
                     <span>Job Description:</span>
-                    <CustTextField required type='text' onChange={(e) => setName(e.target.value)}
+                    <CustTextField   handleInput={(e) => setName(e.target.value)}
                     value={name} />
                     
                 </label>
                 <label htmlFor="">
                     <span>Project Details:</span>
-                    <CustTextField required type='text' onChange={(e) => setDetails(e.target.value)}
+                    <CustTextField required  handleInput={(e) => setDetails(e.target.value)}
                     value={details} />
                     
                 </label>
-                <label htmlFor="">
+                {/* <label htmlFor="">
                     <span>Set Due Date:</span>
                     <CustTextField required type='date' onChange={(e) => setDueDate(e.target.value)}
                     value={dueDate} />
 
-                </label>
+                </label> */}
                 <label>
                     <span>Project Category</span>
                     {/* select single job type from dropdown here */}
@@ -386,8 +392,9 @@ export default function CreateProject() {
                     isMulti
                     />
                 </label>
-                <CornerButton className="btn">Stage Project</CornerButton>
+                <Button type='submit' onClick={handleSubmit} className="btn">Stage Project</Button>
                 {formError && <p className='error'>{formError}</p>}
+               
             </FormContainer>
             
             {/* {page === 2 && <StageTwo />}

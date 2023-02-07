@@ -13,10 +13,12 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import TextField from "@mui/material/TextField";
 
-export default function CustTextField() {
+
+export default function CustTextField(props) {
   return (
     <div>
-        <TextInput fullWidth  id='filled-basic' variant='filled'></TextInput>
+        <TextInput fullWidth type='text' id='filled-basic' variant='filled' 
+        onInput={props.handleInput}></TextInput>
     </div>
   )
 }

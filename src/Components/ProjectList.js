@@ -27,7 +27,7 @@ const handleClick = (e) => {
                     <h4>{project.details}</h4>
                     {/* due date is a firestore timestamp at this point */}
                     <p>By {project.createdBy.displayName}</p>
-                    <p>Due by {project.dueDate.toDate().toDateString()}</p>
+                    {/* <p>Due by {project.dueDate.toDate().toDateString()}</p> */}
                     {/* we want to take that and convert and output in browser */}
                     <div className='assigned-to'>
                     {/* map through assigned users list props on each project */}

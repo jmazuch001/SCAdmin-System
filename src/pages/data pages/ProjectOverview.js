@@ -31,7 +31,7 @@ export default function ProjectOverview( { project } ) {
                 <TableHead>
                     <TableRow>
                         <TableCell align="center">Job Group</TableCell>
-                        <TableCell align="center">Project Due By</TableCell>
+                        {/* <TableCell align="center">Project Due By</TableCell> */}
                         <TableCell align="center">Carrier Ship</TableCell>
                         <TableCell align="center">Max Cargo Capacity</TableCell>
                         <TableCell align="center">Project Name</TableCell>
@@ -40,7 +40,7 @@ export default function ProjectOverview( { project } ) {
                 </TableHead>
                 <TableBody>
                     <TableCell align="center">{project.job.value}</TableCell>
-                    <TableCell align="center">{project.dueDate.toDate().toDateString()}</TableCell>
+                    {/* <TableCell align="center">{project.dueDate.toDate().toDateString()}</TableCell> */}
                     <TableCell align="center">{project.carrierShip.value}</TableCell>
                     <TableCell align="center">{project.carrierShip.capacity}</TableCell>
                     <TableCell align="center">{project.details}</TableCell>
