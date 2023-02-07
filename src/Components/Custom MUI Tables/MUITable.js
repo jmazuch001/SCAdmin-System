@@ -70,7 +70,7 @@ export default function BasicTable() {
 }
 
 
-const CustomTableContainer = styled(TableContainer)`
+export const CustomTableContainer = styled(TableContainer)`
 padding-top: 1rem;
 margin: auto;
 width: 50%;
@@ -83,6 +83,7 @@ background-color: blue;
 
 h1 {
   text-align: center;
+  color: coral;
 }
 @media (max-width: 768px) {
   display: flex;
@@ -92,12 +93,13 @@ h1 {
 }
 `
 
-const CustomBox = styled(Box)`
+export const CustomBox = styled(Box)`
 background-color: gray;
 padding: 1rem;
 /* width: 50%; */
 margin: 2rem 6rem 6rem 6rem;
 display: flex;
+color: coral;
 @media (max-width: 768px) {
   /* display: none; hides the component once it hits this viewport size */
   display: none;
