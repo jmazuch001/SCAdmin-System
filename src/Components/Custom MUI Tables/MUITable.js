@@ -71,19 +71,26 @@ export default function BasicTable() {
 
 
 export const CustomTableContainer = styled(TableContainer)`
-padding-top: 1rem;
+/* padding-top: 1rem; */
 margin: auto;
 width: 50%;
 height: 50%;
-border: solid;
+/* border: solid; */
 border-color: coral;
 border-collapse: collapse;
-background-color: blue;
-
+/* background-color: darkgray; */
+border-radius: 50% 20% / 10% 40%;
+color: coral;
+/* background: linear-gradient(25deg, rgba(128,128,128,1) 0%, rgba(56,56,56,1) 49%, rgba(113,113,113,1) 50%); */
 
 h1 {
   text-align: center;
   color: coral;
+}
+
+h4 {
+  color: black;
+  font-size: 18px;
 }
 @media (max-width: 768px) {
   display: flex;
@@ -92,15 +99,26 @@ h1 {
   text-align: left;
 }
 `
+export const CustomPaper = styled(Paper)`
+border-radius: 50% 20% / 10% 40%;
+/* background: darkgray; */
+padding: 0;
+background: linear-gradient(25deg, rgba(128,128,128,1) 0%, rgba(56,56,56,1) 49%, rgba(113,113,113,1) 50%);
+
+`
 
 export const CustomBox = styled(Box)`
 background-color: gray;
-padding: 1rem;
+padding: 3.5rem;
 /* width: 50%; */
 margin: 2rem 6rem 6rem 6rem;
 display: flex;
 color: coral;
-@media (max-width: 768px) {
+border-radius: 50% 20% / 10% 40%;
+border: solid;
+box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.81);
+
+@media (max-width: 825px) {
   /* display: none; hides the component once it hits this viewport size */
   display: none;
   background-color: blue;
@@ -108,4 +126,7 @@ color: coral;
   width: 100%;
   margin: 1rem 0rem;
 }
+/* background: linear-gradient(25deg, rgba(128,128,128,1) 0%, rgba(56,56,56,1) 49%, rgba(113,113,113,1) 50%); */
+
 `
+

@@ -17,7 +17,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import MediaQuery from "react-responsive";
-import { CustomBox, CustomTableContainer } from '../../Components/Custom MUI Tables/MUITable'
+import { CustomBox, CustomPaper, CustomTableContainer } from '../../Components/Custom MUI Tables/MUITable'
 export default function ProjectOverview( { project } ) {
 // states
 // const [stages, setStages] = useState('');
@@ -25,7 +25,8 @@ export default function ProjectOverview( { project } ) {
     return (
         <div style={{padding: '2rem'}}>
             <CustomBox>
-                <CustomTableContainer component={Paper}>
+                <CustomTableContainer >
+                    
                     <h1>Project Overview</h1>
                     <Table>
                         <TableHead>
@@ -51,11 +52,12 @@ export default function ProjectOverview( { project } ) {
                                                             </div>
                                                         )})}          
                             </TableCell>
+                            {/* <MediaQuery query="(max-device-width: 1024px)">
+                        <></>
+                        </MediaQuery> */}
                         </TableBody>
-                        <MediaQuery query="(max-device-width: 1024px)">
-                        <p>This is a MQ Test</p>
-                        </MediaQuery>
                     </Table>
+                    
                 </CustomTableContainer>
             </CustomBox>
         </div>
