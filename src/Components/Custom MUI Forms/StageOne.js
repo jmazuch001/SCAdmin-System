@@ -28,7 +28,7 @@ export default function StageOne() {
             <h1>
                 Step 1
             </h1>
-            <ul>
+            {/* <ul>
                 <label>Selection Dropdown Goes Here</label>
                     <TextInput></TextInput>
                 <label>Quantity Mined:</label>
@@ -37,7 +37,7 @@ export default function StageOne() {
                     <TextInput></TextInput>
                 <label>Date of Birth: </label>
                     <TextInput></TextInput>
-            </ul>
+            </ul> */}
             <div>
                 <CornerButton variant="contained">Next Stage</CornerButton>
             </div>

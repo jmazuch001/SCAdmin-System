@@ -110,29 +110,24 @@ const ResNavMenuLinks = ({ open }) => {
   const { user } = useAuthContext();
   return (
     <MenuUl open={open}>
-       
-        
         {!user && (
                     <>
-                        <li className="div"><Link to="/login" className='link-text'>Login</Link></li>
-                        <li className="div"><Link to="/signup">Signup</Link></li>   
+                      <li className="div"><Link to="/login" className='link-text'>Login</Link></li>
+                      <li className="div"><Link to="/signup">Signup</Link></li>   
                     </>
                 )}
-        
         {user && (
                     <>
-                        <li>Hello, {user.displayName}</li>
-                        {/* <li><Link to="/AccessControl" className={styles['link-text']}>QR Code Generator</Link></li> */}
-                        <li className="div"><Link to="/office">Office</Link></li>
-                        <li className="div"><Link to="/">Home</Link></li>
-                        <li className="div">
-                            {!isPending && <button onClick={logout}>Logout</button>}
-                            {isPending && <button  disabled>Logging out...</button>}
-                        </li>
-                        
+                      <li>Hello, {user.displayName}</li>
+                      {/* <li><Link to="/AccessControl" className={styles['link-text']}>QR Code Generator</Link></li> */}
+                      <li className="div"><Link to="/office">Office</Link></li>
+                      <li className="div"><Link to="/">Home</Link></li>
+                      <li className="div">
+                        {!isPending && <button onClick={logout}>Logout</button>}
+                        {isPending && <button  disabled>Logging out...</button>}
+                      </li>
                     </>
-                )}
-
+                 )}
     </MenuUl>
   )
 }

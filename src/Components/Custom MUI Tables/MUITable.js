@@ -98,6 +98,10 @@ h4 {
   color: coral;
   text-align: left;
 }
+li {
+  margin: 100%;
+}
+
 `
 export const CustomPaper = styled(Paper)`
 
@@ -114,6 +118,7 @@ padding: 3.5rem;
 margin: 3rem 6rem 6rem 6rem;
 display: flex;
 color: coral;
+/* border-radius: 10px 40px / 100px; */
 border-radius: 40% 20% / 10% 30%;
 /* border-radius: 10% / 50%; */
 /* border: solid; */

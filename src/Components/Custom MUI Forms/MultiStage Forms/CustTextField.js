@@ -28,5 +28,5 @@ background: white;
 border-radius: 5px;
 /* margin-top: 1rem; */
 padding: 12px 12px;
-
+max-width: '100%'
 `
