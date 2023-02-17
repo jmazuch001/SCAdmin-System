@@ -100,7 +100,7 @@ h4 {
 }
 `
 export const CustomPaper = styled(Paper)`
-border-radius: 50% 20% / 10% 40%;
+
 /* background: darkgray; */
 padding: 0;
 background: linear-gradient(25deg, rgba(128,128,128,1) 0%, rgba(56,56,56,1) 49%, rgba(113,113,113,1) 50%);
@@ -111,11 +111,12 @@ export const CustomBox = styled(Box)`
 background-color: gray;
 padding: 3.5rem;
 /* width: 50%; */
-margin: 2rem 6rem 6rem 6rem;
+margin: 3rem 6rem 6rem 6rem;
 display: flex;
 color: coral;
-border-radius: 50% 20% / 10% 40%;
-border: solid;
+border-radius: 40% 20% / 10% 30%;
+/* border-radius: 10% / 50%; */
+/* border: solid; */
 box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.81);
 
 @media (max-width: 825px) {
