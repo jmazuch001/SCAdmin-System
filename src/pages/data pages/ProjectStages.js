@@ -8,7 +8,7 @@ import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom' 
 import {Link} from 'react-router-dom'
 // component library references
-import { Form, Input, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Container, Grid, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
+import { Form, Input, Checkbox, Button, Modal, Header, Step, Icon, Dropdown, Grid, Inpu, Progress, Divider, Label, Segment } from 'semantic-ui-react'
 import Select from 'react-select'
 import FirstStage from '../create/FirstStage'
 import TransactionReportList from '../office/TransactionReportList'
@@ -20,17 +20,19 @@ import ProjectOverview from './ProjectOverview'
 import TestStage from './TestStage'
 
 import Box from '@mui/material/Box';
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import { TextField, Toolbar } from '@mui/material'
-import { CustomBox, CustomTableContainer } from '../../Components/Custom MUI Tables/MUITable'
+import { CustomBox, CustomPaper, CustomTableContainer } from '../../Components/Custom MUI Tables/MUITable'
 import CustTextField from '../../Components/Custom MUI Forms/MultiStage Forms/CustTextField'
-import { FormBox, FormContainer } from '../../Components/Custom MUI Forms/MultiStage Forms/CustFormComponents'
+import { CustSegment, CustSpan, FormBox, FormContainer } from '../../Components/Custom MUI Forms/MultiStage Forms/CustFormComponents'
 import StageOne from '../../Components/Custom MUI Forms/StageOne'
 // import ProjectOverview from './ProjectOverview'
 
@@ -509,26 +511,28 @@ const handleStageThreeSubmit = async (e) => {
                 {page === 1 &&
                 
                 <Form  onSubmit={handleStageOneSubmit} key={formFieldDefault}>
-                  
+                            <CustSpan>
+                              <table>
+                                <thead> <h4> Remaining Ship Cargo Capacity </h4> </thead>
+                                <tbody>
+                                  <ul>{remainingCapacity} cSCU</ul>
+                                  <ul>{LowCapacityWarning}</ul>
+                                </tbody>
+                              </table>
+                            </CustSpan>
                     <label>
                       <h4>Additional Stages</h4>
                     <div>
                     {/* <div className='progressbar'></div> */}
-                  <Form >
+                  
                     <label>
                     <span>Additional Minerals:</span>
                     </label>
                         <Select 
                             className="selectMenu" onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti
                     />
-                  <Box component="form"
-                    sx={{
-                      '& .MuiTextField-root': { m: 1, width: '25ch' },
-                      }}
-                      noValidate
-                      autoComplete="off"
-                    >
-                    <div >
+                  
+                    <div>
                       <span>Quantitiy Mined:</span>
                       <TextField fullWidth type='text' label="Quantity Mined" placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
                       <span>Processing Duration:</span>
@@ -538,7 +542,7 @@ const handleStageThreeSubmit = async (e) => {
                           <TextField fullWidth  required type='date' onChange={(e) => setDueDate(e.target.value)} value={dueDate}/>
                       </label>
                     </div>
-                  </Box>
+                  
                 <label>
                   <span>Refinement Method:</span>
                     <Select label="refinement method" onChange={(e) => setRefinementType(e)} options={refinement} isMulti/>
@@ -553,7 +557,7 @@ const handleStageThreeSubmit = async (e) => {
                         </Form.Field>
                         </Form> */}
                         
-                        </Form>
+                        
                         <form className="add-comment" onSubmit={handleStageOneSubmit}>
                         <label htmlFor="">
                     {/* <span>Set Due Date:</span>
@@ -577,10 +581,12 @@ const handleStageThreeSubmit = async (e) => {
                 
                 
                 <div>
+                  
                             
                     {project.additionalDetails.length > 0 && project.additionalDetails.map(detail => (
                       
                       <TableContainer>
+                        
                       <ul key={detail.id}>
                         
                         
@@ -631,20 +637,18 @@ const handleStageThreeSubmit = async (e) => {
 
                               </TableBody>
                               </Table>
-                                
+                              
                                 
                         
                         
                       </ul>
+                      
                       </TableContainer>
                       
                     ))}
                     
-                    <Segment>Remaining Ship Cargo Capacity: 
-                      <p>{remainingCapacity} cSCU</p>
-                      <p>{LowCapacityWarning}</p>
-                      </Segment>
-                  
+                      
+                    
                   
                 </div>
                 
@@ -658,8 +662,7 @@ const handleStageThreeSubmit = async (e) => {
                 </Form>
   
                 }
-                </FormContainer>
-                </FormBox>
+                
                 <div>
                   
               {/* <Button><Link to="/DeliveryConfirmation" className={styles['link-text']}>Next Step</Link></Button>     */}
@@ -668,10 +671,10 @@ const handleStageThreeSubmit = async (e) => {
               {/* {page === 2 && <TradeDetailsForm />} */}
               {page === 2 && 
               <Form onSubmit={handleStageTwoSubmit} >
-              <div >
-                 <div className='progressbar'></div> 
+              
+                 
                  <div className='details-container'>
-                     <div>
+                     
                        <label>
                           <span>Select Cargo Location</span>
                             <Select 
@@ -689,12 +692,12 @@ const handleStageThreeSubmit = async (e) => {
                         </div>
                         
                         </div>
-                 </div>
+                 
                  <Button color='blue' inverted className='project-button-styles' >Confirm Logistics</Button>
                  <div>
                  <Button color='teal' onClick={NextPage}>Next Page</Button>
                  </div>
-              </div> 
+              
               </Form>
               }
               {page === 3 && 
@@ -743,7 +746,8 @@ const handleStageThreeSubmit = async (e) => {
                                     
                 
                 
-                
+            </FormContainer>
+                </FormBox>
             {/* <StageOne /> */}
             
                 

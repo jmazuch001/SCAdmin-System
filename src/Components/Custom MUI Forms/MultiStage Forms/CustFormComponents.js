@@ -61,3 +61,34 @@ h1 {
 
 `
 
+export const CustSpan = styled.span`
+/* background-color: orange; */
+padding: 1rem;
+/* width: 50%; */
+/* margin: 2rem 8rem 8rem 8rem; */
+display: flex;
+transition-property: all;
+background: lightgray;
+/* background: linear-gradient(25deg, rgba(128,128,128,1) 0%, rgba(56,56,56,1) 49%, rgba(113,113,113,1) 84%); */
+/* color: darkred; */
+box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.71);
+box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.71);
+width: 100%;
+margin-bottom: 1rem;
+border-inline-end: 4rem solid;
+writing-mode: horizontal-tb;
+direction: rtl;
+  /* margin: 1rem 1rem; */
+  border-radius: 15px;
+/* justify-content: center; */
+h4 {
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+ul {
+  text-align: center;
+  color: red;
+}
+`
