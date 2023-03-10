@@ -21,18 +21,19 @@ import TestStage from './TestStage'
 
 import Box from '@mui/material/Box';
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
+// import TableCell from '@mui/material/TableCell';
+// import TableContainer from '@mui/material/TableContainer';
+// import TableHead from '@mui/material/TableHead';
+// import TableRow from '@mui/material/TableRow';
+// import Container from '@mui/material/Container';
+// import Paper from '@mui/material/Paper';
+import { Table, Container  } from 'semantic-ui-react'
 import { TextField, Toolbar } from '@mui/material'
 import { CustomBox, CustomPaper, CustomTableContainer } from '../../Components/Custom MUI Tables/MUITable'
 import CustTextField from '../../Components/Custom MUI Forms/MultiStage Forms/CustTextField'
-import { CustSegment, CustSpan, FormBox, FormContainer } from '../../Components/Custom MUI Forms/MultiStage Forms/CustFormComponents'
+import { CustSegment, CustSpan, NewForm, FormContainer } from '../../Components/Custom MUI Forms/MultiStage Forms/CustFormComponents'
 import StageOne from '../../Components/Custom MUI Forms/StageOne'
 // import ProjectOverview from './ProjectOverview'
 
@@ -63,7 +64,7 @@ import StageOne from '../../Components/Custom MUI Forms/StageOne'
 // project details, context, and general CRUD ops
 
 
-export default function ProjectStages({ project }) {
+export default function ProjectStages({ project, props }) {
     const newMinerals = [
         {
           value: 'Quantanium', 
@@ -501,7 +502,7 @@ const handleStageThreeSubmit = async (e) => {
           <CustomTableContainer></CustomTableContainer> 
           <CustTextField></CustTextField>
           <FormBox></FormBox> */}
-          <FormBox>
+          
           <FormContainer >
 
                 <div className='progress-bar-div'>
@@ -510,7 +511,7 @@ const handleStageThreeSubmit = async (e) => {
                 {/* FIRST PAGE / STAGE OF M/T FORM */}
                 {page === 1 &&
                 
-                <Form  onSubmit={handleStageOneSubmit} key={formFieldDefault}>
+                <NewForm  onSubmit={handleStageOneSubmit} key={formFieldDefault}>
                             <CustSpan>
                               <table>
                                 <thead> <h4> Remaining Ship Cargo Capacity </h4> </thead>
@@ -521,44 +522,33 @@ const handleStageThreeSubmit = async (e) => {
                               </table>
                             </CustSpan>
                     <label>
-                      <h4>Additional Stages</h4>
+                      <h1>Additional Stages</h1>
                     <div>
                     {/* <div className='progressbar'></div> */}
                   
                     <label>
-                    <span>Additional Minerals:</span>
+                      <span>Additional Minerals:</span>
+                      <Select onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti/>
                     </label>
-                        <Select 
-                            className="selectMenu" onChange={(e) => setNewMinerals(e)} options={newMinerals} isMulti
-                    />
-                  
                     <div>
-                      <span>Quantitiy Mined:</span>
-                      <TextField fullWidth type='text' label="Quantity Mined" placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
-                      <span>Processing Duration:</span>
-                      <TextField fullWidth label="Processing Duration" placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
+                      <Form.Field>
+                        <span>Quantitiy Mined:</span>
+                        <Form.Input  type='text' placeholder='Quantity in cSCU'  onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
+                      </Form.Field>
+                      <Form.Field>
+                        <span>Processing Duration:</span>
+                        <Form.Input   placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
+                      </Form.Field>
+                      <Form.Field>
+                          <span>Scheduled Completion Date:</span>
+                          <Form.Input   required type='date' onChange={(e) => setDueDate(e.target.value)} value={dueDate}/>
+                      </Form.Field>
                       <label>
-                        <span>Scheduled Completion Date:</span>
-                          <TextField fullWidth  required type='date' onChange={(e) => setDueDate(e.target.value)} value={dueDate}/>
-                      </label>
-                    </div>
-                  
-                <label>
-                  <span>Refinement Method:</span>
-                    <Select label="refinement method" onChange={(e) => setRefinementType(e)} options={refinement} isMulti/>
-                </label>
-                    {/* <Form>
-                        <Form.Field>
-
-                              <span>Enter Processing Duration (in hours)</span>
-                            
-                            <Form.Input placeholder='Estimated Duration' onChange={(e) => setDuration(e.target.value)} value={duration}/>
-                            
-                        </Form.Field>
-                        </Form> */}
-                        
-                        
-                        <form className="add-comment" onSubmit={handleStageOneSubmit}>
+                        <span>Refinement Method:</span>
+                        <Select onChange={(e) => setRefinementType(e)} options={refinement} isMulti/>
+                      </label>                       
+                    </div>    
+                        <NewForm  onSubmit={handleStageOneSubmit}>
                         <label htmlFor="">
                     {/* <span>Set Due Date:</span>
                     <Form.Input required type='date' onChange={(e) => setDueDate(e.target.value)}
@@ -567,13 +557,13 @@ const handleStageThreeSubmit = async (e) => {
                       </label>
                     <label>
                       <span>Add new comment:</span>
-                      <textarea 
+                      <textarea
                         onChange={(e) => setNewStage(e.target.value)}
                         value={newStage}
-                      ></textarea>
+                      ></textarea >
                     </label>
                    
-                  </form>
+                  </NewForm>
                         <Button color='teal'>Add Stage</Button>
                 </div>
                 
@@ -584,8 +574,8 @@ const handleStageThreeSubmit = async (e) => {
                   
                             
                     {project.additionalDetails.length > 0 && project.additionalDetails.map(detail => (
-                      
-                      <TableContainer>
+                      <CustomBox>
+                      <CustomTableContainer>
                         
                       <ul key={detail.id}>
                         
@@ -599,43 +589,43 @@ const handleStageThreeSubmit = async (e) => {
                           {/* <p>{detail.content}</p> */}
                           
                           
-                            <Table>
-                                <TableHead>
-                                  <TableRow>
-                                    <TableCell align="center">Yield Quantity</TableCell>
-                                    <TableCell align="center">Refinement Method</TableCell>
-                                    <TableCell align="center">Duration</TableCell>
-                                    <TableCell align="center">Stage ID</TableCell>
-                                    <TableCell align="center">Comments</TableCell>
+                            <Table >
+                                <Table.Header>
+                                  <Table.Row>
+                                    <Table.Cell align="center">Yield Quantity</Table.Cell>
+                                    <Table.Cell align="center">Refinement Method</Table.Cell>
+                                    <Table.Cell align="center">Duration</Table.Cell>
+                                    <Table.Cell align="center">Stage ID</Table.Cell>
+                                    <Table.Cell align="center">Comments</Table.Cell>
                                     {/* <Table.HeaderCell>Ship: {detail.ship}</Table.HeaderCell> */}
-                                    <TableCell align="center">Minerals</TableCell>
-                                    {/* <TableCell align="center">Created At</TableCell> */}
-                                    <TableCell align="center">Due</TableCell>
-                                  </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                <TableRow>
-                                  <TableCell align="center">{detail.quantity} cSCU</TableCell>
-                                  <TableCell align="center">{detail.refinementType.map((refinementMethodUsed) => {
+                                    <Table.Cell align="center">Minerals</Table.Cell>
+                                    {/* <Table.Cell align="center">Created At</Table.Cell> */}
+                                    <Table.Cell align="center">Due</Table.Cell>
+                                  </Table.Row>
+                                </Table.Header>
+                                <Table.Body>
+                                
+                                  <Table.Cell align="center">{detail.quantity} cSCU</Table.Cell>
+                                  <Table.Cell align="center">{detail.refinementType.map((refinementMethodUsed) => {
                                       return (
                                         <li>{refinementMethodUsed.value}</li>
                                       )
                                     })}
-                                    </TableCell>
-                                  <TableCell align="center">{detail.duration} Hours</TableCell>
-                                  <TableCell align="center">{detail.id}</TableCell>
-                                  <TableCell align="center">{detail.content}</TableCell>
-                                  <TableCell align="center">{detail.displayMinerals.map((mineralList) => {
+                                    </Table.Cell>
+                                  <Table.Cell align="center">{detail.duration} Hours</Table.Cell>
+                                  <Table.Cell align="center">{detail.id}</Table.Cell>
+                                  <Table.Cell align="center">{detail.content}</Table.Cell>
+                                  <Table.Cell align="center">{detail.displayMinerals.map((mineralList) => {
                                       return(
                                         <li>{mineralList.value}</li>
                                       )
                                     })}
-                                    </TableCell>
-                                  {/* <TableCell>{detail.createdAt.toDate().toDateString()}</TableCell> */}
-                                  <TableCell align="center">{detail.dueDate.toDate().toDateString()}</TableCell>
-                                </TableRow>
+                                    </Table.Cell>
+                                  {/* <Table.Cell>{detail.createdAt.toDate().toDateString()}</Table.Cell> */}
+                                  <Table.Cell align="center">{detail.dueDate.toDate().toDateString()}</Table.Cell>
+                                
 
-                              </TableBody>
+                                </Table.Body>
                               </Table>
                               
                                 
@@ -643,8 +633,8 @@ const handleStageThreeSubmit = async (e) => {
                         
                       </ul>
                       
-                      </TableContainer>
-                      
+                      </CustomTableContainer>
+                      </CustomBox>
                     ))}
                     
                       
@@ -659,7 +649,7 @@ const handleStageThreeSubmit = async (e) => {
                 
                 
                 
-                </Form>
+                </NewForm>
   
                 }
                 
@@ -745,9 +735,9 @@ const handleStageThreeSubmit = async (e) => {
                
                                     
                 
-                
             </FormContainer>
-                </FormBox>
+                
+                
             {/* <StageOne /> */}
             
                 

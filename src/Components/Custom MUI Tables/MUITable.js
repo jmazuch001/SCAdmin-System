@@ -1,17 +1,17 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
+// import TableCell from '@mui/material/TableCell';
+// import TableContainer from '@mui/material/TableContainer';
+// import TableHead from '@mui/material/TableHead';
+// import TableRow from '@mui/material/TableRow';
+// import Paper from '@mui/material/Paper';
 import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 import MediaQuery from "react-responsive";
-import Container from '@mui/material/Container';
+// import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-
+import { Icon, Table, Container  } from 'semantic-ui-react'
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -28,41 +28,58 @@ const rows = [
 export default function BasicTable() {
   return (
     
-    <div style={{padding: '2rem'}}>
+    <div >
       <CustomBox>
         
-      <CustomTableContainer component={Paper}>
+      <CustomTableContainer >
       <h1>Project Overview</h1>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-        <MediaQuery query="(max-device-width: 1024px)">
-          <p>This is a MQ Test</p>
-        </MediaQuery>
-      </Table>
+      <Table  unstackable>
+    <Table.Header>
+      <Table.Row>
+        <Table.HeaderCell colSpan='3'>Git Repository</Table.HeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+      <Table.Row>
+        <Table.Cell >
+          <Icon name='folder' /> node_modules
+        </Table.Cell>
+        <Table.Cell>Initial commit</Table.Cell>
+        <Table.Cell  textAlign='right'>
+          10 hours ago
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>
+          <Icon name='folder' /> test
+        </Table.Cell>
+        <Table.Cell>Initial commit</Table.Cell>
+        <Table.Cell textAlign='right'>10 hours ago</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>
+          <Icon name='folder' /> build
+        </Table.Cell>
+        <Table.Cell>Initial commit</Table.Cell>
+        <Table.Cell textAlign='right'>10 hours ago</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>
+          <Icon name='file outline' /> package.json
+        </Table.Cell>
+        <Table.Cell>Initial commit</Table.Cell>
+        <Table.Cell textAlign='right'>10 hours ago</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>
+          <Icon name='file outline' /> Gruntfile.js
+        </Table.Cell>
+        <Table.Cell>Initial commit</Table.Cell>
+        <Table.Cell textAlign='right'>10 hours ago</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
     </CustomTableContainer>
     </CustomBox>
   </div>  
@@ -70,69 +87,85 @@ export default function BasicTable() {
 }
 
 
-export const CustomTableContainer = styled(TableContainer)`
+export const CustomTableContainer = styled(Container)`
 /* padding-top: 1rem; */
-margin: auto;
-width: 50%;
-height: 50%;
+
+margin: 1rem;
+width: 100%;
+height: 100%;
 /* border: solid; */
-border-color: coral;
+/* border-color: coral; */
 border-collapse: collapse;
-/* background-color: darkgray; */
-border-radius: 50% 20% / 10% 40%;
-color: coral;
-/* background: linear-gradient(25deg, rgba(128,128,128,1) 0%, rgba(56,56,56,1) 49%, rgba(113,113,113,1) 50%); */
+/* background-color: blue; */
+border-radius: 10px 100px / 120px;
+color: white;
+
+
 
 h1 {
   text-align: center;
-  color: coral;
+  text-shadow: -1px 1px 1px rgb(38, 57, 77);
+  color: white;
 }
 
-h4 {
-  color: black;
-  font-size: 18px;
+h4 { 
+  color: white;
 }
+
 @media (max-width: 768px) {
   display: flex;
   flex-flow: column nowrap;
   color: coral;
   text-align: left;
 }
-li {
-  margin: 100%;
+table {
+  box-sizing: border-box;
+  justify-content: left;
 }
+/* Makes table background color show through properly */
+.ui.table {
+      background: none;
+      border: none;
+    }
 
+ul {
+  color: navy;
+}
 `
-export const CustomPaper = styled(Paper)`
 
-/* background: darkgray; */
-padding: 0;
-background: linear-gradient(25deg, rgba(128,128,128,1) 0%, rgba(56,56,56,1) 49%, rgba(113,113,113,1) 50%);
-
-`
-
-export const CustomBox = styled(Box)`
-background-color: gray;
-padding: 3.5rem;
+export const CustomBox = styled.div`
+box-sizing: content-box;
+background-color: darkgray;
+margin-top: 6rem;
+/* padding: 0.2rem; */
 /* width: 50%; */
-margin: 3rem 6rem 6rem 6rem;
+/* margin: 2rem 2rem 2rem 2rem; */
 display: flex;
-color: coral;
-/* border-radius: 10px 40px / 100px; */
-border-radius: 40% 20% / 10% 30%;
-/* border-radius: 10% / 50%; */
-/* border: solid; */
-box-shadow: -1px 3px 10px 0px rgba(0,0,0,0.81);
+width: auto;
+border: solid;
+border-radius: 10% / 30%;
+border-color: rgb(89, 250, 156);
+border-collapse: collapse;
+/* border-right-color: transparent;
+border-left-color: transparent; */
+/* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+/* border-top: 2px solid rgb(89, 250, 156);
+border-bottom: 2px solid rgb(89, 250, 156); */
+/* background-color: rgb(1, 12, 12, 1.0); */
+-webkit-box-shadow: 4px 0px 17px 1px rgba(184,82,4,0.66);
+-moz-box-shadow: 4px 0px 17px 1px rgba(184,82,4,0.66);
+box-shadow: rgba(10, 100, 93, 0.65) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+color: white;
 
-@media (max-width: 825px) {
+
+@media (max-width: 768px) {
   /* display: none; hides the component once it hits this viewport size */
+  /* padding: 4rem; */
   display: none;
   background-color: blue;
   border-radius: 20px;
   width: 100%;
   margin: 1rem 0rem;
 }
-/* background: linear-gradient(25deg, rgba(128,128,128,1) 0%, rgba(56,56,56,1) 49%, rgba(113,113,113,1) 50%); */
-
 `
 

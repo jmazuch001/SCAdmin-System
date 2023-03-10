@@ -4,27 +4,21 @@ import { useCollection } from '../../hooks/useCollection'
 import {Dropdown} from 'semantic-ui-react'
 import { Segment } from 'semantic-ui-react'
 // import {Button, Popup} from 'semantic-ui-react'
-import { Form } from 'semantic-ui-react'
-import { Progress } from 'semantic-ui-react'
-import TransactionForm from '../../Components/TransactionForm'
-import { Container, Group} from 'semantic-ui-react'
 import Select from 'react-select'
-import { Step, Content, Icon, Title, Description, Tab, Pane, Image } from 'semantic-ui-react'
-import Button from '@mui/material/Button';
 // extra imports
 import { timestamp } from '../../firebase/config'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from '../../hooks/useFirestore'
 import { useHistory } from 'react-router-dom'
-import { Toolbar } from '@mui/material'
 
 // styles
+import {Button} from 'semantic-ui-react'
 import styles from './CreateProject.css'
 import FirstStage from './FirstStage'
-import { FormBox, FormContainer } from '../../Components/Custom MUI Forms/MultiStage Forms/CustFormComponents'
+import { FormContainer, NewForm } from '../../Components/Custom MUI Forms/MultiStage Forms/CustFormComponents'
 import CustTextField from '../../Components/Custom MUI Forms/MultiStage Forms/CustTextField'
-import { CornerButton } from '../../Components/Custom MUI Forms/MultiStage Forms/CustButton'
-
+import { RoundedButton } from '../../Components/Custom MUI Forms/MultiStage Forms/CustButton'
+import SUICustButton from '../../Components/Custom MUI Forms/MultiStage Forms/CustButton'
 const activity = [
     {
       value: 'mining & trade', 
@@ -320,17 +314,14 @@ export default function CreateProject() {
       <div>
         {/* <h1>{page === 1 && <StageOne />}</h1> */}
         {/* step system */}
-        <div >
-            <section>
-              <div>
-            <h2 className='page-title'>Create New Workflow</h2>
-            </div>
-            </section>
+        
+
             
-            <FormBox  >
+            
             
             <FormContainer>
-              
+              <NewForm>
+                <h1>Start New Project</h1>
               <label htmlFor=''>
             <span>Job Group:</span>
             <Select 
@@ -392,20 +383,11 @@ export default function CreateProject() {
                     isMulti
                     />
                 </label>
-                <Button type='submit' onClick={handleSubmit} className="btn">Stage Project</Button>
+                <Button type='submit' onClick={handleSubmit} >Stage Project</Button>
                 {formError && <p className='error'>{formError}</p>}
-               
+                </NewForm>
             </FormContainer>
-            
-            {/* {page === 2 && <StageTwo />}
-            {page === 3 && <StageThree />}
-            {page === 4 && <StageFour />} */}
-            </FormBox>
-            
-            
-            
-        </div>
-        
+
         </div>
     )
 }
