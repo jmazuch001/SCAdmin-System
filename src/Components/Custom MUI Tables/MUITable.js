@@ -112,11 +112,10 @@ h4 {
   color: white;
 }
 
-@media (max-width: 768px) {
-  display: flex;
+@media (max-width: 992px) {
+  display: none;
   flex-flow: column nowrap;
   color: coral;
-  text-align: left;
 }
 table {
   box-sizing: border-box;
@@ -140,7 +139,7 @@ margin-top: 3rem;
 /* padding: 0.2rem; */
 /* width: 50%; */
 /* margin: 2rem 2rem 2rem 2rem; */
-display: flex;
+/* display: flex; */
 width: auto;
 border: solid;
 border-radius: 10% / 30%;
@@ -162,10 +161,94 @@ color: white;
   /* display: none; hides the component once it hits this viewport size */
   padding: 4rem;
   display: none;
-  background-color: blue;
+  /* background-color: blue; */
   border-radius: 20px;
   width: 100%;
   margin: 1rem 0rem;
+  table {
+  box-sizing: border-box;
+  justify-content: left;
+  text-align: left;
+}
+/* Makes table background color show through properly */
+.ui.table {
+      background: none;
+      border: none;
+      text-align: left;
+    }
+
+ul {
+  color: navy;
+  text-align: left;
+}
 }
 `
 
+// SMALLER SIZES
+export const SmallTableContainer = styled(Container)`
+margin: 1rem;
+width: 50%;
+height: 50%;
+/* border: solid; */
+/* border-color: coral; */
+border-collapse: collapse;
+/* background-color: blue; */
+border-radius: 10px 100px / 120px;
+color: white;
+text-align: left;
+table {
+  box-sizing: border-box;
+  justify-content: left;
+  text-align: left;
+}
+/* Makes table background color show through properly */
+.ui.table {
+      background: none;
+      border: none;
+      text-align: left;
+      list-style: none
+    }
+
+ul {
+  color: navy;
+  text-align: left;
+
+}
+`
+
+export const SmallBox = styled.div`
+box-sizing: content-box;
+background-color: darkgray;
+margin-top: 3rem;
+/* padding: 0.2rem; */
+/* width: 50%; */
+/* margin: 2rem 2rem 2rem 2rem; */
+display: flex;
+width: auto;
+border: solid;
+border-radius: 10% / 30%;
+border-color: rgb(89, 250, 156);
+border-collapse: collapse;
+/* border-right-color: transparent;
+border-left-color: transparent; */
+/* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+/* border-top: 2px solid rgb(89, 250, 156);
+border-bottom: 2px solid rgb(89, 250, 156); */
+/* background-color: rgb(1, 12, 12, 1.0); */
+-webkit-box-shadow: 4px 0px 17px 1px rgba(184,82,4,0.66);
+-moz-box-shadow: 4px 0px 17px 1px rgba(184,82,4,0.66);
+box-shadow: rgba(10, 100, 93, 0.65) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+color: white;
+
+@media (max-width: 560px) {
+  /* display: none; reveals the component once it hits this viewport size */
+  padding: 4rem;
+  display: none;
+  background-color: blue;
+  border-radius: 20px;
+  width: 50%;
+  margin: 1rem 0rem;
+  ;
+}
+
+`

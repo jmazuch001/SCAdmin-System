@@ -18,6 +18,7 @@ import ProjectList from '../../Components/ProjectList'
 import { PriceCheckSharp } from '@mui/icons-material'
 import ProjectOverview from './ProjectOverview'
 import TestStage from './TestStage'
+import MediaQuery from 'react-responsive'
 
 import Box from '@mui/material/Box';
 
@@ -31,7 +32,7 @@ import Box from '@mui/material/Box';
 // import Paper from '@mui/material/Paper';
 import { Table, Container  } from 'semantic-ui-react'
 import { TextField, Toolbar } from '@mui/material'
-import { CustomBox, CustomPaper, CustomTableContainer } from '../../Components/Custom MUI Tables/MUITable'
+import { CustomBox, CustomPaper, CustomTableContainer, SmallBox, SmallTableContainer } from '../../Components/Custom MUI Tables/MUITable'
 import CustTextField from '../../Components/Custom MUI Forms/MultiStage Forms/CustTextField'
 import { CustSegment, CustSpan, NewForm, FormContainer } from '../../Components/Custom MUI Forms/MultiStage Forms/CustFormComponents'
 import StageOne from '../../Components/Custom MUI Forms/StageOne'
@@ -572,7 +573,7 @@ const handleStageThreeSubmit = async (e) => {
                     {project.additionalDetails.length > 0 && project.additionalDetails.map(detail => (
                       <CustomBox>
                       <CustomTableContainer>
-                        
+                      <MediaQuery  minWidth={992}>
                       <ul key={detail.id}>
                         
                         
@@ -624,13 +625,43 @@ const handleStageThreeSubmit = async (e) => {
                                 </Table.Body>
                               </Table>
                               
-                                
-                        
-                        
-                      </ul>
+                              </ul>
+                      </MediaQuery>
+                        </CustomTableContainer>
+
+                              
+                        <SmallTableContainer>
+                        <MediaQuery minWidth={768} maxWidth={991}>
+                      <Table>
+                      <Table.Header>
+                        <Table.Row>
+                          <Table.Cell align="center">Yield Quantity</Table.Cell>
+                          <Table.Cell align="center">Minerals</Table.Cell>
+                          <Table.Cell align="center">Due</Table.Cell>
+                          <Table.Cell align="center">Status</Table.Cell>
+                        </Table.Row>
+                      </Table.Header>
+                      <Table.Body>
+                        <Table.Cell align="center">{detail.quantity} cSCU</Table.Cell>
+                        <Table.Cell align="center">{detail.displayMinerals.map((mineralList) => {
+                            return(
+                              <li>{mineralList.value}</li>
+                            )
+                          })}
+                          </Table.Cell>
+                        {/* <Table.Cell>{detail.createdAt.toDate().toDateString()}</Table.Cell> */}
+                        <Table.Cell align="center">{detail.dueDate.toDate().toDateString()}</Table.Cell>
+                        <Table.Cell align="center"><Icon name='checkmark' size='large'/></Table.Cell>
+                      </Table.Body>
+                      </Table>
+                    </MediaQuery>
+                        </SmallTableContainer>
                       
-                      </CustomTableContainer>
+                      
+                      
                       </CustomBox>
+                      
+                      
                     ))}
 
                 <Button className='next-page-button' color='teal' onClick={NextPage}>Next Page</Button>
