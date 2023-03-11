@@ -248,7 +248,7 @@ color: white;
   border-radius: 20px;
   width: 50%;
   margin: 1rem 0rem;
-  ;
+  
 }
 
 `
