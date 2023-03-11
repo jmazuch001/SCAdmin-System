@@ -568,11 +568,7 @@ const handleStageThreeSubmit = async (e) => {
                 </div>
                 
                 </label>
-                
-                
-                <div>
-                  
-                            
+       
                     {project.additionalDetails.length > 0 && project.additionalDetails.map(detail => (
                       <CustomBox>
                       <CustomTableContainer>
@@ -636,15 +632,7 @@ const handleStageThreeSubmit = async (e) => {
                       </CustomTableContainer>
                       </CustomBox>
                     ))}
-                    
-                      
-                    
-                  
-                </div>
-                
-                
 
-                
                 <Button className='next-page-button' color='teal' onClick={NextPage}>Next Page</Button>
                 
                 
@@ -702,15 +690,11 @@ const handleStageThreeSubmit = async (e) => {
                 {/* <Segment><ul>{ReturnSalesSplit}</ul></Segment> */}
                 
                 </Form.Field>
-                
-                
+
                 <Button color='teal' inverted className='btn'>Forward Amount</Button>
-                
-                {/* <Segment>{calculateUserReturnValues}</Segment> */}
-                
                 <Button color='red' inverted><Link to="/office" className={styles['link-text']}>Close Project</Link></Button>
                 
-                {/* <AddRemoveFields /> */}
+                
               </Form>
               
               }

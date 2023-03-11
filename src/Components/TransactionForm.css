@@ -1,9 +1,10 @@
 .container {
-    display: grid;
+    display: flex;
     grid-template-columns: 2fr 1fr; 
-    max-width: 960px;
-    margin: 80px auto;
-    padding-left: 50px;
+    max-width: 995px;
+    margin: auto;
+    /* padding-left: 50px; */
+    table-layout:fixed;
 }
 
 .content {

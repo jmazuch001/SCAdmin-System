@@ -136,7 +136,7 @@ ul {
 export const CustomBox = styled.div`
 box-sizing: content-box;
 background-color: darkgray;
-margin-top: 6rem;
+margin-top: 3rem;
 /* padding: 0.2rem; */
 /* width: 50%; */
 /* margin: 2rem 2rem 2rem 2rem; */
@@ -160,7 +160,7 @@ color: white;
 
 @media (max-width: 768px) {
   /* display: none; hides the component once it hits this viewport size */
-  /* padding: 4rem; */
+  padding: 4rem;
   display: none;
   background-color: blue;
   border-radius: 20px;

@@ -24,7 +24,7 @@ export default function ProjectOverview( { project } ) {
 // const [stages, setStages] = useState('');
 
     return (
-        <div style={{padding: '2rem'}}>
+        <div style={{paddingTop: '5rem'}}>
             <CustomBox>
                 <CustomTableContainer >
                     
