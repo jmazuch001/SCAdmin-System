@@ -12,30 +12,27 @@ const MenuUl = styled.ul`
     list-style: none;
     display: flex;
     flex-flow: row nowrap;
-    
-    button {
-      background-color: #FF4520;
-      text-align: center;
-    background: coral;
-    color: white;
-    border: 1px solid coral;
-    border-radius: 0.25rem;
-    text-transform: capitalize;
-    position: center;
-    
-    width: 100px;
-
-    }
-    
-    li, a {
+    float: right;
+      z-index: 10;
+    li {
       padding: 18px 10px;
-      font-size: 1.2em;
-      font-weight: bold;
-      color: coral;
       /* transition: 2.3s; */
+      color: lightgreen;
+      align-items: right;
+      float: right;
+  // CSS
+  /* color: #80d5e8;
+  background-image: -webkit-radial-gradient(ellipse, #80d5e8 0%,#ffffff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
     }
-
-
+    h4 {
+      display: none;
+    }
+ 
+  
     @media (max-width: 768px) {
         flex-flow: column nowrap;
         background-color: #0D2538;
@@ -47,22 +44,36 @@ const MenuUl = styled.ul`
         width: 300px;
         padding-top: 3.5rem;
         transition: transform 0.3s ease-in-out;
+        /* border-radius: 12px; */
+        border-top-left-radius: 10%;
+        border-bottom-left-radius: 10%;
+        border-left-color: #8CCB88;
+        border-left-style: groove;
+        /* text-align: center; */
         /* animation: 1s stretch; */
         /* background: linear-gradient(25deg, rgba(0,0,0,1) 0%, rgba(75,0,0,1) 41%, rgba(0,0,0,1) 42%, rgba(0,0,0,1) 44%, rgba(116,1,1,1) 67%, rgba(0,0,0,1) 68%);                 */
         /* transition: 4.0s; */
-        background: linear-gradient(25deg, rgba(0,0,0,1) 29%, 
-        rgba(0,0,0,1) 33%, 
-        rgba(232,60,0,1) 35%, 
-        rgba(0,0,0,1) 52%, 
-        rgba(1,21,116,1) 55%, 
-        rgba(0,0,0,1) 77%);
-
+        /* background: radial-gradient(circle, rgba(0,0,0,1) 24%, rgba(35,56,0,1) 50%); */
+        background: rgb(0,0,0);
+        background: radial-gradient(circle, rgba(0,0,0,1) 24%, rgba(0,98,120,1) 100%);
         background-size:  300% 300%;
         animation: gradient 10s ease infinite; 
-
+        
+       
+        h4 {
+          display: inline-block;
+          text-align: center;
+          color: #80d5e8;
+          background-image: -webkit-radial-gradient(circle, #80d5e8 0%,#045d8c 100%,#ffffff 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          text-fill-color: transparent;
+          -webkit-text-fill-color: transparent;
+        }
         li {
-            color: inherit;
+            color: lightgreen;
             /* transition: 0.5s; */
+            text-align: left;
         }
         li:hover {
             text-shadow: 2px 1px 4px rgba(255,255,255,0.3);
@@ -75,20 +86,29 @@ const MenuUl = styled.ul`
         .div {
             transition: 0.5s;
             border-radius: 12px;
-            width: 90%;
+            width: 50%;
             transition-timing-function: ease-in-out;
-            color: coral;
         }
         .div:hover {
             transform: translateY(10px);
-            background: white;
+            /* background: white; */
             /* transition: 0.5s; */
             /* transition-delay: 0.5s; */
+            color: #B0FDAA;
+            border-radius: 15px;
+            border-left: 2px solid rgb(0, 115, 141);
+            border-right: 2px solid rgb(0, 115, 141);
             transition-timing-function: ease-in-out;
             padding: 5px;
             border-radius: 17.5px;
             width: 90%;
             opacity: 55%;
+            background: rgb(0,0,0);
+            /* background: radial-gradient(circle, rgba(0,0,0,1) 24%, rgba(11,18,0,1) 100%); */
+            background: rgb(0,0,0);
+            background: radial-gradient(circle, rgba(0,0,0,1) 24%, rgba(0,30,37,1) 100%);
+            /* transform: translateY(7px); */
+            /* background: linear-gradient(25deg, rgba(0,0,0,1) 19%, rgba(92,0,0,1) 22%, rgba(0,0,0,1) 26%); */
         }
         @keyframes gradient {
   0% {
@@ -101,7 +121,13 @@ const MenuUl = styled.ul`
     background-position: 0%;
   }
 }
-
+        /* li:hover:after {
+            text-shadow: 2px 1px 4px rgba(255,255,255,0.3);
+            font-size: 25px;
+            transition-delay: 1s;
+            transition-timing-function: ease-out;
+            color: #FF4520;
+        } */
     }
 `
 

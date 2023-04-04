@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
 import ComplexTitle from './ComplexTitle'
+import { Menu } from 'semantic-ui-react'
 
 export default function NavbarPrimary() {
   const { logout, isPending } = useLogout()
@@ -15,29 +16,31 @@ export default function NavbarPrimary() {
     
       <div>
           <LiveAppBar>
-              <Toolbar>
-              <Typography>
+              
+              
                 <Link to="/"><ComplexTitle /></Link>
-                </Typography>
+                
                 
                   {/* <ResNavBurger/> */}
                   <ResponsiveTopNav/>
-              </Toolbar>
+              
           </LiveAppBar>
-          <Toolbar/>
+          
       </div>
     
   )
 }
 
-const LiveAppBar = styled(AppBar)`
-  background: linear-gradient(34deg, rgb(1, 27, 56) 8%, rgba(0,0,0,1) 10%, rgb(42, 42, 42) 32%, rgba(0,0,0,1) 42%, rgb(54, 54, 54) 56%, rgba(15,15,15,1) 77%, rgb(85, 38, 11) 92%);
+// can use "styled.div" or "styled(Menu)" with semantic UI React for LiveAppBar
+const LiveAppBar = styled.div`
+background: rgb(0,25,48);
+  background: linear-gradient(39deg, rgba(0,0,0,1) 15%, rgba(0,41,66,1) 43%, rgba(16,50,42,1) 67%, rgba(0,0,0,1) 91%);  
   background-size:  300% 300%;
   animation: gradient 10s ease infinite;       
   display: flex;
   width: 100%;
-  padding: 10px;
-  color: coral;
+  padding: 18px;
+  color: white;
   /* position: sticky; */
   @keyframes gradient {
   0% {
@@ -75,5 +78,30 @@ const LiveAppBar = styled(AppBar)`
     transition-timing-function: ease-in-out;
    box-shadow: 7px 3px 3px rgb(1, 27, 56);
 }
- 
+section {
+      /* float: left; */
+      text-decoration: none;
+      /* margin-top: 10px; */
+      text-align: center;
+      margin-left: 3rem;
+
+      h4 {
+      float: left;
+      color: #80d5e8;
+      background-image: -webkit-radial-gradient(circle, #80d5e8 0%,#045d8c 100%,#ffffff 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      text-fill-color: transparent;
+      -webkit-text-fill-color: transparent;
+      /* display: flex; */
+      padding: 12px;
+      font-size: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h4 {
+        display: none;
+      }
+    }
 `

@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import ResNavMenuLinks from './ResNavMenuLinks'
+import {Container} from 'semantic-ui-react'
 
 const StyledBurger = styled.div`
     width: 2rem;
@@ -22,7 +23,7 @@ const StyledBurger = styled.div`
     div {
         width: 2rem;
         height: 0.25rem;
-        background-color: ${({open}) => open ? 'coral' : 'coral'};
+        background-color: ${({open}) => open ? 'lightgreen' : 'lightgreen'};
         border-radius: 10px;
         transform-origin: 1px;
         transition: all 0.0s linear;
@@ -49,7 +50,9 @@ const [open, setOpen] = useState(false);
         <div/>
         <div/>
     </StyledBurger>
-    <ResNavMenuLinks open={open}/>
+    <Container>
+      <ResNavMenuLinks open={open}/>
+    </Container>
     </>
   )
 }

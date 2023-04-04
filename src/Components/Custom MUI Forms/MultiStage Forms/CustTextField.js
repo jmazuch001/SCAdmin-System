@@ -12,6 +12,7 @@ import MediaQuery from "react-responsive";
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import TextField from "@mui/material/TextField";
+import { TextArea } from 'semantic-ui-react';
 
 
 export default function CustTextField(props) {
@@ -23,7 +24,7 @@ export default function CustTextField(props) {
   )
 }
 
-const TextInput = styled(TextField)`
+const TextInput = styled(TextArea)`
 background: white;
 border-radius: 5px;
 /* margin-top: 1rem; */
