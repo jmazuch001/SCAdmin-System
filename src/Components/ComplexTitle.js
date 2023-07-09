@@ -16,7 +16,8 @@ const Wrapper = styled.div`
     margin-right: auto;
     font-weight: bold;
     letter-spacing: 1px;
-    font-size: 1.0em;
+    font-size: 0.8em;
+    min-height: 1.0rem;
     /* text-shadow: 0.1px 0.1px 0.1px gray; */
   color: #9c9c9c;
   background-image: -webkit-radial-gradient(circle, #9c9c9c 0%,#ffb866 0%,#474747 100%);
@@ -24,7 +25,7 @@ const Wrapper = styled.div`
   -webkit-background-clip: text;
   text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
-
+  float: left;
 
 
 
@@ -34,8 +35,9 @@ const Wrapper = styled.div`
 /* h1{
     text-transform: capitalize;
     text-align: center;
-}
-div{
+
+} */
+/* div{
     width: 50px;
     background: red;
     height: 5px;

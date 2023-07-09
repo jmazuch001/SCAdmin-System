@@ -4,6 +4,8 @@ import HIGROUPLogo from './HIGROUPLogo'
 import ResNavBurger from './ResNavBurger'
 import { Typography } from '@mui/material'
 import { useAuthContext } from '../hooks/useAuthContext'
+import ComplexTitle from './ComplexTitle'
+// import MediaQuery from 'react-responsive/types/Component'
 // responsive Top Navbar >> Responsive Hamburger Menu
 
 const Nav = styled.nav`
@@ -41,7 +43,7 @@ const Nav = styled.nav`
     }
 
     @media (max-width: 768px) {
-      h4 {
+      h1 {
         display: none;
       }
     }
@@ -55,14 +57,16 @@ const ResponsiveTopNav = () => {
   const { user } = useAuthContext()
   return (
     <Nav>
-      <div>
+      
         {/* <img src='/media content/HIG_Logo_Trans.png'/> */}
-        
-          <HIGROUPLogo />
+          <ComplexTitle />
+          
+            {/* <HIGROUPLogo /> */}
+          
           {/* <section>
             <h4>Hellstrom Investment Group, LLC.</h4>
           </section> */}
-      </div>
+      
       <ResNavBurger/>
     </Nav>
   )

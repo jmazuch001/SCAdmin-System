@@ -37,6 +37,7 @@ export default function Navbar() {
                         {/* <li><Link to="/AccessControl" className={styles['link-text']}>QR Code Generator</Link></li> */}
                         <li><Link to="/office" className={styles['link-text']}>Office</Link></li>
                         <li><Link to="/" className={styles['link-text']}>Home</Link></li>
+                        <li><Link to="/QR_Code">QR Code</Link></li>
                         <li>
                             {!isPending && <button className="logout-btn" onClick={logout}>Logout</button>}
                             {isPending && <button className="logout-btn" disabled>Logging out...</button>}

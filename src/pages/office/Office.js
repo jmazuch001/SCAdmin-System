@@ -13,6 +13,7 @@ import { Button, Tab } from 'semantic-ui-react'
 import OnlineUsers from '../../Components/OnlineUsers';
 import CreateProject from '../create/CreateProject';
 import CreateProfile from '../create/CreateProfile';
+import QR_Code from '../../Components/QR_Code';
 
 
 

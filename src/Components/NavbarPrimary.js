@@ -18,7 +18,7 @@ export default function NavbarPrimary() {
           <LiveAppBar>
               
               
-                <Link to="/"><ComplexTitle /></Link>
+                {/* <Link to="/"><ComplexTitle /></Link> */}
                 
                 
                   {/* <ResNavBurger/> */}
@@ -53,31 +53,7 @@ background: rgb(0,25,48);
     background-position: 0%;
   }
 }
-&:hover:after, 
-&:focus:after,
-&:active:after {
-  background: rgb(192, 107, 10);
-    /* background: linear-gradient(90deg, rgb(235, 233, 231) 3%, rgb(10, 10, 10) 10%, rgba(0,0,0,1) 32%, rgb(206, 203, 200) 42%, rgba(0,0,0,1) 100%); */
-  transition-duration: 1.3s;
-    left: 0;
-    right: auto;
-    width: 100%;
-    padding: 4px;
-}
-&:after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    width: 0;
-    bottom: -5px;
-    /* background: linear-gradient(90deg, rgb(226, 221, 215) 3%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 32%, rgba(125,63,16,1) 42%, rgba(0,0,0,1) 100%); */
-    background: #FF0000;
-    height: 4px;
-    transition-duration: 2.3s;
-    transition-timing-function: ease-in-out;
-   box-shadow: 7px 3px 3px rgb(1, 27, 56);
-}
+
 section {
       /* float: left; */
       text-decoration: none;
@@ -99,9 +75,10 @@ section {
       }
     }
 
-    @media (max-width: 768px) {
-      h4 {
+    @media (max-width: 837px) {
+      h1 {
         display: none;
+        /* background-color: gray; */
       }
     }
 `

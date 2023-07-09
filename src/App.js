@@ -116,7 +116,7 @@ function App() {
             {user && <DeliveryConfirmation />}
           </Route>
           {/* <Route path='/TestPage'>
-            {!user && <Redirect to='/login' />}
+            {!user && <Redirect to='/QR_Code' />}
             {user && <TestPage />}
           </Route> */}
           {/* <Route path='/ShippingDetails'>

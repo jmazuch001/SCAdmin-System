@@ -381,13 +381,20 @@ function previousPage() {
 
 const handleStageOneSubmit = async (e) => {
     e.preventDefault()
+    
+    const dueDateNoOffset = new Date(dueDate);
+    const dueDateYear = dueDateNoOffset.getUTCFullYear();
+    const dueDateMonth = dueDateNoOffset.getUTCMonth();
+    const dueDateDay = dueDateNoOffset.getUTCDate();
+    const dueDateUTC = new Date(dueDateYear, dueDateMonth, dueDateDay)
 
     const stageToAdd = {
         displayName: user.displayName, 
         content: newStage,
         duration,
         quantity,
-        dueDate: timestamp.fromDate(new Date(dueDate)),
+        dueDate: dueDateUTC,
+        // dueDate: timestamp.fromDate(new Date(dueDate)),
         // quantityRemaining: runningTotal,
         // ship,
         displayMinerals: minerals, 
@@ -430,7 +437,10 @@ const handleStageOneSubmit = async (e) => {
     }
 }
 
-
+function handleDueDateChange(e) {
+  console.log(e.target.value);
+  setDueDate(e.target.value)
+}
 
 
 const handleStageTwoSubmit = async (e) => {
@@ -541,7 +551,7 @@ const handleStageThreeSubmit = async (e) => {
                       </Form.Field>
                       <Form.Field>
                           <span>Scheduled Completion Date:</span>
-                          <Form.Input   required type='date' onChange={(e) => setDueDate(e.target.value)} value={dueDate}/>
+                          <Form.Input   required type='date' onChange={(e) => handleDueDateChange(e)} value={dueDate}/>
                       </Form.Field>
                       <label>
                         <span>Refinement Method:</span>
